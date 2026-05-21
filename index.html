@@ -1,0 +1,243 @@
+﻿
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#010a13">
+  <meta name="description" content="Partum Design: diseño, desarrollo web, marketing digital y producción audiovisual con una dirección creativa de alto rendimiento.">
+  <title>Partum Design | Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <style>
+    #partum-hero{position:relative;isolation:isolate;min-height:calc(100svh - var(--partum-header-height));display:grid;align-items:center;overflow:clip;background:#010a13;padding:clamp(32px,5vw,72px) 0}
+    #partum-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(99,102,241,.26),transparent 22%),radial-gradient(circle at 80% 10%,rgba(16,185,129,.12),transparent 18%),linear-gradient(180deg,rgba(1,10,19,.1),rgba(1,10,19,.76));z-index:1;pointer-events:none}
+    #partum-hero .partum-hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(1.05) contrast(1.02);z-index:0}
+    #partum-hero .partum-hero__grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");opacity:.18;mix-blend-mode:soft-light;z-index:2;pointer-events:none}
+    #partum-hero .partum-hero__shell,#partum-trust .partum-trust__shell,#partum-services .partum-services__shell,#partum-cta .partum-cta__shell{position:relative;z-index:3;width:min(100%,var(--partum-content-max));margin-inline:auto;padding-inline:clamp(18px,4vw,48px)}
+    #partum-hero .partum-hero__grid,#partum-trust .partum-trust__grid,#partum-cta .partum-cta__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:clamp(24px,4vw,52px);align-items:center}
+    #partum-hero .partum-hero__eyebrow,.partum-kicker{margin:0 0 14px;color:var(--partum-accent-strong);font-size:.78rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase}
+    #partum-hero .partum-hero__title,#partum-trust .partum-trust__title,#partum-services .partum-services__title,#partum-cta .partum-cta__title{margin:0;font-family:var(--partum-font-display);font-weight:900;line-height:.92;letter-spacing:-.06em;color:var(--partum-text);-webkit-text-stroke:.35px rgba(255,255,255,.08)}
+    #partum-hero .partum-hero__title{max-width:13ch;font-size:clamp(3rem,7vw,6.25rem)}
+    #partum-hero .partum-hero__title span,#partum-trust .partum-trust__title span,#partum-services .partum-services__title span{display:block;color:var(--partum-accent-strong)}
+    #partum-hero .partum-hero__copy,#partum-trust .partum-trust__copy,#partum-services .partum-services__copy,#partum-cta .partum-cta__copy{margin:22px 0 0;max-width:68ch;color:var(--partum-text-soft);font-size:clamp(1rem,1.2vw,1.08rem);line-height:1.8}
+    #partum-hero .partum-hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    #partum-hero .partum-hero__button,#partum-cta .partum-cta__action{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:14px;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:transform 180ms ease,box-shadow 180ms ease,filter 180ms ease}
+    #partum-hero .partum-hero__button--primary{background:linear-gradient(135deg,var(--partum-accent),var(--partum-accent-strong));color:#fff;box-shadow:0 18px 36px rgba(99,102,241,.24)}
+    #partum-hero .partum-hero__button--ghost{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);color:var(--partum-text)}
+    #partum-hero .partum-hero__button:hover,#partum-hero .partum-hero__button:focus-visible,#partum-cta .partum-cta__action:hover,#partum-cta .partum-cta__action:focus-visible{transform:translate3d(0,-2px,0)}
+    #partum-hero .partum-hero__proof,#partum-trust .partum-trust__logos{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+    #partum-hero .partum-hero__proof-item,#partum-trust .partum-trust__logo{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--partum-text-soft);font-size:.86rem;font-weight:700;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+    #partum-hero .partum-hero__panel,#partum-trust .partum-trust__panel,#partum-cta .partum-cta__panel{padding:22px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--partum-shadow-lg);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+    #partum-hero .partum-hero__panel-top,#partum-trust .partum-trust__panel-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+    #partum-hero .partum-hero__live,#partum-trust .partum-trust__panel-year{color:var(--partum-accent-strong);font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    #partum-hero .partum-hero__dot{width:8px;height:8px;border-radius:999px;background:var(--partum-success);box-shadow:0 0 0 0 rgba(16,185,129,.45);animation:partumPulse 1.9s ease-in-out infinite}
+    #partum-hero .partum-hero__dashboard{display:grid;gap:14px}
+    #partum-hero .partum-hero__metric-grid,#partum-trust .partum-trust__stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    #partum-trust .partum-trust__stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:22px}
+    #partum-hero .partum-hero__metric,#partum-trust .partum-trust__stat{padding:16px;border-radius:18px;background:rgba(1,10,19,.48);border:1px solid rgba(255,255,255,.08);text-align:center}
+    #partum-hero .partum-hero__metric-label,#partum-trust .partum-trust__stat-label{display:block;color:var(--partum-text-muted);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+    #partum-hero .partum-hero__metric-value,#partum-trust .partum-trust__stat-value,#partum-trust .partum-trust__big-number{display:block;color:var(--partum-text);font-family:var(--partum-font-display);font-weight:900;line-height:1;letter-spacing:-.05em}
+    #partum-hero .partum-hero__metric-value{margin-top:10px;font-size:clamp(1.5rem,3vw,2.55rem)}
+    #partum-hero .partum-hero__metric-value--accent,#partum-trust .partum-trust__stat-value--accent,#partum-trust .partum-trust__big-number span:last-child{color:var(--partum-accent-strong)}
+    #partum-hero .partum-hero__feature-list,#partum-services .partum-flipcard__list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+    #partum-hero .partum-hero__feature,#partum-services .partum-flipcard__list li{display:flex;align-items:flex-start;gap:12px}
+    #partum-hero .partum-hero__feature{padding:15px 16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    #partum-hero .partum-hero__feature i,#partum-trust .partum-trust__feature-icon,#partum-services .partum-flipcard__icon{color:var(--partum-accent-strong)}
+    #partum-hero .partum-hero__feature strong,#partum-trust .partum-trust__feature h3,#partum-services .partum-flipcard__title{display:block;color:var(--partum-text);font-weight:800}
+    #partum-hero .partum-hero__feature strong{margin-bottom:4px;font-size:.9rem}
+    #partum-hero .partum-hero__feature span,#partum-trust .partum-trust__feature p,#partum-services .partum-flipcard__copy{display:block;color:var(--partum-text-muted);font-size:.84rem;line-height:1.55}
+    #partum-trust{position:relative;isolation:isolate;padding:clamp(72px,9vw,132px) 0;background:radial-gradient(circle at top left,rgba(99,102,241,.14),transparent 26%),radial-gradient(circle at bottom right,rgba(16,185,129,.08),transparent 24%),linear-gradient(180deg,rgba(255,255,255,.02),transparent 18%)}
+    #partum-trust::before,#partum-services::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:42px 42px;pointer-events:none;opacity:.35}
+    #partum-trust .partum-trust__title{max-width:12ch;font-size:clamp(2.3rem,5vw,4.7rem)}
+    #partum-trust .partum-trust__features{display:grid;gap:14px;margin-top:26px}
+    #partum-trust .partum-trust__feature{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;padding:18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+    #partum-trust .partum-trust__feature-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(99,102,241,.16)}
+    #partum-trust .partum-trust__feature-icon--success{background:rgba(16,185,129,.14);color:#a7f3d0}
+    #partum-trust .partum-trust__big-number{display:flex;align-items:flex-start;gap:6px;margin:0;font-size:clamp(4.3rem,10vw,7.2rem);line-height:.88}
+    #partum-trust .partum-trust__big-number span:last-child{font-size:.4em;margin-top:12px}
+    #partum-trust .partum-trust__big-copy{margin:14px 0 0;color:var(--partum-text-soft);font-size:.96rem;line-height:1.75}
+    #partum-services{position:relative;padding:clamp(84px,10vw,136px) 0;background:linear-gradient(180deg,rgba(255,255,255,.015),rgba(255,255,255,.03))}
+    #partum-services .partum-services__header{display:grid;gap:14px;margin-bottom:clamp(26px,4vw,42px)}
+    #partum-services .partum-services__title{max-width:13ch;font-size:clamp(2.4rem,5vw,4.8rem)}
+    #partum-services .partum-services__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    #partum-services .partum-flipcard{position:relative;display:block;min-height:380px;perspective:1800px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+    #partum-services .partum-flipcard__toggle{position:absolute;inset:0;opacity:0;margin:0;pointer-events:none}
+    #partum-services .partum-flipcard__inner{position:relative;width:100%;height:100%;min-height:inherit;transform-style:preserve-3d;transition:transform 700ms cubic-bezier(.16,1,.3,1)}
+    #partum-services .partum-flipcard:hover .partum-flipcard__inner,#partum-services .partum-flipcard:focus-within .partum-flipcard__inner,#partum-services .partum-flipcard__toggle:checked + .partum-flipcard__inner{transform:rotateY(180deg)}
+    #partum-services .partum-flipcard__face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:22px;border-radius:24px;background:radial-gradient(circle at top right,rgba(99,102,241,.18),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--partum-shadow-md);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+    #partum-services .partum-flipcard__face--back{transform:rotateY(180deg);background:radial-gradient(circle at top left,rgba(16,185,129,.14),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035))}
+    #partum-services .partum-flipcard__eyebrow{display:block;position:relative;z-index:1;color:var(--partum-text-muted);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    #partum-services .partum-flipcard__icon{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:rgba(99,102,241,.14);border:1px solid rgba(129,140,248,.18);font-size:1.6rem;margin-top:16px}
+    #partum-services .partum-flipcard__title{display:block;position:relative;z-index:1;margin-top:18px;font-size:clamp(1.4rem,2vw,1.75rem);line-height:1.02;letter-spacing:-.05em}
+    #partum-services .partum-flipcard__copy{display:block;position:relative;z-index:1;margin-top:12px}
+    #partum-services .partum-flipcard__hint{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-top:auto;color:var(--partum-accent-strong);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+    #partum-services .partum-flipcard__list li{color:var(--partum-text-soft);font-size:.9rem;line-height:1.6}
+    #partum-services .partum-flipcard__list i{margin-top:3px;color:var(--partum-success);flex:0 0 auto}
+    #partum-services .partum-flipcard__link{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:18px;padding:0 16px;border-radius:14px;background:linear-gradient(135deg,var(--partum-accent),var(--partum-accent-strong));color:#fff;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-align:center}
+    #partum-cta{padding:clamp(72px,9vw,120px) 0;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+    #partum-cta .partum-cta__panel{padding:clamp(24px,4vw,42px);border-radius:30px;background:radial-gradient(circle at top left,rgba(99,102,241,.18),transparent 28%),linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--partum-shadow-lg);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+    #partum-cta .partum-cta__title{font-size:clamp(2rem,4.4vw,4rem)}
+    @keyframes partumPulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.48)}50%{box-shadow:0 0 0 10px rgba(16,185,129,0)}}
+    @media (max-width:1100px){#partum-hero .partum-hero__grid,#partum-trust .partum-trust__grid,#partum-cta .partum-cta__grid{grid-template-columns:1fr}#partum-services .partum-services__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:768px){#partum-hero{min-height:auto;padding:30px 0 42px}#partum-hero .partum-hero__button,#partum-cta .partum-cta__action{width:100%}#partum-hero .partum-hero__metric-grid,#partum-trust .partum-trust__stats,#partum-services .partum-services__grid{grid-template-columns:1fr}#partum-services .partum-flipcard{min-height:360px}}
+    @media (max-width:540px){#partum-hero .partum-hero__panel,#partum-trust .partum-trust__panel,#partum-cta .partum-cta__panel{border-radius:22px}#partum-services .partum-flipcard__face{padding:18px}#partum-trust .partum-trust__feature{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header id="partum-site-header" class="partum-header" data-partum-header>
+    <div class="partum-header__inner">
+      <a class="partum-brand" href="/" aria-label="Ir a inicio de Partum Design">
+        <img class="partum-brand__mark" src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design">
+      </a>
+      <button class="partum-nav__toggle" type="button" aria-label="Abrir o cerrar menú" aria-controls="partum-primary-nav" aria-expanded="false" data-partum-menu-toggle>
+        <span class="partum-visually-hidden">Menú principal</span>
+        <span class="partum-nav__toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav id="partum-primary-nav" class="partum-nav" data-partum-nav aria-label="Navegación principal">
+        <ul class="partum-nav__list">
+          <li class="partum-nav__item"><a class="partum-nav__link" href="/">Inicio</a></li>
+          <li class="partum-nav__item"><a class="partum-nav__link" href="/nosotros/">Nosotros</a></li>
+          <li class="partum-nav__item partum-nav__item--services" data-partum-services-item>
+            <button class="partum-nav__trigger partum-nav__trigger--services" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="partum-services-menu" data-partum-services-trigger>
+              Servicios <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="partum-nav__panel partum-nav__panel--services" id="partum-services-menu" data-partum-services-panel>
+              <ul class="partum-nav__panel-list">
+                <li><a class="partum-nav__panel-link" href="/identidad-visual/"><span><span class="partum-nav__panel-title">Identidad Visual y Corporativa</span><span class="partum-nav__panel-copy">Sistemas de marca, piezas y lineamientos visuales.</span></span></a></li>
+                <li><a class="partum-nav__panel-link" href="/desarrollo-web/"><span><span class="partum-nav__panel-title">Desarrollo Web</span><span class="partum-nav__panel-copy">Sitios rápidos, escalables y pensados para conversión.</span></span></a></li>
+                <li><a class="partum-nav__panel-link" href="/marketing-digital/"><span><span class="partum-nav__panel-title">Marketing Digital</span><span class="partum-nav__panel-copy">Estrategia, pauta y crecimiento con foco en resultados.</span></span></a></li>
+                <li><a class="partum-nav__panel-link" href="/produccion-audiovisual/"><span><span class="partum-nav__panel-title">Producción Audiovisual</span><span class="partum-nav__panel-copy">Video, dirección creativa y contenido para campañas.</span></span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="partum-nav__item"><a class="partum-nav__link" href="/contacto/">Contacto</a></li>
+        </ul>
+        <a class="partum-nav__cta" href="/contacto/">Cotizar ahora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="partum-home-main">
+    <section id="partum-hero" aria-labelledby="partum-hero-title">
+      <video class="partum-hero__video" autoplay muted loop playsinline preload="none" aria-hidden="true">
+        <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/11690474-uhd_3840_2160_24fps.mp4" type="video/mp4">
+      </video>
+      <div class="partum-hero__grain" aria-hidden="true"></div>
+      <div class="partum-hero__shell">
+        <div class="partum-hero__grid">
+          <div class="partum-animate-fade" data-partum-reveal>
+            <p class="partum-hero__eyebrow">Partum Design Studio</p>
+            <h1 class="partum-hero__title" id="partum-hero-title">Experiencias digitales <span>con precisión premium</span></h1>
+            <p class="partum-hero__copy">Diseñamos identidades, sitios web, campañas y contenido audiovisual con una base técnica sólida, alto criterio visual y una ejecución pensada para convertir sin sacrificar velocidad.</p>
+            <div class="partum-hero__actions">
+              <a class="partum-hero__button partum-hero__button--primary" href="/contacto/">Iniciar proyecto <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a class="partum-hero__button partum-hero__button--ghost" href="/nosotros/">Conocer el estudio</a>
+            </div>
+            <div class="partum-hero__proof" aria-label="Indicadores de confianza">
+              <span class="partum-hero__proof-item"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Core Web Vitals first</span>
+              <span class="partum-hero__proof-item"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Desarrollo defensivo</span>
+              <span class="partum-hero__proof-item"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i> Dirección creativa high-end</span>
+            </div>
+          </div>
+          <aside class="partum-hero__panel partum-animate-scale" data-partum-reveal aria-label="Panel de desempeño">
+            <div class="partum-hero__panel-top">
+              <div class="partum-hero__panel-label"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Radar de crecimiento</div>
+              <div class="partum-hero__live"><span class="partum-hero__dot"></span> En vivo</div>
+            </div>
+            <div class="partum-hero__dashboard">
+              <div class="partum-hero__metric-grid">
+                <div class="partum-hero__metric"><span class="partum-hero__metric-label">Velocidad de carga</span><span class="partum-hero__metric-value">95+</span></div>
+                <div class="partum-hero__metric"><span class="partum-hero__metric-label">Escalabilidad</span><span class="partum-hero__metric-value partum-hero__metric-value--accent">A+</span></div>
+              </div>
+              <ul class="partum-hero__feature-list">
+                <li class="partum-hero__feature"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><strong>Arquitectura limpia</strong><span>HTML, CSS y JS nativos, con estructura preparada para crecer página por página.</span></div></li>
+                <li class="partum-hero__feature"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><strong>Interacciones fluidas</strong><span>Animaciones ligeras, estados accesibles y comportamiento táctil correcto en móvil.</span></div></li>
+                <li class="partum-hero__feature"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><strong>Conversión real</strong><span>Diseño enfocado en posicionamiento, claridad comercial y captación de leads.</span></div></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="partum-trust" aria-labelledby="partum-trust-title">
+      <div class="partum-trust__shell">
+        <div class="partum-trust__grid">
+          <div class="partum-animate-fade" data-partum-reveal>
+            <div class="partum-trust__badge"><span class="partum-trust__badge-dot"></span><span class="partum-kicker">Confianza verificable</span></div>
+            <h2 class="partum-trust__title" id="partum-trust-title">Tu marca <span>con respaldo serio</span></h2>
+            <p class="partum-trust__copy">No construimos piezas sueltas. Diseñamos sistemas visuales y plataformas digitales que sostienen el crecimiento, mantienen coherencia y reducen fricción en cada punto de contacto.</p>
+            <div class="partum-trust__features">
+              <article class="partum-trust__feature"><div class="partum-trust__feature-icon"><i class="fa-solid fa-sitemap" aria-hidden="true"></i></div><div><h3>Estrategia integral</h3><p>Unimos marca, desarrollo y marketing en una sola línea de ejecución para evitar inconsistencias y retrabajos.</p></div></article>
+              <article class="partum-trust__feature"><div class="partum-trust__feature-icon partum-trust__feature-icon--success"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></div><div><h3>Rendimiento extremo</h3><p>Priorizamos Core Web Vitals, carga progresiva y lógica defensiva para que la experiencia sea rápida y estable.</p></div></article>
+            </div>
+          </div>
+          <aside class="partum-trust__panel partum-animate-scale" data-partum-reveal aria-label="Resumen de confianza">
+            <div class="partum-trust__panel-top"><span class="partum-trust__panel-kicker">Track record</span><span class="partum-trust__panel-year">2026</span></div>
+            <p class="partum-trust__big-number"><span>4</span><span>+</span></p>
+            <p class="partum-trust__big-copy">Años de evolución creativa y técnica, con una mentalidad de estudio: precisión visual, decisiones defendibles y entregas pensadas para escalar.</p>
+            <div class="partum-trust__stats">
+              <div class="partum-trust__stat"><span class="partum-trust__stat-value">200+</span><span class="partum-trust__stat-label">Proyectos</span></div>
+              <div class="partum-trust__stat"><span class="partum-trust__stat-value partum-trust__stat-value--accent">99%</span><span class="partum-trust__stat-label">Satisfacción</span></div>
+              <div class="partum-trust__stat"><span class="partum-trust__stat-value">24/7</span><span class="partum-trust__stat-label">Soporte</span></div>
+            </div>
+            <div class="partum-trust__logos" aria-label="Sectores atendidos"><span class="partum-trust__logo">Branding</span><span class="partum-trust__logo">Web</span><span class="partum-trust__logo">Ads</span><span class="partum-trust__logo">Video</span><span class="partum-trust__logo">E-commerce</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section id="partum-services" aria-labelledby="partum-services-title">
+      <div class="partum-services__shell">
+        <div class="partum-services__header">
+          <p class="partum-kicker">Servicios</p>
+          <h2 class="partum-services__title" id="partum-services-title">Soluciones que <span>trabajan juntas</span></h2>
+          <p class="partum-services__copy">Cada servicio está diseñado para funcionar como parte de un sistema completo. La estética no va separada de la velocidad, y la conversión no va separada de la experiencia.</p>
+        </div>
+        <div class="partum-services__grid">
+          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Identidad Visual y Corporativa"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 01</span><span class="partum-flipcard__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span><span class="partum-flipcard__title">Identidad Visual y Corporativa</span><span class="partum-flipcard__copy">Creamos sistemas visuales consistentes, memorables y listos para desplegarse en cada punto de contacto.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Branding con dirección clara</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Logotipo, variantes y lineamientos visuales.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Paleta, tipografía, recursos gráficos y usos correctos.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Materiales listos para redes, impresión y sitio web.</span></li></ul></span><a class="partum-flipcard__link" href="/identidad-visual/">Ver servicio</a></span></span></label>
+          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Desarrollo Web"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 02</span><span class="partum-flipcard__icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span class="partum-flipcard__title">Desarrollo Web</span><span class="partum-flipcard__copy">Sitios rápidos, escalables y construidos con HTML, CSS y JS limpios para maximizar rendimiento y claridad.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Arquitectura lista para crecer</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Maquetación nativa, semántica y defensiva.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Optimización para Core Web Vitals y mobile first.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Componentes modulares y enlaces limpios.</span></li></ul></span><a class="partum-flipcard__link" href="/desarrollo-web/">Ver servicio</a></span></span></label>
+          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Marketing Digital"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 03</span><span class="partum-flipcard__icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span><span class="partum-flipcard__title">Marketing Digital</span><span class="partum-flipcard__copy">Estrategia, pauta y contenidos orientados a performance, con medición y ajuste continuo.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Crecimiento con foco comercial</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Campañas, remarketing y segmentación estratégica.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Contenido alineado con objetivos de adquisición.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Reportes accionables para tomar decisiones.</span></li></ul></span><a class="partum-flipcard__link" href="/marketing-digital/">Ver servicio</a></span></span></label>
+          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Producción Audiovisual"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 04</span><span class="partum-flipcard__icon"><i class="fa-solid fa-video" aria-hidden="true"></i></span><span class="partum-flipcard__title">Producción Audiovisual</span><span class="partum-flipcard__copy">Video, dirección creativa y piezas dinámicas que elevan percepción y refuerzan narrativa de marca.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Contenido con fuerza visual</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Video comercial, reels, motion y contenidos de marca.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Dirección de arte consistente y narrativa clara.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Piezas listas para campañas y lanzamientos.</span></li></ul></span><a class="partum-flipcard__link" href="/produccion-audiovisual/">Ver servicio</a></span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <section id="partum-cta" aria-labelledby="partum-cta-title">
+      <div class="partum-cta__shell">
+        <div class="partum-cta__panel partum-animate-scale" data-partum-reveal>
+          <div class="partum-cta__grid">
+            <div>
+              <h2 class="partum-cta__title" id="partum-cta-title">Si quieres una presencia digital seria, empieza aquí.</h2>
+              <p class="partum-cta__copy">Podemos estructurar tu siguiente etapa desde la base: arquitectura web, dirección visual, contenido y estrategia de captación, todo con una sola línea de ejecución.</p>
+            </div>
+            <a class="partum-cta__action" href="/contacto/">Agendar diagnóstico <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="partum-site-footer" class="partum-footer">
+    <div class="partum-footer__inner">
+      <div class="partum-footer__grid">
+        <div class="partum-footer__brand">
+          <a href="/" aria-label="Ir a inicio de Partum Design"><img class="partum-footer__logo" src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design" loading="lazy" decoding="async"></a>
+          <p class="partum-footer__copy">Estudio creativo y técnico enfocado en construir marcas, interfaces y experiencias digitales con rendimiento real y una estética contundente.</p>
+          <div class="partum-footer__social"><a class="partum-chip" href="https://www.instagram.com/partumdesignagency" target="_blank" rel="noopener noreferrer">Instagram</a><a class="partum-chip" href="https://www.facebook.com/partumdesign.agency" target="_blank" rel="noopener noreferrer">Facebook</a><a class="partum-chip partum-pill--success" href="https://wa.me/5255616044547" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+        </div>
+        <div><h2 class="partum-footer__title">Compañía</h2><ul class="partum-footer__list"><li><a class="partum-footer__link" href="/">Inicio</a></li><li><a class="partum-footer__link" href="/nosotros/">Nosotros</a></li><li><a class="partum-footer__link" href="/contacto/">Contacto</a></li></ul></div>
+        <div><h2 class="partum-footer__title">Servicios</h2><ul class="partum-footer__list"><li><a class="partum-footer__link" href="/identidad-visual/">Identidad Visual y Corporativa</a></li><li><a class="partum-footer__link" href="/desarrollo-web/">Desarrollo Web</a></li><li><a class="partum-footer__link" href="/marketing-digital/">Marketing Digital</a></li><li><a class="partum-footer__link" href="/produccion-audiovisual/">Producción Audiovisual</a></li></ul></div>
+        <div><h2 class="partum-footer__title">Contacto</h2><ul class="partum-footer__list"><li><a class="partum-footer__link" href="mailto:contacto@partumdesign.com.mx">contacto@partumdesign.com.mx</a></li><li><a class="partum-footer__link" href="tel:+5255616044547">+52 56 1604 4547</a></li><li><a class="partum-footer__link" href="/contacto/">Agenda una llamada</a></li></ul></div>
+      </div>
+      <div class="partum-footer__meta"><span>© <span data-partum-current-year>2026</span> Partum Design. Todos los derechos reservados.</span><span>Diseño de alto rendimiento con arquitectura limpia.</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/global.js"></script>
+</body>
+</html>
+
