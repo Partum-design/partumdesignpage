@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Marketing Digital - Partum Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script src="/assets/js/script.js" defer></script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #020617; /* Slate 950 profundo */
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ══ VIDEO BG & OVERLAYS ══ */
+        .video-bg {
+            position: absolute; inset: 0; z-index: 0; overflow: hidden;
+        }
+        .video-bg video {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center;
+            filter: contrast(1.1) brightness(0.9);
+        }
+        
+        /* Degradado inteligente para lectura perfecta */
+        .video-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(
+                90deg,
+                rgba(2, 6, 23, 0.98) 0%,
+                rgba(2, 6, 23, 0.85) 45%,
+                rgba(2, 6, 23, 0.2) 100%
+            );
+        }
+        
+        .video-fade {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 250px; z-index: 3;
+            background: linear-gradient(to top, #020617 0%, transparent 100%);
+        }
+
+        /* ══ PATRÓN DE FONDO ANIMADO ══ */
+        .bg-grid {
+            position: absolute; inset: -100% 0 0 0; z-index: 4;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 80% at 25% 50%, rgba(0,0,0,0.8) 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 25% 50%, rgba(0,0,0,0.8) 0%, transparent 70%);
+            animation: gridPan 40s linear infinite; 
+        }
+        @keyframes gridPan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(60px); }
+        }
+
+        /* ══ HERO LAYOUT ══ */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex; align-items: center;
+            padding: 120px 5vw 80px;
+            overflow: hidden; isolation: isolate;
+        }
+
+        .container {
+            max-width: 1280px; width: 100%; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 40px; align-items: center;
+            position: relative; z-index: 10;
+        }
+
+        /* ════════════════════════════
+           LEFT — TEXTOS MARKETING
+        ════════════════════════════ */
+        .left {
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; z-index: 20;
+        }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 18px; border-radius: 100px;
+            border: 1px solid rgba(96,165,250,0.25);
+            background: rgba(15, 23, 42, 0.65);
+            width: fit-content; margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 20px rgba(0,0,0,0.5);
+            animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s both;
+        }
+        .badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #60a5fa; box-shadow: 0 0 10px #60a5fa, 0 0 20px #60a5fa;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+        @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.4)} }
+        
+        .badge span {
+            font-size: 10px; font-weight: 800;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: #e2e8f0 !important; 
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: clamp(2.6rem, 4.5vw, 4.2rem) !important;
+            font-weight: 900 !important; line-height: 1.1 !important;
+            letter-spacing: -0.02em;
+            color: #ffffff !important; 
+            margin-bottom: 20px;
+            max-width: 650px;
+            animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.12s both;
+        }
+        
+        /* Gradiente animado espectacular */
+        .grad {
+            background: linear-gradient(to right, #60a5fa, #c084fc, #818cf8, #60a5fa) !important;
+            background-size: 200% auto !important;
+            -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            animation: gradientFlow 4s linear infinite !important;
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .subtitle {
+            font-size: 1.1rem !important; font-weight: 400 !important;
+            color: #94a3b8 !important; 
+            line-height: 1.7;
+            max-width: 520px; margin-bottom: 40px;
+            animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+        }
+
+        .cta-group {
+            display: flex; gap: 16px; align-items: center;
+            margin-bottom: 50px;
+            animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.28s both;
+        }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            border-radius: 14px; color: #ffffff !important;
+            font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em;
+            text-decoration: none; position: relative; overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+            box-shadow: 0 10px 30px rgba(37,99,235,0.4), inset 0 1px 1px rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-primary::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-20deg); animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer { 100% { left: 200%; } }
+        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(37,99,235,0.6), inset 0 1px 1px rgba(255,255,255,0.3); }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 16px 28px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px; color: #e2e8f0 !important;
+            font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em;
+            text-decoration: none; transition: all 0.3s ease;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); color: #fff !important; transform: translateY(-4px); }
+
+        .platforms {
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.36s both;
+        }
+        .platforms-label {
+            font-size: 10px; font-weight: 800;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: #64748b !important; margin-bottom: 16px;
+        }
+        .platforms-icons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .platform-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; border-radius: 10px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 11.5px; font-weight: 600; color: #94a3b8 !important;
+            transition: all 0.3s ease; cursor: default;
+            backdrop-filter: blur(8px);
+        }
+        .platform-pill i { font-size: 15px; color: #60a5fa; transition: color 0.3s; }
+        .platform-pill:hover { background: rgba(30,41,59,0.9); border-color: rgba(99,102,241,0.4); color: #ffffff !important; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .platform-pill:hover i { color: #818cf8; }
+
+        /* ════════════════════════════════════════════
+           RADAR MARKETING SYSTEM — Estático y Elegante
+        ════════════════════════════════════════════ */
+        .orbital-scale-wrapper {
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; height: 500px; 
+            perspective: 1000px; 
+        }
+
+        .orbital-wrap {
+            position: relative; width: 500px; height: 500px;
+            display: flex; align-items: center; justify-content: center;
+            animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.15s both;
+            transform-style: preserve-3d;
+        }
+
+        /* ── EFECTO RADAR DE SEGMENTACIÓN (Giratorio) ── */
+        .radar-sweep {
+            position: absolute; top: 50%; left: 50%;
+            width: 440px; height: 440px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 70%, rgba(99,102,241,0.1) 95%, rgba(99,102,241,0.5) 100%);
+            animation: spin-cw 4s linear infinite;
+            z-index: 1; pointer-events: none;
+            mask-image: radial-gradient(circle at center, transparent 15%, black 60%);
+            -webkit-mask-image: radial-gradient(circle at center, transparent 15%, black 60%);
+        }
+
+        /* Anillos Estáticos del Radar */
+        .ring-deco {
+            position: absolute; border-radius: 50%;
+            top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 0;
+        }
+        .rd-1 { width: 440px; height: 440px; border: 1px solid rgba(255,255,255,0.04); }
+        .rd-2 { width: 320px; height: 320px; border: 1px dashed rgba(99,102,241,0.2); }
+        .rd-3 { width: 180px; height: 180px; border: 1px solid rgba(255,255,255,0.06); }
+
+        /* Resplandor Central */
+        .center-glow-bg {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 120px; height: 120px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+            filter: blur(20px); animation: pulse-glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-glow { 0% { opacity: 0.4; transform: translate(-50%,-50%) scale(0.9); } 100% { opacity: 1; transform: translate(-50%,-50%) scale(1.2); } }
+
+        /* Núcleo Central (Imán Inbound) */
+        .core {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 68px; height: 68px; border-radius: 20px;
+            background: rgba(10, 15, 30, 0.95); 
+            border: 1px solid rgba(99,102,241,0.5);
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(20px); z-index: 30;
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 0 30px rgba(99,102,241,0.3);
+        }
+        .core i { 
+            font-size: 26px; 
+            background: linear-gradient(135deg,#93c5fd,#c4b5fd); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
+
+        /* ── PARTÍCULAS INBOUND (LEADS - Giratorias/Entrantes) ── */
+        .lead-particle {
+            position: absolute; top: 50%; left: 50%;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #34d399; box-shadow: 0 0 12px #34d399, 0 0 20px #34d399;
+            z-index: 5;
+            animation: inbound-traffic linear infinite;
+        }
+        .lead-particle.p-blue { background: #60a5fa; box-shadow: 0 0 12px #60a5fa, 0 0 20px #60a5fa; }
+        .lead-particle.p-purple { background: #c084fc; box-shadow: 0 0 12px #c084fc, 0 0 20px #c084fc; }
+        
+        @keyframes inbound-traffic {
+            0% { transform: translate(-50%, -50%) rotate(var(--deg)) translateX(var(--radius)) scale(0); opacity: 0; }
+            20% { opacity: 1; scale(1.5); }
+            80% { opacity: 1; scale(1); }
+            100% { transform: translate(-50%, -50%) rotate(var(--deg)) translateX(30px) scale(0); opacity: 0; }
+        }
+
+        /* Brazos estáticos para las tarjetas */
+        .orbit-arm { position: absolute; top: 50%; left: 50%; width: 0; height: 0; transform-origin: 0 0; z-index: 20; }
+        .satellite { position: absolute; transform-origin: center center; }
+
+        /* TARJETAS KPI MARKETING (Glassmorphism 2.0) */
+        .metric-card {
+            background: rgba(10, 15, 30, 0.65);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-left: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            white-space: nowrap;
+        }
+        .metric-card:hover { 
+            border-top: 1px solid rgba(99,102,241,0.5);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 30px rgba(99,102,241,0.15); 
+            transform: translateY(-6px); z-index: 50; 
+        }
+
+        /* ── POSICIONES ESTÁTICAS DE LAS TARJETAS (Cero Mareos) ── */
+        .arm-roi { transform: rotate(-35deg); z-index: 25; }
+        .arm-roi .satellite { left: 215px; transform: translate(-50%, -50%) rotate(35deg); width: 230px; }
+
+        .arm-conv { transform: rotate(170deg); z-index: 24; }
+        .arm-conv .satellite { left: 160px; transform: translate(-50%, -50%) rotate(-170deg); width: 240px; }
+
+        .arm-cpa { transform: rotate(65deg); z-index: 23; }
+        .arm-cpa .satellite { left: 185px; transform: translate(-50%, -50%) rotate(-65deg); width: 220px; }
+
+        @keyframes spin-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+
+        /* Contenido Tarjetas Marketing */
+        .card-head { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+        .card-icon { width:32px; height:32px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:13px; }
+        .i-em { background:rgba(16,185,129,0.15); color:#34d399; box-shadow: inset 0 0 10px rgba(16,185,129,0.1); }
+        .i-vi { background:rgba(168,85,247,0.15); color:#c084fc; box-shadow: inset 0 0 10px rgba(168,85,247,0.1); }
+        .i-bl { background:rgba(59,130,246,0.15); color:#93c5fd; box-shadow: inset 0 0 10px rgba(59,130,246,0.1); }
+        
+        .card-lbl { font-size:10px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#cbd5e1; display: flex; align-items: center; gap: 6px; }
+        
+        /* Puntos de estado "En Vivo" (Data fetching) */
+        .live-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; animation: blink 1.5s infinite; }
+        .ld-green { background: #34d399; box-shadow: 0 0 8px #34d399; }
+        .ld-blue { background: #60a5fa; box-shadow: 0 0 8px #60a5fa; }
+        .ld-purple { background: #c084fc; box-shadow: 0 0 8px #c084fc; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+        .card-val { font-family:'Montserrat',sans-serif; font-size:2.1rem; font-weight:900; color:#ffffff; line-height:1; letter-spacing:-0.03em; }
+        .card-sub { font-size:11.5px; font-weight:600; color:#34d399; margin-top:8px; }
+        .card-sub.red { color: #fbbf24; }
+        
+        /* Gráficos miniatura refinados */
+        .progress-track { width:100%; height:4px; background:rgba(255,255,255,0.1); border-radius:4px; margin-top:14px; overflow:hidden; }
+        .progress-fill  { height:100%; border-radius:4px; background:linear-gradient(90deg,#10b981,#34d399); box-shadow: 0 0 10px rgba(16,185,129,0.5); }
+        .sparkline { display:flex; align-items:flex-end; gap:4px; height:28px; margin-top:14px; }
+        .s-bar { flex:1; border-radius:2px 2px 0 0; background:rgba(168,85,247,0.3); }
+        .s-bar.lit { background:rgba(168,85,247,0.8); box-shadow: 0 0 8px rgba(168,85,247,0.5); }
+
+        /* Controles Video */
+        .video-controls { position: absolute; bottom: 30px; right: 30px; z-index: 50; display: flex; gap: 12px; }
+        .video-btn {
+            display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%;
+            backdrop-filter: blur(12px); cursor: pointer; transition: all 0.3s ease; color: #cbd5e1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .video-btn:hover { background: rgba(255,255,255,0.1); color: #fff; transform: scale(1.1); }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ════════════════════════════════════════════
+           RESPONSIVE (Alineación y Proporciones Seguras)
+        ════════════════════════════════════════════ */
+        
+        @media (max-width: 1280px) {
+            .orbital-wrap { transform: scale(0.9); } 
+        }
+
+        @media (max-width: 1100px) {
+            .hero { padding: 120px 5vw 80px; }
+            .container { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+            
+            .left { align-items: center; }
+            h1 { max-width: 100%; }
+            .subtitle { margin: 0 auto 38px auto; }
+            .platforms-icons { justify-content: center; }
+            
+            .video-overlay {
+                background: linear-gradient(to bottom, rgba(2, 6, 23, 0.98) 0%, rgba(2, 6, 23, 0.85) 50%, rgba(2, 6, 23, 0.5) 100%);
+            }
+            
+            .orbital-scale-wrapper { height: 500px; }
+            .orbital-wrap { transform: scale(0.95); } 
+        }
+
+        @media (max-width: 768px) {
+            .orbital-scale-wrapper { height: 420px; }
+            .orbital-wrap { transform: scale(0.85); }
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 100px 24px 60px; }
+            h1 { font-size: 2.3rem !important; }
+            .cta-group { flex-direction: column; width: 100%; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            
+            .orbital-scale-wrapper { height: 340px; margin-top: -10px; }
+            .orbital-wrap { transform: scale(0.65); }
+        }
+
+        @media (max-width: 400px) {
+            .orbital-scale-wrapper { height: 300px; }
+            .orbital-wrap { transform: scale(0.55); }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+
+    <!-- Video Background -->
+    <div class="video-bg">
+        <video id="bgVideo" autoplay muted loop playsinline>
+            <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/11690474-uhd_3840_2160_24fps.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="video-fade"></div>
+    </div>
+    
+    <div class="bg-grid"></div>
+
+    <div class="container">
+
+        <!-- ══ IZQUIERDA: Textos ══ -->
+        <div class="left">
+            <div class="badge">
+                <div class="badge-dot"></div>
+                <span>Agencia de Growth Marketing</span>
+            </div>
+
+            <h1>
+                Escalamos tus ventas<br>
+                con <span class="grad">datos precisos.</span>
+            </h1>
+
+            <p class="subtitle">
+                Diseñamos ecosistemas digitales y embudos de conversión de alto rendimiento para atraer, captar y retener a tu cliente ideal.
+            </p>
+
+            <div class="cta-group">
+                <a href="/contacto" class="btn-primary">
+                    <span>Auditoría Gratuita</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://www.behance.net/partumdesign2" class="btn-secondary">
+                    <i class="fas fa-chart-line text-indigo-400"></i>
+                    <span>Ver Casos de Éxito</span>
+                </a>
+            </div>
+
+            <div class="platforms">
+                <p class="platforms-label">Ecosistemas que dominamos</p>
+                <div class="platforms-icons">
+                    <div class="platform-pill" title="Google Ads"><i class="fab fa-google"></i><span>Google</span></div>
+                    <div class="platform-pill" title="Meta Ads"><i class="fab fa-meta"></i><span>Meta</span></div>
+                    <div class="platform-pill" title="TikTok Ads"><i class="fab fa-tiktok"></i><span>TikTok</span></div>
+                    <div class="platform-pill" title="LinkedIn Ads"><i class="fab fa-linkedin"></i><span>LinkedIn</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ DERECHA: Radar de Tráfico y Dashboards ESTÁTICOS ══ -->
+        <div class="orbital-scale-wrapper">
+            <div class="orbital-wrap">
+
+                <!-- Efecto Radar de Segmentación (Este SÍ gira) -->
+                <div class="radar-sweep"></div>
+
+                <!-- Anillos del Radar -->
+                <div class="ring-deco rd-1"></div>
+                <div class="ring-deco rd-2"></div>
+                <div class="ring-deco rd-3"></div>
+
+                <!-- Partículas de Leads Entrantes (Animadas) -->
+                <div class="lead-particle" style="--deg: 25deg; --radius: 220px; animation-duration: 3.2s; animation-delay: 0s;"></div>
+                <div class="lead-particle p-blue" style="--deg: 140deg; --radius: 220px; animation-duration: 3.8s; animation-delay: 1.2s;"></div>
+                <div class="lead-particle p-purple" style="--deg: 210deg; --radius: 220px; animation-duration: 2.9s; animation-delay: 0.5s;"></div>
+                <div class="lead-particle" style="--deg: 320deg; --radius: 220px; animation-duration: 3.5s; animation-delay: 2.1s;"></div>
+                <div class="lead-particle p-blue" style="--deg: 75deg; --radius: 220px; animation-duration: 4s; animation-delay: 1.8s;"></div>
+
+                <!-- Imán de Atracción Central -->
+                <div class="center-glow-bg"></div>
+                <div class="core">
+                    <i class="fas fa-magnet"></i> <!-- Ícono de atracción de leads -->
+                </div>
+
+                <!-- ── TARJETA 1: ROAS (Estática Top-Right) ── -->
+                <div class="orbit-arm arm-roi">
+                    <div class="satellite">
+                        <div class="metric-card">
+                            <div class="card-head">
+                                <div class="card-icon i-em"><i class="fas fa-chart-line"></i></div>
+                                <span class="card-lbl"><span class="live-dot ld-green"></span> ROAS Global</span>
+                            </div>
+                            <div class="card-val">4.8x</div>
+                            <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
+                            <div class="card-sub">↑ Retorno publicitario</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── TARJETA 2: Captación de Leads (Estática Mid-Left) ── -->
+                <div class="orbit-arm arm-conv">
+                    <div class="satellite">
+                        <div class="metric-card">
+                            <div class="card-head">
+                                <div class="card-icon i-vi"><i class="fas fa-users"></i></div>
+                                <span class="card-lbl"><span class="live-dot ld-purple"></span> Nuevos Leads</span>
+                            </div>
+                            <div style="display:flex;align-items:flex-end;gap:12px">
+                                <div class="card-val">+1,250</div>
+                                <span style="color:#34d399;font-weight:800;font-size:13px;margin-bottom:4px">↑ 24%</span>
+                            </div>
+                            <div class="sparkline">
+                                <div class="s-bar" style="height:26%"></div>
+                                <div class="s-bar" style="height:42%"></div>
+                                <div class="s-bar" style="height:34%"></div>
+                                <div class="s-bar" style="height:60%"></div>
+                                <div class="s-bar" style="height:50%"></div>
+                                <div class="s-bar" style="height:75%"></div>
+                                <div class="s-bar lit" style="height:100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── TARJETA 3: Costo por Adquisición (Estática Bottom-Right) ── -->
+                <div class="orbit-arm arm-cpa">
+                    <div class="satellite">
+                        <div class="metric-card">
+                            <div class="card-head">
+                                <div class="card-icon i-bl"><i class="fas fa-filter-circle-dollar"></i></div>
+                                <span class="card-lbl"><span class="live-dot ld-blue"></span> CPA Promedio</span>
+                            </div>
+                            <div class="card-val">-$2.40</div>
+                            <div class="card-sub red">↓ Reducción de costos</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles de Video -->
+    <div class="video-controls">
+        <button class="video-btn" onclick="toggleMute()" id="muteBtn" title="Silenciar / Activar sonido">
+            <i class="fas fa-volume-xmark"></i>
+        </button>
+    </div>
+
+</section>
+
+<script>
+    function toggleMute() {
+        const v = document.getElementById('bgVideo');
+        const i = document.querySelector('#muteBtn i');
+        v.muted = !v.muted;
+        i.className = v.muted ? 'fas fa-volume-xmark' : 'fas fa-volume-high';
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción Marketing - Partum Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f8fafc; /* Premium Light Slate */
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            color: #0f172a;
+        }
+
+        /* ════════════════════════════
+           SECCIÓN PRINCIPAL & VIDEO
+        ════════════════════════════ */
+        .intro-marketing {
+            position: relative;
+            padding: 120px 5vw 140px;
+            overflow: hidden;
+            isolation: isolate;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .video-bg {
+            position: absolute; inset: 0; z-index: 0; overflow: hidden;
+        }
+        .video-bg video {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.5; /* Más transparente para el tema claro */
+            transform: scale(1.05); /* Evita bordes de rendering */
+        }
+
+        .glass-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            /* Degradado claro para lectura perfecta pero dejando ver el video */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.75) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Luces de fondo (Glows abstractos adaptados a claro) */
+        .ambient-glow {
+            position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 2; opacity: 0.6;
+        }
+        .glow-blue { top: 10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); }
+        .glow-purple { bottom: -10%; right: 10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%); }
+
+        /* ════════════════════════════
+           LAYOUT CONTENEDOR
+        ════════════════════════════ */
+        .intro-container {
+            max-width: 1280px; width: 100%; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px; align-items: center;
+            position: relative; z-index: 10;
+        }
+
+        /* ════════════════════════════
+           IZQUIERDA: TEXTOS PREMIUM
+        ════════════════════════════ */
+        .intro-left { 
+            display: flex; flex-direction: column; gap: 24px;
+        }
+
+        /* Elementos con animación de entrada */
+        .fade-up-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up-element.visible { opacity: 1; transform: translateY(0); }
+
+        /* Badge estilo claro */
+        .badge {
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 8px 20px; border-radius: 100px;
+            background: rgba(255, 255, 255, 0.8) !important; 
+            border: 1px solid rgba(59,130,246,0.2);
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+            backdrop-filter: blur(10px);
+            width: fit-content;
+        }
+        .badge-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #10b981 !important; 
+            box-shadow: 0 0 12px rgba(16,185,129,0.5);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+        
+        .badge span {
+            font-size: 11px !important; font-weight: 700 !important;
+            letter-spacing: 0.15em !important; text-transform: uppercase !important;
+            color: #475569 !important; 
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: clamp(2.6rem, 4vw, 3.8rem) !important;
+            font-weight: 900 !important; line-height: 1.1 !important;
+            letter-spacing: -0.03em !important;
+            color: #0f172a !important; 
+            margin-bottom: 0;
+        }
+
+        .headline-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+            -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important;
+            background-clip: text !important; display: block;
+            padding-bottom: 4px;
+        }
+
+        .intro-body {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 1.1rem !important; font-weight: 500 !important;
+            color: #475569 !important; line-height: 1.8 !important;
+            max-width: 90%; margin-top: 8px;
+        }
+        .intro-body strong { color: #0f172a !important; font-weight: 800 !important; }
+
+        /* ════════════════════════════
+           ESTADÍSTICAS (Estilo Dashboard UI - Claro)
+        ════════════════════════════ */
+        .stat-row {
+            display: flex; gap: 20px; margin-top: 24px; flex-wrap: wrap;
+        }
+        .stat-item { 
+            display: flex; flex-direction: column; gap: 8px; 
+            background: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 24px 28px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,1);
+            box-shadow: 0 15px 35px rgba(15,23,42,0.04), inset 0 2px 0 rgba(255,255,255,0.8) !important;
+            flex: 1; min-width: 180px;
+            position: relative; overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99,102,241,0.2);
+            box-shadow: 0 20px 40px rgba(15,23,42,0.08), inset 0 2px 0 rgba(255,255,255,1) !important;
+        }
+        
+        .stat-header {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .stat-icon-wrap {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 8px;
+        }
+        .icon-roi { background: rgba(16,185,129,0.1); color: #059669; border: 1px solid rgba(16,185,129,0.2); }
+        .icon-cac { background: rgba(99,102,241,0.1); color: #4f46e5; border: 1px solid rgba(99,102,241,0.2); }
+
+        .stat-label {
+            font-size: 10.5px !important; font-weight: 700 !important;
+            color: #64748b !important; text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+        }
+
+        .stat-num {
+            font-size: 2.4rem !important; font-weight: 900 !important;
+            letter-spacing: -0.04em !important; 
+            line-height: 1 !important; color: #0f172a !important;
+            margin-top: 4px;
+        }
+
+        .stat-mini-chart {
+            width: 100%; height: 4px; background: rgba(15,23,42,0.06);
+            border-radius: 4px; overflow: hidden; margin-top: 8px;
+        }
+        .chart-fill-green { width: 85%; height: 100%; background: linear-gradient(90deg, #10b981, #34d399); }
+        .chart-fill-blue { width: 45%; height: 100%; background: linear-gradient(90deg, #4f46e5, #818cf8); }
+
+        /* ════════════════════════════
+           DERECHA: LISTA EDITORIAL (Modo Claro)
+        ════════════════════════════ */
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Item interactivo claro */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 28px 32px;
+            border-radius: 24px;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Hover: Aparece el cristal blanco */
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-color: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), inset 0 2px 0 rgba(255,255,255,1) !important;
+            transform: translateX(12px);
+        }
+
+        .feat-icon {
+            width: 52px; height: 52px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; flex-shrink: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .feature-item:hover .feat-icon { transform: scale(1.15) rotate(-5deg); }
+
+        /* Colores Claros Premium para Iconos */
+        .icon-indigo { background: rgba(99,102,241,0.1) !important; color: #4f46e5 !important; border: 1px solid rgba(99,102,241,0.2); }
+        .icon-emerald { background: rgba(16,185,129,0.1) !important; color: #059669 !important; border: 1px solid rgba(16,185,129,0.2); }
+        .icon-amber { background: rgba(245,158,11,0.1) !important; color: #d97706 !important; border: 1px solid rgba(245,158,11,0.2); }
+        .icon-violet { background: rgba(168,85,247,0.1) !important; color: #7c3aed !important; border: 1px solid rgba(168,85,247,0.2); }
+        
+        /* Intensificar colores al hover */
+        .feature-item:hover .icon-indigo { background: rgba(99,102,241,0.15) !important; border-color: rgba(99,102,241,0.3); box-shadow: 0 4px 15px rgba(99,102,241,0.15); }
+        .feature-item:hover .icon-emerald { background: rgba(16,185,129,0.15) !important; border-color: rgba(16,185,129,0.3); box-shadow: 0 4px 15px rgba(16,185,129,0.15); }
+        .feature-item:hover .icon-amber { background: rgba(245,158,11,0.15) !important; border-color: rgba(245,158,11,0.3); box-shadow: 0 4px 15px rgba(245,158,11,0.15); }
+        .feature-item:hover .icon-violet { background: rgba(168,85,247,0.15) !important; border-color: rgba(168,85,247,0.3); box-shadow: 0 4px 15px rgba(168,85,247,0.15); }
+
+        .feat-text {
+            display: flex; flex-direction: column; gap: 6px;
+            margin-top: 2px;
+        }
+
+        .feat-text h3 {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 1.3rem !important; font-weight: 800 !important;
+            color: #0f172a !important; margin: 0 !important;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+        }
+
+        .feat-text p {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 0.95rem !important; font-weight: 500 !important;
+            color: #64748b !important; line-height: 1.6 !important;
+            margin: 0 !important;
+            transition: color 0.3s ease;
+        }
+        
+        .feature-item:hover .feat-text p { color: #475569 !important; }
+
+        /* ════════════════════════════
+           RESPONSIVE
+        ════════════════════════════ */
+        @media (max-width: 1150px) {
+            .intro-marketing { padding: 100px 4vw 120px; }
+            .intro-container { gap: 50px; }
+            .feature-item { padding: 24px; gap: 20px; }
+        }
+
+        @media (max-width: 950px) {
+            .intro-container { grid-template-columns: 1fr; gap: 60px; }
+            .intro-left { text-align: center; align-items: center; max-width: 700px; margin: 0 auto; }
+            .intro-body { text-align: center; max-width: 100%; }
+            .stat-row { justify-content: center; width: 100%; }
+            .badge { margin-left: auto; margin-right: auto; }
+            
+            /* En tablet/móvil, las animaciones hover de traslación pueden ser molestas */
+            .feature-item:hover { transform: translateY(-4px); }
+        }
+
+        @media (max-width: 600px) {
+            .intro-marketing { padding: 80px 20px 100px; }
+            h2 { font-size: 2.3rem !important; }
+            .intro-left { align-items: flex-start; text-align: left; }
+            .intro-body { text-align: left; font-size: 1.05rem !important; }
+            .badge { margin-left: 0; margin-right: 0; }
+            
+            .stat-row { gap: 16px; flex-direction: column; width: 100%; }
+            .stat-item { width: 100%; padding: 20px; }
+            
+            /* En móvil damos un fondo mínimo fijo para que se distingan un poco del fondo complejo */
+            .feature-item { 
+                padding: 24px 20px; gap: 16px; 
+                background: rgba(255, 255, 255, 0.6); 
+                border-color: rgba(255,255,255,0.8); 
+                box-shadow: 0 4px 15px rgba(15,23,42,0.03);
+            }
+            .feat-icon { width: 44px; height: 44px; font-size: 18px; }
+            .feat-text h3 { font-size: 1.15rem !important; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="intro-marketing" id="intro-marketing-section">
+
+    <!-- VIDEO DE FONDO Y CAPA CRISTAL CLARA -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/11690474-uhd_3840_2160_24fps.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="glass-overlay"></div>
+    <div class="ambient-glow glow-blue"></div>
+    <div class="ambient-glow glow-purple"></div>
+
+    <div class="intro-container">
+
+        <!-- ── IZQUIERDA: Texto y Estadísticas UI ── -->
+        <div class="intro-left">
+            <div class="badge fade-up-element" style="transition-delay: 0s;">
+                <div class="badge-dot"></div>
+                <span>Enfoque Estratégico</span>
+            </div>
+
+            <h2 class="fade-up-element" style="transition-delay: 0.1s;">
+                Menos ruido.<br>
+                <span class="headline-gradient">Más conversiones.</span>
+            </h2>
+
+            <p class="intro-body fade-up-element" style="transition-delay: 0.2s;">
+                Diseñamos ecosistemas digitales donde cada táctica y pauta publicitaria tiene un solo objetivo: <strong>escalar tus ventas de forma medible.</strong> Abandonamos las métricas de vanidad.
+            </p>
+
+            <!-- Estadísticas Dashboard Style (Modo Claro) -->
+            <div class="stat-row fade-up-element" style="transition-delay: 0.3s;">
+                <!-- Stat 1 -->
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <div class="stat-icon-wrap icon-roi">
+                            <i class="fas fa-chart-line text-xs"></i>
+                        </div>
+                        <span class="stat-label">ROI Promedio</span>
+                    </div>
+                    <span class="stat-num counter" data-target="320" data-prefix="+" data-suffix="%">0%</span>
+                    <div class="stat-mini-chart"><div class="chart-fill-green"></div></div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <div class="stat-icon-wrap icon-cac">
+                            <i class="fas fa-filter-circle-dollar text-xs"></i>
+                        </div>
+                        <span class="stat-label">Costo Adquisición</span>
+                    </div>
+                    <span class="stat-num counter" data-target="45" data-prefix="-" data-suffix="%">0%</span>
+                    <div class="stat-mini-chart"><div class="chart-fill-blue"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── DERECHA: Lista Editorial Interactiva (Tema Claro) ── -->
+        <div class="features-list">
+
+            <div class="feature-item fade-up-element" style="transition-delay: 0.3s;">
+                <div class="feat-icon icon-indigo"><i class="fas fa-network-wired"></i></div>
+                <div class="feat-text">
+                    <h3>Ecosistema 360°</h3>
+                    <p>Unificamos SEO, pauta y redes para maximizar tu alcance en cada canal disponible.</p>
+                </div>
+            </div>
+
+            <div class="feature-item fade-up-element" style="transition-delay: 0.4s;">
+                <div class="feat-icon icon-emerald"><i class="fas fa-chess-knight"></i></div>
+                <div class="feat-text">
+                    <h3>Estrategia a Medida</h3>
+                    <p>Olvídate de plantillas genéricas. Desarrollamos rutas de acción únicas para tu sector.</p>
+                </div>
+            </div>
+
+            <div class="feature-item fade-up-element" style="transition-delay: 0.5s;">
+                <div class="feat-icon icon-amber"><i class="fas fa-bullseye"></i></div>
+                <div class="feat-text">
+                    <h3>Tráfico Cualificado</h3>
+                    <p>Atraemos exclusivamente a usuarios con intención de compra real y listos para actuar.</p>
+                </div>
+            </div>
+
+            <div class="feature-item fade-up-element" style="transition-delay: 0.6s;">
+                <div class="feat-icon icon-violet"><i class="fas fa-crown"></i></div>
+                <div class="feat-text">
+                    <h3>Autoridad Digital</h3>
+                    <p>Te posicionamos como referente absoluto para no competir jamás por precio.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT PARA ANIMACIONES Y CONTEO -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Configuración de la animación de los números (Counter)
+        const runCounter = (el) => {
+            const target = +el.getAttribute('data-target');
+            const prefix = el.getAttribute('data-prefix') || '';
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 2500; // 2.5 segundos (más elegante)
+            let startTimestamp = null;
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // Función de aceleración suave (easeOutQuart)
+                const easeProgress = 1 - Math.pow(1 - progress, 4);
+                const currentCount = Math.floor(easeProgress * target);
+                
+                el.innerText = prefix + currentCount + suffix;
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    el.innerText = prefix + target + suffix;
+                }
+            };
+            window.requestAnimationFrame(step);
+            el.classList.add('counted');
+        };
+
+        // Intersection Observer para disparar animaciones al scrollear
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fadeElements = entry.target.querySelectorAll('.fade-up-element');
+                    fadeElements.forEach(el => el.classList.add('visible'));
+
+                    const counters = entry.target.querySelectorAll('.counter:not(.counted)');
+                    counters.forEach(counter => runCounter(counter));
+
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const section = document.getElementById('intro-marketing-section');
+        if (section) observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Marketing - Partum Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #020617;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* ════════════════════════════
+           SECTION
+        ════════════════════════════ */
+        .marketing-plans {
+            position: relative;
+            padding: 130px 5vw 150px;
+            background: #020617;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        /* Grid de fondo */
+        .bg-grid {
+            position: absolute; inset: 0; z-index: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+
+        /* Glows */
+        .glow { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
+        .glow-1 { width:700px; height:700px; background:radial-gradient(circle,rgba(59,130,246,0.14) 0%,transparent 70%); top:-100px; right:-200px; }
+        .glow-2 { width:600px; height:600px; background:radial-gradient(circle,rgba(99,102,241,0.12) 0%,transparent 70%); bottom:-80px; left:-150px; }
+        .glow-3 { width:400px; height:400px; background:radial-gradient(circle,rgba(139,92,246,0.08) 0%,transparent 70%); top:50%; left:40%; transform:translate(-50%,-50%); }
+
+        /* ════════════════════════════
+           HEADER
+        ════════════════════════════ */
+        .plans-container {
+            max-width: 1280px; width: 100%; margin: 0 auto;
+            position: relative; z-index: 10;
+        }
+
+        .plans-header {
+            text-align: center;
+            max-width: 660px; margin: 0 auto 90px;
+            display: flex; flex-direction: column; align-items: center; gap: 20px;
+        }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 9px;
+            padding: 7px 20px; border-radius: 100px;
+            background: rgba(59,130,246,0.1) !important;
+            border: 1px solid rgba(59,130,246,0.28) !important;
+            backdrop-filter: blur(8px);
+        }
+        .badge-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: #60a5fa !important; box-shadow: 0 0 10px rgba(96,165,250,0.8);
+            animation: pdot 2s ease-in-out infinite;
+        }
+        @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.55;transform:scale(1.45)} }
+        .badge span { font-size: 10px !important; font-weight: 700 !important; letter-spacing: 0.16em !important; text-transform: uppercase !important; color: #93c5fd !important; }
+
+        .plans-header h2 {
+            font-size: clamp(2.2rem, 3.8vw, 3.4rem) !important;
+            font-weight: 900 !important; line-height: 1.1 !important; letter-spacing: -0.03em !important; color: #fff !important;
+        }
+        .grad {
+            background: linear-gradient(135deg, #60a5fa 0%, #818cf8 55%, #a78bfa 100%) !important;
+            -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important;
+            background-clip: text !important; display: inline-block;
+        }
+        .plans-header p {
+            font-size: 1rem !important; color: #94a3b8 !important; line-height: 1.7 !important; font-weight: 400 !important;
+        }
+
+        /* ════════════════════════════
+           GRID
+        ════════════════════════════ */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: stretch; /* Iguala las alturas de las tarjetas */
+        }
+
+        /* ════════════════════════════
+           PLAN CARD BASE
+        ════════════════════════════ */
+        .plan-card {
+            position: relative;
+            display: flex; flex-direction: column;
+            border-radius: 28px;
+            padding: 44px 36px 40px;
+            background: rgba(255,255,255,0.03) !important;
+            border: 1px solid rgba(255,255,255,0.07) !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.4s ease;
+            /* Eliminamos overflow:hidden para que el badge y hover no se corten */
+            z-index: 1;
+        }
+
+        /* Línea superior animada */
+        .plan-card::after {
+            content: '';
+            position: absolute; top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--line-color, rgba(255,255,255,0.15)), transparent);
+            transition: opacity 0.4s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.13) !important;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+            z-index: 5;
+        }
+
+        /* ── POPULAR ── */
+        .plan-card.popular {
+            background: linear-gradient(170deg, rgba(30,27,75,0.7) 0%, rgba(17,24,39,0.85) 100%) !important;
+            border-color: rgba(99,102,241,0.45) !important;
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.55),
+                0 0 50px rgba(99,102,241,0.12),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            --line-color: rgba(99,102,241,0.6);
+            z-index: 2;
+        }
+        .plan-card.popular:hover {
+            border-color: rgba(99,102,241,0.7) !important;
+            box-shadow:
+                0 48px 96px rgba(0,0,0,0.7),
+                0 0 70px rgba(99,102,241,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        /* Glow interno popular */
+        .plan-card.popular::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 220px;
+            background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(99,102,241,0.18), transparent);
+            pointer-events: none;
+            border-radius: 28px;
+        }
+
+        /* ════════════════════════════
+           CARD: POPULAR BADGE
+        ════════════════════════════ */
+        .popular-badge {
+            position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #3b82f6, #6366f1) !important;
+            color: #fff !important; font-size: 10.5px !important; font-weight: 800 !important; letter-spacing: 0.12em !important;
+            text-transform: uppercase !important; padding: 8px 24px; border-radius: 100px;
+            box-shadow: 0 6px 24px rgba(99,102,241,0.5);
+            white-space: nowrap; border: 1px solid rgba(255,255,255,0.2) !important;
+            z-index: 10;
+        }
+
+        /* ════════════════════════════
+           CARD CONTENT
+        ════════════════════════════ */
+        .card-top { margin-bottom: 24px; }
+
+        /* Plan icon */
+        .plan-icon {
+            width: 52px; height: 52px; border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 21px; margin-bottom: 24px;
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: #94a3b8 !important;
+            transition: transform 0.3s ease;
+        }
+        .plan-card:hover .plan-icon { transform: scale(1.08) rotate(-5deg); }
+        .popular .plan-icon {
+            background: rgba(99,102,241,0.18) !important;
+            border-color: rgba(99,102,241,0.4) !important;
+            color: #a5b4fc !important;
+            box-shadow: 0 0 20px rgba(99,102,241,0.2);
+        }
+
+        .plan-name {
+            font-size: 0.7rem !important; font-weight: 700 !important;
+            letter-spacing: 0.18em !important; text-transform: uppercase !important;
+            color: #94a3b8 !important; margin-bottom: 8px !important;
+        }
+        .popular .plan-name { color: #818cf8 !important; }
+
+        .plan-title {
+            font-size: 1.55rem !important; font-weight: 900 !important; color: #fff !important;
+            letter-spacing: -0.025em !important; margin-bottom: 12px !important; line-height: 1.2 !important;
+        }
+        .plan-desc {
+            font-size: 0.95rem !important; font-weight: 400 !important;
+            color: #cbd5e1 !important; line-height: 1.65 !important;
+            margin: 0 !important;
+        }
+        .popular .plan-desc { color: #a5b4fc !important; }
+
+        /* Divider */
+        .card-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            margin: 24px 0;
+        }
+        .popular .card-divider {
+            background: linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent);
+        }
+
+        /* Features list */
+        .plan-features {
+            list-style: none;
+            display: flex; flex-direction: column; gap: 16px;
+            flex-grow: 1; margin-bottom: 36px; padding: 0;
+        }
+        .plan-features li {
+            display: flex; align-items: flex-start; gap: 12px;
+            font-size: 0.95rem !important; font-weight: 500 !important; color: #cbd5e1 !important; line-height: 1.5 !important;
+        }
+        .popular .plan-features li { color: #e0e7ff !important; }
+
+        .feat-check {
+            width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(16,185,129,0.12) !important;
+            border: 1px solid rgba(16,185,129,0.25) !important;
+            font-size: 10px !important; color: #34d399 !important; margin-top: 1px;
+        }
+        .popular .feat-check {
+            background: rgba(99,102,241,0.15) !important;
+            border-color: rgba(99,102,241,0.35) !important;
+            color: #a5b4fc !important;
+        }
+
+        .li-highlight {
+            color: #fff !important; font-weight: 700 !important;
+        }
+
+        /* ════════════════════════════
+           CTA BUTTONS
+        ════════════════════════════ */
+        .plan-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 16px 24px;
+            border-radius: 14px;
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 0.95rem !important; font-weight: 700 !important; letter-spacing: 0.02em !important;
+            text-decoration: none !important; transition: all 0.3s ease;
+            border: none; cursor: pointer;
+            margin-top: auto; /* Empuja el botón siempre al fondo */
+        }
+
+        .btn-ghost {
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: #cbd5e1 !important;
+        }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.09) !important;
+            border-color: rgba(255,255,255,0.2) !important;
+            color: #fff !important; transform: translateY(-2px);
+        }
+
+        .btn-solid {
+            background: linear-gradient(135deg, #2563eb 0%, #6366f1 100%) !important;
+            color: #fff !important; position: relative; overflow: hidden;
+            box-shadow: 0 8px 32px rgba(59,130,246,0.4);
+        }
+        .btn-solid::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+        }
+        .btn-solid:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 48px rgba(59,130,246,0.55);
+        }
+
+        .btn-icon { font-size: 12px; transition: transform 0.3s ease; }
+        .plan-btn:hover .btn-icon { transform: translateX(4px); }
+
+        /* ════════════════════════════
+           BOTTOM NOTE
+        ════════════════════════════ */
+        .plans-note {
+            text-align: center; margin-top: 64px;
+            display: flex; align-items: center; justify-content: center; gap: 24px;
+            flex-wrap: wrap;
+        }
+        .note-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px !important; font-weight: 600 !important; color: #94a3b8 !important;
+        }
+        .note-item i { color: #34d399 !important; font-size: 13px !important; }
+        .note-sep { width: 4px; height: 4px; border-radius: 50%; background: #334155; }
+
+        /* ════════════════════════════
+           FADE-UP ANIMATION
+        ════════════════════════════ */
+        .fade-up {
+            opacity: 0; transform: translateY(36px);
+            transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* ════════════════════════════
+           RESPONSIVE (Mejorado para evitar cortes)
+        ════════════════════════════ */
+        @media (max-width: 1150px) {
+            .marketing-plans { padding: 100px 4vw 120px; }
+            .plan-card { padding: 40px 24px 36px; }
+        }
+
+        @media (max-width: 950px) {
+            /* En pantallas medianas y móviles pasamos a 1 columna para evitar aprietes */
+            .plans-grid {
+                grid-template-columns: 1fr;
+                max-width: 540px; 
+                margin: 0 auto;
+                gap: 40px;
+            }
+            .plan-card.popular { 
+                order: -1; /* El popular va primero en móvil */
+                transform: scale(1); /* Quitamos la escala extra para que no se salga de la pantalla */
+            }
+            .plan-card.popular:hover { transform: translateY(-8px); }
+            
+            /* Ajustamos la posición del badge en móvil */
+            .popular-badge { top: -14px; }
+        }
+
+        @media (max-width: 600px) {
+            .marketing-plans { padding: 80px 20px 100px; }
+            .plan-card { padding: 36px 24px 32px; border-radius: 24px; }
+            .plan-title { font-size: 1.4rem !important; }
+            .plans-header { margin-bottom: 60px; }
+            .plans-header h2 { font-size: 2rem !important; }
+            .plans-note { gap: 14px; margin-top: 48px; }
+            .note-sep { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="marketing-plans">
+
+    <!-- Fondos -->
+    <div class="bg-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
+
+    <div class="plans-container">
+
+        <!-- HEADER -->
+        <div class="plans-header fade-up">
+            <div class="badge">
+                <div class="badge-dot"></div>
+                <span>Modalidades de Trabajo</span>
+            </div>
+            <h2>
+                Elige el ecosistema ideal<br>
+                para tu <span class="grad">crecimiento</span>
+            </h2>
+            <p>Sin permanencias forzadas. Sin tarifas ocultas. Solo resultados medibles y estrategias diseñadas para escalar tu negocio.</p>
+        </div>
+
+        <!-- GRID -->
+        <div class="plans-grid">
+
+            <!-- ── PLAN 1: PRESENCIA ── -->
+            <div class="plan-card fade-up" style="transition-delay:0.05s">
+
+                <div class="card-top">
+                    <div class="plan-icon"><i class="fas fa-hashtag"></i></div>
+                    <div class="plan-name">Starter</div>
+                    <div class="plan-title">Plan Presencia</div>
+                    <p class="plan-desc">Para marcas que quieren construir una comunidad sólida y una imagen profesional en redes.</p>
+                </div>
+
+                <div class="card-divider"></div>
+
+                <ul class="plan-features">
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Gestión de 2 redes sociales (IG + FB)
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        12 publicaciones mensuales diseñadas
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Copywriting y diseño gráfico premium
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        4 Stories semanales con dinamismo
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Reporte de métricas mensual
+                    </li>
+                </ul>
+
+                <a href="/contacto" class="plan-btn btn-ghost">
+                    <span>Cotizar plan</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+            </div>
+
+            <!-- ── PLAN 2: CRECIMIENTO (POPULAR) ── -->
+            <div class="plan-card popular fade-up" style="transition-delay:0.15s">
+                <div class="popular-badge">⭐ Más Recomendado</div>
+
+                <div class="card-top">
+                    <div class="plan-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="plan-name">Growth</div>
+                    <div class="plan-title">Plan Crecimiento</div>
+                    <p class="plan-desc">Comunidad activa + tracción en Google. El puente entre visibilidad y autoridad digital.</p>
+                </div>
+
+                <div class="card-divider"></div>
+
+                <ul class="plan-features">
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        <span class="li-highlight">Todo lo del Plan Presencia</span>
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Auditoría y estrategia SEO integral
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Optimización SEO On-Page de tu web
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        2 artículos de Blog optimizados / mes
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Gestión y optimización Google My Business
+                    </li>
+                </ul>
+
+                <a href="/contacto" class="plan-btn btn-solid">
+                    <span>Agendar Asesoría</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+            </div>
+
+            <!-- ── PLAN 3: ECOSISTEMA ── -->
+            <div class="plan-card fade-up" style="transition-delay:0.25s">
+
+                <div class="card-top">
+                    <div class="plan-icon"><i class="fas fa-chess-knight"></i></div>
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-title">Ecosistema 360°</div>
+                    <p class="plan-desc">Dominio total del mercado. Pauta, SEO y automatización para ventas agresivas y escalables.</p>
+                </div>
+
+                <div class="card-divider"></div>
+
+                <ul class="plan-features">
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        <span class="li-highlight">Todo lo del Plan Crecimiento</span>
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Gestión de campañas Meta Ads (FB/IG)
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Campañas Google Search & Display Ads
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Diseño de embudos de venta (Funnels)
+                    </li>
+                    <li>
+                        <span class="feat-check"><i class="fas fa-check"></i></span>
+                        Integración CRM y automatización
+                    </li>
+                </ul>
+
+                <a href="/contacto" class="plan-btn btn-ghost">
+                    <span>Diseñar a medida</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- NOTE -->
+        <div class="plans-note fade-up" style="transition-delay:0.35s">
+            <div class="note-item"><i class="fas fa-check-circle"></i> Sin permanencias forzadas</div>
+            <div class="note-sep"></div>
+            <div class="note-item"><i class="fas fa-check-circle"></i> Reportes de resultados mensuales</div>
+            <div class="note-sep"></div>
+            <div class="note-item"><i class="fas fa-check-circle"></i> Asesoría inicial gratuita</div>
+            <div class="note-sep"></div>
+            <div class="note-item"><i class="fas fa-check-circle"></i> Estrategia personalizada</div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const obs = new IntersectionObserver((entries, o) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target); }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    });
+</script>
+
+</body>
+</html>

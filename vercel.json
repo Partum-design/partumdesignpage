@@ -1,0 +1,38 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/inicio",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/nosotros",
+      "destination": "/nosotros.html"
+    },
+    {
+      "source": "/contacto",
+      "destination": "/contacto.html"
+    },
+    {
+      "source": "/identidad-visual-y-corporativa",
+      "destination": "/identidad-visual-y-corporativa.html"
+    },
+    {
+      "source": "/desarrollo-web",
+      "destination": "/desarrollo-web.html"
+    },
+    {
+      "source": "/marketing-digital",
+      "destination": "/marketing-digital.html"
+    },
+    {
+      "source": "/produccion-audiovisual",
+      "destination": "/produccion-audiovisual.html"
+    },
+    {
+      "source": "/servicios",
+      "destination": "/index.html"
+    }
+  ]
+}
