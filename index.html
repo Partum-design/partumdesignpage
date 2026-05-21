@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Hero - Digital Vision</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -577,657 +577,9 @@
             #premium-hero-section .chip-user { right: 5px; bottom: 5px; padding: 8px 12px; gap: 6px; }
         }
     </style>
-<style>
-        /* ── RESET Y VARIABLES ── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --dark-bg: #010a13;
-            --accent: #6366f1;
-            --nav-height: 95px;          
-            --nav-height-scrolled: 75px; 
-            --text-white: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.75);
-            --glass-bg: rgba(1, 10, 19, 0.85); 
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-white);
-            background: var(--dark-bg);
-            overflow-x: hidden;
-            /* ESTO EVITA QUE EL MENU TAPE EL HERO */
-            padding-top: var(--nav-height); 
-        }
-
-        /* ── NAVBAR PRINCIPAL ── */
-        .navbar {
-            position: fixed; /* ESTO HACE QUE TE ACOMPAÑE SIEMPRE */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--nav-height);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .navbar.scrolled {
-            height: var(--nav-height-scrolled);
-            background: rgba(1, 10, 19, 0.98);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
-
-        .nav-container {
-            width: 100%;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* ── LOGO ── */
-        .logo {
-            display: block;
-            width: 240px;
-            height: 50px;
-            transition: all 0.4s ease;
-            flex-shrink: 0;
-            z-index: 100000; 
-            position: relative;
-        }
-        
-        .logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: left center;
-        }
-
-        .navbar.scrolled .logo {
-            width: 190px;
-            height: 40px;
-        }
-
-        /* ── MENÚ DESKTOP ── */
-        .nav-content-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 35px;
-            list-style: none;
-        }
-
-        .nav-item { position: relative; }
-
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-item.active > .nav-link {
-            color: var(--text-white);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after { width: 100%; }
-
-        /* ── DROPDOWN DESKTOP ── */
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: rgba(10, 18, 30, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            min-width: 280px;
-            padding: 12px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            backdrop-filter: blur(20px);
-        }
-
-        @media (min-width: 1025px) {
-            .nav-item.has-dropdown:hover .dropdown {
-                opacity: 1;
-                visibility: visible;
-                transform: translateX(-50%) translateY(10px);
-            }
-        }
-
-        .dropdown-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: 0.2s;
-        }
-
-        .dropdown-item:hover { background: rgba(255, 255, 255, 0.08); }
-        .drop-content h4 { font-size: 0.9rem; color: var(--text-white); margin-bottom: 4px; font-weight: 600; }
-        .drop-content p { font-size: 0.75rem; color: var(--text-muted); margin: 0; }
-
-        /* ── BOTÓN CTA ── */
-        .nav-btn {
-            background: var(--text-white);
-            color: #010a13;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            border: 2px solid var(--text-white);
-            white-space: nowrap;
-        }
-
-        .nav-btn:hover {
-            background: transparent;
-            color: var(--text-white);
-        }
-
-        /* ── BOTÓN HAMBURGUESA (MÓVIL) ── */
-        .mobile-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            z-index: 100000;
-            padding: 10px;
-        }
-
-        .mobile-toggle span {
-            width: 28px;
-            height: 2px;
-            background: var(--text-white);
-            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border-radius: 2px;
-        }
-
-        /* ── DISEÑO MÓVIL OPTIMIZADO ── */
-        @media (max-width: 1024px) {
-            body {
-                padding-top: 75px; /* Ajuste del padding para móvil */
-            }
-
-            .navbar { height: 75px; }
-            .nav-container { padding: 0 20px; }
-            .logo { width: 180px; height: 40px; }
-            .mobile-toggle { display: flex; }
-
-            .nav-content-wrapper {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: rgba(1, 10, 19, 0.98);
-                backdrop-filter: blur(25px);
-                -webkit-backdrop-filter: blur(25px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-20px);
-                transition: all 0.4s ease;
-                padding: 20px;
-                z-index: 99998; 
-            }
-
-            .navbar.mobile-active .nav-content-wrapper {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-            }
-
-            .nav-menu {
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .nav-item { width: 100%; }
-
-            .nav-link {
-                font-size: 1.5rem; 
-                padding: 15px;
-                justify-content: center;
-                color: var(--text-white);
-            }
-            .nav-link::after { display: none; } 
-
-            .dropdown {
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                width: 100%;
-                background: transparent;
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                display: none; 
-                opacity: 1;
-                visibility: visible;
-                margin-top: 10px;
-            }
-
-            .nav-item.active .dropdown {
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .dropdown-item {
-                justify-content: center;
-                padding: 12px;
-                background: rgba(255, 255, 255, 0.03);
-                border-radius: 12px;
-                margin-bottom: 5px;
-            }
-
-            .drop-content h4 { font-size: 1.1rem; margin: 0; }
-            .drop-content p { display: none; } 
-
-            .nav-btn {
-                margin-top: 30px;
-                font-size: 1rem;
-                padding: 15px 30px;
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-        }
-    </style>
-<style>
-        /* ── CONFIGURACIÓN Y VARIABLES ── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --dark-bg: #010a13;
-            --footer-bg: #020d1a;
-            --accent: #6366f1;
-            --accent-light: #818cf8;
-            --text-white: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --border-color: rgba(255, 255, 255, 0.08);
-            
-            /* Colores de Redes Sociales Corporativos */
-            --facebook: #1877F2;
-            --instagram: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-            --linkedin: #0A66C2;
-            --whatsapp: #25D366;
-            --youtube: #FF0000;
-            --behance: #1769FF;
-        }
-
-        body {
-            background: var(--dark-bg);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ── FOOTER PRINCIPAL ── */
-        .footer {
-            background: var(--footer-bg);
-            padding: 80px 0 30px;
-            margin-top: auto;
-            border-top: 1px solid var(--border-color);
-            position: relative;
-            width: 100%;
-        }
-
-        .footer-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-            gap: 40px;
-        }
-
-        /* Columna de Marca */
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            height: 60px;
-            width: auto;
-            align-self: flex-start;
-            /* Efecto de iluminación (glow) solicitado */
-            filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.4)) 
-                    drop-shadow(0 0 25px rgba(99, 102, 241, 0.2));
-            transition: all 0.5s ease;
-        }
-
-        .footer-logo:hover {
-            filter: drop-shadow(0 0 18px rgba(129, 140, 248, 0.6));
-            transform: translateY(-2px);
-        }
-
-        .footer-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            max-width: 320px;
-        }
-
-        /* Redes Sociales con Colores por Defecto */
-        .footer-social {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .social-link {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-link.facebook { background: var(--facebook); }
-        .social-link.instagram { background: var(--instagram); }
-        .social-link.linkedin { background: var(--linkedin); }
-        .social-link.whatsapp { background: var(--whatsapp); }
-        .social-link.youtube { background: var(--youtube); }
-        .social-link.behance { background: var(--behance); }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            filter: brightness(1.15);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Títulos de Columnas */
-        .footer-title {
-            color: var(--text-white);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 30px;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        /* Enlaces Sincronizados con el Header */
-        .footer-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .footer-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .footer-link:hover {
-            color: var(--accent-light);
-            transform: translateX(5px);
-        }
-
-        /* Contacto */
-        .contact-box {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .contact-item i {
-            color: var(--accent-light);
-            font-size: 0.95rem;
-            margin-top: 3px;
-        }
-
-        .contact-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        /* ── BARRA INFERIOR ── */
-        .footer-bottom {
-            max-width: 1440px;
-            margin: 60px auto 0;
-            padding: 25px 40px 0;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.8rem;
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: 25px;
-        }
-
-        .footer-legal a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-legal a:hover {
-            color: var(--text-muted);
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 50px;
-            }
-            .footer-brand {
-                grid-column: span 2;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-logo { align-self: center; }
-            .footer-title::after { left: 50%; transform: translateX(-50%); }
-            .footer-list, .contact-box { align-items: center; }
-            .contact-item { justify-content: center; text-align: center; }
-        }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-brand { grid-column: span 1; }
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-    </style>
 </head>
 <body>
-<nav class="navbar" id="main-navbar">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Logo Partum Design" class="logo-img">
-            </a>
 
-            <div class="nav-content-wrapper">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="/nosotros/" class="nav-link">Nosotros</a></li>
-                    
-                    <li class="nav-item has-dropdown">
-                        <a href="#" class="nav-link" id="servicios-toggle">
-                            Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; transition: 0.3s;"></i>
-                        </a>
-                        <div class="dropdown">
-                            <a href="/identidad-visual/" class="dropdown-item">
-                                <div class="drop-content">
-                                    <h4>Estrategia Digital</h4>
-                                    <p>Crecimiento basado en datos.</p>
-                                </div>
-                            </a>
-                            <a href="/desarrollo-web/" class="dropdown-item">
-                                <div class="drop-content">
-                                    <h4>Desarrollo Web</h4>
-                                    <p>Interfaces premium y alto rendimiento.</p>
-                                </div>
-                            </a>
-                             <a href="/marketing-digital/" class="dropdown-item">
-                                <div class="drop-content">
-                                    <h4>Marketing Digital</h4>
-                                    <p>Posicionamiento y visibilidad de marca.</p>
-                                </div>
-                            </a>
-                            <a href="/produccion-audiovisual/" class="dropdown-item">
-                                <div class="drop-content">
-                                    <h4>Producción Audiovisual</h4>
-                                    <p>Contenido multimedia de alto impacto.</p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="/contacto/" class="nav-link">Contacto</a></li>
-                </ul>
-
-                <a href="/contacto/" class="nav-btn">Cotizar ahora</a>
-            </div>
-
-            <div class="mobile-toggle" id="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const nav = document.getElementById('main-navbar');
-            const burger = document.getElementById('burger-menu');
-            const dropdownToggle = document.getElementById('servicios-toggle');
-            const body = document.body;
-
-            // 1. Efecto Scroll 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 40) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            });
-
-            // 2. Control del Menú Móvil 
-            burger.addEventListener('click', () => {
-                nav.classList.toggle('mobile-active');
-                const spans = burger.querySelectorAll('span');
-                
-                if(nav.classList.contains('mobile-active')) {
-                    body.style.overflow = 'hidden'; 
-                    spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                    spans[1].style.opacity = '0';
-                    spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-                } else {
-                    body.style.overflow = '';
-                    spans.forEach(span => span.style.transform = 'none');
-                    spans[1].style.opacity = '1';
-                }
-            });
-
-            // 3. Control del Acordeón "Servicios" en Móvil
-            if (dropdownToggle) {
-                dropdownToggle.addEventListener('click', (e) => {
-                    if (window.innerWidth <= 1024) {
-                        e.preventDefault(); 
-                        const parentLi = dropdownToggle.parentElement;
-                        const icon = dropdownToggle.querySelector('i');
-                        
-                        parentLi.classList.toggle('active');
-                        
-                        if(parentLi.classList.contains('active')){
-                            icon.style.transform = 'rotate(180deg)';
-                        } else {
-                            icon.style.transform = 'rotate(0deg)';
-                        }
-                    }
-                });
-            }
-        });
-    </script>
 <section id="premium-hero-section">
     <video autoplay loop muted playsinline class="video-bg">
         <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/2383633_Angel_De_La_Independencia_Mexico_City_3840x2160.mp4" type="video/mp4">
@@ -1424,80 +776,3029 @@
         }, 1200);
     })();
 </script>
-<main style="flex: 1;"></main>
-
-    <!-- FOOTER PREMIUM RESPONSIVO -->
-    <footer class="footer">
-        <div class="footer-container">
-            
-            <!-- Columna 1: Brand & Social -->
-            <div class="footer-brand">
-                <a href="/">
-                    <img src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design Logo" class="footer-logo">
-                </a>
-                <p class="footer-desc">
-                    Elevamos marcas mediante experiencias digitales innovadoras. Transformamos tu visión en resultados tangibles con diseño de alto impacto.
-                </p>
-                <div class="footer-social">
-                    <!-- Redes Sociales según snippet proporcionado -->
-                    <a href="https://www.facebook.com/partumdesign.agency?mibextid=LQQJ4d&rdid=Ciotzy24SDsPc6mP&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2FDwxXTQHeWQRAjzZR%2F%3Fmibextid%3DLQQJ4d#" class="social-link facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/partumdesignagency/?igsh=czJpMzhubGw4dXZp&utm_source=qr#" class="social-link instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=5215616044547&text=Hola%2C%20vi%20su%20sitio%2C%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" class="social-link whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://www.youtube.com/channel/UCiK7h-eRI3z3ZJ7VCYEO3VQ" class="social-link youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/company/partumdesign-agency/" class="social-link linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://www.behance.net/partumdesign2" class="social-link behance" aria-label="Behance" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-behance"></i></a>
-                </div>
-            </div>
-
-            <!-- Columna 2: Compañía (Sincronizado con Header) -->
-            <div>
-                <h3 class="footer-title">Compañía</h3>
-                <ul class="footer-list">
-                    <li><a href="/" class="footer-link">Inicio</a></li>
-                    <li><a href="/nosotros/" class="footer-link">Nosotros</a></li>
-                    <li><a href="#" class="footer-link">Servicios</a></li>
-                    <li><a href="/contacto/" class="footer-link">Contacto</a></li>
-                </ul>
-            </div>
-
-            <!-- Columna 3: Servicios (Sincronizado con Header) -->
-            <div>
-                <h3 class="footer-title">Servicios</h3>
-                <ul class="footer-list">
-                    <li><a href="/identidad-visual/" class="footer-link">Estrategia Digital</a></li>
-                    <li><a href="/desarrollo-web/" class="footer-link">Desarrollo Web</a></li>
-                    <li><a href="/marketing-digital/" class="footer-link">Marketing Digital</a></li>
-                    <li><a href="/produccion-audiovisual/" class="footer-link">Producción Audiovisual</a></li>
-                </ul>
-            </div>
-
-            <!-- Columna 4: Contacto -->
-            <div class="contact-box">
-                <h3 class="footer-title">Hablemos</h3>
-                <div class="contact-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p>Pernambuco 734, Lindavista, Gustavo A. Madero, 07300 Ciudad de México, CDMX<br> </p>
-                </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <p>contacto@partumdesign.com.mx</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <p>+52 56 1604 4547</p>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Barra Inferior -->
-        <div class="footer-bottom">
-            <p>&copy; 2026 Partum Design Agency. Todos los derechos reservados.</p>
-            <div class="footer-legal">
-                <a href="https://partumdesign.com.mx/terminos-y-condiciones/">Términos y Condiciones</a>
-                <a href="https://partumdesign.com.mx/wp-content/uploads/2025/03/BROCHURE-PARTUM-2025.pdf" target="_blank">Brochure 2025</a>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Premium - Partum Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ════════════════════════════════════════════════════════
+           ENCAPSULAMIENTO DE ESTILOS (SCOPE: #servicios-premium-partum)
+        ════════════════════════════════════════════════════════ */
+        
+        #servicios-premium-partum {
+            font-family: 'Montserrat', sans-serif !important;
+            background-color: #f1f5f9 !important; 
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        /* Reseteo interno */
+        #servicios-premium-partum *, 
+        #servicios-premium-partum *::before, 
+        #servicios-premium-partum *::after {
+            box-sizing: border-box !important;
+        }
+
+        #servicios-premium-partum .bg-dots {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px) !important;
+            background-size: 32px 32px !important;
+        }
+
+        @keyframes wander-premium {
+            0%   { transform: translate(0,0) scale(1); }
+            33%  { transform: translate(30px,-50px) scale(1.05); }
+            66%  { transform: translate(-20px,20px) scale(0.95); }
+            100% { transform: translate(0,0) scale(1); }
+        }
+
+        #servicios-premium-partum .blob {
+            animation: wander-premium 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border-radius: 50% !important;
+            filter: blur(90px) !important;
+            position: absolute !important;
+            pointer-events: none !important;
+            z-index: 0 !important;
+        }
+
+        /* ── FLIP CARD SCOPED ── */
+        #servicios-premium-partum .perspective { perspective: 2000px !important; }
+        
+        #servicios-premium-partum .flip-inner {
+            position: relative !important;
+            width: 100% !important; 
+            height: 100% !important;
+            transform-style: preserve-3d !important;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) !important;
+            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.15) !important;
+            border-radius: 28px !important;
+        }
+
+        @media (hover: hover) {
+            #servicios-premium-partum .flip-card:hover .flip-inner { 
+                transform: rotateY(180deg) !important; 
+            }
+        }
+        #servicios-premium-partum .flip-card.flipped .flip-inner { 
+            transform: rotateY(180deg) !important; 
+        }
+
+        #servicios-premium-partum .face {
+            position: absolute !important;
+            inset: 0 !important;
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
+            border-radius: 28px !important;
+            overflow: hidden !important;
+        }
+
+        #servicios-premium-partum .face-back { 
+            transform: rotateY(180deg) !important; 
+        }
+
+        #servicios-premium-partum .flip-card {
+            width: 100% !important;
+            aspect-ratio: 1 / 1.15 !important;
+            min-height: 280px !important;
+            cursor: pointer !important;
+        }
+        /* Ajuste responsivo para móviles: tarjetas más cuadradas y un poco más altas para evitar desbordamiento */
+        @media (max-width: 640px) { 
+            #servicios-premium-partum .flip-card { 
+                aspect-ratio: auto !important;
+                min-height: 320px !important; 
+            } 
+        }
+
+        #servicios-premium-partum .card-text-shadow { 
+            text-shadow: 0 4px 16px rgba(2,6,23,0.95), 0 2px 4px rgba(2,6,23,0.8) !important; 
+        }
+
+        /* Botón CTA */
+        #servicios-premium-partum .cta-btn { 
+            position: relative !important; 
+            overflow: hidden !important; 
+            z-index: 1 !important;
+        }
+        #servicios-premium-partum .cta-btn::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important; left: -100% !important; width: 50% !important; height: 100% !important;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) !important;
+            transform: skewX(-20deg) !important;
+            transition: 0.6s !important;
+            z-index: -1 !important;
+        }
+        #servicios-premium-partum .cta-btn:hover::before { left: 200% !important; }
+
+        /* ── ANIMACIONES DE ENTRADA (SCROLL) ── */
+        #servicios-premium-partum .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #servicios-premium-partum .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #servicios-premium-partum .d1 { transition-delay: 0.1s !important; }
+        #servicios-premium-partum .d2 { transition-delay: 0.2s !important; }
+        #servicios-premium-partum .d3 { transition-delay: 0.3s !important; }
+        #servicios-premium-partum .d4 { transition-delay: 0.4s !important; }
+        #servicios-premium-partum .d5 { transition-delay: 0.5s !important; }
+        #servicios-premium-partum .d6 { transition-delay: 0.6s !important; }
+
+        /* ── TITULAR REFINADO (TAMAÑO MÁS PEQUEÑO Y ELEGANTE) ── */
+        #servicios-premium-partum .premium-headline {
+            font-size: clamp(32px, 4.5vw, 50px) !important; /* REDUCIDO */
+            font-weight: 900 !important;
+            line-height: 1.05 !important;
+            letter-spacing: -0.03em !important;
+        }
+
+    </style>
+</head>
+<body>
+
+<section id="servicios-premium-partum" class="relative py-16 sm:py-24 lg:py-32 min-h-screen flex items-center">
+
+    <div class="absolute inset-0 bg-dots opacity-40 pointer-events-none z-0"></div>
+
+    <!-- Ambient Blobs -->
+    <div class="blob w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] mix-blend-multiply top-[-10%] left-[-10%]" style="background-color: rgba(0, 85, 255, 0.25);"></div>
+    <div class="blob w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] bg-indigo-400/40 mix-blend-multiply bottom-[-10%] right-[-5%] sm:right-[10%]" style="animation-delay: -5s;"></div>
+    <div class="blob w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] bg-purple-300/50 mix-blend-multiply top-[20%] right-[-10%]" style="animation-delay: -10s;"></div>
+
+    <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 w-full max-w-[1300px]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- ── LEFT CONTENT ── -->
+            <div class="lg:col-span-5 xl:col-span-5 space-y-8 sm:space-y-10">
+
+                <div class="reveal d1">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-sm mb-6">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                        <span class="text-indigo-800 font-bold tracking-[0.15em] text-[10px] sm:text-xs uppercase">
+                            Agencia Premium
+                        </span>
+                    </div>
+                    
+                    <h2 class="premium-headline text-[#0f172a]">
+                        Estrategia visual,
+                        <span class="block" style="color: #0055ff;">
+                            ejecución perfecta.
+                        </span>
+                    </h2>
+                </div>
+
+                <div class="reveal d2">
+                    <div class="w-16 h-1.5 rounded-full" style="background-color: #0055ff;"></div>
+                </div>
+
+                <p class="reveal d3 text-slate-600 text-lg sm:text-xl font-medium leading-relaxed max-w-lg">
+                    Transformamos la complejidad del mundo digital en oportunidades claras de crecimiento para tu marca mediante ecosistemas escalables.
+                </p>
+
+                <div class="reveal d4 grid grid-cols-3 gap-4 max-w-md">
+                    <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
+                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">200<span style="color: #0055ff;">+</span></div>
+                        <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Proyectos</div>
+                    </div>
+                    <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
+                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">99<span style="color: #4f46e5;">%</span></div>
+                        <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Éxito</div>
+                    </div>
+                    <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
+                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">4<span style="color: #9333ea;">+</span></div>
+                        <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Años</div>
+                    </div>
+                </div>
+
+                <div class="reveal d5 pt-2">
+                    <a href="https://www.behance.net/partumdesign2" target="_blank" class="cta-btn group inline-flex items-center gap-4 px-8 py-4 bg-[#0f172a] text-white rounded-2xl shadow-xl hover:bg-[#0055ff] transition-all duration-400 font-bold tracking-wide text-sm sm:text-base hover:-translate-y-1">
+                        <span>Descubre nuestros casos</span>
+                        <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1.5 transition-transform duration-300">
+                            <i class="fas fa-arrow-right text-sm"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ── RIGHT CONTENT (Grid Flip Cards) ── -->
+            <div class="lg:col-span-7 xl:col-span-7 reveal d6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+
+                    <!-- Card 1 -->
+                    <div class="flip-card perspective group" onclick="this.classList.toggle('flipped')" tabindex="0">
+                        <div class="flip-inner border border-slate-200/60">
+                            <!-- FRENTE -->
+                            <div class="face" style="background-color: #020617;">
+                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop"
+                                     class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0" alt="Identidad Visual">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                                <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                                    <div class="w-12 h-12 rounded-xl bg-blue-600/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-blue-400/30">
+                                        <i class="fas fa-layer-group text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Identidad<br>Visual</h3>
+                                </div>
+                                <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
+                                    <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
+                                </div>
+                            </div>
+                            <!-- ATRÁS -->
+                            <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-blue-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
+                                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 border border-blue-500/20">
+                                    <i class="fas fa-layer-group text-blue-400 text-xl"></i>
+                                </div>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Logotipos y<br>Branding</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Creamos marcas memorables y guías de estilo que conectan estratégicamente con tu audiencia, asegurando coherencia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flip-card perspective group" onclick="this.classList.toggle('flipped')" tabindex="0">
+                        <div class="flip-inner border border-slate-200/60">
+                            <!-- FRENTE -->
+                            <div class="face" style="background-color: #020617;">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop"
+                                     class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0" alt="Desarrollo">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                                <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                                    <div class="w-12 h-12 rounded-xl bg-emerald-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-emerald-400/30">
+                                        <i class="fas fa-code text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Desarrollo<br>Web & Apps</h3>
+                                </div>
+                                <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
+                                    <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
+                                </div>
+                            </div>
+                            <!-- ATRÁS -->
+                            <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-emerald-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4 border border-emerald-500/20">
+                                    <i class="fas fa-code text-emerald-400 text-xl"></i>
+                                </div>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Soluciones<br>a Medida</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Programación robusta e interfaces intuitivas diseñadas para optimizar la experiencia del usuario y tus conversiones.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flip-card perspective group" onclick="this.classList.toggle('flipped')" tabindex="0">
+                        <div class="flip-inner border border-slate-200/60">
+                            <!-- FRENTE -->
+                            <div class="face" style="background-color: #020617;">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
+                                     class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0" alt="Marketing">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                                <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                                    <div class="w-12 h-12 rounded-xl bg-amber-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-amber-400/30">
+                                        <i class="fas fa-chart-line text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Marketing<br>& Growth</h3>
+                                </div>
+                                <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
+                                    <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
+                                </div>
+                            </div>
+                            <!-- ATRÁS -->
+                            <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-amber-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20">
+                                    <i class="fas fa-chart-line text-amber-400 text-xl"></i>
+                                </div>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Campañas de<br>Conversión</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Estrategias basadas en datos. Optimizamos tu presupuesto publicitario para atraer clientes potenciales reales y escalar tu negocio.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="flip-card perspective group" onclick="this.classList.toggle('flipped')" tabindex="0">
+                        <div class="flip-inner border border-slate-200/60">
+                            <!-- FRENTE -->
+                            <div class="face" style="background-color: #020617;">
+                                <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=800&auto=format&fit=crop"
+                                     class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0" alt="Producción">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                                <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                                    <div class="w-12 h-12 rounded-xl bg-purple-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-purple-400/30">
+                                        <i class="fas fa-video text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Video &<br>Fotografía</h3>
+                                </div>
+                                <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
+                                    <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
+                                </div>
+                            </div>
+                            <!-- ATRÁS -->
+                            <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-purple-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
+                                <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-4 border border-purple-500/20">
+                                    <i class="fas fa-video text-purple-400 text-xl"></i>
+                                </div>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Multimedia de<br>Alto Nivel</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Producción audiovisual y sesiones fotográficas profesionales que elevan el prestigio y la percepción de tu marca.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const reveals = document.querySelectorAll('#servicios-premium-partum .reveal');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { 
+            threshold: 0.1, 
+            rootMargin: "0px 0px -50px 0px" 
+        });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+
+        // Soporte para accesibilidad por teclado en tarjetas
+        document.querySelectorAll('#servicios-premium-partum .flip-card').forEach(card => {
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trust Section - Partum Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    /* ════════════════════════════════════════════════════════
+       ENCAPSULAMIENTO TOTAL - ID: #trust-section-premium
+    ════════════════════════════════════════════════════════ */
+    
+    #trust-section-premium {
+        --trust-bg: #020408;
+        --trust-surface: #0a0f1a;
+        --trust-surface2: #0d1525;
+        --trust-border: rgba(255,255,255,0.06);
+        --trust-border-hover: rgba(99,102,241,0.4);
+        --trust-indigo: #6366f1;
+        --trust-indigo-bright: #818cf8;
+        --trust-emerald: #10b981;
+        --trust-text: #f8fafc;
+        --trust-muted: #475569;
+        
+        position: relative !important;
+        padding: 120px 0 140px !important;
+        overflow: hidden !important;
+        background: var(--trust-bg) !important;
+        font-family: 'Montserrat', sans-serif !important;
+        color: var(--trust-text) !important;
+    }
+
+    /* Reseteo local para evitar herencias globales */
+    #trust-section-premium *, 
+    #trust-section-premium *::before, 
+    #trust-section-premium *::after { 
+        box-sizing: border-box !important; 
+        margin: 0; 
+        padding: 0; 
+    }
+
+    /* Grid noise texture Scoped */
+    #trust-section-premium::before {
+        content: '' !important;
+        position: absolute !important;
+        inset: 0 !important;
+        background-image:
+            linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px) !important;
+        background-size: 60px 60px !important;
+        mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%) !important;
+        -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%) !important;
+        pointer-events: none !important;
+    }
+
+    /* Ambient glows */
+    #trust-section-premium .trust-glow {
+        position: absolute !important;
+        border-radius: 50% !important;
+        filter: blur(120px) !important;
+        pointer-events: none !important;
+        animation: trustBreathe 8s ease-in-out infinite !important;
+    }
+    #trust-section-premium .glow-a {
+        width: 600px; height: 600px;
+        top: -150px; left: -150px;
+        background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%) !important;
+    }
+    #trust-section-premium .glow-b {
+        width: 500px; height: 500px;
+        bottom: -100px; right: -100px;
+        background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%) !important;
+        animation-delay: 4s !important;
+    }
+    #trust-section-premium .glow-c {
+        width: 300px; height: 300px;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) !important;
+        background: radial-gradient(circle, rgba(129,140,248,0.05) 0%, transparent 70%) !important;
+        animation-delay: 2s !important;
+    }
+    @keyframes trustBreathe {
+        0%, 100% { opacity: 0.7; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    #trust-section-premium .trust-container {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 40px !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    #trust-section-premium .trust-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 80px !important;
+        align-items: center !important;
+    }
+
+    #trust-section-premium .trust-left { display: flex !important; flex-direction: column !important; gap: 40px !important; }
+
+    #trust-section-premium .trust-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 6px 14px !important;
+        border-radius: 100px !important;
+        background: rgba(99,102,241,0.08) !important;
+        border: 1px solid rgba(99,102,241,0.25) !important;
+        width: fit-content !important;
+    }
+    #trust-section-premium .badge-dot {
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: var(--trust-indigo-bright);
+        box-shadow: 0 0 8px var(--trust-indigo-bright);
+        animation: trustPulseDot 2s ease-in-out infinite !important;
+    }
+    @keyframes trustPulseDot {
+        0%, 100% { box-shadow: 0 0 8px var(--trust-indigo-bright); }
+        50% { box-shadow: 0 0 16px var(--trust-indigo-bright), 0 0 30px rgba(129,140,248,0.4); }
+    }
+    #trust-section-premium .badge-text {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.15em !important;
+        text-transform: uppercase !important;
+        color: var(--trust-indigo-bright) !important;
+    }
+
+    /* ── TÍTULO REDUCIDO Y PROPORCIONADO ── */
+    #trust-section-premium .trust-headline {
+        font-size: clamp(36px, 4.5vw, 54px) !important; /* Ligeramente más grande pero controlado */
+        font-weight: 900 !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.03em !important;
+        color: var(--trust-text) !important;
+    }
+    #trust-section-premium .trust-headline em {
+        font-style: normal !important;
+        background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 40%, #6ee7b7 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    #trust-section-premium .trust-subtext {
+        font-size: 17px !important;
+        font-weight: 300 !important;
+        line-height: 1.7 !important;
+        color: rgba(255,255,255,0.85) !important;
+        max-width: 440px !important;
+    }
+
+    /* ── FEATURE CARDS SCOPED ── */
+    #trust-section-premium .trust-features { display: flex !important; flex-direction: column !important; gap: 14px !important; }
+
+    #trust-section-premium .feature-card {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        padding: 22px 26px !important;
+        border-radius: 20px !important;
+        background: var(--trust-surface) !important;
+        border: 1px solid var(--trust-border) !important;
+        transition: border-color 0.3s, background 0.3s, transform 0.3s !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+    #trust-section-premium .feature-card::before {
+        content: '' !important;
+        position: absolute !important;
+        inset: 0 !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s !important;
+        background: linear-gradient(135deg, rgba(99,102,241,0.04), transparent) !important;
+    }
+    #trust-section-premium .feature-card:hover {
+        border-color: rgba(99,102,241,0.3) !important;
+        background: rgba(10,15,26,0.9) !important;
+        transform: translateX(4px) !important;
+    }
+    #trust-section-premium .feature-card:hover::before { opacity: 1 !important; }
+
+    #trust-section-premium .feat-icon {
+        flex-shrink: 0 !important;
+        width: 48px !important; height: 48px !important;
+        border-radius: 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 18px !important;
+        color: white !important;
+    }
+    #trust-section-premium .feat-icon.indigo {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+        box-shadow: 0 8px 24px rgba(79,70,229,0.3) !important;
+    }
+    #trust-section-premium .feat-icon.emerald {
+        background: linear-gradient(135deg, #059669, #0d9488) !important;
+        box-shadow: 0 8px 24px rgba(5,150,105,0.3) !important;
+    }
+
+    #trust-section-premium .feat-text h4 {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: var(--trust-text) !important;
+        margin-bottom: 4px !important;
+    }
+    #trust-section-premium .feat-text p {
+        font-size: 13.5px !important;
+        color: rgba(255,255,255,0.8) !important;
+        line-height: 1.5 !important;
+    }
+
+    /* ── RIGHT COLUMN SCOPED ── */
+    #trust-section-premium .trust-right { position: relative !important; }
+
+    #trust-section-premium .trust-card-wrapper {
+        position: relative !important;
+    }
+    #trust-section-premium .trust-card-wrapper::before {
+        content: '' !important;
+        position: absolute !important;
+        inset: -50px !important;
+        border-radius: 80px !important;
+        background: radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.07) 45%, transparent 70%) !important;
+        pointer-events: none !important;
+        animation: trustBreathe 6s ease-in-out infinite !important;
+    }
+
+    #trust-section-premium .trust-card {
+        position: relative !important;
+        background: var(--trust-surface) !important;
+        border: 1px solid rgba(255,255,255,0.07) !important;
+        border-radius: 30px !important;
+        overflow: hidden !important;
+        box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(99,102,241,0.07) !important;
+    }
+
+    #trust-section-premium .trust-card::after {
+        content: '' !important;
+        position: absolute !important;
+        inset: 0 !important;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E") !important;
+        pointer-events: none !important;
+        opacity: 0.4 !important;
+    }
+
+    #trust-section-premium .trust-card-inner { padding: 44px !important; position: relative !important; z-index: 1 !important; }
+
+    #trust-section-premium .trust-track {
+        text-align: center !important;
+        margin-bottom: 40px !important;
+        padding-bottom: 40px !important;
+        border-bottom: 1px solid var(--trust-border) !important;
+        position: relative !important;
+    }
+    
+    /* Clases extraídas de estilos en línea */
+    #trust-section-premium .track-label {
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.7) !important;
+        margin-bottom: 16px !important;
+        display: block !important;
+    }
+    #trust-section-premium .track-sub {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: var(--trust-indigo-bright) !important;
+        text-transform: uppercase !important;
+        margin-top: 8px !important;
+    }
+    #trust-section-premium .stat-label {
+        font-size: 9px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        color: rgba(255,255,255,0.7) !important;
+    }
+    #trust-section-premium .cta-icon {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 8px !important;
+        background: rgba(255,255,255,0.15) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    #trust-section-premium .float-avatars { display: flex !important; }
+    #trust-section-premium .float-avatars img {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50% !important;
+        border: 2px solid white !important;
+        margin-left: -8px !important;
+    }
+    #trust-section-premium .float-avatars img:first-child { margin-left: 0 !important; }
+    #trust-section-premium .float-dot {
+        width: 8px !important; height: 8px !important; 
+        border-radius: 50% !important; 
+        background: var(--trust-emerald) !important; 
+        box-shadow: 0 0 10px var(--trust-emerald) !important;
+    }
+
+    #trust-section-premium .big-number {
+        font-size: 80px !important; /* Ligeramente más proporcionado */
+        font-weight: 900 !important;
+        line-height: 1 !important;
+        letter-spacing: -0.04em !important;
+        color: white !important;
+        display: inline-flex !important;
+    }
+    #trust-section-premium .big-number::after {
+        content: '+' !important;
+        font-size: 32px !important;
+        color: var(--trust-indigo-bright) !important;
+        margin-top: 12px !important;
+        margin-left: 4px !important;
+    }
+
+    #trust-section-premium .trust-stats {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 14px !important;
+        margin-bottom: 32px !important;
+    }
+    #trust-section-premium .trust-stat {
+        padding: 20px !important;
+        border-radius: 18px !important;
+        background: rgba(255,255,255,0.03) !important;
+        border: 1px solid var(--trust-border) !important;
+        text-align: center !important;
+        transition: border-color 0.3s, background 0.3s !important;
+    }
+    #trust-section-premium .trust-stat:hover {
+        border-color: rgba(99,102,241,0.25) !important;
+        background: rgba(99,102,241,0.04) !important;
+    }
+    #trust-section-premium .stat-num {
+        font-size: 30px !important;
+        font-weight: 900 !important;
+        color: white !important;
+        line-height: 1 !important;
+        margin-bottom: 6px !important;
+    }
+    #trust-section-premium .stat-num.green { color: var(--trust-emerald) !important; }
+
+    #trust-section-premium .trust-cta {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 18px !important;
+        border-radius: 16px !important;
+        background: var(--trust-indigo) !important;
+        color: white !important;
+        text-decoration: none !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        font-size: 12px !important;
+        transition: transform 0.2s, box-shadow 0.3s !important;
+    }
+    #trust-section-premium .trust-cta:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 20px 50px rgba(99,102,241,0.4) !important;
+    }
+
+    /* ── FLOATING BADGE SCOPED ── */
+    #trust-section-premium .trust-float-badge {
+        position: absolute !important;
+        bottom: -20px !important;
+        right: -20px !important;
+        background: white !important;
+        border-radius: 18px !important;
+        padding: 12px 18px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important;
+        animation: trustFloat 4s ease-in-out infinite !important;
+        z-index: 20 !important;
+    }
+    @keyframes trustFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+    #trust-section-premium .trust-float-text {
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+    }
+
+    /* ── RESPONSIVE SCOPED ── */
+    @media (max-width: 900px) {
+        #trust-section-premium .trust-grid { grid-template-columns: 1fr !important; gap: 60px !important; }
+        #trust-section-premium .trust-headline { font-size: clamp(36px, 7vw, 46px) !important; } /* Ajuste responsivo proporcional */
+        #trust-section-premium .big-number { font-size: 70px !important; }
+        #trust-section-premium .trust-float-badge { right: 10px !important; bottom: -14px !important; }
+        #trust-section-premium { padding: 80px 0 100px !important; }
+        #trust-section-premium .trust-container { padding: 0 24px !important; }
+    }
+
+    /* Extra móviles pequeños */
+    @media (max-width: 480px) {
+        #trust-section-premium .trust-stats { grid-template-columns: 1fr !important; } /* Apilar estadísticas */
+        #trust-section-premium .big-number { font-size: 60px !important; }
+        #trust-section-premium .trust-card-inner { padding: 30px 20px !important; }
+        #trust-section-premium .feature-card { padding: 18px 20px !important; flex-direction: column !important; gap: 12px !important; }
+        #trust-section-premium .feat-icon { width: 40px !important; height: 40px !important; font-size: 16px !important; }
+    }
+</style>
+</head>
+<body>
+
+<section id="trust-section-premium" class="trust">
+  <!-- Ambient -->
+  <div class="trust-glow glow-a"></div>
+  <div class="trust-glow glow-b"></div>
+  <div class="trust-glow glow-c"></div>
+
+  <div class="trust-container">
+    <div class="trust-grid">
+
+      <!-- ── LEFT ── -->
+      <div class="trust-left">
+        <div>
+          <div class="trust-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Confianza Nivel Elite</span>
+          </div>
+        </div>
+
+        <h2 class="trust-headline">
+          <em> Tu visión,<br>
+          protegida por<br>expertos reales.</em>
+        </h2>
+
+        <p class="trust-subtext">
+          No somos una agencia más de paso. Construimos infraestructuras de crecimiento sólidas donde otros solo ven campañas temporales.
+        </p>
+
+        <div class="trust-features">
+          <div class="feature-card">
+            <div class="feat-icon indigo">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div class="feat-text">
+              <h4>Seguridad Blindada</h4>
+              <p>Metodologías de entrega puntual y reportes en tiempo real que te mantienen siempre en control.</p>
+            </div>
+          </div>
+
+          <div class="feature-card emerald">
+            <div class="feat-icon emerald">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="feat-text">
+              <h4>Crecimiento Escalable</h4>
+              <p>Transformamos tu inversión en un activo digital de alto rendimiento con retornos medibles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT ── -->
+      <div class="trust-right">
+        <div class="trust-card-wrapper">
+          <div class="trust-card">
+            <div class="trust-card-inner">
+
+              <div class="trust-track">
+                <span class="track-label">Track Record Verificado</span>
+                <div class="big-number">
+                  <span class="trust-counter" data-target="4">0</span>
+                </div>
+                <p class="track-sub">Años de maestría digital</p>
+              </div>
+
+              <div class="trust-stats">
+                <div class="trust-stat">
+                  <div class="stat-num"><span class="trust-counter" data-target="200">0</span>+</div>
+                  <div class="stat-label">Proyectos Exitosos</div>
+                </div>
+                <div class="trust-stat">
+                  <div class="stat-num green"><span class="trust-counter" data-target="99">0</span>%</div>
+                  <div class="stat-label">Satisfacción</div>
+                </div>
+              </div>
+
+              <a href="/contacto/" class="trust-cta">
+                <span>Agendar Consulta Gratis</span>
+                <span class="cta-icon">
+                  <i class="fas fa-arrow-right"></i>
+                </span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating social proof -->
+        <div class="trust-float-badge">
+          <div class="float-dot"></div>
+          <div class="float-avatars">
+            <img src="https://i.pravatar.cc/60?u=11" alt="Cliente">
+            <img src="https://i.pravatar.cc/60?u=22" alt="Cliente">
+            <img src="https://i.pravatar.cc/60?u=33" alt="Cliente">
+          </div>
+          <span class="trust-float-text">+12 Clientes hoy</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const initCounters = () => {
+    const counters = document.querySelectorAll('.trust-counter');
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    const startCount = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      const duration = 1800;
+      const start = performance.now();
+
+      const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const value = Math.round(easeOut(progress) * target);
+        counter.textContent = value;
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => observer.observe(c));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCounters);
+  } else {
+    initCounters();
+  }
+})();
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodología Growth - Partum Design</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ════════════════════════════════════════════════════════
+   ENCAPSULAMIENTO TOTAL - ID: #metodologia-partum-premium
+   ════════════════════════════════════════════════════════ */
+
+#metodologia-partum-premium {
+    --met-blue-navy: #0f2c59;
+    --met-blue-royal: #2563eb;
+    --met-text-dark: #111111;
+    --met-text-muted: #555555;
+    
+    position: relative !important;
+    background: #fcfcfd !important; 
+    padding: 120px 0 140px !important; 
+    overflow: hidden !important;
+    font-family: 'Montserrat', sans-serif !important;
+    z-index: 1 !important;
+}
+
+/* Reseteo interno preventivo */
+#metodologia-partum-premium *, 
+#metodologia-partum-premium *::before, 
+#metodologia-partum-premium *::after { 
+    box-sizing: border-box !important; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* ── 1. Textura Ruido ── */
+#metodologia-partum-premium::before {
+    content: '' !important;
+    position: absolute !important; inset: 0 !important;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E") !important;
+    pointer-events: none !important; z-index: 1 !important;
+}
+
+/* ── 2. Imagen de Fondo Marketing / Analytics con Parallax ── */
+#metodologia-partum-premium .bg-architecture {
+    position: absolute !important;
+    inset: 0 !important;
+    /* Nueva imagen enfocada en Data y Growth Marketing */
+    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    opacity: 0.04 !important; /* Opacidad sutil para no robar atención */
+    pointer-events: none !important;
+    z-index: 0 !important;
+    mix-blend-mode: multiply !important;
+}
+
+/* ── 3. Malla / Blueprint Grid ── */
+#metodologia-partum-premium .bg-blueprint-grid {
+    position: absolute !important;
+    inset: 0 !important;
+    background-image:
+        linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+    background-size: 40px 40px !important;
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 80%) !important;
+    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 80%) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* Blobs Azules (Glow) */
+#metodologia-partum-premium .met-blob { 
+    position: absolute !important; 
+    border-radius: 50% !important; 
+    filter: blur(120px) !important; 
+    pointer-events: none !important; 
+    animation: metBreathe 10s ease-in-out infinite !important; 
+    z-index: 1 !important;
+}
+@keyframes metBreathe { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:.5;transform:scale(1.1)} }
+
+#metodologia-partum-premium .met-wrap { 
+    max-width: 1200px !important; 
+    margin: 0 auto !important; 
+    padding: 0 5% !important; 
+    position: relative !important; 
+    z-index: 10 !important; 
+}
+
+/* HEADER */
+#metodologia-partum-premium .met-header { 
+    display: grid !important; 
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 60px !important; 
+    align-items: end !important; 
+    margin-bottom: 100px !important; 
+}
+
+#metodologia-partum-premium .met-badge {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    padding: 8px 18px !important; border-radius: 99px !important;
+    background: rgba(37, 99, 235, 0.08) !important; border: 1px solid rgba(37, 99, 235, 0.2) !important;
+    margin-bottom: 25px !important;
+}
+#metodologia-partum-premium .badge-dot { width:8px; height:8px; border-radius:50%; background:#2563eb; animation: metPulse 2s ease-in-out infinite; }
+@keyframes metPulse { 0%,100%{box-shadow:0 0 0 0 rgba(37, 99, 235, 0.4)} 50%{box-shadow:0 0 0 8px rgba(37, 99, 235, 0)} }
+
+#metodologia-partum-premium .h-title {
+    font-size: clamp(36px, 5vw, 65px) !important; 
+    font-weight: 900 !important; letter-spacing: -.03em !important; line-height: 1.05 !important;
+    color: var(--met-text-dark) !important;
+}
+#metodologia-partum-premium .h-title em {
+    font-style: normal !important;
+    background: linear-gradient(135deg, var(--met-blue-navy) 0%, var(--met-blue-royal) 100%) !important;
+    -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important;
+}
+
+/* TIMELINE */
+#metodologia-partum-premium .met-timeline { 
+    position: relative !important; 
+    display: flex !important; 
+    flex-direction: column !important; 
+    z-index: 5 !important;
+}
+
+/* LÍNEA CON Z-INDEX AJUSTADO */
+#metodologia-partum-premium .met-timeline::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 36px !important; top: 24px !important; bottom: 24px !important;
+    width: 2px !important; 
+    background: linear-gradient(to bottom, rgba(37,99,235,0), rgba(37,99,235,0.4) 15%, rgba(15,44,89,0.8) 50%, rgba(17,17,17,0.4) 85%, rgba(17,17,17,0)) !important;
+    z-index: 0 !important; /* Pasa al fondo */
+}
+@media(min-width:768px){ #metodologia-partum-premium .met-timeline::before { left: 60px !important; } }
+@media(min-width:1024px){ #metodologia-partum-premium .met-timeline::before { left: 80px !important; } }
+
+/* STEPS CON Z-INDEX SUPERIOR PARA TAPAR LA LÍNEA */
+#metodologia-partum-premium .met-step {
+    position: relative !important;
+    z-index: 10 !important; /* Se asegura de estar encima de la línea */
+    display: grid !important;
+    grid-template-columns: 72px 1fr !important;
+    gap: 0 40px !important;
+    padding-bottom: 40px !important; 
+    opacity: 0; transform: translateX(-30px);
+    transition: opacity .7s cubic-bezier(.34,1.56,.64,1), transform .7s cubic-bezier(.34,1.56,.64,1) !important;
+}
+#metodologia-partum-premium .met-step.visible { opacity: 1 !important; transform: translateX(0) !important; }
+@media(min-width:768px){ #metodologia-partum-premium .met-step { grid-template-columns: 120px 1fr !important; gap: 0 50px !important; } }
+@media(min-width:1024px){ #metodologia-partum-premium .met-step { grid-template-columns: 160px 1fr !important; gap: 0 60px !important; } }
+
+#metodologia-partum-premium .step-dot {
+    width: 72px !important; height: 72px !important;
+    border-radius: 20px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    position: relative !important; z-index: 2 !important;
+    background: linear-gradient(135deg, var(--met-blue-navy), var(--met-blue-royal)) !important; 
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3) !important;
+    transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .4s !important;
+}
+@media(min-width:768px){ #metodologia-partum-premium .step-dot { width: 85px !important; height: 85px !important; } }
+
+#metodologia-partum-premium .met-step-card {
+    background: #ffffff !important;
+    border: 1px solid #eaeaea !important;
+    border-radius: 12px !important;
+    padding: 40px 45px !important; 
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s, border-color .4s !important;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05) !important;
+}
+#metodologia-partum-premium .met-step:hover .met-step-card {
+    transform: translateX(10px) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.1) !important;
+}
+
+#metodologia-partum-premium .prog-fill { 
+    height:100% !important; border-radius:99px !important; width:0%; 
+    transition:width 1.3s cubic-bezier(.34,1.56,.64,1) !important; 
+    background:linear-gradient(90deg, var(--met-blue-navy), var(--met-blue-royal)) !important; 
+}
+#metodologia-partum-premium .met-step:hover .prog-fill { width:100% !important; }
+
+/* BOTTOM CTA */
+#metodologia-partum-premium .met-bottom {
+    position: relative !important; z-index: 10 !important;
+    margin-top: 80px !important; padding: 40px 50px !important;
+    background: #121e28 !important; 
+    border-radius: 12px !important;
+    display: flex !important; flex-wrap: wrap !important; align-items: center !important; justify-content: space-between !important; gap: 30px !important;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .7s 1s ease, transform .7s 1s ease !important;
+}
+#metodologia-partum-premium .met-bottom.visible { opacity:1 !important; transform:translateY(0) !important; }
+
+#metodologia-partum-premium .met-cta {
+    display:inline-flex !important; align-items:center !important; justify-content:center !important; gap:15px !important;
+    padding:18px 40px !important; border-radius:50px !important;
+    background:#2563eb !important; color:#fff !important;
+    font-size:12px !important; font-weight:900 !important; letter-spacing:.2em !important; text-transform:uppercase !important;
+    text-decoration:none !important;
+    transition: transform .35s ease, box-shadow .35s, background .35s !important;
+}
+#metodologia-partum-premium .met-cta:hover { transform:scale(1.05) !important; box-shadow:0 15px 30px rgba(37,99,235,.4) !important; background:#1d4ed8 !important; }
+
+/* ── 4. Partículas Flotantes (Glow Dust) ── */
+#metodologia-partum-premium .met-ptcl { 
+    position:absolute !important; 
+    border-radius:50% !important; 
+    pointer-events:none !important; 
+    opacity:0 !important; 
+    filter: blur(1px) !important;
+    box-shadow: 0 0 8px currentColor !important;
+}
+@keyframes metRise {
+    0%   { opacity:0; transform:translate(0, 0) scale(0.5); }
+    20%  { opacity:0.6; }
+    80%  { opacity:0.4; }
+    100% { opacity:0; transform:translate(var(--dx), -180px) scale(1.3); }
+}
+
+/* ════════════════════════════════════════════════════════
+   AJUSTES RESPONSIVOS AGREGADOS PARA MOVILES Y TABLETS
+   ════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    #metodologia-partum-premium {
+        padding: 60px 0 80px !important; 
+    }
+    #metodologia-partum-premium .met-header { 
+        grid-template-columns: 1fr !important; 
+        gap: 20px !important; 
+        margin-bottom: 50px !important; 
+        text-align: center !important; 
+    }
+    #metodologia-partum-premium .met-badge {
+        margin: 0 auto 20px auto !important; 
+    }
+    #metodologia-partum-premium .met-header p {
+        margin: 0 auto !important;
+    }
+    #metodologia-partum-premium .h-title {
+        font-size: 36px !important;
+    }
+
+    /* Ajuste de cuadrícula de pasos (Dot + Card) */
+    #metodologia-partum-premium .met-step {
+        grid-template-columns: 48px 1fr !important;
+        gap: 0 16px !important;
+        padding-bottom: 30px !important;
+    }
+    /* Centrado de la línea conectora */
+    #metodologia-partum-premium .met-timeline::before {
+        left: 24px !important; /* Mitad de 48px */
+    }
+    /* Ajuste de Dot de icono */
+    #metodologia-partum-premium .step-dot {
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 12px !important;
+    }
+    #metodologia-partum-premium .step-dot i {
+        font-size: 18px !important;
+    }
+    
+    /* Ajuste de espaciado dentro de la tarjeta */
+    #metodologia-partum-premium .met-step-card {
+        padding: 24px 20px !important;
+    }
+    
+    /* Acomodo interior de la tarjeta en vertical */
+    #metodologia-partum-premium .card-inner-flex {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+    /* Ajuste al número gigante translúcido */
+    #metodologia-partum-premium .card-inner-flex > span {
+        font-size: 40px !important;
+        line-height: 1 !important;
+        margin-bottom: -10px !important;
+    }
+    /* Ajuste de textos para legibilidad en móvil */
+    #metodologia-partum-premium .card-inner-flex > div h4 {
+        font-size: 20px !important;
+        margin-bottom: 8px !important;
+    }
+    #metodologia-partum-premium .card-inner-flex > div p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        text-align: left !important; /* Mejor que justificado en móvil */
+    }
+}
+
+/* Pantallas móviles muy pequeñas */
+@media (max-width: 480px) {
+    #metodologia-partum-premium .met-step {
+        grid-template-columns: 40px 1fr !important;
+        gap: 0 12px !important;
+    }
+    #metodologia-partum-premium .met-timeline::before {
+        left: 20px !important;
+    }
+    #metodologia-partum-premium .step-dot {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 10px !important;
+    }
+    #metodologia-partum-premium .step-dot i {
+        font-size: 16px !important;
+    }
+    #metodologia-partum-premium .card-inner-flex > span {
+        display: none !important; /* Oculta el número grande para tener más espacio de lectura */
+    }
+}
+</style>
+</head>
+<body>
+
+<section id="metodologia-partum-premium">
+
+  <!-- CAPAS DE FONDO MULTI-NIVEL -->
+  <div class="bg-architecture"></div>
+  <div class="bg-blueprint-grid"></div>
+
+  <!-- Ambient Blobs -->
+  <div class="met-blob" style="width:600px;height:600px;top:-100px;left:-100px;background:radial-gradient(circle,rgba(37,99,235,.07) 0%,transparent 70%);"></div>
+  <div class="met-blob" style="width:500px;height:500px;bottom:-100px;right:-100px;background:radial-gradient(circle,rgba(15,44,89,.06) 0%,transparent 70%);animation-delay:5s"></div>
+
+  <!-- Contenedor Partículas -->
+  <div id="met-particles-host" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2"></div>
+
+  <div class="met-wrap">
+
+    <div class="met-header">
+      <div>
+        <div class="met-badge">
+          <span class="badge-dot"></span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#2563eb;">Proceso Comprobado</span>
+        </div>
+        <h2 class="h-title">
+          Metodología<br>
+          <em>Growth.</em>
+        </h2>
+      </div>
+      <p style="font-size: 18px; color: #555; line-height: 1.7; max-width: 450px;">
+        Adiós a la improvisación y al gasto a ciegas. Bienvenido a un sistema diseñado para brindar <strong>crecimiento predecible y escalabilidad absoluta</strong> a tu negocio.
+      </p>
+    </div>
+
+    <div class="met-timeline">
+
+      <!-- Step 01 -->
+      <div class="met-step" data-delay="0" data-prog="25">
+        <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
+          <div class="step-dot"><i class="fas fa-magnifying-glass-chart" style="font-size:28px; color:white;"></i></div>
+          <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">01</div>
+        </div>
+        <div class="met-step-card">
+          <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">01</span>
+            <div style="flex:1;">
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Auditoría</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Diagnóstico Profundo</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Analizamos tu ecosistema digital, competidores y embudos actuales para detectar fugas de capital y descubrir oportunidades de crecimiento inmediato.</p>
+                <div style="margin-top:20px;">
+                    <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
+                        <div class="prog-fill"></div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:10px; font-weight:800; color:#aaa; text-transform:uppercase;">
+                        <span>Progreso de Fase</span><span>25%</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="met-step" data-delay="150" data-prog="50">
+        <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
+          <div class="step-dot"><i class="fas fa-sitemap" style="font-size:28px; color:white;"></i></div>
+          <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">02</div>
+        </div>
+        <div class="met-step-card">
+          <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">02</span>
+            <div style="flex:1;">
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Estrategia</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Arquitectura de Conversión</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Diseñamos los sistemas de captación: Landing pages de alto rendimiento, ofertas irresistibles, creativos magnéticos y secuencias de automatización listas para convertir.</p>
+                <div style="margin-top:20px;">
+                    <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
+                        <div class="prog-fill"></div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:10px; font-weight:800; color:#aaa; text-transform:uppercase;">
+                        <span>Progreso de Fase</span><span>50%</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="met-step" data-delay="300" data-prog="75">
+        <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
+          <div class="step-dot"><i class="fas fa-rocket" style="font-size:28px; color:white;"></i></div>
+          <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">03</div>
+        </div>
+        <div class="met-step-card">
+          <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">03</span>
+            <div style="flex:1;">
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Ejecución</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Adquisición a Escala</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Desplegamos campañas publicitarias omnicanal (Meta, Google, TikTok) con segmentaciones precisas e Inteligencia Artificial para maximizar el ROAS desde el primer momento.</p>
+                <div style="margin-top:20px;">
+                    <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
+                        <div class="prog-fill"></div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:10px; font-weight:800; color:#aaa; text-transform:uppercase;">
+                        <span>Progreso de Fase</span><span>75%</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 04 -->
+      <div class="met-step" data-delay="450" data-prog="100">
+        <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
+          <div class="step-dot"><i class="fas fa-chart-line" style="font-size:28px; color:white;"></i></div>
+          <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">04</div>
+        </div>
+        <div class="met-step-card">
+          <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">04</span>
+            <div style="flex:1;">
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Escalabilidad</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Optimización Continua</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Nuestro trabajo no termina al lanzar. Realizamos test A/B diarios, iteración de creativos y escalado de las campañas ganadoras para multiplicar tus ventas mes a mes.</p>
+                <div style="margin-top:20px;">
+                    <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
+                        <div class="prog-fill"></div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:10px; font-weight:800; color:#aaa; text-transform:uppercase;">
+                        <span>Progreso de Fase</span><span>100%</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- Cierre met-timeline -->
+  </div> <!-- Cierre met-wrap -->
+</section>
+
+<script>
+(function() {
+    /* ── SCROLL REVEAL ── */
+    const steps = document.querySelectorAll('#metodologia-partum-premium .met-step');
+    const bottom = document.getElementById('met-bottom-trigger');
+
+    const metObserver = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            const del = parseInt(el.dataset?.delay) || 0;
+            const prg = parseInt(el.dataset?.prog) || 0;
+
+            setTimeout(() => {
+                el.classList.add('visible');
+                setTimeout(() => {
+                    const fill = el.querySelector('.prog-fill');
+                    if (fill) fill.style.width = prg + '%';
+                }, 500);
+            }, del);
+
+            metObserver.unobserve(el);
+        });
+    }, { threshold: 0.15 });
+
+    steps.forEach(s => metObserver.observe(s));
+
+    const bottomIo = new IntersectionObserver(entries => {
+        entries.forEach(e => { 
+            if (e.isIntersecting) { 
+                bottom.classList.add('visible'); 
+                bottomIo.unobserve(bottom); 
+            } 
+        });
+    }, { threshold: 0.2 });
+    if(bottom) bottomIo.observe(bottom);
+
+    /* ── MEJORA DE PARTÍCULAS (Glow Dust) ── */
+    const COLORS = ['#0f2c59', '#1e3a8a', '#2563eb', '#60a5fa', '#3b82f6'];
+    const host = document.getElementById('met-particles-host');
+
+    function spawnMetParticle() {
+        if(!host) return;
+        const el = document.createElement('div');
+        el.className = 'met-ptcl';
+        
+        // Tamaños más delicados (2px a 5px)
+        const sz = Math.random() * 3 + 2; 
+        const dur = Math.random() * 8 + 10; // Movimiento más lento y fluido (10 a 18s)
+        const del = Math.random() * 2;
+        const dx = (Math.random() - 0.5) * 80; // Deriva lateral aleatoria
+        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+
+        el.style.cssText = `
+            width:${sz}px; height:${sz}px;
+            background:${color};
+            color:${color}; /* Usado para el shadow en CSS */
+            left:${Math.random() * 100}%; bottom:-20px;
+            --dx: ${dx}px;
+            animation:metRise ${dur}s ${del}s ease-in-out forwards;
+        `;
+        host.appendChild(el);
+        
+        // Eliminar del DOM después de que termine la animación
+        setTimeout(() => el.remove(), (dur + del + 1) * 1000);
+    }
+    
+    // Generar partículas mucho más rápido (cada 500ms) pero solo si la sección está en pantalla
+    setInterval(() => {
+        const rect = host.getBoundingClientRect();
+        if(rect.top < window.innerHeight && rect.bottom > 0) {
+            spawnMetParticle();
+            // A veces generamos 2 partículas de golpe para mayor densidad
+            if (Math.random() > 0.5) spawnMetParticle(); 
+        }
+    }, 500);
+})();
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casos de Éxito - Partum Design</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ════════════════════════════════════════════════════════
+   ENCAPSULAMIENTO TOTAL - ID: #casos-exito-premium
+   ════════════════════════════════════════════════════════ */
+
+#casos-exito-premium {
+    position: relative !important;
+    padding: 100px 0 60px !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    font-family: 'Montserrat', sans-serif !important;
+    color: #0f172a !important;
+}
+
+/* Reseteo interno preventivo */
+#casos-exito-premium *, 
+#casos-exito-premium *::before, 
+#casos-exito-premium *::after { 
+    box-sizing: border-box !important; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* Textura de grano Scoped */
+#casos-exito-premium::before {
+    content: '' !important;
+    position: absolute !important; inset: 0 !important; pointer-events: none !important; z-index: 0 !important; opacity: .4 !important;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E") !important;
+}
+
+/* Blobs ambientales Scoped */
+#casos-exito-premium .success-blob { 
+    position:absolute !important; border-radius:50% !important; filter:blur(120px) !important; 
+    pointer-events:none !important; animation:successBreathe 10s ease-in-out infinite !important; 
+}
+@keyframes successBreathe { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:.8;transform:scale(1.08)} }
+
+#casos-exito-premium .success-wrap { 
+    max-width: 1200px !important; margin: 0 auto !important; padding: 0 32px !important; position: relative !important; z-index: 10 !important; 
+}
+@media(max-width:640px){ #casos-exito-premium .success-wrap { padding: 0 20px !important; } }
+
+/* HEADER */
+#casos-exito-premium .success-hdr { 
+    display:flex !important; flex-wrap:wrap !important; align-items:flex-end !important; 
+    justify-content:space-between !important; gap:24px !important; margin-bottom:64px !important; 
+}
+
+#casos-exito-premium .badge-dark {
+    display:inline-flex !important; align-items:center !important; gap:8px !important;
+    background:#0f172a !important; color:#fff !important;
+    padding:6px 14px !important; border-radius:99px !important;
+    font-size:9px !important; font-weight:900 !important; letter-spacing:.25em !important; text-transform:uppercase !important;
+}
+#casos-exito-premium .badge-dot-w { 
+    width:6px; height:6px; border-radius:50%; background:#6366f1; 
+    animation:successPulse 2s ease-in-out infinite; 
+}
+@keyframes successPulse { 0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.5)} 50%{box-shadow:0 0 0 6px rgba(99,102,241,0)} }
+
+#casos-exito-premium .hdr-title {
+    font-size: clamp(38px,5.5vw,76px) !important;
+    font-weight:900 !important; letter-spacing:-.04em !important; 
+    line-height: 1.1 !important; /* CORREGIDO: Aumentado de .92 a 1.1 para que no choque el acento */
+    color:#0f172a !important;
+}
+#casos-exito-premium .hdr-title em {
+    font-style:normal !important;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6,#f43f5e) !important;
+    -webkit-background-clip:text !important; background-clip:text !important; -webkit-text-fill-color:transparent !important;
+}
+
+#casos-exito-premium .hdr-sub {
+    font-size:15px !important; font-weight:400 !important; color:#64748b !important; line-height:1.7 !important;
+    max-width:320px !important; border-left:3px solid #6366f1 !important; padding-left:18px !important;
+}
+
+/* MAIN GRID */
+#casos-exito-premium .main-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 16px !important;
+}
+@media(max-width:1024px){ #casos-exito-premium .main-grid { grid-template-columns:1fr 1fr !important; } }
+@media(max-width:580px){ #casos-exito-premium .main-grid { grid-template-columns:1fr !important; } }
+
+/* CARD BASE */
+#casos-exito-premium .pcard {
+    position:relative !important; border-radius:24px !important; overflow:hidden !important;
+    cursor:pointer !important;
+    transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .4s !important;
+}
+#casos-exito-premium .pcard:hover { transform: translateY(-8px) !important; }
+
+/* shimmer */
+#casos-exito-premium .pcard::after {
+    content:'' !important; position:absolute !important; top:0 !important; left:-80% !important;
+    width:50% !important; height:100% !important;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent) !important;
+    transition:left .7s ease !important; pointer-events:none !important; z-index:20 !important;
+}
+#casos-exito-premium .pcard:hover::after { left:130% !important; }
+
+/* HERO CARD */
+#casos-exito-premium .card-hero { grid-column: 1 / 3 !important; min-height: 380px !important; background:#0f172a !important; }
+@media(max-width:1024px){ #casos-exito-premium .card-hero { grid-column:1/3 !important; min-height:320px !important; } }
+@media(max-width:580px){ #casos-exito-premium .card-hero { grid-column:1 !important; min-height:280px !important; } }
+
+#casos-exito-premium .card-hero img {
+    position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:cover !important;
+    opacity:.55 !important; transition:transform 1.1s cubic-bezier(.4,0,.2,1), opacity .5s !important;
+}
+#casos-exito-premium .card-hero:hover img { transform:scale(1.07) !important; opacity:.6 !important; }
+
+#casos-exito-premium .hero-overlay {
+    position:absolute !important; inset:0 !important;
+    background: linear-gradient(135deg, rgba(10,14,30,.97) 0%, rgba(10,14,30,.75) 45%, rgba(10,14,30,.45) 100%),
+                linear-gradient(to top, rgba(10,14,30,.85) 0%, transparent 50%) !important;
+}
+
+#casos-exito-premium .hero-content {
+    position:relative !important; z-index:10 !important;
+    height:100% !important; padding:32px 36px !important;
+    display:flex !important; flex-direction:column !important; justify-content:space-between !important;
+}
+
+#casos-exito-premium .hero-title {
+    font-size:clamp(26px,3.5vw,38px) !important; font-weight:900 !important; letter-spacing:-.03em !important; color:#fff !important;
+    text-shadow: 0 2px 20px rgba(0,0,0,.8) !important;
+}
+
+/* SIDE CARD */
+#casos-exito-premium .card-side { grid-column: 3 !important; min-height: 380px !important; background:#0f172a !important; }
+@media(max-width:1024px){ #casos-exito-premium .card-side { grid-column:1/3 !important; min-height:260px !important; } }
+@media(max-width:580px){ #casos-exito-premium .card-side { grid-column:1 !important; min-height:240px !important; } }
+
+#casos-exito-premium .card-side img {
+    position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:cover !important;
+    opacity:.4 !important; transition:transform 1.1s !important;
+}
+
+/* SMALL CARDS */
+#casos-exito-premium .card-small {
+    min-height: 200px !important;
+    background:#f8fafc !important;
+    border:1px solid rgba(226,232,240,.8) !important;
+}
+
+#casos-exito-premium .small-content { padding:28px !important; height:100% !important; display:flex !important; flex-direction:column !important; justify-content:space-between !important; }
+
+#casos-exito-premium .small-icon {
+    width:44px !important; height:44px !important; border-radius:14px !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    font-size:18px !important; color:#fff !important; margin-bottom:16px !important;
+}
+
+/* ANIMACIONES DE ENTRADA */
+@keyframes partumFadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+#casos-exito-premium .reveal-item { animation: partumFadeUp .7s both !important; }
+#casos-exito-premium .d1 { animation-delay: 0.05s !important; }
+#casos-exito-premium .d2 { animation-delay: 0.15s !important; }
+#casos-exito-premium .d3 { animation-delay: 0.25s !important; }
+
+/* Botones de flecha */
+#casos-exito-premium .arrow-btn {
+    width:44px !important; height:44px !important; border-radius:50% !important;
+    border:1px solid rgba(255,255,255,.15) !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    color:#fff !important; transition: background .3s, border-color .3s !important;
+}
+#casos-exito-premium .pcard:hover .arrow-btn { background:#6366f1 !important; border-color:#6366f1 !important; transform:translateX(4px) !important; }
+</style>
+</head>
+<body>
+
+<section id="casos-exito-premium">
+
+    <!-- Ambient Blobs -->
+    <div class="success-blob" style="width:500px;height:500px;top:-150px;right:-100px;background:radial-gradient(circle,rgba(99,102,241,.08) 0%,transparent 70%)"></div>
+    <div class="success-blob" style="width:400px;height:400px;bottom:-120px;left:-100px;background:radial-gradient(circle,rgba(244,63,94,.06) 0%,transparent 70%);animation-delay:5s"></div>
+
+    <div class="success-wrap">
+
+        <!-- HEADER -->
+        <div class="success-hdr">
+            <div class="reveal-item d1">
+                <div class="badge-dark">
+                    <span class="badge-dot-w"></span>
+                    Portafolio v2.0
+                </div>
+                <h2 class="hdr-title">
+                    Casos de<br><em>Éxito Real.</em>
+                </h2>
+            </div>
+            <p class="hdr-sub reveal-item d2">
+                Ingeniería digital aplicada a marcas que buscan dominar su categoría.
+            </p>
+        </div>
+
+        <!-- MAIN GRID -->
+        <div class="main-grid reveal-item d3">
+
+            <!-- HERO: FitLife Global -->
+            <div class="pcard card-hero">
+                <img src="https://partumdesign.com.mx/wp-content/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg" alt="FitLife">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div style="background:rgba(99,102,241,.25); border:1px solid rgba(99,102,241,.5); color:#c7d2fe; padding:5px 12px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; width:fit-content;">
+                        E-commerce Elite
+                    </div>
+                    <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:14px;">
+                        <div>
+                            <h3 class="hero-title">FitLife Global</h3>
+                            <p style="font-size:13px; color:#e2e8f0; line-height:1.5; max-width:340px;">Automatización de checkout que disparó la facturación a nuevos máximos históricos.</p>
+                        </div>
+                        <div style="display:flex;align-items:flex-end;gap:20px">
+                            <div style="text-align:right;">
+                                <div class="success-counter-num" id="sc_ctr1" data-target="240" style="font-size:clamp(36px,5vw,58px); font-weight:900; background:linear-gradient(135deg,#818cf8,#a78bfa); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; line-height:1;">+0%</div>
+                                <div style="font-size:9px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:#64748b; margin-top:4px;">Conversión</div>
+                            </div>
+                            <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIDE: Smart CRM -->
+            <div class="pcard card-side">
+                <img src="https://partumdesign.com.mx/wp-content/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg" alt="CRM">
+                <div class="hero-overlay" style="background: linear-gradient(to top, rgba(10,14,30,.98) 0%, rgba(10,14,30,.8) 40%, rgba(10,14,30,.5) 70%, rgba(10,14,30,.2) 100%) !important;"></div>
+                <div class="hero-content" style="justify-content: flex-end !important; gap: 12px;">
+                    <div style="background:rgba(16,185,129,.15); border:1px solid rgba(16,185,129,.3); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; width:fit-content;">App Design</div>
+                    <h3 style="font-size:22px; font-weight:900; color:#fff;">Smart<br>CRM App</h3>
+                    <p style="font-size:12px; color:#cbd5e1;">UX de alta productividad comercial diseñada para convertir.</p>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:10px; font-weight:900; color:#fff; text-transform:uppercase;">18 Días Récord</span>
+                        <div style="height:1px; flex:1; background:rgba(255,255,255,.1);"></div>
+                        <div class="arrow-btn" style="border-color:rgba(255,255,255,.15)"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMALL 1 -->
+            <div class="pcard card-small">
+                <div class="small-content">
+                    <div>
+                        <div class="small-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 20px rgba(139,92,246,.3)">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div style="font-size:9px; font-weight:900; color:#8b5cf6; text-transform:uppercase; margin-bottom:8px;">SEO & Tráfico</div>
+                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">MedBrand México</div>
+                        <p style="font-size:12px; color:#94a3b8;">Posicionamiento orgánico que triplicó visitas en 90 días.</p>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
+                        <div>
+                            <div class="success-counter-num" id="sc_ctr2" data-target="310" style="font-size:24px; font-weight:900; color:#8b5cf6;">+0%</div>
+                            <div style="font-size:9px; font-weight:800; color:#94a3b8; text-transform:uppercase;">Tráfico orgánico</div>
+                        </div>
+                        <div class="arrow-btn" style="border:1px solid #e2e8f0; color:#94a3b8;"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMALL 2 -->
+            <div class="pcard card-small">
+                <div class="small-content">
+                    <div>
+                        <div class="small-icon" style="background:linear-gradient(135deg,#f43f5e,#e11d48);box-shadow:0 8px 20px rgba(244,63,94,.3)">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div style="font-size:9px; font-weight:900; color:#f43f5e; text-transform:uppercase; margin-bottom:8px;">Paid Media</div>
+                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">RetailPlus Latam</div>
+                        <p style="font-size:12px; color:#94a3b8;">Campañas con ROAS 8x en primer trimestre.</p>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
+                        <div>
+                            <div class="success-counter-num" id="sc_ctr3" data-target="8" style="font-size:24px; font-weight:900; color:#f43f5e;">0x</div>
+                            <div style="font-size:9px; font-weight:800; color:#94a3b8; text-transform:uppercase;">ROAS promedio</div>
+                        </div>
+                        <div class="arrow-btn" style="border:1px solid #e2e8f0; color:#94a3b8;"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMALL 3 -->
+            <div class="pcard card-small">
+                <div class="small-content">
+                    <div>
+                        <div class="small-icon" style="background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 8px 20px rgba(16,185,129,.3)">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div style="font-size:9px; font-weight:900; color:#10b981; text-transform:uppercase; margin-bottom:8px;">Social Media</div>
+                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">EcoStyle Brand</div>
+                        <p style="font-size:12px; color:#94a3b8;">Estrategia que generó comunidad masiva.</p>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
+                        <div>
+                            <div class="success-counter-num" id="sc_ctr4" data-target="180" style="font-size:24px; font-weight:900; color:#10b981;">+0K</div>
+                            <div style="font-size:9px; font-weight:800; color:#94a3b8; text-transform:uppercase;">Seguidores</div>
+                        </div>
+                        <div class="arrow-btn" style="border:1px solid #e2e8f0; color:#94a3b8;"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const root = document.getElementById('casos-exito-premium');
+        if (!root) return;
+
+        /* ── COUNTERS ── */
+        const COUNTERS_CONFIG = [
+            { id:'sc_ctr1', target:240, prefix:'+', suffix:'%' },
+            { id:'sc_ctr2', target:310, prefix:'+', suffix:'%' },
+            { id:'sc_ctr3', target:8,   prefix:'',  suffix:'x' },
+            { id:'sc_ctr4', target:180, prefix:'+', suffix:'K' },
+        ];
+
+        function animateCounter(el, target, suffix, prefix) {
+            const dur = 2000;
+            const start = performance.now();
+            const update = now => {
+                const t = Math.min((now - start) / dur, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+                const val = Math.floor(ease * target);
+                el.textContent = (prefix||'') + val + (suffix||'');
+                if (t < 1) requestAnimationFrame(update);
+                else el.textContent = (prefix||'') + target + (suffix||'');
+            };
+            requestAnimationFrame(update);
+        }
+
+        const counterIO = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const cfg = COUNTERS_CONFIG.find(c => c.id === el.id);
+                if (cfg) animateCounter(el, cfg.target, cfg.suffix, cfg.prefix);
+                counterIO.unobserve(el);
+            });
+        }, { threshold: 0.3 });
+
+        COUNTERS_CONFIG.forEach(c => {
+            const el = root.querySelector('#' + c.id);
+            if (el) counterIO.observe(el);
+        });
+
+        /* ── TILT on hero ── */
+        const hero = root.querySelector('.card-hero');
+        if (hero) {
+            hero.addEventListener('mousemove', e => {
+                const r = hero.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width  - .5;
+                const y = (e.clientY - r.top)  / r.height - .5;
+                hero.style.transition = 'box-shadow .4s';
+                hero.style.transform = `translateY(-8px) rotateX(${-y*4}deg) rotateY(${x*4}deg)`;
+            });
+            hero.addEventListener('mouseleave', () => {
+                hero.style.transition = 'transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .4s';
+                hero.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+            });
+        }
+    });
+})();
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logos Section - Partum Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ════════════════════════════════════════════════════════
+   ENCAPSULAMIENTO TOTAL - ID: #logos-section-partum
+   ════════════════════════════════════════════════════════ */
+
+#logos-section-partum {
+    position: relative !important;
+    padding: 80px 0 90px !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Reseteo local interno */
+#logos-section-partum *, 
+#logos-section-partum *::before, 
+#logos-section-partum *::after { 
+    box-sizing: border-box !important; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* Subtle grid texture Scoped */
+#logos-section-partum::before {
+    content: '' !important;
+    position: absolute !important; inset: 0 !important; pointer-events: none !important;
+    background-image:
+        linear-gradient(rgba(99,102,241,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,.04) 1px, transparent 1px) !important;
+    background-size: 48px 48px !important;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%) !important;
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%) !important;
+}
+
+/* Ambient glows Scoped */
+#logos-section-partum::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -80px !important; left: 50% !important; transform: translateX(-50%) !important;
+    width: 600px !important; height: 300px !important;
+    background: radial-gradient(ellipse, rgba(99,102,241,.06) 0%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+#logos-section-partum .logos-wrap {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+@media(max-width:640px){ #logos-section-partum .logos-wrap { padding: 0 20px !important; } }
+
+/* HEADER */
+#logos-section-partum .logos-header {
+    text-align: center !important;
+    margin-bottom: 52px !important;
+}
+
+#logos-section-partum .logos-eyebrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 18px !important;
+}
+#logos-section-partum .logos-eyebrow::before,
+#logos-section-partum .logos-eyebrow::after {
+    content: '' !important;
+    display: block !important;
+    width: 32px !important; height: 1px !important;
+    background: linear-gradient(90deg, transparent, #cbd5e1) !important;
+}
+#logos-section-partum .logos-eyebrow::after {
+    background: linear-gradient(90deg, #cbd5e1, transparent) !important;
+}
+#logos-section-partum .logos-eyebrow span {
+    font-size: 9px !important;
+    font-weight: 900 !important;
+    letter-spacing: .28em !important;
+    text-transform: uppercase !important;
+    color: #94a3b8 !important;
+}
+
+/* TÍTULO REDUCIDO Y PROPORCIONADO */
+#logos-section-partum .logos-title {
+    font-size: clamp(32px, 4.5vw, 50px) !important; /* Reducido de 76px a 50px máximo */
+    font-weight: 900 !important;
+    letter-spacing: -.04em !important;
+    line-height: 1.1 !important;
+    color: #0f172a !important;
+}
+#logos-section-partum .logos-title em {
+    font-style: normal !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #f43f5e) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* DIVIDER */
+#logos-section-partum .logos-divider {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-bottom: 44px !important;
+}
+#logos-section-partum .div-line {
+    flex: 1 !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, #e2e8f0 40%, #e2e8f0 60%, transparent) !important;
+}
+#logos-section-partum .div-dots { display: flex !important; gap: 5px !important; }
+#logos-section-partum .div-dot { width: 5px !important; height: 5px !important; border-radius: 50% !important; }
+
+/* GSLOGO CONTAINER (FULL WIDTH & COLORIDO) */
+#logos-section-partum .gslogo-container {
+    position: relative !important;
+    width: 100% !important;
+    padding: 60px 0 !important; 
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    border-top: 1px solid rgba(226,232,240,.8) !important;
+    border-bottom: 1px solid rgba(226,232,240,.8) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.8) !important;
+    z-index: 10 !important;
+}
+
+/* Estilos para forzar el diseño del plugin gslogo */
+#logos-section-partum .gslogo-container a {
+    display: inline-block !important;
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+#logos-section-partum .gslogo-container img {
+    max-height: 75px !important; /* Logos más grandes */
+    width: auto !important;
+    object-fit: contain !important;
+    filter: grayscale(0%) opacity(1) !important; /* Siempre a color y 100% visibles */
+    transition: all .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+#logos-section-partum .gslogo-container a:hover img,
+#logos-section-partum .gslogo-container img:hover {
+    transform: scale(1.08) !important; /* Solo hace el efecto de crecer suavemente al pasar el mouse */
+    cursor: pointer !important;
+}
+
+/* Mask fade edges para el contenedor del plugin */
+#logos-section-partum .gslogo-container > * {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
+}
+
+/* BOTTOM STATS */
+#logos-section-partum .logos-stats {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    margin-top: 60px !important; 
+    flex-wrap: wrap !important;
+}
+@media(max-width:580px){ #logos-section-partum .logos-stats { gap: 24px !important; } }
+
+#logos-section-partum .stat-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+}
+#logos-section-partum .stat-num {
+    font-size: clamp(22px, 3vw, 30px) !important;
+    font-weight: 900 !important;
+    letter-spacing: -.03em !important;
+    color: #0f172a !important;
+    line-height: 1 !important;
+}
+#logos-section-partum .stat-label {
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: .18em !important;
+    text-transform: uppercase !important;
+    color: #94a3b8 !important;
+}
+
+#logos-section-partum .stat-sep {
+    width: 1px !important;
+    height: 32px !important;
+    background: linear-gradient(to bottom, transparent, #e2e8f0, transparent) !important;
+}
+
+/* REVEAL ANIMATIONS */
+@keyframes logosFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+#logos-section-partum .logos-header { animation: logosFadeUp .7s .1s both !important; }
+#logos-section-partum .logos-divider { animation: logosFadeUp .7s .2s both !important; }
+#logos-section-partum .gslogo-container { animation: logosFadeUp .7s .3s both !important; }
+#logos-section-partum .logos-stats { animation: logosFadeUp .7s .45s both !important; }
+</style>
+</head>
+<body>
+
+<section id="logos-section-partum">
+  
+  <div class="logos-wrap">
+    <div class="logos-header">
+      <div class="logos-eyebrow">
+        <span>Empresas que confían en nosotros</span>
+      </div>
+      <h2 class="logos-title">
+        Marcas que eligen<br>
+        <em>resultados reales.</em>
+      </h2>
+      <p style="font-size: 14px; font-weight: 400; color: #94a3b8; margin-top: 10px;">Más de 200 empresas han escalado su presencia digital con nosotros.</p>
+    </div>
+
+    <div class="logos-divider">
+      <div class="div-line"></div>
+      <div class="div-dots">
+        <div class="div-dot" style="background:#6366f1"></div>
+        <div class="div-dot" style="background:#8b5cf6"></div>
+        <div class="div-dot" style="background:#f43f5e"></div>
+      </div>
+      <div class="div-line"></div>
+    </div>
+  </div>
+
+  <!-- Contenedor para el Shortcode o Plugin de Logos -->
+  <div class="gslogo-container">
+    [gslogo id=50]
+  </div>
+
+  <div class="logos-wrap">
+    <div class="logos-stats">
+      <div class="stat-item">
+        <span class="stat-num">200+</span>
+        <span class="stat-label">Clientes activos</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num">4+</span>
+        <span class="stat-label">Años de trayectoria</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num">99%</span>
+        <span class="stat-label">Satisfacción</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-item">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Industrias</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas - Partum Design</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ════════════════════════════════════════════════════════
+           ENCAPSULAMIENTO TOTAL - ID: #reviews-premium-compact
+        ════════════════════════════════════════════════════════ */
+
+        #reviews-premium-compact {
+            position: relative !important;
+            background: #f8fbff !important; 
+            padding: 80px 0 !important; /* Padding vertical más moderado */
+            overflow: hidden !important;
+            font-family: 'Montserrat', sans-serif !important;
+            color: #0f172a !important;
+            z-index: 1 !important;
+        }
+
+        #reviews-premium-compact *,
+        #reviews-premium-compact *::before,
+        #reviews-premium-compact *::after {
+            box-sizing: border-box !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ── FONDO DINÁMICO ── */
+
+        #reviews-premium-compact .bg-blueprint {
+            position: absolute !important;
+            inset: 0 !important;
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px) !important;
+            background-size: 45px 45px !important;
+            mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 95%) !important;
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 95%) !important;
+            z-index: 0 !important;
+        }
+
+        #reviews-premium-compact .bg-noise {
+            position: absolute !important;
+            inset: 0 !important;
+            opacity: 0.02 !important;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") !important;
+            z-index: 2 !important;
+            pointer-events: none !important;
+        }
+
+        #reviews-premium-compact .met-glow {
+            position: absolute !important;
+            border-radius: 50% !important;
+            filter: blur(120px) !important;
+            opacity: 0.8 !important;
+            z-index: 1 !important;
+            pointer-events: none !important;
+        }
+        #reviews-premium-compact .glow-tr { top: -250px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, transparent 70%); }
+        #reviews-premium-compact .glow-bl { bottom: -250px; left: -200px; width: 550px; height: 550px; background: radial-gradient(circle, rgba(147, 197, 253, 0.25) 0%, transparent 70%); }
+
+        .container-premium {
+            max-width: 1280px !important;
+            margin: 0 auto !important;
+            padding: 0 5% !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        /* ── HEADER ── */
+        .header-content {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: flex-end !important;
+            margin-bottom: 50px !important;
+            gap: 30px !important;
+        }
+
+        /* TÍTULO REDUCIDO Y EQUILIBRADO */
+        .h-title {
+            font-size: clamp(26px, 4vw, 42px) !important; /* Tamaño más contenido */
+            font-weight: 900 !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.03em !important;
+            color: #0f172a !important;
+        }
+        .h-title em {
+            font-style: normal !important;
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .rating-box {
+            text-align: right !important;
+            border-right: 2px solid #2563eb !important;
+            padding-right: 20px !important;
+            flex-shrink: 0 !important;
+        }
+        .rating-num { font-size: 48px !important; font-weight: 900 !important; line-height: 1 !important; color: #0f172a !important; }
+        .rating-stars { display: flex !important; gap: 3px !important; color: #f59e0b !important; font-size: 14px !important; margin: 4px 0; justify-content: flex-end !important; }
+        .rating-label { font-size: 10px !important; font-weight: 800 !important; text-transform: uppercase !important; color: #94a3b8 !important; letter-spacing: 0.05em !important; }
+
+        /* ── CARRUSEL ── */
+        .carousel-container {
+            position: relative !important;
+            width: 100% !important;
+            overflow: visible !important;
+        }
+
+        .carousel-track {
+            display: flex !important;
+            gap: 24px !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding: 20px 0 40px !important;
+            scrollbar-width: none !important;
+            cursor: grab !important;
+        }
+        .carousel-track::-webkit-scrollbar { display: none !important; }
+
+        /* ── CARDS COMPACTAS ── */
+        .review-card {
+            flex: 0 0 clamp(280px, 30vw, 350px) !important; /* Ancho reducido significativamente */
+            scroll-snap-align: center !important;
+            background: #0f172a !important;
+            border-radius: 28px !important;
+            padding: 32px !important; /* Padding interno reducido */
+            position: relative !important;
+            overflow: hidden !important;
+            box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.45) !important;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease !important;
+            border: 1px solid rgba(255, 255, 255, 0.03) !important;
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 35px 70px -20px rgba(0, 0, 0, 0.6) !important;
+            border-color: rgba(37, 99, 235, 0.3) !important;
+        }
+
+        .review-card::after {
+            content: "" !important;
+            position: absolute !important;
+            top: -10%; right: -10%;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+        }
+
+        .review-card::before {
+            content: "" !important;
+            position: absolute !important; inset: 0 !important; border-radius: inherit !important;
+            background: radial-gradient(300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(37, 99, 235, 0.15), transparent 65%) !important;
+            opacity: 0 !important; transition: opacity 0.4s ease !important;
+            pointer-events: none !important; z-index: 2 !important;
+        }
+        .review-card:hover::before { opacity: 1 !important; }
+
+        .quote-mark { font-size: 44px !important; line-height: 0.4 !important; color: #2563eb !important; opacity: 0.3 !important; display: block !important; margin-bottom: 18px !important; font-family: serif !important; }
+        
+        .review-txt-body { font-size: 14px !important; line-height: 1.6 !important; color: #cbd5e1 !important; font-weight: 400 !important; margin-bottom: 25px !important; }
+        
+        .card-divider { width: 100% !important; height: 1px !important; background: rgba(255, 255, 255, 0.06) !important; margin-bottom: 22px !important; }
+
+        .reviewer-footer { display: flex !important; align-items: center !important; gap: 12px !important; }
+        .avatar, .avatar-initial { width: 44px !important; height: 44px !important; border-radius: 50% !important; border: 2px solid rgba(255, 255, 255, 0.05) !important; object-fit: cover !important; }
+        .avatar-initial { display: flex !important; align-items: center !important; justify-content: center !important; background: linear-gradient(135deg, #1e3a8a, #2563eb) !important; color: white !important; font-weight: 800 !important; font-size: 16px !important; }
+
+        .name-tag { font-size: 14px !important; font-weight: 800 !important; color: #ffffff !important; line-height: 1.2 !important; }
+        .time-tag { font-size: 9px !important; font-weight: 700 !important; text-transform: uppercase !important; color: #475569 !important; letter-spacing: 0.05em !important; display: block !important; margin-top: 1px !important; }
+
+        .v-icon { margin-left: auto !important; color: #2563eb !important; font-size: 14px !important; }
+
+        /* ── NAVEGACIÓN ── */
+        .nav-controls {
+            display: flex !important;
+            justify-content: flex-end !important;
+            gap: 12px !important;
+            margin-top: 20px !important;
+        }
+
+        .btn-nav {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 50% !important;
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #0f172a !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 80, 0.03) !important;
+            font-size: 16px !important;
+        }
+        .btn-nav:hover {
+            background: #2563eb !important;
+            color: #ffffff !important;
+            border-color: #2563eb !important;
+            transform: scale(1.05) !important;
+        }
+
+        @media (max-width: 900px) {
+            .header-content { flex-direction: column !important; align-items: flex-start !important; gap: 20px !important; }
+            .rating-box { border-right: none !important; border-left: 2px solid #2563eb !important; padding-right: 0 !important; padding-left: 15px !important; text-align: left !important; }
+            .rating-stars { justify-content: flex-start !important; }
+            .review-card { flex: 0 0 85vw !important; padding: 28px 22px !important; }
+            .nav-controls { justify-content: center !important; }
+        }
+    </style>
+</head>
+<body>
+
+<section id="reviews-premium-compact">
+    
+    <div class="bg-blueprint"></div>
+    <div class="bg-noise"></div>
+    <div class="met-glow glow-tr"></div>
+    <div class="met-glow glow-bl"></div>
+
+    <div class="container-premium">
+        
+        <div class="header-content">
+            <h2 class="h-title">
+                Opiniones que validan<br>nuestra <em>visión digital.</em>
+            </h2>
+            <div class="rating-box">
+                <span class="rating-num">5.0</span>
+                <div class="rating-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <span class="rating-label">18 testimonios reales</span>
+            </div>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-track" id="track">
+                
+                <!-- Card 1 -->
+                <div class="review-card">
+                    <span class="quote-mark">“</span>
+                    <p class="review-txt-body">Excelente trabajo, se encargaron del rediseño web de mi negocio. Muy profesionales y entregaron antes del plazo pactado. Los recomiendo plenamente.</p>
+                    <div class="card-divider"></div>
+                    <div class="reviewer-footer">
+                        <div class="avatar-initial">L</div>
+                        <div class="tag-meta">
+                            <h4 class="name-tag">Luis Alexis Hernandez</h4>
+                            <span class="time-tag">hace 5 meses</span>
+                        </div>
+                        <i class="fa-solid fa-circle-check v-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="review-card">
+                    <span class="quote-mark">“</span>
+                    <p class="review-txt-body">Realizan los trabajos con mucha calidad y empeño, se nota que le ponen corazón además de ser muy atentos con cada detalle del proceso creativo.</p>
+                    <div class="card-divider"></div>
+                    <div class="reviewer-footer">
+                        <img src="https://i.pravatar.cc/100?img=47" alt="Avatar" class="avatar">
+                        <div class="tag-meta">
+                            <h4 class="name-tag">Paulina Itxul Gonzalez</h4>
+                            <span class="time-tag">hace 5 meses</span>
+                        </div>
+                        <i class="fa-solid fa-circle-check v-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="review-card">
+                    <span class="quote-mark">“</span>
+                    <p class="review-txt-body">Me encantó el logo que me hicieron, son muy organizados y limpios. El proceso de diseño fue impecable — talento real en cada etapa de la marca.</p>
+                    <div class="card-divider"></div>
+                    <div class="reviewer-footer">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="Avatar" class="avatar">
+                        <div class="tag-meta">
+                            <h4 class="name-tag">Elinne Corona</h4>
+                            <span class="time-tag">hace 5 meses</span>
+                        </div>
+                        <i class="fa-solid fa-circle-check v-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="review-card">
+                    <span class="quote-mark">“</span>
+                    <p class="review-txt-body">Excelente servicio, muy atentos en todo momento. Superaron mis expectativas con la entrega final. Un equipo que realmente escucha y propone soluciones.</p>
+                    <div class="card-divider"></div>
+                    <div class="reviewer-footer">
+                        <div class="avatar-initial" style="background:#15803d !important;">H</div>
+                        <div class="tag-meta">
+                            <h4 class="name-tag">Héctor Saavedra</h4>
+                            <span class="time-tag">hace 5 meses</span>
+                        </div>
+                        <i class="fa-solid fa-circle-check v-icon"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="nav-controls">
+                <button class="btn-nav" id="btnPrev" aria-label="Anterior"><i class="fa-solid fa-arrow-left"></i></button>
+                <button class="btn-nav" id="btnNext" aria-label="Siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('#reviews-premium-compact .review-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+
+        const track = document.getElementById('track');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+
+        const getStepWidth = () => {
+            const card = track.querySelector('.review-card');
+            return card ? card.offsetWidth + 24 : 330; 
+        };
+
+        btnPrev?.addEventListener('click', () => {
+            track.scrollBy({ left: -getStepWidth(), behavior: 'smooth' });
+        });
+
+        btnNext?.addEventListener('click', () => {
+            track.scrollBy({ left: getStepWidth(), behavior: 'smooth' });
+        });
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        track.addEventListener('mousedown', (e) => {
+            isDown = true;
+            track.classList.add('grabbing');
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+
+        const stopDragging = () => {
+            isDown = false;
+            track.classList.remove('grabbing');
+        };
+
+        track.addEventListener('mouseleave', stopDragging);
+        track.addEventListener('mouseup', stopDragging);
+
+        track.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            track.scrollLeft = scrollLeft - walk;
+        });
+    });
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes - Partum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ════════════════════════════════════════════════════════
+           ENCAPSULAMIENTO DE ESTILOS (SCOPE: #planes-partum-premium)
+        ════════════════════════════════════════════════════════ */
+
+        #planes-partum-premium {
+            padding: 120px 5% !important;
+            background-color: #010a13 !important; 
+            position: relative !important;
+            overflow: hidden !important;
+            color: white !important;
+            font-family: 'Montserrat', sans-serif !important;
+        }
+
+        #planes-partum-premium *,
+        #planes-partum-premium *::before,
+        #planes-partum-premium *::after {
+            box-sizing: border-box !important;
+        }
+
+        /* ── Textura de fondo ── */
+        #planes-partum-premium .bg-grid-texture {
+            position: absolute !important;
+            inset: 0 !important;
+            opacity: 0.05 !important;
+            pointer-events: none !important;
+            background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px) !important;
+            background-size: 50px 50px !important;
+            z-index: 0 !important;
+            mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 10%, transparent 80%) !important;
+            -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 10%, transparent 80%) !important;
+        }
+
+        /* ── Orbes de Luz Ambiental (NUEVO) ── */
+        #planes-partum-premium .light-orb {
+            position: absolute !important;
+            border-radius: 50% !important;
+            filter: blur(100px) !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            animation: orbFloat 10s infinite alternate ease-in-out !important;
+        }
+        #planes-partum-premium .orb-1 { top: -10%; left: -5%; width: 450px; height: 450px; background: rgba(0, 85, 255, 0.15) !important; }
+        #planes-partum-premium .orb-2 { bottom: -10%; right: -5%; width: 550px; height: 550px; background: rgba(79, 172, 254, 0.12) !important; animation-delay: -5s !important; }
+        #planes-partum-premium .orb-3 { top: 40%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: rgba(0, 85, 255, 0.1) !important; animation-delay: -2s !important; }
+
+        @keyframes orbFloat {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-40px) scale(1.1); }
+        }
+
+        /* ── TÍTULO (REDUCIDO) ── */
+        #planes-partum-premium .premium-title {
+            font-size: clamp(28px, 4vw, 48px) !important; /* Tamaño reducido */
+            font-weight: 900 !important;
+            letter-spacing: -.03em !important;
+            line-height: 1.2 !important;
+            color: #ffffff !important;
+            position: relative !important;
+            z-index: 10 !important;
+            margin-bottom: 20px !important;
+        }
+        #planes-partum-premium .premium-title em {
+            font-style: normal !important;
+            background: linear-gradient(135deg, #4facfe 0%, #0055ff 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        /* ── GRID CSS PURO ── */
+        #planes-partum-premium .planes-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 2rem !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            align-items: stretch !important; 
+            position: relative !important;
+            z-index: 10 !important;
+        }
+
+        @media (max-width: 992px) {
+            #planes-partum-premium .planes-grid {
+                grid-template-columns: 1fr !important; 
+                max-width: 500px !important;
+            }
+        }
+
+        /* ── TARJETAS GLASSMORPHISM ── */
+        #planes-partum-premium .glass-card {
+            background: rgba(255, 255, 255, 0.02) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            border-radius: 2.5rem !important;
+            padding: 2.5rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        /* Efecto de Luz por Cursor en Tarjetas */
+        #planes-partum-premium .glass-card::before,
+        #planes-partum-premium .card-destacada-inner::before {
+            content: "" !important;
+            position: absolute !important;
+            inset: 0 !important;
+            border-radius: inherit !important;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 85, 255, 0.2), transparent 40%) !important;
+            opacity: 0 !important;
+            transition: opacity 0.4s ease !important;
+            pointer-events: none !important;
+            z-index: 0 !important;
+        }
+        #planes-partum-premium .glass-card:hover::before,
+        #planes-partum-premium .card-destacada-inner:hover::before {
+            opacity: 1 !important;
+        }
+
+        /* Asegurar que el contenido quede por encima de la luz */
+        #planes-partum-premium .card-content-wrapper {
+            position: relative !important;
+            z-index: 10 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+        }
+
+        /* Hover Tarjetas Laterales */
+        #planes-partum-premium .card-normal {
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+        #planes-partum-premium .card-normal:hover {
+            border-color: rgba(0, 85, 255, 0.5) !important;
+            transform: translateY(-8px) !important;
+            box-shadow: 0 15px 40px -10px rgba(0, 85, 255, 0.2), inset 0 0 20px rgba(0, 85, 255, 0.05) !important;
+        }
+
+        /* Tarjeta Central */
+        #planes-partum-premium .card-destacada-wrapper {
+            background: linear-gradient(to bottom, rgba(0, 85, 255, 0.8), rgba(0, 85, 255, 0.1) 60%, transparent) !important;
+            padding: 1px !important;
+            border-radius: 2.5rem !important;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: relative !important;
+        }
+        
+        /* ── FORMACIÓN EN "U" INVERTIDA ── */
+        @media (min-width: 993px) {
+            #planes-partum-premium .planes-grid { 
+                margin-bottom: 60px !important; 
+            }
+            #planes-partum-premium .card-normal { 
+                transform: translateY(45px) !important; 
+            }
+            #planes-partum-premium .card-normal:hover {
+                transform: translateY(35px) !important;
+                border-color: rgba(0, 85, 255, 0.5) !important;
+            }
+            #planes-partum-premium .card-destacada-wrapper { 
+                transform: translateY(-25px) !important; 
+            }
+            #planes-partum-premium .card-destacada-wrapper:hover {
+                transform: translateY(-35px) scale(1.02) !important;
+            }
+        }
+
+        #planes-partum-premium .card-destacada-inner {
+            background: #020d1a !important; 
+            border-radius: calc(2.5rem - 1px) !important;
+            height: 100% !important;
+            padding: 2.5rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        #planes-partum-premium .badge-popular {
+            position: absolute !important;
+            top: 0 !important; 
+            right: 2.5rem !important;
+            background: linear-gradient(135deg, #0055ff, #4facfe) !important;
+            color: white !important;
+            font-size: 0.6rem !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.2em !important;
+            padding: 0.5rem 1.2rem !important;
+            border-radius: 0 0 0.75rem 0.75rem !important;
+            box-shadow: 0 8px 24px rgba(0, 85, 255, 0.4) !important;
+            z-index: 20 !important;
+        }
+
+        /* --- BOTONES --- */
+        #planes-partum-premium .btn-outline {
+            width: 100% !important;
+            padding: 1.2rem !important;
+            border-radius: 1rem !important;
+            border: 1px solid rgba(255,255,255,0.2) !important;
+            background: transparent !important;
+            color: white !important;
+            font-size: 0.65rem !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.2em !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            margin-top: auto !important; 
+            text-align: center !important;
+            text-decoration: none !important;
+            display: block !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        #planes-partum-premium .btn-outline:hover {
+            background: white !important;
+            color: black !important;
+            border-color: white !important;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2) !important;
+        }
+
+        #planes-partum-premium .btn-solid {
+            width: 100% !important;
+            padding: 1.2rem !important;
+            border-radius: 1rem !important;
+            background: white !important;
+            border: none !important;
+            color: #010a13 !important;
+            font-size: 0.65rem !important;
+            font-weight: 900 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.2em !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            margin-top: auto !important;
+            text-align: center !important;
+            text-decoration: none !important;
+            display: block !important;
+            box-shadow: 0 20px 40px -10px rgba(0, 85, 255, 0.5) !important;
+            position: relative !important;
+            z-index: 10 !important;
+        }
+        #planes-partum-premium .btn-solid:hover {
+            transform: scale(0.97) !important;
+            background: #e2e8f0 !important;
+        }
+
+        /* --- TIPOGRAFÍAS INTERNAS --- */
+        #planes-partum-premium .plan-title { font-size: 1.6rem !important; font-weight: 800 !important; margin-bottom: 0.5rem !important; color: white !important; }
+        #planes-partum-premium .plan-subtitle { color: #ffffff !important; font-size: 0.65rem !important; text-transform: uppercase !important; font-weight: 800 !important; letter-spacing: 0.2em !important; margin-bottom: 1.5rem !important; }
+        #planes-partum-premium .plan-price { font-size: 2.4rem !important; font-weight: 900 !important; color: white !important; }
+        
+        #planes-partum-premium .plan-list { list-style: none !important; padding: 0 !important; margin: 0 0 2.5rem 0 !important; flex-grow: 1 !important; }
+        #planes-partum-premium .plan-list li { display: flex !important; align-items: flex-start !important; gap: 0.8rem !important; font-size: 0.95rem !important; color: #cbd5e1 !important; margin-bottom: 1.2rem !important; line-height: 1.4 !important; font-weight: 400 !important; }
+        #planes-partum-premium .plan-list i.fa-check { color: #4facfe !important; margin-top: 0.25rem !important; font-size: 0.9rem !important; }
+
+    </style>
+</head>
+<body>
+
+<section id="planes-partum-premium">
+    <div class="bg-grid-texture"></div>
+    
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+
+    <div class="relative z-10">
+        
+        <div class="text-center mb-16 lg:mb-24">
+            <h2 class="premium-title">
+                 Nuestros paquetes<br>
+                 <em>de alto impacto.</em>
+            </h2>
+            <p class="text-slate-400 uppercase text-[9px] md:text-[10px] tracking-[0.4em] font-bold mt-6">
+                Inversión estratégica para resultados exponenciales
+            </p>
+        </div>
+
+        <div class="planes-grid">
+
+            <div class="glass-card card-normal interactive-light">
+                <div class="card-content-wrapper">
+                    <div class="mb-8">
+                        <h3 class="plan-title">Essential Kit</h3>
+                        <p class="plan-subtitle">Presencia & Marca</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="plan-price">$1,200</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="plan-list">
+                        <li><i class="fa-solid fa-check"></i><span>Identidad Visual (Logo & UI Kit)</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Web One-Page de Alto Impacto</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Optimización SEO Estructural</span></li>
+                    </ul>
+                    
+                    <a href="/contacto/" class="btn-outline">Cotizar Proyecto</a>
+                </div>
+            </div>
+
+            <div class="card-destacada-wrapper interactive-light">
+                <div class="card-destacada-inner">
+                    <div class="badge-popular">Más Popular</div>
+                    
+                    <div class="card-content-wrapper">
+                        <div class="mb-8 mt-4">
+                            <h3 class="plan-title">Growth Engine</h3>
+                            <p class="plan-subtitle">Web + Ads + Conversión</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="plan-price">$2,500</span>
+                                <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
+                            </div>
+                        </div>
+
+                        <ul class="plan-list">
+                            <li><i class="fa-solid fa-fire text-orange-500 animate-pulse mt-1"></i><span class="text-white font-medium">Funnel de Ventas Completo</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Gestión de Meta & Google Ads</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Landing Pages Optimizadas</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Dashboard de Resultados 24/7</span></li>
+                        </ul>
+
+                        <a href="/contacto/" class="btn-solid">Hablar con un Especialista</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card card-normal interactive-light">
+                <div class="card-content-wrapper">
+                    <div class="mb-8">
+                        <h3 class="plan-title">Elite Partner</h3>
+                        <p class="plan-subtitle">Solución 360° Premium</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="plan-price">$4,500</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
+                        </div>
+                    </div>
+
+                    <ul class="plan-list">
+                        <li><i class="fa-solid fa-check"></i><span>Todo lo del Plan Performance</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Rebranding & Estrategia de Marca</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Estrategia de Contenido & CRM</span></li>
+                        <li><i class="fa-solid fa-star text-amber-400 mt-1"></i><span class="text-white font-medium">Soporte Prioritario VIP</span></li>
+                    </ul>
+
+                    <a href="/contacto/" class="btn-outline">Solicitar Consultoría</a>
+                </div>
+            </div>
+
+        </div> 
+        
+        <div class="mt-16 lg:mt-24 text-center">
+            <p class="text-slate-600 text-[9px] font-bold uppercase tracking-[0.5em] mb-4">
+                Sistemas de alto rendimiento para el siglo XXI
+            </p>
+        </div>
+        
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('#planes-partum-premium .interactive-light');
+        
+        cards.forEach(wrapper => {
+            const card = wrapper.classList.contains('card-destacada-wrapper') 
+                         ? wrapper.querySelector('.card-destacada-inner') 
+                         : wrapper;
+
+            wrapper.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+
+<section id="cta-final" class="py-12 md:py-24 bg-[#F8FAFC] relative overflow-hidden">
+    
+    <div class="absolute top-[-5%] left-[-5%] w-[40%] h-[40%] bg-indigo-100/40 rounded-full filter blur-[80px] md:blur-[120px]"></div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-16 shadow-2xl shadow-slate-200/50 border border-white relative overflow-hidden">
+                
+                <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 mb-12 md:mb-16">
+                    
+                    <div class="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1">
+                        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-600 text-[9px] md:text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6 md:mb-8">
+                            <i class="fas fa-star animate-pulse"></i> Cupos Limitados por mes
+                        </div>
+                        
+                        <h2 style="font-size: clamp(30px, 4.5vw, 52px) !important; font-weight: 900 !important; letter-spacing: -0.04em !important; line-height: 1.1 !important;" class="text-slate-900 mb-6 md:mb-8">
+                            ¿Listo para <br class="hidden md:block">
+                            <span class="text-indigo-600">vender más?</span>
+                        </h2>
+                        
+                        <p class="text-slate-500 text-base md:text-xl leading-relaxed mb-8 md:mb-10 px-2 md:px-0">
+                            Agenda una <strong class="text-slate-900">asesoría gratuita</strong> y conoce el plan estratégico que diseñaremos para tu marca.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <a href="/contacto/" 
+                               class="no-underline inline-flex items-center justify-center w-full sm:w-auto bg-slate-900 text-white px-8 md:px-10 py-4 md:py-5 rounded-xl md:rounded-2xl font-black shadow-xl hover:bg-indigo-600 transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base">
+                                COTIZAR AHORA
+                            </a>
+                            
+                            <a href="https://wa.me/525616044547?text=Hola,%20me%20gustaría%20más%20información" 
+                               target="_blank"
+                               class="no-underline w-full sm:w-auto bg-emerald-50 text-emerald-600 border border-emerald-100 px-8 md:px-10 py-4 md:py-5 rounded-xl md:rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-emerald-600 hover:text-white transition-all duration-300 text-sm md:text-base">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 bg-slate-50 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 border border-slate-100 order-1 lg:order-2">
+                        <form action="#" class="grid grid-cols-1 gap-3 md:gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                                <input type="text" placeholder="Nombre" class="w-full bg-white border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none shadow-sm">
+                                <input type="email" placeholder="Email" class="w-full bg-white border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none shadow-sm">
+                            </div>
+                            <input type="tel" placeholder="WhatsApp" class="w-full bg-white border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none shadow-sm">
+                            <input type="text" placeholder="Empresa" class="w-full bg-white border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none shadow-sm">
+                            <textarea placeholder="¿Cuál es tu meta?" rows="2" class="w-full bg-white border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 outline-none shadow-sm"></textarea>
+                            <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 text-sm uppercase tracking-wider">
+                                ENVIAR SOLICITUD
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 left-0 w-full bg-slate-900 py-3 md:py-4 overflow-hidden">
+                    <div class="flex whitespace-nowrap animate-marquee">
+                        <div class="flex items-center gap-8 md:gap-12 px-4 md:px-6">
+                            <span class="text-white/80 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <i class="fas fa-check-circle text-indigo-400"></i> Sin Compromiso
+                            </span>
+                            <span class="text-white/80 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <i class="fas fa-check-circle text-indigo-400"></i> Respuesta < 24h
+                            </span>
+                            <span class="text-white/80 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <i class="fas fa-check-circle text-indigo-400"></i> Privacidad 100%
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-8 md:gap-12 px-4 md:px-6">
+                            <span class="text-white/80 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <i class="fas fa-check-circle text-indigo-400"></i> Sin Compromiso
+                            </span>
+                            <span class="text-white/80 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <i class="fas fa-check-circle text-indigo-400"></i> Respuesta < 24h
+                            </span>
+                            <span class="text-white/80 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <i class="fas fa-check-circle text-indigo-400"></i> Privacidad 100%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 15s linear infinite;
+    }
+    @media (max-width: 768px) {
+        .animate-marquee {
+            animation: marquee 10s linear infinite;
+        }
+    }
+</style>
