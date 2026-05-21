@@ -1,110 +1,38 @@
-﻿
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Partum Design: estudio creativo y técnico para identidad visual, desarrollo web, marketing digital y producción audiovisual con enfoque premium y alto rendimiento.">
   <meta name="theme-color" content="#010a13">
-  <meta name="description" content="Partum Design: diseño, desarrollo web, marketing digital y producción audiovisual con una dirección creativa de alto rendimiento.">
   <title>Partum Design | Inicio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="assets/css/global.css">
-  <style>
-    #partum-hero{position:relative;isolation:isolate;min-height:calc(100svh - var(--partum-header-height));display:grid;align-items:center;overflow:clip;background:#010a13;padding:clamp(32px,5vw,72px) 0}
-    #partum-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(99,102,241,.26),transparent 22%),radial-gradient(circle at 80% 10%,rgba(16,185,129,.12),transparent 18%),linear-gradient(180deg,rgba(1,10,19,.1),rgba(1,10,19,.76));z-index:1;pointer-events:none}
-    #partum-hero .partum-hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(1.05) contrast(1.02);z-index:0}
-    #partum-hero .partum-hero__grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E");opacity:.18;mix-blend-mode:soft-light;z-index:2;pointer-events:none}
-    #partum-hero .partum-hero__shell,#partum-trust .partum-trust__shell,#partum-services .partum-services__shell,#partum-cta .partum-cta__shell{position:relative;z-index:3;width:min(100%,var(--partum-content-max));margin-inline:auto;padding-inline:clamp(18px,4vw,48px)}
-    #partum-hero .partum-hero__grid,#partum-trust .partum-trust__grid,#partum-cta .partum-cta__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:clamp(24px,4vw,52px);align-items:center}
-    #partum-hero .partum-hero__eyebrow,.partum-kicker{margin:0 0 14px;color:var(--partum-accent-strong);font-size:.78rem;font-weight:800;letter-spacing:.24em;text-transform:uppercase}
-    #partum-hero .partum-hero__title,#partum-trust .partum-trust__title,#partum-services .partum-services__title,#partum-cta .partum-cta__title{margin:0;font-family:var(--partum-font-display);font-weight:900;line-height:.92;letter-spacing:-.06em;color:var(--partum-text);-webkit-text-stroke:.35px rgba(255,255,255,.08)}
-    #partum-hero .partum-hero__title{max-width:13ch;font-size:clamp(3rem,7vw,6.25rem)}
-    #partum-hero .partum-hero__title span,#partum-trust .partum-trust__title span,#partum-services .partum-services__title span{display:block;color:var(--partum-accent-strong)}
-    #partum-hero .partum-hero__copy,#partum-trust .partum-trust__copy,#partum-services .partum-services__copy,#partum-cta .partum-cta__copy{margin:22px 0 0;max-width:68ch;color:var(--partum-text-soft);font-size:clamp(1rem,1.2vw,1.08rem);line-height:1.8}
-    #partum-hero .partum-hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-    #partum-hero .partum-hero__button,#partum-cta .partum-cta__action{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:14px;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;transition:transform 180ms ease,box-shadow 180ms ease,filter 180ms ease}
-    #partum-hero .partum-hero__button--primary{background:linear-gradient(135deg,var(--partum-accent),var(--partum-accent-strong));color:#fff;box-shadow:0 18px 36px rgba(99,102,241,.24)}
-    #partum-hero .partum-hero__button--ghost{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);color:var(--partum-text)}
-    #partum-hero .partum-hero__button:hover,#partum-hero .partum-hero__button:focus-visible,#partum-cta .partum-cta__action:hover,#partum-cta .partum-cta__action:focus-visible{transform:translate3d(0,-2px,0)}
-    #partum-hero .partum-hero__proof,#partum-trust .partum-trust__logos{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
-    #partum-hero .partum-hero__proof-item,#partum-trust .partum-trust__logo{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--partum-text-soft);font-size:.86rem;font-weight:700;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-    #partum-hero .partum-hero__panel,#partum-trust .partum-trust__panel,#partum-cta .partum-cta__panel{padding:22px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--partum-shadow-lg);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
-    #partum-hero .partum-hero__panel-top,#partum-trust .partum-trust__panel-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
-    #partum-hero .partum-hero__live,#partum-trust .partum-trust__panel-year{color:var(--partum-accent-strong);font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-    #partum-hero .partum-hero__dot{width:8px;height:8px;border-radius:999px;background:var(--partum-success);box-shadow:0 0 0 0 rgba(16,185,129,.45);animation:partumPulse 1.9s ease-in-out infinite}
-    #partum-hero .partum-hero__dashboard{display:grid;gap:14px}
-    #partum-hero .partum-hero__metric-grid,#partum-trust .partum-trust__stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    #partum-trust .partum-trust__stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:22px}
-    #partum-hero .partum-hero__metric,#partum-trust .partum-trust__stat{padding:16px;border-radius:18px;background:rgba(1,10,19,.48);border:1px solid rgba(255,255,255,.08);text-align:center}
-    #partum-hero .partum-hero__metric-label,#partum-trust .partum-trust__stat-label{display:block;color:var(--partum-text-muted);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-    #partum-hero .partum-hero__metric-value,#partum-trust .partum-trust__stat-value,#partum-trust .partum-trust__big-number{display:block;color:var(--partum-text);font-family:var(--partum-font-display);font-weight:900;line-height:1;letter-spacing:-.05em}
-    #partum-hero .partum-hero__metric-value{margin-top:10px;font-size:clamp(1.5rem,3vw,2.55rem)}
-    #partum-hero .partum-hero__metric-value--accent,#partum-trust .partum-trust__stat-value--accent,#partum-trust .partum-trust__big-number span:last-child{color:var(--partum-accent-strong)}
-    #partum-hero .partum-hero__feature-list,#partum-services .partum-flipcard__list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
-    #partum-hero .partum-hero__feature,#partum-services .partum-flipcard__list li{display:flex;align-items:flex-start;gap:12px}
-    #partum-hero .partum-hero__feature{padding:15px 16px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
-    #partum-hero .partum-hero__feature i,#partum-trust .partum-trust__feature-icon,#partum-services .partum-flipcard__icon{color:var(--partum-accent-strong)}
-    #partum-hero .partum-hero__feature strong,#partum-trust .partum-trust__feature h3,#partum-services .partum-flipcard__title{display:block;color:var(--partum-text);font-weight:800}
-    #partum-hero .partum-hero__feature strong{margin-bottom:4px;font-size:.9rem}
-    #partum-hero .partum-hero__feature span,#partum-trust .partum-trust__feature p,#partum-services .partum-flipcard__copy{display:block;color:var(--partum-text-muted);font-size:.84rem;line-height:1.55}
-    #partum-trust{position:relative;isolation:isolate;padding:clamp(72px,9vw,132px) 0;background:radial-gradient(circle at top left,rgba(99,102,241,.14),transparent 26%),radial-gradient(circle at bottom right,rgba(16,185,129,.08),transparent 24%),linear-gradient(180deg,rgba(255,255,255,.02),transparent 18%)}
-    #partum-trust::before,#partum-services::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:42px 42px;pointer-events:none;opacity:.35}
-    #partum-trust .partum-trust__title{max-width:12ch;font-size:clamp(2.3rem,5vw,4.7rem)}
-    #partum-trust .partum-trust__features{display:grid;gap:14px;margin-top:26px}
-    #partum-trust .partum-trust__feature{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;padding:18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
-    #partum-trust .partum-trust__feature-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(99,102,241,.16)}
-    #partum-trust .partum-trust__feature-icon--success{background:rgba(16,185,129,.14);color:#a7f3d0}
-    #partum-trust .partum-trust__big-number{display:flex;align-items:flex-start;gap:6px;margin:0;font-size:clamp(4.3rem,10vw,7.2rem);line-height:.88}
-    #partum-trust .partum-trust__big-number span:last-child{font-size:.4em;margin-top:12px}
-    #partum-trust .partum-trust__big-copy{margin:14px 0 0;color:var(--partum-text-soft);font-size:.96rem;line-height:1.75}
-    #partum-services{position:relative;padding:clamp(84px,10vw,136px) 0;background:linear-gradient(180deg,rgba(255,255,255,.015),rgba(255,255,255,.03))}
-    #partum-services .partum-services__header{display:grid;gap:14px;margin-bottom:clamp(26px,4vw,42px)}
-    #partum-services .partum-services__title{max-width:13ch;font-size:clamp(2.4rem,5vw,4.8rem)}
-    #partum-services .partum-services__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
-    #partum-services .partum-flipcard{position:relative;display:block;min-height:380px;perspective:1800px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-    #partum-services .partum-flipcard__toggle{position:absolute;inset:0;opacity:0;margin:0;pointer-events:none}
-    #partum-services .partum-flipcard__inner{position:relative;width:100%;height:100%;min-height:inherit;transform-style:preserve-3d;transition:transform 700ms cubic-bezier(.16,1,.3,1)}
-    #partum-services .partum-flipcard:hover .partum-flipcard__inner,#partum-services .partum-flipcard:focus-within .partum-flipcard__inner,#partum-services .partum-flipcard__toggle:checked + .partum-flipcard__inner{transform:rotateY(180deg)}
-    #partum-services .partum-flipcard__face{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:22px;border-radius:24px;background:radial-gradient(circle at top right,rgba(99,102,241,.18),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--partum-shadow-md);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
-    #partum-services .partum-flipcard__face--back{transform:rotateY(180deg);background:radial-gradient(circle at top left,rgba(16,185,129,.14),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035))}
-    #partum-services .partum-flipcard__eyebrow{display:block;position:relative;z-index:1;color:var(--partum-text-muted);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-    #partum-services .partum-flipcard__icon{position:relative;z-index:1;display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:rgba(99,102,241,.14);border:1px solid rgba(129,140,248,.18);font-size:1.6rem;margin-top:16px}
-    #partum-services .partum-flipcard__title{display:block;position:relative;z-index:1;margin-top:18px;font-size:clamp(1.4rem,2vw,1.75rem);line-height:1.02;letter-spacing:-.05em}
-    #partum-services .partum-flipcard__copy{display:block;position:relative;z-index:1;margin-top:12px}
-    #partum-services .partum-flipcard__hint{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;margin-top:auto;color:var(--partum-accent-strong);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-    #partum-services .partum-flipcard__list li{color:var(--partum-text-soft);font-size:.9rem;line-height:1.6}
-    #partum-services .partum-flipcard__list i{margin-top:3px;color:var(--partum-success);flex:0 0 auto}
-    #partum-services .partum-flipcard__link{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:18px;padding:0 16px;border-radius:14px;background:linear-gradient(135deg,var(--partum-accent),var(--partum-accent-strong));color:#fff;font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-align:center}
-    #partum-cta{padding:clamp(72px,9vw,120px) 0;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
-    #partum-cta .partum-cta__panel{padding:clamp(24px,4vw,42px);border-radius:30px;background:radial-gradient(circle at top left,rgba(99,102,241,.18),transparent 28%),linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);box-shadow:var(--partum-shadow-lg);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
-    #partum-cta .partum-cta__title{font-size:clamp(2rem,4.4vw,4rem)}
-    @keyframes partumPulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.48)}50%{box-shadow:0 0 0 10px rgba(16,185,129,0)}}
-    @media (max-width:1100px){#partum-hero .partum-hero__grid,#partum-trust .partum-trust__grid,#partum-cta .partum-cta__grid{grid-template-columns:1fr}#partum-services .partum-services__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width:768px){#partum-hero{min-height:auto;padding:30px 0 42px}#partum-hero .partum-hero__button,#partum-cta .partum-cta__action{width:100%}#partum-hero .partum-hero__metric-grid,#partum-trust .partum-trust__stats,#partum-services .partum-services__grid{grid-template-columns:1fr}#partum-services .partum-flipcard{min-height:360px}}
-    @media (max-width:540px){#partum-hero .partum-hero__panel,#partum-trust .partum-trust__panel,#partum-cta .partum-cta__panel{border-radius:22px}#partum-services .partum-flipcard__face{padding:18px}#partum-trust .partum-trust__feature{grid-template-columns:1fr}}
-  </style>
 </head>
 <body>
   <header id="partum-site-header" class="partum-header" data-partum-header>
     <div class="partum-header__inner">
-      <a class="partum-brand" href="/" aria-label="Ir a inicio de Partum Design">
+      <a class="partum-brand" href="/" aria-label="Partum Design, inicio">
         <img class="partum-brand__mark" src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design">
       </a>
+
       <button class="partum-nav__toggle" type="button" aria-label="Abrir o cerrar menú" aria-controls="partum-primary-nav" aria-expanded="false" data-partum-menu-toggle>
         <span class="partum-visually-hidden">Menú principal</span>
         <span class="partum-nav__toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
+
       <nav id="partum-primary-nav" class="partum-nav" data-partum-nav aria-label="Navegación principal">
         <ul class="partum-nav__list">
           <li class="partum-nav__item"><a class="partum-nav__link" href="/">Inicio</a></li>
           <li class="partum-nav__item"><a class="partum-nav__link" href="/nosotros/">Nosotros</a></li>
           <li class="partum-nav__item partum-nav__item--services" data-partum-services-item>
-            <button class="partum-nav__trigger partum-nav__trigger--services" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="partum-services-menu" data-partum-services-trigger>
+            <a class="partum-nav__trigger partum-nav__trigger--services" href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="partum-services-menu" data-partum-services-trigger>
               Servicios <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-            </button>
+            </a>
             <div class="partum-nav__panel partum-nav__panel--services" id="partum-services-menu" data-partum-services-panel>
               <ul class="partum-nav__panel-list">
                 <li><a class="partum-nav__panel-link" href="/identidad-visual/"><span><span class="partum-nav__panel-title">Identidad Visual y Corporativa</span><span class="partum-nav__panel-copy">Sistemas de marca, piezas y lineamientos visuales.</span></span></a></li>
@@ -122,99 +50,750 @@
   </header>
 
   <main id="partum-home-main">
-    <section id="partum-hero" aria-labelledby="partum-hero-title">
-      <video class="partum-hero__video" autoplay muted loop playsinline preload="none" aria-hidden="true">
-        <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/11690474-uhd_3840_2160_24fps.mp4" type="video/mp4">
+    <section id="premium-hero-section" aria-labelledby="premium-hero-title">
+      <video autoplay loop muted playsinline class="video-bg" aria-hidden="true" preload="none">
+        <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/2383633_Angel_De_La_Independencia_Mexico_City_3840x2160.mp4" type="video/mp4">
       </video>
-      <div class="partum-hero__grain" aria-hidden="true"></div>
-      <div class="partum-hero__shell">
-        <div class="partum-hero__grid">
-          <div class="partum-animate-fade" data-partum-reveal>
-            <p class="partum-hero__eyebrow">Partum Design Studio</p>
-            <h1 class="partum-hero__title" id="partum-hero-title">Experiencias digitales <span>con precisión premium</span></h1>
-            <p class="partum-hero__copy">Diseñamos identidades, sitios web, campañas y contenido audiovisual con una base técnica sólida, alto criterio visual y una ejecución pensada para convertir sin sacrificar velocidad.</p>
-            <div class="partum-hero__actions">
-              <a class="partum-hero__button partum-hero__button--primary" href="/contacto/">Iniciar proyecto <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-              <a class="partum-hero__button partum-hero__button--ghost" href="/nosotros/">Conocer el estudio</a>
-            </div>
-            <div class="partum-hero__proof" aria-label="Indicadores de confianza">
-              <span class="partum-hero__proof-item"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Core Web Vitals first</span>
-              <span class="partum-hero__proof-item"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Desarrollo defensivo</span>
-              <span class="partum-hero__proof-item"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i> Dirección creativa high-end</span>
-            </div>
-          </div>
-          <aside class="partum-hero__panel partum-animate-scale" data-partum-reveal aria-label="Panel de desempeño">
-            <div class="partum-hero__panel-top">
-              <div class="partum-hero__panel-label"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> Radar de crecimiento</div>
-              <div class="partum-hero__live"><span class="partum-hero__dot"></span> En vivo</div>
-            </div>
-            <div class="partum-hero__dashboard">
-              <div class="partum-hero__metric-grid">
-                <div class="partum-hero__metric"><span class="partum-hero__metric-label">Velocidad de carga</span><span class="partum-hero__metric-value">95+</span></div>
-                <div class="partum-hero__metric"><span class="partum-hero__metric-label">Escalabilidad</span><span class="partum-hero__metric-value partum-hero__metric-value--accent">A+</span></div>
-              </div>
-              <ul class="partum-hero__feature-list">
-                <li class="partum-hero__feature"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><strong>Arquitectura limpia</strong><span>HTML, CSS y JS nativos, con estructura preparada para crecer página por página.</span></div></li>
-                <li class="partum-hero__feature"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><strong>Interacciones fluidas</strong><span>Animaciones ligeras, estados accesibles y comportamiento táctil correcto en móvil.</span></div></li>
-                <li class="partum-hero__feature"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><div><strong>Conversión real</strong><span>Diseño enfocado en posicionamiento, claridad comercial y captación de leads.</span></div></li>
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
+      <div class="overlay" aria-hidden="true"></div>
+      <div class="grid-overlay" aria-hidden="true"></div>
+      <div class="orb orb-tl" aria-hidden="true"></div>
+      <div class="orb orb-br" aria-hidden="true"></div>
+      <canvas id="particles" aria-hidden="true"></canvas>
 
-    <section id="partum-trust" aria-labelledby="partum-trust-title">
-      <div class="partum-trust__shell">
-        <div class="partum-trust__grid">
-          <div class="partum-animate-fade" data-partum-reveal>
-            <div class="partum-trust__badge"><span class="partum-trust__badge-dot"></span><span class="partum-kicker">Confianza verificable</span></div>
-            <h2 class="partum-trust__title" id="partum-trust-title">Tu marca <span>con respaldo serio</span></h2>
-            <p class="partum-trust__copy">No construimos piezas sueltas. Diseñamos sistemas visuales y plataformas digitales que sostienen el crecimiento, mantienen coherencia y reducen fricción en cada punto de contacto.</p>
-            <div class="partum-trust__features">
-              <article class="partum-trust__feature"><div class="partum-trust__feature-icon"><i class="fa-solid fa-sitemap" aria-hidden="true"></i></div><div><h3>Estrategia integral</h3><p>Unimos marca, desarrollo y marketing en una sola línea de ejecución para evitar inconsistencias y retrabajos.</p></div></article>
-              <article class="partum-trust__feature"><div class="partum-trust__feature-icon partum-trust__feature-icon--success"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></div><div><h3>Rendimiento extremo</h3><p>Priorizamos Core Web Vitals, carga progresiva y lógica defensiva para que la experiencia sea rápida y estable.</p></div></article>
+      <div class="hero-inner">
+        <div class="hero-left" data-partum-reveal>
+          <div class="badge">
+            <div class="avatar-stack" aria-hidden="true">
+              <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/Mesa-de-trabajo-1@300x-1-e1771264091734.png" alt=""></div>
+              <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/imgi_1_logo.fw_.png" alt=""></div>
+              <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/Mesa-de-trabajo-1@300x-2-e1771263865148.png" alt=""></div>
+              <div class="av av-count">+200</div>
             </div>
+            <span class="badge-text">Liderando la innovación digital</span>
           </div>
-          <aside class="partum-trust__panel partum-animate-scale" data-partum-reveal aria-label="Resumen de confianza">
-            <div class="partum-trust__panel-top"><span class="partum-trust__panel-kicker">Track record</span><span class="partum-trust__panel-year">2026</span></div>
-            <p class="partum-trust__big-number"><span>4</span><span>+</span></p>
-            <p class="partum-trust__big-copy">Años de evolución creativa y técnica, con una mentalidad de estudio: precisión visual, decisiones defendibles y entregas pensadas para escalar.</p>
-            <div class="partum-trust__stats">
-              <div class="partum-trust__stat"><span class="partum-trust__stat-value">200+</span><span class="partum-trust__stat-label">Proyectos</span></div>
-              <div class="partum-trust__stat"><span class="partum-trust__stat-value partum-trust__stat-value--accent">99%</span><span class="partum-trust__stat-label">Satisfacción</span></div>
-              <div class="partum-trust__stat"><span class="partum-trust__stat-value">24/7</span><span class="partum-trust__stat-label">Soporte</span></div>
-            </div>
-            <div class="partum-trust__logos" aria-label="Sectores atendidos"><span class="partum-trust__logo">Branding</span><span class="partum-trust__logo">Web</span><span class="partum-trust__logo">Ads</span><span class="partum-trust__logo">Video</span><span class="partum-trust__logo">E-commerce</span></div>
-          </aside>
-        </div>
-      </div>
-    </section>
-    <section id="partum-services" aria-labelledby="partum-services-title">
-      <div class="partum-services__shell">
-        <div class="partum-services__header">
-          <p class="partum-kicker">Servicios</p>
-          <h2 class="partum-services__title" id="partum-services-title">Soluciones que <span>trabajan juntas</span></h2>
-          <p class="partum-services__copy">Cada servicio está diseñado para funcionar como parte de un sistema completo. La estética no va separada de la velocidad, y la conversión no va separada de la experiencia.</p>
-        </div>
-        <div class="partum-services__grid">
-          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Identidad Visual y Corporativa"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 01</span><span class="partum-flipcard__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span><span class="partum-flipcard__title">Identidad Visual y Corporativa</span><span class="partum-flipcard__copy">Creamos sistemas visuales consistentes, memorables y listos para desplegarse en cada punto de contacto.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Branding con dirección clara</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Logotipo, variantes y lineamientos visuales.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Paleta, tipografía, recursos gráficos y usos correctos.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Materiales listos para redes, impresión y sitio web.</span></li></ul></span><a class="partum-flipcard__link" href="/identidad-visual/">Ver servicio</a></span></span></label>
-          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Desarrollo Web"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 02</span><span class="partum-flipcard__icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span><span class="partum-flipcard__title">Desarrollo Web</span><span class="partum-flipcard__copy">Sitios rápidos, escalables y construidos con HTML, CSS y JS limpios para maximizar rendimiento y claridad.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Arquitectura lista para crecer</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Maquetación nativa, semántica y defensiva.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Optimización para Core Web Vitals y mobile first.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Componentes modulares y enlaces limpios.</span></li></ul></span><a class="partum-flipcard__link" href="/desarrollo-web/">Ver servicio</a></span></span></label>
-          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Marketing Digital"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 03</span><span class="partum-flipcard__icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span><span class="partum-flipcard__title">Marketing Digital</span><span class="partum-flipcard__copy">Estrategia, pauta y contenidos orientados a performance, con medición y ajuste continuo.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Crecimiento con foco comercial</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Campañas, remarketing y segmentación estratégica.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Contenido alineado con objetivos de adquisición.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Reportes accionables para tomar decisiones.</span></li></ul></span><a class="partum-flipcard__link" href="/marketing-digital/">Ver servicio</a></span></span></label>
-          <label class="partum-flipcard partum-animate-fade" data-partum-reveal><input class="partum-flipcard__toggle" type="checkbox" aria-label="Voltear Producción Audiovisual"><span class="partum-flipcard__inner"><span class="partum-flipcard__face partum-flipcard__face--front"><span><span class="partum-flipcard__eyebrow">Servicio 04</span><span class="partum-flipcard__icon"><i class="fa-solid fa-video" aria-hidden="true"></i></span><span class="partum-flipcard__title">Producción Audiovisual</span><span class="partum-flipcard__copy">Video, dirección creativa y piezas dinámicas que elevan percepción y refuerzan narrativa de marca.</span></span><span class="partum-flipcard__hint"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Toca para ver entregables</span></span><span class="partum-flipcard__face partum-flipcard__face--back"><span><span class="partum-flipcard__eyebrow">Entregables clave</span><span class="partum-flipcard__title">Contenido con fuerza visual</span><ul class="partum-flipcard__list"><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Video comercial, reels, motion y contenidos de marca.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Dirección de arte consistente y narrativa clara.</span></li><li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Piezas listas para campañas y lanzamientos.</span></li></ul></span><a class="partum-flipcard__link" href="/produccion-audiovisual/">Ver servicio</a></span></span></label>
-        </div>
-      </div>
-    </section>
 
-    <section id="partum-cta" aria-labelledby="partum-cta-title">
-      <div class="partum-cta__shell">
-        <div class="partum-cta__panel partum-animate-scale" data-partum-reveal>
-          <div class="partum-cta__grid">
+          <h1 id="premium-hero-title">
+            <span class="headline-accent">Escalamos tu </span>
+            <span class="headline-solid">Visión digital.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Transformamos ideas en <strong>productos digitales de alto rendimiento</strong>. Especialistas en experiencias premium que impulsan el crecimiento real de tu negocio.
+          </p>
+
+          <div class="cta-row">
+            <a href="/contacto/" class="btn-primary">Cotiza tu proyecto</a>
+            <a href="https://www.facebook.com/share/v/1AhCervjnu/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+              <span class="play-ring"><i class="fa-solid fa-play"></i></span>
+              Ver Demo
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right" data-partum-reveal>
+          <div class="chip chip-roi">
+            <div class="chip-roi-label">Retorno total</div>
+            <div class="chip-roi-val" data-countup="240" data-prefix="+" data-suffix="%">+240%</div>
+          </div>
+          <div class="chip chip-user">
+            <div class="chip-avatar">ER</div>
             <div>
-              <h2 class="partum-cta__title" id="partum-cta-title">Si quieres una presencia digital seria, empieza aquí.</h2>
-              <p class="partum-cta__copy">Podemos estructurar tu siguiente etapa desde la base: arquitectura web, dirección visual, contenido y estrategia de captación, todo con una sola línea de ejecución.</p>
+              <div class="chip-name">Partum Design</div>
+              <div class="chip-role">Agency</div>
             </div>
-            <a class="partum-cta__action" href="/contacto/">Agendar diagnóstico <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-topbar">
+              <div class="win-dots"><span class="wd wd-r"></span><span class="wd wd-y"></span><span class="wd wd-g"></span></div>
+              <div class="dash-title">Analytics · Overview</div>
+              <div class="live-badge"><span class="ld"></span>En vivo</div>
+            </div>
+
+            <div class="chart-zone">
+              <div class="kpi-row">
+                <div>
+                  <div class="kpi-label-text">Ingresos digitales</div>
+                  <div class="kpi-value" id="kpi-val" data-countup="184920" data-prefix="$">$184,920</div>
+                </div>
+                <div class="kpi-delta">↑ 38.4%</div>
+              </div>
+
+              <svg class="sparkline" viewBox="0 0 440 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6366f1" stop-opacity="0.28"></stop>
+                    <stop offset="100%" stop-color="#6366f1" stop-opacity="0"></stop>
+                  </linearGradient>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#02365e"></stop>
+                    <stop offset="100%" stop-color="#818cf8"></stop>
+                  </linearGradient>
+                </defs>
+                <path class="spark-area" d="M0,95 L44,84 C88,73 132,90 176,68 C220,45 264,58 308,38 C330,28 374,20 440,8 L440,110 L0,110 Z" fill="url(#areaGrad)"></path>
+                <path class="spark-line" d="M0,95 L44,84 C88,73 132,90 176,68 C220,45 264,58 308,38 C330,28 374,20 440,8" fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle class="spark-dot spark-dot-1" cx="308" cy="38" r="9" fill="#6366f1" opacity="0.2"></circle>
+                <circle class="spark-dot spark-dot-1" cx="308" cy="38" r="4.5" fill="#818cf8"></circle>
+                <circle class="spark-dot spark-dot-2" cx="440" cy="8" r="4" fill="#818cf8"></circle>
+              </svg>
+            </div>
+
+            <div class="metrics-strip">
+              <div class="metric">
+                <div class="metric-label">Tráfico web</div>
+                <div class="metric-val">85%</div>
+                <div class="metric-bar"><div class="bar-fill bar-a" data-width="85%"></div></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Conversión</div>
+                <div class="metric-val">60%</div>
+                <div class="metric-bar"><div class="bar-fill bar-b" data-width="60%"></div></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Retención</div>
+                <div class="metric-val">73%</div>
+                <div class="metric-bar"><div class="bar-fill bar-c" data-width="73%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-row" data-partum-reveal>
+        <div class="stat-item">
+          <div class="stat-value"><span class="stat-num" data-countup="240" data-prefix="+" data-suffix="%">+240%</span></div>
+          <div class="stat-label">ROI promedio</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value"><span class="stat-num" data-countup="200" data-suffix="+">200+</span></div>
+          <div class="stat-label">Marcas escaladas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value"><span class="stat-num" data-countup="98" data-suffix="%">98%</span></div>
+          <div class="stat-label">Satisfacción cliente</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios-premium-partum" aria-labelledby="servicios-premium-title">
+      <div class="absolute inset-0 bg-dots opacity-40 pointer-events-none z-0"></div>
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+      <div class="blob blob-c"></div>
+
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 w-full max-w-[1300px]">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-5 xl:col-span-5 space-y-8 sm:space-y-10" data-partum-reveal>
+            <div class="reveal d1">
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-sm mb-6">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                <span class="text-indigo-800 font-bold tracking-[0.15em] text-[10px] sm:text-xs uppercase">Agencia Premium</span>
+              </div>
+              <h2 class="premium-headline text-[#0f172a]" id="servicios-premium-title">Estrategia visual, <span class="block text-[#0055ff]">ejecución perfecta.</span></h2>
+            </div>
+
+            <div class="reveal d2">
+              <div class="w-16 h-1.5 rounded-full bg-[#0055ff]"></div>
+            </div>
+
+            <p class="reveal d3 text-slate-600 text-lg sm:text-xl font-medium leading-relaxed max-w-lg">
+              Transformamos la complejidad del mundo digital en oportunidades claras de crecimiento para tu marca mediante ecosistemas escalables.
+            </p>
+
+            <div class="reveal d4 grid grid-cols-3 gap-4 max-w-md">
+              <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
+                <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">200<span class="text-[#0055ff]">+</span></div>
+                <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Proyectos</div>
+              </div>
+              <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
+                <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">99<span class="text-[#4f46e5]">%</span></div>
+                <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Éxito</div>
+              </div>
+              <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
+                <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">4<span class="text-[#9333ea]">+</span></div>
+                <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Años</div>
+              </div>
+            </div>
+
+            <div class="reveal d5 pt-2">
+              <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="cta-btn group inline-flex items-center gap-4 px-8 py-4 bg-[#0f172a] text-white rounded-2xl shadow-xl hover:bg-[#0055ff] transition-all duration-400 font-bold tracking-wide text-sm sm:text-base hover:-translate-y-1">
+                <span>Descubre nuestros casos</span>
+                <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1.5 transition-transform duration-300"><i class="fas fa-arrow-right text-sm"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 xl:col-span-7 reveal d6" data-partum-reveal>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <div class="flip-card perspective group" tabindex="0">
+                <div class="flip-inner border border-slate-200/60">
+                  <div class="face">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Identidad Visual" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                    <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                      <div class="w-12 h-12 rounded-xl bg-blue-600/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-blue-400/30"><i class="fas fa-layer-group text-white text-xl"></i></div>
+                      <h3 class="text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Identidad<br>Visual</h3>
+                    </div>
+                    <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20"><i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i></div>
+                  </div>
+                  <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-blue-500/20">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 border border-blue-500/20"><i class="fas fa-layer-group text-blue-400 text-xl"></i></div>
+                    <h4 class="text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Logotipos y Branding</h4>
+                    <p class="text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Creamos marcas memorables y guías de estilo que conectan estratégicamente con tu audiencia, asegurando coherencia.</p>
+                    <a href="/identidad-visual/" class="mt-6 text-xs font-black uppercase tracking-[0.22em] text-blue-300">Ver servicio</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flip-card perspective group" tabindex="0">
+                <div class="flip-inner border border-slate-200/60">
+                  <div class="face">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Desarrollo" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                    <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                      <div class="w-12 h-12 rounded-xl bg-emerald-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-emerald-400/30"><i class="fas fa-code text-white text-xl"></i></div>
+                      <h3 class="text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Desarrollo<br>Web & Apps</h3>
+                    </div>
+                    <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20"><i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i></div>
+                  </div>
+                  <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-emerald-500/20">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4 border border-emerald-500/20"><i class="fas fa-code text-emerald-400 text-xl"></i></div>
+                    <h4 class="text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Soluciones a Medida</h4>
+                    <p class="text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Programación robusta e interfaces intuitivas diseñadas para optimizar la experiencia del usuario y tus conversiones.</p>
+                    <a href="/desarrollo-web/" class="mt-6 text-xs font-black uppercase tracking-[0.22em] text-emerald-300">Ver servicio</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flip-card perspective group" tabindex="0">
+                <div class="flip-inner border border-slate-200/60">
+                  <div class="face">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Marketing" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                    <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                      <div class="w-12 h-12 rounded-xl bg-amber-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-amber-400/30"><i class="fas fa-chart-line text-white text-xl"></i></div>
+                      <h3 class="text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Marketing<br>& Growth</h3>
+                    </div>
+                    <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20"><i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i></div>
+                  </div>
+                  <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-amber-500/20">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20"><i class="fas fa-chart-line text-amber-400 text-xl"></i></div>
+                    <h4 class="text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Campañas de Conversión</h4>
+                    <p class="text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Estrategias basadas en datos. Optimizamos tu presupuesto publicitario para atraer clientes potenciales reales y escalar tu negocio.</p>
+                    <a href="/marketing-digital/" class="mt-6 text-xs font-black uppercase tracking-[0.22em] text-amber-300">Ver servicio</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flip-card perspective group" tabindex="0">
+                <div class="flip-inner border border-slate-200/60">
+                  <div class="face">
+                    <img src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?q=80&w=800&auto=format&fit=crop" alt="Producción" class="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 z-0">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
+                    <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
+                      <div class="w-12 h-12 rounded-xl bg-purple-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-purple-400/30"><i class="fas fa-video text-white text-xl"></i></div>
+                      <h3 class="text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Video &<br>Fotografía</h3>
+                    </div>
+                    <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20"><i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i></div>
+                  </div>
+                  <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-purple-500/20">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-4 border border-purple-500/20"><i class="fas fa-video text-purple-400 text-xl"></i></div>
+                    <h4 class="text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Multimedia de Alto Nivel</h4>
+                    <p class="text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Producción audiovisual y sesiones fotográficas profesionales que elevan el prestigio y la percepción de tu marca.</p>
+                    <a href="/produccion-audiovisual/" class="mt-6 text-xs font-black uppercase tracking-[0.22em] text-purple-300">Ver servicio</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust-section-premium" aria-labelledby="trust-section-title">
+      <div class="trust-glow glow-a"></div>
+      <div class="trust-glow glow-b"></div>
+      <div class="trust-glow glow-c"></div>
+
+      <div class="trust-container">
+        <div class="trust-grid">
+          <div class="trust-left" data-partum-reveal>
+            <div class="trust-badge"><span class="badge-dot"></span><span class="badge-text">Confianza verificable</span></div>
+            <h2 class="trust-headline" id="trust-section-title">Tu marca <em>con respaldo serio</em></h2>
+            <p class="trust-subtext">No construimos piezas sueltas. Diseñamos sistemas visuales y plataformas digitales que sostienen el crecimiento, mantienen coherencia y reducen fricción en cada punto de contacto.</p>
+
+            <div class="trust-features">
+              <article class="feature-card">
+                <div class="feat-icon indigo"><i class="fa-solid fa-sitemap" aria-hidden="true"></i></div>
+                <div class="feat-text">
+                  <h4>Estrategia integral</h4>
+                  <p>Unimos marca, desarrollo y marketing en una sola línea de ejecución para evitar inconsistencias y retrabajos.</p>
+                </div>
+              </article>
+              <article class="feature-card">
+                <div class="feat-icon emerald"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></div>
+                <div class="feat-text">
+                  <h4>Rendimiento extremo</h4>
+                  <p>Priorizamos Core Web Vitals, carga progresiva y lógica defensiva para que la experiencia sea rápida y estable.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <aside class="trust-right" data-partum-reveal aria-label="Resumen de confianza">
+            <div class="trust-card-wrapper">
+              <div class="trust-card">
+                <div class="trust-card-inner">
+                  <div class="trust-track">
+                    <span class="track-label">Track record</span>
+                    <p class="big-number"><span data-countup="4">4</span><span>+</span></p>
+                    <div class="track-sub">Años de evolución creativa y técnica</div>
+                  </div>
+
+                  <div class="trust-stats">
+                    <div class="trust-stat"><span class="stat-num" data-countup="200" data-suffix="+">200+</span><span class="stat-label">Proyectos</span></div>
+                    <div class="trust-stat"><span class="stat-num green" data-countup="99" data-suffix="%">99%</span><span class="stat-label">Satisfacción</span></div>
+                    <div class="trust-stat"><span class="stat-num" data-countup="24" data-suffix="/7">24/7</span><span class="stat-label">Soporte</span></div>
+                  </div>
+
+                  <div class="trust-cta">
+                    <div class="float-avatars" aria-hidden="true">
+                      <img src="https://i.pravatar.cc/100?img=12" alt="">
+                      <img src="https://i.pravatar.cc/100?img=47" alt="">
+                      <img src="https://i.pravatar.cc/100?img=32" alt="">
+                    </div>
+                    <div class="trust-float-text">
+                      <strong>Más de 200 marcas</strong>
+                      <span>Han confiado en una ejecución premium y medible.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="trust-float-badge">
+                <span class="float-dot"></span>
+                <span>Prueba social viva</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodologia-partum-premium" aria-labelledby="metodologia-title">
+      <div class="bg-architecture" aria-hidden="true"></div>
+      <div class="bg-blueprint-grid" aria-hidden="true"></div>
+      <div class="met-blob" aria-hidden="true"></div>
+      <div class="met-blob met-blob-2" aria-hidden="true"></div>
+      <div id="met-particles-host" aria-hidden="true"></div>
+
+      <div class="met-wrap">
+        <div class="met-header">
+          <div data-partum-reveal>
+            <div class="met-badge"><span class="badge-dot"></span><span class="text">Proceso comprobado</span></div>
+            <h2 class="h-title" id="metodologia-title">Metodología <em>Growth.</em></h2>
+          </div>
+          <p data-partum-reveal class="met-copy">
+            Adiós a la improvisación y al gasto a ciegas. Bienvenido a un sistema diseñado para brindar <strong>crecimiento predecible y escalabilidad absoluta</strong> a tu negocio.
+          </p>
+        </div>
+
+        <div class="met-timeline">
+          <article class="met-step" data-delay="0" data-prog="25" data-partum-reveal>
+            <div class="step-rail">
+              <div class="step-dot"><i class="fas fa-magnifying-glass-chart"></i></div>
+              <div class="step-index">01</div>
+            </div>
+            <div class="met-step-card">
+              <div class="card-inner-flex">
+                <span>01</span>
+                <div>
+                  <div class="eyebrow">Auditoría</div>
+                  <h4>Diagnóstico Profundo</h4>
+                  <p>Analizamos tu ecosistema digital, competidores y embudos actuales para detectar fugas de capital y descubrir oportunidades de crecimiento inmediato.</p>
+                  <div class="progress-wrap"><div class="prog-bar"><div class="prog-fill"></div></div><div class="progress-meta"><span>Progreso de Fase</span><span>25%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="met-step" data-delay="150" data-prog="50" data-partum-reveal>
+            <div class="step-rail">
+              <div class="step-dot"><i class="fas fa-sitemap"></i></div>
+              <div class="step-index">02</div>
+            </div>
+            <div class="met-step-card">
+              <div class="card-inner-flex">
+                <span>02</span>
+                <div>
+                  <div class="eyebrow">Estrategia</div>
+                  <h4>Arquitectura de Conversión</h4>
+                  <p>Diseñamos los sistemas de captación: landing pages de alto rendimiento, ofertas irresistibles, creativos magnéticos y secuencias de automatización listas para convertir.</p>
+                  <div class="progress-wrap"><div class="prog-bar"><div class="prog-fill"></div></div><div class="progress-meta"><span>Progreso de Fase</span><span>50%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="met-step" data-delay="300" data-prog="75" data-partum-reveal>
+            <div class="step-rail">
+              <div class="step-dot"><i class="fas fa-rocket"></i></div>
+              <div class="step-index">03</div>
+            </div>
+            <div class="met-step-card">
+              <div class="card-inner-flex">
+                <span>03</span>
+                <div>
+                  <div class="eyebrow">Ejecución</div>
+                  <h4>Adquisición a Escala</h4>
+                  <p>Desplegamos campañas publicitarias omnicanal (Meta, Google, TikTok) con segmentaciones precisas e Inteligencia Artificial para maximizar el ROAS desde el primer momento.</p>
+                  <div class="progress-wrap"><div class="prog-bar"><div class="prog-fill"></div></div><div class="progress-meta"><span>Progreso de Fase</span><span>75%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="met-step" data-delay="450" data-prog="100" data-partum-reveal>
+            <div class="step-rail">
+              <div class="step-dot"><i class="fas fa-chart-line"></i></div>
+              <div class="step-index">04</div>
+            </div>
+            <div class="met-step-card">
+              <div class="card-inner-flex">
+                <span>04</span>
+                <div>
+                  <div class="eyebrow">Escalabilidad</div>
+                  <h4>Optimización Continua</h4>
+                  <p>Nuestro trabajo no termina al lanzar. Realizamos test A/B diarios, iteración de creativos y escalado de las campañas ganadoras para multiplicar tus ventas mes a mes.</p>
+                  <div class="progress-wrap"><div class="prog-bar"><div class="prog-fill"></div></div><div class="progress-meta"><span>Progreso de Fase</span><span>100%</span></div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="casos-exito-premium" aria-labelledby="casos-title">
+      <div class="success-blob success-blob-a" aria-hidden="true"></div>
+      <div class="success-blob success-blob-b" aria-hidden="true"></div>
+
+      <div class="success-wrap">
+        <div class="success-hdr">
+          <div data-partum-reveal>
+            <div class="badge-dark"><span class="badge-dot-w"></span>Portafolio v2.0</div>
+            <h2 class="hdr-title" id="casos-title">Casos de<br><em>Éxito Real.</em></h2>
+          </div>
+          <p class="hdr-sub" data-partum-reveal>Ingeniería digital aplicada a marcas que buscan dominar su categoría.</p>
+        </div>
+
+        <div class="main-grid" data-partum-reveal>
+          <article class="pcard card-hero" data-tilt>
+            <img src="https://partumdesign.com.mx/wp-content/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg" alt="FitLife Global">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+              <div class="case-pill">E-commerce Elite</div>
+              <div class="case-footer">
+                <div>
+                  <h3 class="hero-title">FitLife Global</h3>
+                  <p>Automatización de checkout que disparó la facturación a nuevos máximos históricos.</p>
+                </div>
+                <div class="case-metric">
+                  <div class="case-counter" data-countup="240" data-prefix="+" data-suffix="%">+240%</div>
+                  <div class="case-label">Conversión</div>
+                </div>
+                <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard card-side" data-tilt>
+            <img src="https://partumdesign.com.mx/wp-content/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg" alt="Smart CRM">
+            <div class="hero-overlay hero-overlay--dark"></div>
+            <div class="hero-content hero-content--bottom">
+              <div class="case-pill case-pill--green">App Design</div>
+              <h3 class="side-title">Smart<br>CRM App</h3>
+              <p>UX de alta productividad comercial diseñada para convertir.</p>
+              <div class="case-mini-row"><span>18 días récord</span><div class="arrow-btn"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+          </article>
+
+          <article class="pcard card-small" data-tilt>
+            <div class="small-content">
+              <div>
+                <div class="small-icon purple"><i class="fas fa-chart-line"></i></div>
+                <div class="small-kicker">SEO & Tráfico</div>
+                <div class="small-title">MedBrand México</div>
+                <p>Posicionamiento orgánico que triplicó visitas en 90 días.</p>
+              </div>
+              <div class="small-footer">
+                <div>
+                  <div class="case-counter small-counter" data-countup="310" data-prefix="+" data-suffix="%">+310%</div>
+                  <div class="case-label">Tráfico orgánico</div>
+                </div>
+                <div class="arrow-btn dark"><i class="fas fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard card-small" data-tilt>
+            <div class="small-content">
+              <div>
+                <div class="small-icon red"><i class="fas fa-bullhorn"></i></div>
+                <div class="small-kicker">Paid Media</div>
+                <div class="small-title">RetailPlus Latam</div>
+                <p>Campañas con ROAS 8x en primer trimestre.</p>
+              </div>
+              <div class="small-footer">
+                <div>
+                  <div class="case-counter small-counter" data-countup="8" data-suffix="x">8x</div>
+                  <div class="case-label">ROAS promedio</div>
+                </div>
+                <div class="arrow-btn dark"><i class="fas fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard card-small" data-tilt>
+            <div class="small-content">
+              <div>
+                <div class="small-icon green"><i class="fas fa-mobile-alt"></i></div>
+                <div class="small-kicker">Social Media</div>
+                <div class="small-title">EcoStyle Brand</div>
+                <p>Estrategia que generó comunidad masiva.</p>
+              </div>
+              <div class="small-footer">
+                <div>
+                  <div class="case-counter small-counter" data-countup="180" data-prefix="+" data-suffix="K">+180K</div>
+                  <div class="case-label">Seguidores</div>
+                </div>
+                <div class="arrow-btn dark"><i class="fas fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="logos-section-partum" aria-labelledby="logos-title">
+      <div class="logos-wrap">
+        <div class="logos-header" data-partum-reveal>
+          <div class="logos-eyebrow"><span>Empresas que confían en nosotros</span></div>
+          <h2 class="logos-title" id="logos-title">Marcas que eligen<br><em>resultados reales.</em></h2>
+          <p class="logos-copy">Más de 200 empresas han escalado su presencia digital con nosotros.</p>
+        </div>
+
+        <div class="logos-divider" aria-hidden="true">
+          <div class="div-line"></div>
+          <div class="div-dots"><div class="div-dot" style="background:#6366f1"></div><div class="div-dot" style="background:#8b5cf6"></div><div class="div-dot" style="background:#f43f5e"></div></div>
+          <div class="div-line"></div>
+        </div>
+      </div>
+
+      <div class="gslogo-container" data-partum-reveal>[gslogo id=50]</div>
+
+      <div class="logos-wrap">
+        <div class="logos-stats">
+          <div class="stat-item"><span class="stat-num" data-countup="200" data-suffix="+">200+</span><span class="stat-label">Clientes activos</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat-item"><span class="stat-num" data-countup="4" data-suffix="+">4+</span><span class="stat-label">Años de trayectoria</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat-item"><span class="stat-num" data-countup="99" data-suffix="%">99%</span><span class="stat-label">Satisfacción</span></div>
+          <div class="stat-sep"></div>
+          <div class="stat-item"><span class="stat-num" data-countup="15" data-suffix="+">15+</span><span class="stat-label">Industrias</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews-premium-compact" aria-labelledby="reviews-title">
+      <div class="bg-blueprint"></div>
+      <div class="bg-noise"></div>
+      <div class="met-glow glow-tr"></div>
+      <div class="met-glow glow-bl"></div>
+
+      <div class="container-premium">
+        <div class="header-content" data-partum-reveal>
+          <h2 class="h-title" id="reviews-title">Opiniones que validan<br>nuestra <em>visión digital.</em></h2>
+          <div class="rating-box">
+            <span class="rating-num">5.0</span>
+            <div class="rating-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+            <span class="rating-label">18 testimonios reales</span>
+          </div>
+        </div>
+
+        <div class="carousel-container">
+          <div class="carousel-track" id="reviews-track">
+            <article class="review-card">
+              <span class="quote-mark">“</span>
+              <p class="review-txt-body">Excelente trabajo, se encargaron del rediseño web de mi negocio. Muy profesionales y entregaron antes del plazo pactado. Los recomiendo plenamente.</p>
+              <div class="card-divider"></div>
+              <div class="reviewer-footer">
+                <div class="avatar-initial">L</div>
+                <div class="tag-meta"><h4 class="name-tag">Luis Alexis Hernandez</h4><span class="time-tag">hace 5 meses</span></div>
+                <i class="fa-solid fa-circle-check v-icon"></i>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <span class="quote-mark">“</span>
+              <p class="review-txt-body">Realizan los trabajos con mucha calidad y empeño, se nota que le ponen corazón además de ser muy atentos con cada detalle del proceso creativo.</p>
+              <div class="card-divider"></div>
+              <div class="reviewer-footer">
+                <img src="https://i.pravatar.cc/100?img=47" alt="Avatar" class="avatar">
+                <div class="tag-meta"><h4 class="name-tag">Paulina Itxul Gonzalez</h4><span class="time-tag">hace 5 meses</span></div>
+                <i class="fa-solid fa-circle-check v-icon"></i>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <span class="quote-mark">“</span>
+              <p class="review-txt-body">Me encantó el logo que me hicieron, son muy organizados y limpios. El proceso de diseño fue impecable, talento real en cada etapa de la marca.</p>
+              <div class="card-divider"></div>
+              <div class="reviewer-footer">
+                <img src="https://i.pravatar.cc/100?img=32" alt="Avatar" class="avatar">
+                <div class="tag-meta"><h4 class="name-tag">Elinne Corona</h4><span class="time-tag">hace 5 meses</span></div>
+                <i class="fa-solid fa-circle-check v-icon"></i>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <span class="quote-mark">“</span>
+              <p class="review-txt-body">Excelente servicio, muy atentos en todo momento. Superaron mis expectativas con la entrega final. Un equipo que realmente escucha y propone soluciones.</p>
+              <div class="card-divider"></div>
+              <div class="reviewer-footer">
+                <div class="avatar-initial" style="background:#15803d">H</div>
+                <div class="tag-meta"><h4 class="name-tag">Héctor Saavedra</h4><span class="time-tag">hace 5 meses</span></div>
+                <i class="fa-solid fa-circle-check v-icon"></i>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn-nav" id="btnPrev" aria-label="Anterior"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="btn-nav" id="btnNext" aria-label="Siguiente"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes-partum-premium" aria-labelledby="planes-title">
+      <div class="bg-grid-texture"></div>
+      <div class="light-orb orb-1"></div>
+      <div class="light-orb orb-2"></div>
+      <div class="light-orb orb-3"></div>
+
+      <div class="relative z-10">
+        <div class="text-center mb-16 lg:mb-24" data-partum-reveal>
+          <h2 class="premium-title" id="planes-title">Nuestros paquetes<br><em>de alto impacto.</em></h2>
+          <p class="subtitle">Inversión estratégica para resultados exponenciales</p>
+        </div>
+
+        <div class="planes-grid">
+          <article class="glass-card card-normal interactive-light" data-plan-card>
+            <div class="card-content-wrapper">
+              <div class="mb-8">
+                <h3 class="plan-title">Essential Kit</h3>
+                <p class="plan-subtitle">Presencia & Marca</p>
+                <div class="flex items-baseline gap-2">
+                  <span class="plan-price">$1,200</span><span class="price-note">Desde</span>
+                </div>
+              </div>
+              <ul class="plan-list">
+                <li><i class="fa-solid fa-check"></i><span>Identidad Visual (Logo & UI Kit)</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Web One-Page de Alto Impacto</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Optimización SEO Estructural</span></li>
+              </ul>
+              <a href="/contacto/" class="btn-outline">Cotizar Proyecto</a>
+            </div>
+          </article>
+
+          <article class="card-destacada-wrapper interactive-light" data-plan-card>
+            <div class="card-destacada-inner">
+              <div class="badge-popular">Más Popular</div>
+              <div class="card-content-wrapper">
+                <div class="mb-8 mt-4">
+                  <h3 class="plan-title">Growth Engine</h3>
+                  <p class="plan-subtitle">Web + Ads + Conversión</p>
+                  <div class="flex items-baseline gap-2">
+                    <span class="plan-price">$2,500</span><span class="price-note">Desde</span>
+                  </div>
+                </div>
+                <ul class="plan-list">
+                  <li><i class="fa-solid fa-fire text-orange-500 animate-pulse mt-1"></i><span class="text-white font-medium">Funnel de Ventas Completo</span></li>
+                  <li><i class="fa-solid fa-check"></i><span>Gestión de Meta & Google Ads</span></li>
+                  <li><i class="fa-solid fa-check"></i><span>Landing Pages Optimizadas</span></li>
+                  <li><i class="fa-solid fa-check"></i><span>Dashboard de Resultados 24/7</span></li>
+                </ul>
+                <a href="/contacto/" class="btn-solid">Hablar con un Especialista</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass-card card-normal interactive-light" data-plan-card>
+            <div class="card-content-wrapper">
+              <div class="mb-8">
+                <h3 class="plan-title">Elite Partner</h3>
+                <p class="plan-subtitle">Solución 360° Premium</p>
+                <div class="flex items-baseline gap-2">
+                  <span class="plan-price">$4,500</span><span class="price-note">Desde</span>
+                </div>
+              </div>
+              <ul class="plan-list">
+                <li><i class="fa-solid fa-check"></i><span>Todo lo del Plan Performance</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Rebranding & Estrategia de Marca</span></li>
+                <li><i class="fa-solid fa-check"></i><span>Estrategia de Contenido & CRM</span></li>
+                <li><i class="fa-solid fa-star text-amber-400 mt-1"></i><span class="text-white font-medium">Soporte Prioritario VIP</span></li>
+              </ul>
+              <a href="/contacto/" class="btn-outline">Solicitar Consultoría</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta-final" aria-labelledby="cta-title">
+      <div class="cta-glow"></div>
+      <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <div class="max-w-6xl mx-auto">
+          <div class="cta-card">
+            <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 mb-12 md:mb-16">
+              <div class="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-1" data-partum-reveal>
+                <div class="cta-pill"><i class="fas fa-star animate-pulse"></i> Cupos Limitados por mes</div>
+                <h2 id="cta-title" class="cta-title">¿Listo para <br class="hidden md:block"><span>vender más?</span></h2>
+                <p class="cta-copy">Agenda una <strong>asesoría gratuita</strong> y conoce el plan estratégico que diseñaremos para tu marca.</p>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                  <a href="/contacto/" class="cta-primary">COTIZAR AHORA</a>
+                  <a href="https://wa.me/525616044547?text=Hola,%20me%20gustaría%20más%20información" target="_blank" rel="noopener noreferrer" class="cta-whatsapp"><i class="fab fa-whatsapp text-xl"></i> WhatsApp</a>
+                </div>
+              </div>
+
+              <div class="w-full lg:w-1/2 bg-slate-50 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 border border-slate-100 order-1 lg:order-2" data-partum-reveal>
+                <form action="#" class="grid grid-cols-1 gap-3 md:gap-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    <input type="text" name="name" placeholder="Nombre" aria-label="Nombre">
+                    <input type="email" name="email" placeholder="Email" aria-label="Email">
+                  </div>
+                  <input type="tel" name="whatsapp" placeholder="WhatsApp" aria-label="WhatsApp">
+                  <input type="text" name="company" placeholder="Empresa" aria-label="Empresa">
+                  <textarea name="goal" placeholder="¿Cuál es tu meta?" rows="2" aria-label="Meta"></textarea>
+                  <button type="submit">ENVIAR SOLICITUD</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee-bar" aria-hidden="true">
+        <div class="animate-marquee">
+          <div class="marquee-group">
+            <span><i class="fas fa-check-circle text-indigo-400"></i> Sin Compromiso</span>
+            <span><i class="fas fa-check-circle text-indigo-400"></i> Respuesta &lt; 24h</span>
+            <span><i class="fas fa-check-circle text-indigo-400"></i> Privacidad 100%</span>
+          </div>
+          <div class="marquee-group">
+            <span><i class="fas fa-check-circle text-indigo-400"></i> Sin Compromiso</span>
+            <span><i class="fas fa-check-circle text-indigo-400"></i> Respuesta &lt; 24h</span>
+            <span><i class="fas fa-check-circle text-indigo-400"></i> Privacidad 100%</span>
           </div>
         </div>
       </div>
@@ -225,19 +804,1160 @@
     <div class="partum-footer__inner">
       <div class="partum-footer__grid">
         <div class="partum-footer__brand">
-          <a href="/" aria-label="Ir a inicio de Partum Design"><img class="partum-footer__logo" src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design" loading="lazy" decoding="async"></a>
+          <a href="/" aria-label="Ir a inicio de Partum Design">
+            <img class="partum-footer__logo" src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design" loading="lazy" decoding="async">
+          </a>
           <p class="partum-footer__copy">Estudio creativo y técnico enfocado en construir marcas, interfaces y experiencias digitales con rendimiento real y una estética contundente.</p>
-          <div class="partum-footer__social"><a class="partum-chip" href="https://www.instagram.com/partumdesignagency" target="_blank" rel="noopener noreferrer">Instagram</a><a class="partum-chip" href="https://www.facebook.com/partumdesign.agency" target="_blank" rel="noopener noreferrer">Facebook</a><a class="partum-chip partum-pill--success" href="https://wa.me/5255616044547" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
+          <div class="partum-footer__social">
+            <a class="partum-chip" href="https://www.instagram.com/partumdesignagency" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="partum-chip" href="https://www.facebook.com/partumdesign.agency" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a class="partum-chip partum-pill--success" href="https://wa.me/5255616044547" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
         </div>
-        <div><h2 class="partum-footer__title">Compañía</h2><ul class="partum-footer__list"><li><a class="partum-footer__link" href="/">Inicio</a></li><li><a class="partum-footer__link" href="/nosotros/">Nosotros</a></li><li><a class="partum-footer__link" href="/contacto/">Contacto</a></li></ul></div>
-        <div><h2 class="partum-footer__title">Servicios</h2><ul class="partum-footer__list"><li><a class="partum-footer__link" href="/identidad-visual/">Identidad Visual y Corporativa</a></li><li><a class="partum-footer__link" href="/desarrollo-web/">Desarrollo Web</a></li><li><a class="partum-footer__link" href="/marketing-digital/">Marketing Digital</a></li><li><a class="partum-footer__link" href="/produccion-audiovisual/">Producción Audiovisual</a></li></ul></div>
-        <div><h2 class="partum-footer__title">Contacto</h2><ul class="partum-footer__list"><li><a class="partum-footer__link" href="mailto:contacto@partumdesign.com.mx">contacto@partumdesign.com.mx</a></li><li><a class="partum-footer__link" href="tel:+5255616044547">+52 56 1604 4547</a></li><li><a class="partum-footer__link" href="/contacto/">Agenda una llamada</a></li></ul></div>
+
+        <div>
+          <h2 class="partum-footer__title">Compañía</h2>
+          <ul class="partum-footer__list">
+            <li><a class="partum-footer__link" href="/">Inicio</a></li>
+            <li><a class="partum-footer__link" href="/nosotros/">Nosotros</a></li>
+            <li><a class="partum-footer__link" href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="partum-footer__title">Servicios</h2>
+          <ul class="partum-footer__list">
+            <li><a class="partum-footer__link" href="/identidad-visual/">Identidad Visual y Corporativa</a></li>
+            <li><a class="partum-footer__link" href="/desarrollo-web/">Desarrollo Web</a></li>
+            <li><a class="partum-footer__link" href="/marketing-digital/">Marketing Digital</a></li>
+            <li><a class="partum-footer__link" href="/produccion-audiovisual/">Producción Audiovisual</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="partum-footer__title">Contacto</h2>
+          <ul class="partum-footer__list">
+            <li><a class="partum-footer__link" href="mailto:contacto@partumdesign.com.mx">contacto@partumdesign.com.mx</a></li>
+            <li><a class="partum-footer__link" href="tel:+5255616044547">+52 56 1604 4547</a></li>
+            <li><a class="partum-footer__link" href="/contacto/">Agenda una llamada</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="partum-footer__meta"><span>© <span data-partum-current-year>2026</span> Partum Design. Todos los derechos reservados.</span><span>Diseño de alto rendimiento con arquitectura limpia.</span></div>
+
+      <div class="partum-footer__meta">
+        <span>© <span data-partum-current-year>2026</span> Partum Design. Todos los derechos reservados.</span>
+        <span><a class="partum-footer__link" href="https://partumdesign.com.mx/wp-content/uploads/2025/03/BROCHURE-PARTUM-2025.pdf" target="_blank" rel="noopener noreferrer">Brochure 2025</a></span>
+      </div>
     </div>
   </footer>
+
+  <style>
+    #premium-hero-section {
+      position: relative;
+      isolation: isolate;
+      min-height: calc(100svh - var(--partum-header-height));
+      overflow: hidden;
+      background: #010a13;
+      padding: clamp(32px, 5vw, 72px) 0 48px;
+    }
+
+    #premium-hero-section .video-bg,
+    #premium-hero-section .overlay,
+    #premium-hero-section .grid-overlay,
+    #premium-hero-section .orb,
+    #premium-hero-section #particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    #premium-hero-section .video-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .42;
+      z-index: 0;
+    }
+
+    #premium-hero-section .overlay {
+      z-index: 1;
+      background: radial-gradient(circle at 20% 20%, rgba(99,102,241,.22), transparent 24%), radial-gradient(circle at 80% 10%, rgba(16,185,129,.12), transparent 18%), linear-gradient(180deg, rgba(1,10,19,.08), rgba(1,10,19,.82));
+    }
+
+    #premium-hero-section .grid-overlay {
+      z-index: 2;
+      background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 100%);
+      opacity: .35;
+    }
+
+    #premium-hero-section .orb {
+      z-index: 1;
+      border-radius: 999px;
+      filter: blur(20px);
+    }
+
+    #premium-hero-section .orb-tl { width: 600px; height: 600px; top: -180px; left: -100px; background: rgba(99,102,241,.10); }
+    #premium-hero-section .orb-br { width: 420px; height: 420px; right: -80px; bottom: -100px; background: rgba(2,54,94,.30); }
+
+    #premium-hero-section #particles { z-index: 3; width: 100%; height: 100%; }
+
+    #premium-hero-section .hero-inner,
+    #premium-hero-section .stats-row {
+      position: relative;
+      z-index: 4;
+      width: min(100%, var(--partum-content-max));
+      margin-inline: auto;
+      padding-inline: clamp(18px, 4vw, 48px);
+    }
+
+    #premium-hero-section .hero-inner {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: clamp(28px, 4vw, 56px);
+    }
+
+    #premium-hero-section .hero-left { padding-top: clamp(10px, 3vw, 24px); }
+
+    #premium-hero-section .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 16px 6px 6px;
+      margin-bottom: 26px;
+      border-radius: 999px;
+      background: rgba(10,18,30,.48);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+    }
+
+    #premium-hero-section .avatar-stack { display: flex; align-items: center; }
+    #premium-hero-section .av {
+      width: 36px;
+      height: 36px;
+      margin-left: -10px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      overflow: hidden;
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 900;
+    }
+    #premium-hero-section .av:first-child { margin-left: 0; }
+    #premium-hero-section .av img { width: 100%; height: 100%; object-fit: cover; filter: invert(1); opacity: .8; }
+    #premium-hero-section .av-count { background: rgba(99,102,241,.22); }
+
+    #premium-hero-section .badge-text {
+      color: rgba(255,255,255,.88);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    #premium-hero-section h1 {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.9rem);
+      line-height: .92;
+      font-weight: 900;
+      letter-spacing: -.06em;
+      color: #fff;
+      text-wrap: balance;
+    }
+
+    #premium-hero-section .headline-accent { display: block; }
+    #premium-hero-section .headline-solid {
+      display: block;
+      background: linear-gradient(135deg, #fff 0%, #dbe4ff 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    #premium-hero-section .hero-desc {
+      max-width: 62ch;
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.76);
+      font-size: clamp(1rem, 1.2vw, 1.08rem);
+      line-height: 1.8;
+    }
+
+    #premium-hero-section .hero-desc strong { color: rgba(255,255,255,.92); font-weight: 600; }
+
+    #premium-hero-section .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    #premium-hero-section .btn-primary,
+    #premium-hero-section .btn-ghost {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    #premium-hero-section .btn-primary { background: linear-gradient(135deg, var(--partum-accent), var(--partum-accent-strong)); color: #fff; box-shadow: 0 18px 36px rgba(99,102,241,.24); }
+    #premium-hero-section .btn-ghost { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.12); color: #fff; }
+    #premium-hero-section .btn-primary:hover,
+    #premium-hero-section .btn-ghost:hover { transform: translateY(-2px); }
+
+    #premium-hero-section .play-ring {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.10);
+    }
+
+    #premium-hero-section .hero-right { position: relative; }
+    #premium-hero-section .chip {
+      position: absolute;
+      z-index: 2;
+      padding: 12px 16px;
+      border-radius: 18px;
+      background: rgba(8,14,24,.68);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--partum-shadow-md);
+    }
+    #premium-hero-section .chip-roi { top: -18px; left: 10px; }
+    #premium-hero-section .chip-user { bottom: 28px; right: 8px; display: flex; align-items: center; gap: 10px; }
+    #premium-hero-section .chip-roi-label { font-size: .58rem; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.4); margin-bottom: 2px; }
+    #premium-hero-section .chip-roi-val { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 900; letter-spacing: -.04em; color: #c7d2fe; }
+    #premium-hero-section .chip-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .72rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    }
+    #premium-hero-section .chip-name { font-size: .78rem; font-weight: 700; line-height: 1.2; color: #fff; }
+    #premium-hero-section .chip-role { font-size: .62rem; color: rgba(255,255,255,.44); }
+
+    #premium-hero-section .dash-card {
+      position: relative;
+      margin-top: 60px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(11,19,31,.88), rgba(8,14,24,.94));
+      border: 1px solid rgba(255,255,255,.09);
+      box-shadow: var(--partum-shadow-lg);
+      overflow: hidden;
+    }
+
+    #premium-hero-section .dash-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    #premium-hero-section .win-dots,
+    #premium-hero-section .kpi-row,
+    #premium-hero-section .stats-row,
+    #premium-hero-section .metrics-strip {
+      display: flex;
+      align-items: center;
+    }
+
+    #premium-hero-section .win-dots { gap: 6px; }
+    #premium-hero-section .wd { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+    #premium-hero-section .wd-r { background: #ff5f57; }
+    #premium-hero-section .wd-y { background: #febc2e; }
+    #premium-hero-section .wd-g { background: #28c840; }
+    #premium-hero-section .dash-title { color: rgba(255,255,255,.55); font-size: .72rem; font-weight: 700; }
+    #premium-hero-section .live-badge { display: flex; align-items: center; gap: 6px; color: #a7f3d0; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    #premium-hero-section .ld { width: 6px; height: 6px; border-radius: 50%; background: #28c840; animation: phBlink 1.4s infinite; }
+
+    #premium-hero-section .chart-zone { padding: 18px 18px 0; }
+    #premium-hero-section .kpi-row { justify-content: space-between; gap: 16px; }
+    #premium-hero-section .kpi-label-text { font-size: .63rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.42); margin-bottom: 4px; }
+    #premium-hero-section .kpi-value { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -.04em; color: #fff; line-height: 1; }
+    #premium-hero-section .kpi-delta { color: #6ee7b7; font-weight: 800; font-size: .9rem; }
+    #premium-hero-section .sparkline { width: 100%; height: 110px; display: block; margin-top: 10px; }
+    #premium-hero-section .spark-area,
+    #premium-hero-section .spark-line,
+    #premium-hero-section .spark-dot { opacity: 0; }
+    #premium-hero-section .spark-area { animation: phFadeIn .8s 2.4s ease forwards; }
+    #premium-hero-section .spark-line { animation: phFadeIn .8s 2.1s ease forwards; }
+    #premium-hero-section .spark-dot { animation: phPopDot .5s cubic-bezier(.2,.8,.2,1) forwards; }
+    #premium-hero-section .spark-dot-1 { animation-delay: 2.6s; }
+    #premium-hero-section .spark-dot-2 { animation-delay: 2.8s; }
+
+    #premium-hero-section .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      margin-top: 14px;
+    }
+    #premium-hero-section .metric {
+      padding: 16px 18px;
+      border-right: 1px solid rgba(255,255,255,.06);
+    }
+    #premium-hero-section .metric:last-child { border-right: none; }
+    #premium-hero-section .metric-label { font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.38); margin-bottom: 8px; }
+    #premium-hero-section .metric-val { color: #fff; font-size: 1rem; font-weight: 800; }
+    #premium-hero-section .metric-bar { height: 6px; margin-top: 10px; background: rgba(255,255,255,.06); border-radius: 99px; overflow: hidden; }
+    #premium-hero-section .bar-fill { height: 100%; width: 0; border-radius: inherit; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    #premium-hero-section .bar-fill.go { width: var(--w); }
+    #premium-hero-section .bar-a { --w: 85%; background: linear-gradient(90deg, #6366f1, #818cf8); }
+    #premium-hero-section .bar-b { --w: 60%; background: linear-gradient(90deg, #818cf8, #a5b4fc); }
+    #premium-hero-section .bar-c { --w: 73%; background: linear-gradient(90deg, #02365e, #6366f1); }
+
+    #premium-hero-section .stats-row {
+      justify-content: center;
+      gap: 0;
+      margin-top: 32px;
+      padding: 28px 0 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    #premium-hero-section .stat-item {
+      flex: 1;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,.07);
+      padding: 0 18px;
+    }
+    #premium-hero-section .stat-item:last-child { border-right: none; }
+    #premium-hero-section .stat-value { font-size: clamp(1.8rem, 3vw, 2.2rem); font-weight: 900; line-height: 1; color: #fff; }
+    #premium-hero-section .stat-num { color: #c7d2fe; }
+    #premium-hero-section .stat-label { margin-top: 8px; color: rgba(255,255,255,.52); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+    @keyframes phBlink { 0%,100%{opacity:1} 50%{opacity:.25} }
+    @keyframes phFadeIn { to { opacity: 1; } }
+    @keyframes phPopDot { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: scale(1); } }
+
+    #servicios-premium-partum {
+      position: relative;
+      overflow: hidden;
+      background: #f1f5f9;
+      padding: 84px 0;
+      font-family: "Montserrat", sans-serif;
+    }
+    #servicios-premium-partum .bg-dots,
+    #servicios-premium-partum .blob {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #servicios-premium-partum .bg-dots { inset: 0; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 32px 32px; }
+    #servicios-premium-partum .blob { border-radius: 999px; filter: blur(12px); animation: wander-premium 16s ease-in-out infinite; }
+    #servicios-premium-partum .blob-a { top: -10%; left: -10%; width: 500px; height: 500px; background: rgba(0,85,255,.24); }
+    #servicios-premium-partum .blob-b { bottom: -10%; right: -5%; width: 420px; height: 420px; background: rgba(99,102,241,.2); animation-delay: -5s; }
+    #servicios-premium-partum .blob-c { top: 18%; right: -10%; width: 350px; height: 350px; background: rgba(168,85,247,.18); animation-delay: -10s; }
+    #servicios-premium-partum .premium-headline {
+      font-size: clamp(32px, 4.8vw, 56px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+    #servicios-premium-partum .flip-card { perspective: 1800px; min-height: 380px; display: block; }
+    #servicios-premium-partum .flip-inner { position: relative; width: 100%; height: 100%; min-height: inherit; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.16,1,.3,1); border-radius: 24px; overflow: hidden; }
+    #servicios-premium-partum .flip-card:hover .flip-inner,
+    #servicios-premium-partum .flip-card:focus-within .flip-inner,
+    #servicios-premium-partum .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
+    #servicios-premium-partum .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 24px; overflow: hidden; background: #020617; }
+    #servicios-premium-partum .face-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0f172a 0%, #020617 100%); }
+    #servicios-premium-partum .card-text-shadow { text-shadow: 0 8px 24px rgba(0,0,0,.38); }
+    #servicios-premium-partum .cta-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    #servicios-premium-partum .cta-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      left: -100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+      transition: left .7s ease;
+    }
+    #servicios-premium-partum .cta-btn:hover::before { left: 200%; }
+    #servicios-premium-partum .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1); }
+    #servicios-premium-partum .reveal.active { opacity: 1; transform: translateY(0); }
+    #servicios-premium-partum .d1 { transition-delay: .1s; }
+    #servicios-premium-partum .d2 { transition-delay: .2s; }
+    #servicios-premium-partum .d3 { transition-delay: .3s; }
+    #servicios-premium-partum .d4 { transition-delay: .4s; }
+    #servicios-premium-partum .d5 { transition-delay: .5s; }
+    #servicios-premium-partum .d6 { transition-delay: .6s; }
+    @keyframes wander-premium { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,-50px) scale(1.05); } 66% { transform: translate(-20px,20px) scale(.96); } }
+
+    #trust-section-premium {
+      position: relative;
+      overflow: hidden;
+      padding: 112px 0 124px;
+      background: #020408;
+      color: #f8fafc;
+      font-family: "Montserrat", sans-serif;
+    }
+    #trust-section-premium::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(99,102,241,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+    #trust-section-premium .trust-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      animation: trustBreathe 8s ease-in-out infinite;
+    }
+    #trust-section-premium .glow-a { width: 600px; height: 600px; top: -150px; left: -150px; background: radial-gradient(circle, rgba(99,102,241,.12) 0%, transparent 70%); }
+    #trust-section-premium .glow-b { width: 500px; height: 500px; bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(16,185,129,.08) 0%, transparent 70%); animation-delay: 4s; }
+    #trust-section-premium .glow-c { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: radial-gradient(circle, rgba(129,140,248,.05) 0%, transparent 70%); animation-delay: 2s; }
+    #trust-section-premium .trust-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 10; }
+    #trust-section-premium .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    #trust-section-premium .trust-left { display: flex; flex-direction: column; gap: 32px; }
+    #trust-section-premium .trust-badge { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 6px 14px; border-radius: 999px; background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.25); }
+    #trust-section-premium .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #818cf8; box-shadow: 0 0 8px #818cf8; animation: trustPulseDot 2s ease-in-out infinite; }
+    #trust-section-premium .badge-text { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #818cf8; }
+    #trust-section-premium .trust-headline { font-size: clamp(36px, 4.5vw, 56px); font-weight: 900; line-height: 1.05; letter-spacing: -.03em; }
+    #trust-section-premium .trust-headline em { font-style: normal; background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 40%, #6ee7b7 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #trust-section-premium .trust-subtext { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.85); max-width: 440px; }
+    #trust-section-premium .trust-features { display: flex; flex-direction: column; gap: 14px; }
+    #trust-section-premium .feature-card { display: flex; align-items: flex-start; gap: 20px; padding: 22px 26px; border-radius: 20px; background: rgba(10,15,26,.78); border: 1px solid rgba(255,255,255,.06); transition: transform .3s ease, border-color .3s ease, background .3s ease; }
+    #trust-section-premium .feature-card:hover { transform: translateX(4px); border-color: rgba(99,102,241,.3); background: rgba(10,15,26,.92); }
+    #trust-section-premium .feat-icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; }
+    #trust-section-premium .feat-icon.indigo { background: linear-gradient(135deg, #4f46e5, #7c3aed); box-shadow: 0 8px 24px rgba(79,70,229,.3); }
+    #trust-section-premium .feat-icon.emerald { background: linear-gradient(135deg, #059669, #0d9488); box-shadow: 0 8px 24px rgba(5,150,105,.3); }
+    #trust-section-premium .feat-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: #fff; }
+    #trust-section-premium .feat-text p { font-size: 13.5px; line-height: 1.5; color: rgba(255,255,255,.8); }
+    #trust-section-premium .trust-right { position: relative; }
+    #trust-section-premium .trust-card { position: relative; background: rgba(10,15,26,.86); border: 1px solid rgba(255,255,255,.07); border-radius: 30px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 60px rgba(99,102,241,.07); }
+    #trust-section-premium .trust-card-inner { padding: 44px; position: relative; z-index: 1; }
+    #trust-section-premium .trust-track { text-align: center; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    #trust-section-premium .track-label, #trust-section-premium .stat-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: rgba(255,255,255,.7); letter-spacing: .14em; }
+    #trust-section-premium .big-number { display: inline-flex; align-items: flex-start; gap: 6px; margin: 0; font-size: clamp(4rem, 10vw, 7rem); line-height: .88; font-weight: 900; }
+    #trust-section-premium .big-number span:last-child { color: #818cf8; font-size: .4em; margin-top: 10px; }
+    #trust-section-premium .track-sub { margin-top: 10px; font-size: 13px; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: .14em; }
+    #trust-section-premium .trust-stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    #trust-section-premium .trust-stat { padding: 18px; border-radius: 18px; background: rgba(1,10,19,.46); border: 1px solid rgba(255,255,255,.08); text-align: center; }
+    #trust-section-premium .stat-num { display: block; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 4px; }
+    #trust-section-premium .stat-num.green { color: #6ee7b7; }
+    #trust-section-premium .trust-cta { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding: 18px 20px; border-radius: 18px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+    #trust-section-premium .float-avatars { display: flex; }
+    #trust-section-premium .float-avatars img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; object-fit: cover; }
+    #trust-section-premium .float-avatars img:first-child { margin-left: 0; }
+    #trust-section-premium .trust-float-text strong { display: block; font-size: .88rem; color: #fff; }
+    #trust-section-premium .trust-float-text span { display: block; margin-top: 2px; font-size: .78rem; color: rgba(255,255,255,.7); }
+    #trust-section-premium .trust-float-badge { position: absolute; right: -12px; bottom: -12px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px; background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,.08); box-shadow: var(--partum-shadow-lg); }
+    #trust-section-premium .float-dot { width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981; }
+    @keyframes trustBreathe { 0%,100%{opacity:.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.1)} }
+    @keyframes trustPulseDot { 0%,100%{box-shadow:0 0 8px #818cf8} 50%{box-shadow:0 0 16px #818cf8,0 0 30px rgba(129,140,248,.4)} }
+
+    #metodologia-partum-premium {
+      position: relative;
+      overflow: hidden;
+      background: #fcfcfd;
+      padding: 118px 0 132px;
+      font-family: "Montserrat", sans-serif;
+      color: #111;
+    }
+    #metodologia-partum-premium::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    #metodologia-partum-premium .bg-architecture { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; opacity: .045; mix-blend-mode: multiply; }
+    #metodologia-partum-premium .bg-blueprint-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 20%, transparent 80%); pointer-events: none; }
+    #metodologia-partum-premium .met-blob { position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; animation: metBreathe 10s ease-in-out infinite; }
+    #metodologia-partum-premium .met-blob { z-index: 1; }
+    #metodologia-partum-premium .met-blob { width: 600px; height: 600px; top: -100px; left: -100px; background: radial-gradient(circle, rgba(37,99,235,.07) 0%, transparent 70%); }
+    #metodologia-partum-premium .met-blob-2 { width: 500px; height: 500px; bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(15,44,89,.06) 0%, transparent 70%); animation-delay: 5s; }
+    #metodologia-partum-premium .met-wrap { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 10; }
+    #metodologia-partum-premium .met-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 72px; }
+    #metodologia-partum-premium .met-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; background: rgba(37,99,235,.08); border: 1px solid rgba(37,99,235,.2); margin-bottom: 18px; }
+    #metodologia-partum-premium .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #2563eb; animation: metPulse 2s ease-in-out infinite; }
+    #metodologia-partum-premium .met-badge .text { font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #2563eb; }
+    #metodologia-partum-premium .h-title { font-size: clamp(36px, 5vw, 65px); font-weight: 900; letter-spacing: -.03em; line-height: 1.05; color: #111; }
+    #metodologia-partum-premium .h-title em { font-style: normal; background: linear-gradient(135deg, #0f2c59 0%, #2563eb 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #metodologia-partum-premium .met-copy { font-size: 18px; color: #555; line-height: 1.7; max-width: 450px; }
+    #metodologia-partum-premium .met-timeline { position: relative; display: flex; flex-direction: column; }
+    #metodologia-partum-premium .met-timeline::before { content: ""; position: absolute; left: 36px; top: 24px; bottom: 24px; width: 2px; background: linear-gradient(to bottom, rgba(37,99,235,0), rgba(37,99,235,.4) 15%, rgba(15,44,89,.8) 50%, rgba(17,17,17,.4) 85%, rgba(17,17,17,0)); z-index: 0; }
+    #metodologia-partum-premium .met-step { position: relative; z-index: 10; display: grid; grid-template-columns: 72px 1fr; gap: 0 40px; padding-bottom: 40px; opacity: 0; transform: translateX(-30px); transition: opacity .7s cubic-bezier(.34,1.56,.64,1), transform .7s cubic-bezier(.34,1.56,.64,1); }
+    #metodologia-partum-premium .met-step.visible { opacity: 1; transform: translateX(0); }
+    #metodologia-partum-premium .step-rail { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; }
+    #metodologia-partum-premium .step-dot { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; position: relative; z-index: 2; background: linear-gradient(135deg, #0f2c59, #2563eb); box-shadow: 0 12px 30px rgba(37,99,235,.3); color: #fff; }
+    #metodologia-partum-premium .step-index { font-size: 13px; font-weight: 900; color: #999; margin-top: 15px; background: #fcfcfd; padding: 4px 10px; border-radius: 6px; }
+    #metodologia-partum-premium .met-step-card { background: #fff; border: 1px solid #eaeaea; border-radius: 14px; padding: 40px 45px; box-shadow: 0 10px 40px -10px rgba(0,0,0,.05); transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s, border-color .4s; }
+    #metodologia-partum-premium .met-step:hover .met-step-card { transform: translateX(10px); border-color: #2563eb; box-shadow: 0 20px 50px rgba(37,99,235,.1); }
+    #metodologia-partum-premium .card-inner-flex { display: flex; align-items: center; gap: 30px; }
+    #metodologia-partum-premium .card-inner-flex > span { font-size: clamp(60px, 8vw, 100px); font-weight: 900; color: rgba(37,99,235,.1); line-height: 1; }
+    #metodologia-partum-premium .eyebrow { font-size: 10px; font-weight: 900; text-transform: uppercase; color: #2563eb; margin-bottom: 8px; letter-spacing: .14em; }
+    #metodologia-partum-premium h4 { font-size: 24px; font-weight: 900; color: #111; margin-bottom: 12px; }
+    #metodologia-partum-premium p { font-size: 16px; color: #555; line-height: 1.7; text-align: justify; }
+    #metodologia-partum-premium .progress-wrap { margin-top: 20px; }
+    #metodologia-partum-premium .prog-bar { height: 3px; background: #eee; border-radius: 999px; overflow: hidden; }
+    #metodologia-partum-premium .prog-fill { height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, #0f2c59, #2563eb); transition: width 1.3s cubic-bezier(.34,1.56,.64,1); }
+    #metodologia-partum-premium .progress-meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; font-weight: 800; color: #aaa; text-transform: uppercase; }
+    @keyframes metBreathe { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:.5;transform:scale(1.1)} }
+    @keyframes metPulse { 0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.4)} 50%{box-shadow:0 0 0 8px rgba(37,99,235,0)} }
+
+    #casos-exito-premium {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 64px;
+      background: #fff;
+      color: #0f172a;
+      font-family: "Montserrat", sans-serif;
+    }
+    #casos-exito-premium::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .4; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E"); }
+    #casos-exito-premium .success-blob { position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; animation: successBreathe 10s ease-in-out infinite; }
+    #casos-exito-premium .success-blob-a { width: 500px; height: 500px; top: -150px; right: -100px; background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 70%); }
+    #casos-exito-premium .success-blob-b { width: 400px; height: 400px; bottom: -120px; left: -100px; background: radial-gradient(circle, rgba(244,63,94,.06) 0%, transparent 70%); animation-delay: 5s; }
+    #casos-exito-premium .success-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 10; }
+    #casos-exito-premium .success-hdr { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+    #casos-exito-premium .badge-dark { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: #0f172a; color: #fff; font-size: 9px; font-weight: 900; letter-spacing: .25em; text-transform: uppercase; }
+    #casos-exito-premium .badge-dot-w { width: 6px; height: 6px; border-radius: 50%; background: #6366f1; animation: successPulse 2s ease-in-out infinite; }
+    #casos-exito-premium .hdr-title { font-size: clamp(38px, 5.5vw, 76px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
+    #casos-exito-premium .hdr-title em { font-style: normal; background: linear-gradient(135deg, #6366f1, #8b5cf6, #f43f5e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #casos-exito-premium .hdr-sub { font-size: 15px; color: #64748b; line-height: 1.7; max-width: 320px; border-left: 3px solid #6366f1; padding-left: 18px; }
+    #casos-exito-premium .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    #casos-exito-premium .pcard { position: relative; border-radius: 24px; overflow: hidden; cursor: pointer; transition: transform .45s cubic-bezier(.34,1.56,.64,1), box-shadow .4s; transform-style: preserve-3d; }
+    #casos-exito-premium .pcard:hover { transform: translateY(-8px); }
+    #casos-exito-premium .pcard::after { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent); transition: left .7s ease; pointer-events: none; z-index: 20; }
+    #casos-exito-premium .pcard:hover::after { left: 130%; }
+    #casos-exito-premium .card-hero { grid-column: 1 / 3; min-height: 380px; background: #0f172a; }
+    #casos-exito-premium .card-side { grid-column: 3; min-height: 380px; background: #0f172a; }
+    #casos-exito-premium .card-small { min-height: 200px; background: #f8fafc; border: 1px solid rgba(226,232,240,.8); }
+    #casos-exito-premium .pcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s cubic-bezier(.4,0,.2,1), opacity .5s; opacity: .55; }
+    #casos-exito-premium .pcard:hover img { transform: scale(1.07); opacity: .62; }
+    #casos-exito-premium .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,14,30,.97) 0%, rgba(10,14,30,.75) 45%, rgba(10,14,30,.45) 100%), linear-gradient(to top, rgba(10,14,30,.85) 0%, transparent 50%); }
+    #casos-exito-premium .hero-overlay--dark { background: linear-gradient(to top, rgba(10,14,30,.98) 0%, rgba(10,14,30,.8) 40%, rgba(10,14,30,.5) 70%, rgba(10,14,30,.2) 100%); }
+    #casos-exito-premium .hero-content { position: relative; z-index: 10; height: 100%; padding: 32px 36px; display: flex; flex-direction: column; justify-content: space-between; }
+    #casos-exito-premium .hero-content--bottom { justify-content: flex-end; gap: 12px; }
+    #casos-exito-premium .case-pill { display: inline-flex; width: fit-content; padding: 5px 12px; border-radius: 999px; background: rgba(99,102,241,.25); border: 1px solid rgba(99,102,241,.5); color: #c7d2fe; font-size: 9px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    #casos-exito-premium .case-pill--green { background: rgba(16,185,129,.15); border-color: rgba(16,185,129,.3); color: #6ee7b7; }
+    #casos-exito-premium .hero-title { font-size: clamp(26px, 3.5vw, 38px); font-weight: 900; letter-spacing: -.03em; color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,.8); }
+    #casos-exito-premium .case-footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    #casos-exito-premium .case-footer p, #casos-exito-premium .side-title, #casos-exito-premium .small-title { color: #fff; }
+    #casos-exito-premium .case-footer p { max-width: 340px; color: #e2e8f0; line-height: 1.5; font-size: 13px; }
+    #casos-exito-premium .case-metric { text-align: right; }
+    #casos-exito-premium .case-counter { font-size: clamp(36px, 5vw, 58px); font-weight: 900; line-height: 1; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #casos-exito-premium .case-label { margin-top: 4px; font-size: 9px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; color: #64748b; }
+    #casos-exito-premium .arrow-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; color: #fff; transition: background .3s, border-color .3s, transform .3s; flex-shrink: 0; }
+    #casos-exito-premium .pcard:hover .arrow-btn { background: #6366f1; border-color: #6366f1; transform: translateX(4px); }
+    #casos-exito-premium .small-content { padding: 28px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+    #casos-exito-premium .small-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; margin-bottom: 16px; }
+    #casos-exito-premium .small-icon.purple { background: linear-gradient(135deg, #8b5cf6, #6d28d9); box-shadow: 0 8px 20px rgba(139,92,246,.3); }
+    #casos-exito-premium .small-icon.red { background: linear-gradient(135deg, #f43f5e, #e11d48); box-shadow: 0 8px 20px rgba(244,63,94,.3); }
+    #casos-exito-premium .small-icon.green { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 8px 20px rgba(16,185,129,.3); }
+    #casos-exito-premium .small-kicker { font-size: 9px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; letter-spacing: .18em; }
+    #casos-exito-premium .small-title { font-size: 18px; font-weight: 900; margin-bottom: 6px; color: #0f172a; }
+    #casos-exito-premium .small-content p { color: #94a3b8; font-size: 12px; line-height: 1.5; }
+    #casos-exito-premium .small-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; gap: 12px; }
+    #casos-exito-premium .small-counter { font-size: 24px; }
+    #casos-exito-premium .arrow-btn.dark { border-color: #e2e8f0; color: #94a3b8; }
+    @keyframes partumFadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes successBreathe { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:.8;transform:scale(1.08)} }
+    @keyframes successPulse { 0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.5)} 50%{box-shadow:0 0 0 6px rgba(99,102,241,0)} }
+
+    #logos-section-partum {
+      position: relative;
+      overflow: hidden;
+      padding: 84px 0 90px;
+      background: #fff;
+      font-family: "Montserrat", sans-serif;
+    }
+    #logos-section-partum::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(99,102,241,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+    #logos-section-partum::after { content: ""; position: absolute; top: -80px; left: 50%; width: 600px; height: 300px; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(99,102,241,.06) 0%, transparent 70%); pointer-events: none; }
+    #logos-section-partum .logos-wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 10; }
+    #logos-section-partum .logos-header { text-align: center; margin-bottom: 52px; }
+    #logos-section-partum .logos-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    #logos-section-partum .logos-eyebrow::before, #logos-section-partum .logos-eyebrow::after { content: ""; display: block; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, #cbd5e1); }
+    #logos-section-partum .logos-eyebrow::after { background: linear-gradient(90deg, #cbd5e1, transparent); }
+    #logos-section-partum .logos-eyebrow span { font-size: 9px; font-weight: 900; letter-spacing: .28em; text-transform: uppercase; color: #94a3b8; }
+    #logos-section-partum .logos-title { font-size: clamp(32px, 4.5vw, 50px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; color: #0f172a; }
+    #logos-section-partum .logos-title em { font-style: normal; background: linear-gradient(135deg, #6366f1, #8b5cf6, #f43f5e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #logos-section-partum .logos-copy { font-size: 14px; color: #94a3b8; margin-top: 10px; }
+    #logos-section-partum .logos-divider { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; }
+    #logos-section-partum .div-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #e2e8f0 40%, #e2e8f0 60%, transparent); }
+    #logos-section-partum .div-dots { display: flex; gap: 5px; }
+    #logos-section-partum .div-dot { width: 5px; height: 5px; border-radius: 50%; }
+    #logos-section-partum .gslogo-container { width: 100%; padding: 60px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-top: 1px solid rgba(226,232,240,.8); border-bottom: 1px solid rgba(226,232,240,.8); box-shadow: 0 4px 24px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.8); text-align: center; }
+    #logos-section-partum .gslogo-container a { display: inline-block; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+    #logos-section-partum .gslogo-container img { max-height: 75px; width: auto; object-fit: contain; filter: grayscale(0%) opacity(1); transition: all .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1); }
+    #logos-section-partum .gslogo-container a:hover img, #logos-section-partum .gslogo-container img:hover { transform: scale(1.08); }
+    #logos-section-partum .logos-stats { display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 60px; flex-wrap: wrap; }
+    #logos-section-partum .stat-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    #logos-section-partum .stat-num { font-size: clamp(22px, 3vw, 30px); font-weight: 900; letter-spacing: -.03em; color: #0f172a; line-height: 1; }
+    #logos-section-partum .stat-label { font-size: 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #94a3b8; }
+    #logos-section-partum .stat-sep { width: 1px; height: 32px; background: linear-gradient(to bottom, transparent, #e2e8f0, transparent); }
+
+    #reviews-premium-compact {
+      position: relative;
+      overflow: hidden;
+      background: #f8fbff;
+      padding: 80px 0;
+      font-family: "Montserrat", sans-serif;
+      color: #0f172a;
+    }
+    #reviews-premium-compact .bg-blueprint { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px); background-size: 45px 45px; mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 95%); }
+    #reviews-premium-compact .bg-noise { position: absolute; inset: 0; opacity: .02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    #reviews-premium-compact .met-glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .8; }
+    #reviews-premium-compact .glow-tr { top: -250px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,.22) 0%, transparent 70%); }
+    #reviews-premium-compact .glow-bl { bottom: -250px; left: -200px; width: 550px; height: 550px; background: radial-gradient(circle, rgba(147,197,253,.25) 0%, transparent 70%); }
+    #reviews-premium-compact .container-premium { max-width: 1280px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 10; }
+    #reviews-premium-compact .header-content { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; gap: 30px; }
+    #reviews-premium-compact .h-title { font-size: clamp(26px, 4vw, 42px); font-weight: 900; line-height: 1.1; letter-spacing: -.03em; color: #0f172a; }
+    #reviews-premium-compact .h-title em { font-style: normal; background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #reviews-premium-compact .rating-box { text-align: right; border-right: 2px solid #2563eb; padding-right: 20px; flex-shrink: 0; }
+    #reviews-premium-compact .rating-num { font-size: 48px; font-weight: 900; line-height: 1; color: #0f172a; }
+    #reviews-premium-compact .rating-stars { display: flex; gap: 3px; color: #f59e0b; font-size: 14px; margin: 4px 0; justify-content: flex-end; }
+    #reviews-premium-compact .rating-label { font-size: 10px; font-weight: 800; text-transform: uppercase; color: #94a3b8; letter-spacing: .05em; }
+    #reviews-premium-compact .carousel-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 20px 0 40px; scrollbar-width: none; cursor: grab; }
+    #reviews-premium-compact .carousel-track::-webkit-scrollbar { display: none; }
+    #reviews-premium-compact .review-card { flex: 0 0 clamp(280px, 30vw, 350px); scroll-snap-align: center; background: #0f172a; border-radius: 28px; padding: 32px; position: relative; overflow: hidden; box-shadow: 0 15px 40px -10px rgba(0,0,0,.45); transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .5s ease; border: 1px solid rgba(255,255,255,.03); }
+    #reviews-premium-compact .review-card:hover { transform: translateY(-8px); box-shadow: 0 35px 70px -20px rgba(0,0,0,.6); border-color: rgba(37,99,235,.3); }
+    #reviews-premium-compact .review-card::after { content: ""; position: absolute; top: -10%; right: -10%; width: 180px; height: 180px; background: radial-gradient(circle, rgba(37,99,235,.12) 0%, transparent 70%); pointer-events: none; z-index: 1; }
+    #reviews-premium-compact .review-card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(37,99,235,.15), transparent 65%); opacity: 0; transition: opacity .4s ease; pointer-events: none; z-index: 2; }
+    #reviews-premium-compact .review-card:hover::before { opacity: 1; }
+    #reviews-premium-compact .quote-mark { font-size: 44px; line-height: .4; color: #2563eb; opacity: .3; display: block; margin-bottom: 18px; font-family: serif; }
+    #reviews-premium-compact .review-txt-body { font-size: 14px; line-height: 1.6; color: #cbd5e1; font-weight: 400; margin-bottom: 25px; }
+    #reviews-premium-compact .card-divider { width: 100%; height: 1px; background: rgba(255,255,255,.06); margin-bottom: 22px; }
+    #reviews-premium-compact .reviewer-footer { display: flex; align-items: center; gap: 12px; }
+    #reviews-premium-compact .avatar, #reviews-premium-compact .avatar-initial { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(255,255,255,.05); object-fit: cover; }
+    #reviews-premium-compact .avatar-initial { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #fff; font-weight: 800; font-size: 16px; }
+    #reviews-premium-compact .name-tag { font-size: 14px; font-weight: 800; color: #fff; line-height: 1.2; }
+    #reviews-premium-compact .time-tag { font-size: 9px; font-weight: 700; text-transform: uppercase; color: #475569; letter-spacing: .05em; display: block; margin-top: 1px; }
+    #reviews-premium-compact .v-icon { margin-left: auto; color: #2563eb; font-size: 14px; }
+    #reviews-premium-compact .nav-controls { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; }
+    #reviews-premium-compact .btn-nav { width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 1px solid #e2e8f0; color: #0f172a; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .3s ease; box-shadow: 0 4px 10px rgba(0,0,80,.03); font-size: 16px; }
+    #reviews-premium-compact .btn-nav:hover { background: #2563eb; color: #fff; border-color: #2563eb; transform: scale(1.05); }
+
+    #planes-partum-premium {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 5%;
+      background: #010a13;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+    }
+    #planes-partum-premium .bg-grid-texture { position: absolute; inset: 0; opacity: .05; pointer-events: none; background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 10%, transparent 80%); }
+    #planes-partum-premium .light-orb { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 1; animation: orbFloat 10s infinite alternate ease-in-out; }
+    #planes-partum-premium .orb-1 { top: -10%; left: -5%; width: 450px; height: 450px; background: rgba(0,85,255,.15); }
+    #planes-partum-premium .orb-2 { bottom: -10%; right: -5%; width: 550px; height: 550px; background: rgba(79,172,254,.12); animation-delay: -5s; }
+    #planes-partum-premium .orb-3 { top: 40%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: rgba(0,85,255,.1); animation-delay: -2s; }
+    #planes-partum-premium .premium-title { font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -.03em; line-height: 1.2; margin-bottom: 20px; }
+    #planes-partum-premium .premium-title em { font-style: normal; background: linear-gradient(135deg, #4facfe 0%, #0055ff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    #planes-partum-premium .subtitle { color: #94a3b8; text-transform: uppercase; font-size: 9px; letter-spacing: .4em; font-weight: 800; }
+    #planes-partum-premium .planes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; align-items: stretch; position: relative; z-index: 10; }
+    #planes-partum-premium .glass-card, #planes-partum-premium .card-destacada-inner { background: rgba(255,255,255,.02); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.05); border-radius: 2.5rem; padding: 2.5rem; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform .4s cubic-bezier(.25,1,.5,1), border-color .4s, box-shadow .4s; }
+    #planes-partum-premium .glass-card::before, #planes-partum-premium .card-destacada-inner::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,85,255,.2), transparent 40%); opacity: 0; transition: opacity .4s ease; pointer-events: none; z-index: 0; }
+    #planes-partum-premium .glass-card:hover::before, #planes-partum-premium .card-destacada-inner:hover::before { opacity: 1; }
+    #planes-partum-premium .card-content-wrapper { position: relative; z-index: 10; display: flex; flex-direction: column; height: 100%; }
+    #planes-partum-premium .card-normal:hover { border-color: rgba(0,85,255,.5); transform: translateY(-8px); box-shadow: 0 15px 40px -10px rgba(0,85,255,.2), inset 0 0 20px rgba(0,85,255,.05); }
+    #planes-partum-premium .card-destacada-wrapper { background: linear-gradient(to bottom, rgba(0,85,255,.8), rgba(0,85,255,.1) 60%, transparent); padding: 1px; border-radius: 2.5rem; display: flex; flex-direction: column; position: relative; }
+    #planes-partum-premium .card-destacada-inner { background: #020d1a; height: 100%; }
+    #planes-partum-premium .badge-popular { position: absolute; top: 0; right: 2.5rem; background: linear-gradient(135deg, #0055ff, #4facfe); color: #fff; font-size: .6rem; font-weight: 900; text-transform: uppercase; letter-spacing: .2em; padding: .5rem 1.2rem; border-radius: 0 0 .75rem .75rem; box-shadow: 0 8px 24px rgba(0,85,255,.4); z-index: 20; }
+    #planes-partum-premium .plan-title { font-size: 1.6rem; font-weight: 800; margin-bottom: .5rem; color: #fff; }
+    #planes-partum-premium .plan-subtitle { color: #fff; font-size: .65rem; text-transform: uppercase; font-weight: 800; letter-spacing: .2em; margin-bottom: 1.5rem; }
+    #planes-partum-premium .plan-price { font-size: 2.4rem; font-weight: 900; color: #fff; }
+    #planes-partum-premium .price-note { font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 800; }
+    #planes-partum-premium .plan-list { list-style: none; padding: 0; margin: 0 0 2.5rem 0; flex-grow: 1; }
+    #planes-partum-premium .plan-list li { display: flex; align-items: flex-start; gap: .8rem; font-size: .95rem; color: #cbd5e1; margin-bottom: 1.2rem; line-height: 1.4; font-weight: 400; }
+    #planes-partum-premium .plan-list i.fa-check { color: #4facfe; margin-top: .25rem; font-size: .9rem; }
+    #planes-partum-premium .btn-outline, #planes-partum-premium .btn-solid {
+      width: 100%;
+      padding: 1.2rem;
+      border-radius: 1rem;
+      font-size: .65rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      transition: all .3s ease;
+      margin-top: auto;
+      position: relative;
+      z-index: 10;
+    }
+    #planes-partum-premium .btn-outline { border: 1px solid rgba(255,255,255,.2); background: transparent; color: #fff; }
+    #planes-partum-premium .btn-outline:hover { background: #fff; color: #000; border-color: #fff; box-shadow: 0 10px 30px rgba(255,255,255,.2); }
+    #planes-partum-premium .btn-solid { background: #fff; color: #010a13; border: none; box-shadow: 0 20px 40px -10px rgba(0,85,255,.5); }
+    #planes-partum-premium .btn-solid:hover { transform: scale(.97); background: #e2e8f0; }
+    @media (min-width: 993px) {
+      #planes-partum-premium .planes-grid { margin-bottom: 60px; }
+      #planes-partum-premium .card-normal { transform: translateY(45px); }
+      #planes-partum-premium .card-normal:hover { transform: translateY(35px); }
+      #planes-partum-premium .card-destacada-wrapper { transform: translateY(-25px); }
+      #planes-partum-premium .card-destacada-wrapper:hover { transform: translateY(-35px) scale(1.02); }
+    }
+    @keyframes orbFloat { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-40px) scale(1.1); } }
+
+    #cta-final {
+      position: relative;
+      overflow: hidden;
+      background: #f8fafc;
+      padding: 48px 0 0;
+    }
+    #cta-final .cta-glow {
+      position: absolute;
+      top: -5%;
+      left: -5%;
+      width: 40%;
+      height: 40%;
+      border-radius: 999px;
+      background: rgba(199,210,254,.4);
+      filter: blur(120px);
+      pointer-events: none;
+    }
+    #cta-final .cta-card {
+      background: #fff;
+      border-radius: 2.5rem;
+      padding: clamp(24px, 5vw, 64px);
+      box-shadow: 0 40px 80px rgba(148,163,184,.18);
+      border: 1px solid rgba(255,255,255,.9);
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-final .cta-pill { display: inline-flex; align-items: center; gap: 8px; background: #fffbeb; color: #d97706; font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: .18em; padding: 10px 14px; border-radius: 999px; margin-bottom: 24px; }
+    #cta-final .cta-title { font-size: clamp(30px, 4.5vw, 52px); font-weight: 900; letter-spacing: -.04em; line-height: 1.1; color: #0f172a; margin-bottom: 24px; }
+    #cta-final .cta-title span { color: #4f46e5; }
+    #cta-final .cta-copy { color: #64748b; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.75; margin-bottom: 32px; }
+    #cta-final .cta-primary, #cta-final .cta-whatsapp {
+      width: 100%;
+      min-height: 54px;
+      padding: 0 28px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .3s ease, background-color .3s ease, color .3s ease, border-color .3s ease;
+    }
+    #cta-final .cta-primary { background: #111827; color: #fff; }
+    #cta-final .cta-primary:hover { background: #4f46e5; transform: translateY(-1px); }
+    #cta-final .cta-whatsapp { background: #ecfdf5; color: #059669; border: 1px solid #d1fae5; }
+    #cta-final .cta-whatsapp:hover { background: #059669; color: #fff; }
+    #cta-final form input,
+    #cta-final form textarea {
+      width: 100%;
+      background: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: .95rem;
+      box-shadow: 0 2px 10px rgba(15,23,42,.05);
+      outline: none;
+    }
+    #cta-final form input:focus,
+    #cta-final form textarea:focus { box-shadow: 0 0 0 2px rgba(79,70,229,.35); }
+    #cta-final form button {
+      width: 100%;
+      background: #4f46e5;
+      color: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: .85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      box-shadow: 0 10px 26px rgba(79,70,229,.18);
+    }
+    #cta-final .marquee-bar { position: relative; background: #0f172a; padding: 14px 0; overflow: hidden; margin-top: 0; }
+    #cta-final .animate-marquee { display: flex; width: max-content; animation: marquee 15s linear infinite; }
+    #cta-final .marquee-group { display: flex; align-items: center; gap: 40px; padding: 0 24px; white-space: nowrap; }
+    #cta-final .marquee-group span { color: rgba(255,255,255,.84); font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .25em; display: inline-flex; align-items: center; gap: 8px; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    @keyframes metBreathe { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:.5;transform:scale(1.1)} }
+
+    @media (max-width: 1100px) {
+      #premium-hero-section .hero-inner,
+      #trust-section-premium .trust-grid,
+      #metodologia-partum-premium .met-header { grid-template-columns: 1fr; }
+      #servicios-premium-partum .grid { gap: 0; }
+      #planes-partum-premium .planes-grid { grid-template-columns: 1fr; max-width: 500px; }
+      #casos-exito-premium .main-grid { grid-template-columns: 1fr 1fr; }
+      #casos-exito-premium .card-hero,
+      #casos-exito-premium .card-side { grid-column: 1 / -1; min-height: 300px; }
+    }
+
+    @media (max-width: 768px) {
+      #premium-hero-section { min-height: auto; padding: 32px 0 42px; }
+      #premium-hero-section .btn-primary,
+      #premium-hero-section .btn-ghost { width: 100%; }
+      #premium-hero-section .chip-roi { left: 0; top: -12px; }
+      #premium-hero-section .chip-user { right: 0; bottom: 16px; }
+      #premium-hero-section .stats-row { flex-direction: column; gap: 22px; }
+      #premium-hero-section .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); padding: 0 0 18px; }
+      #premium-hero-section .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+      #premium-hero-section .metrics-strip { grid-template-columns: 1fr; }
+      #premium-hero-section .metric { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
+      #premium-hero-section .metric:last-child { border-bottom: none; }
+      #servicios-premium-partum .flip-card { min-height: 360px; }
+      #servicios-premium-partum .premium-headline { font-size: clamp(30px, 10vw, 44px); }
+      #trust-section-premium .trust-stats { grid-template-columns: 1fr; }
+      #trust-section-premium .trust-card-inner { padding: 30px 20px; }
+      #trust-section-premium .feature-card { flex-direction: column; gap: 12px; }
+      #logos-section-partum .logos-stats { gap: 24px; }
+      #reviews-premium-compact .header-content { flex-direction: column; align-items: flex-start; }
+      #reviews-premium-compact .rating-box { border-right: none; border-left: 2px solid #2563eb; padding-left: 15px; padding-right: 0; text-align: left; }
+      #reviews-premium-compact .rating-stars { justify-content: flex-start; }
+      #reviews-premium-compact .review-card { flex: 0 0 85vw; padding: 28px 22px; }
+      #reviews-premium-compact .nav-controls { justify-content: center; }
+      #metodologia-partum-premium { padding: 60px 0 80px; }
+      #metodologia-partum-premium .met-step { grid-template-columns: 48px 1fr; gap: 0 16px; padding-bottom: 30px; }
+      #metodologia-partum-premium .met-timeline::before { left: 24px; }
+      #metodologia-partum-premium .step-dot { width: 48px; height: 48px; border-radius: 12px; }
+      #metodologia-partum-premium .step-index { font-size: 11px; margin-top: 10px; }
+      #metodologia-partum-premium .met-step-card { padding: 24px 20px; }
+      #metodologia-partum-premium .card-inner-flex { flex-direction: column; align-items: flex-start; gap: 12px; }
+      #casos-exito-premium .main-grid { grid-template-columns: 1fr; }
+      #casos-exito-premium .card-hero,
+      #casos-exito-premium .card-side { min-height: 280px; }
+      #planes-partum-premium { padding: 96px 18px; }
+      #cta-final .cta-primary, #cta-final .cta-whatsapp { width: 100%; }
+      #premium-hero-section .hero-right { padding-top: 22px; }
+    }
+
+    @media (max-width: 540px) {
+      #premium-hero-section .dash-card,
+      #trust-section-premium .trust-card,
+      #cta-final .cta-card { border-radius: 22px; }
+      #premium-hero-section .dash-topbar { padding: 12px 16px; }
+      #logos-section-partum .logos-wrap, #reviews-premium-compact .container-premium, #casos-exito-premium .success-wrap { padding-left: 20px; padding-right: 20px; }
+      #reviews-premium-compact .btn-nav { width: 44px; height: 44px; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function reduceMotion() {
+        return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      }
+
+      function setupParticleCanvas() {
+        var canvas = document.getElementById('particles');
+        if (!canvas) return;
+
+        var ctx = canvas.getContext('2d');
+        var w = 0;
+        var h = 0;
+        var particles = [];
+        var rafId = 0;
+
+        function resize() {
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = Math.max(window.innerHeight, 720);
+          particles = [];
+          var maxParticles = window.innerWidth < 768 ? 20 : 48;
+          for (var i = 0; i < maxParticles; i++) {
+            particles.push({
+              x: Math.random() * w,
+              y: Math.random() * h,
+              r: Math.random() * 1.3 + 0.4,
+              vx: (Math.random() - 0.5) * 0.3,
+              vy: (Math.random() - 0.5) * 0.3
+            });
+          }
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, w, h);
+
+          for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0) p.x = w;
+            if (p.x > w) p.x = 0;
+            if (p.y < 0) p.y = h;
+            if (p.y > h) p.y = 0;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(165,180,252,0.45)';
+            ctx.fill();
+          }
+
+          for (var a = 0; a < particles.length; a++) {
+            for (var b = a + 1; b < particles.length; b++) {
+              var dx = particles[a].x - particles[b].x;
+              var dy = particles[a].y - particles[b].y;
+              var d = Math.sqrt(dx * dx + dy * dy);
+              if (d < 120) {
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(99,102,241,' + ((1 - d / 120) * 0.12) + ')';
+                ctx.lineWidth = 0.5;
+                ctx.moveTo(particles[a].x, particles[a].y);
+                ctx.lineTo(particles[b].x, particles[b].y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          rafId = requestAnimationFrame(draw);
+        }
+
+        resize();
+        draw();
+        window.addEventListener('resize', resize, { passive: true });
+        window.addEventListener('beforeunload', function () { cancelAnimationFrame(rafId); });
+      }
+
+      function setupCountUps() {
+        var nodes = document.querySelectorAll('[data-countup]');
+        if (!nodes.length) return;
+
+        function run(el) {
+          if (el.dataset.counted === '1') return;
+          el.dataset.counted = '1';
+
+          var target = parseFloat(el.dataset.countup || '0');
+          var prefix = el.dataset.prefix || '';
+          var suffix = el.dataset.suffix || '';
+          var decimals = parseInt(el.dataset.decimals || '0', 10) || 0;
+          var duration = parseInt(el.dataset.duration || '1800', 10);
+          var start = null;
+
+          function step(ts) {
+            if (!start) start = ts;
+            var progress = Math.min((ts - start) / duration, 1);
+            var value = easeOutExpo(progress) * target;
+            if (el.id === 'kpi-val') {
+              el.textContent = prefix + Math.floor(value).toLocaleString('en-US') + suffix;
+            } else {
+              el.textContent = prefix + (decimals ? value.toFixed(decimals) : Math.floor(value).toLocaleString('en-US')) + suffix;
+            }
+            if (progress < 1) requestAnimationFrame(step);
+          }
+
+          requestAnimationFrame(step);
+        }
+
+        if (reduceMotion() || !('IntersectionObserver' in window)) {
+          nodes.forEach(run);
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            run(entry.target);
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.25 });
+
+        nodes.forEach(function (node) { observer.observe(node); });
+      }
+
+      function setupHeroBars() {
+        var bars = document.querySelectorAll('#premium-hero-section .bar-fill');
+        if (!bars.length) return;
+        setTimeout(function () {
+          bars.forEach(function (bar) {
+            bar.style.setProperty('--w', bar.getAttribute('data-width') || '0%');
+            bar.classList.add('go');
+          });
+        }, 900);
+      }
+
+      function setupServicesReveal() {
+        var reveals = document.querySelectorAll('#servicios-premium-partum .reveal');
+        if (!reveals.length) return;
+        if (reduceMotion() || !('IntersectionObserver' in window)) {
+          reveals.forEach(function (node) { node.classList.add('active'); });
+          return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        reveals.forEach(function (node) { observer.observe(node); });
+      }
+
+      function setupMethodologyReveal() {
+        var steps = document.querySelectorAll('#metodologia-partum-premium .met-step');
+        if (!steps.length) return;
+        if (reduceMotion() || !('IntersectionObserver' in window)) {
+          steps.forEach(function (step) {
+            step.classList.add('visible');
+            var fill = step.querySelector('.prog-fill');
+            if (fill) fill.style.width = (step.dataset.prog || 100) + '%';
+          });
+          return;
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            var delay = parseInt(el.dataset.delay || '0', 10);
+            var prog = parseInt(el.dataset.prog || '0', 10);
+            setTimeout(function () {
+              el.classList.add('visible');
+              var fill = el.querySelector('.prog-fill');
+              if (fill) fill.style.width = prog + '%';
+            }, delay);
+            observer.unobserve(el);
+          });
+        }, { threshold: 0.15 });
+        steps.forEach(function (step) { observer.observe(step); });
+      }
+
+      function setupReviewsCarousel() {
+        var track = document.getElementById('reviews-track');
+        var prev = document.getElementById('btnPrev');
+        var next = document.getElementById('btnNext');
+        if (!track) return;
+
+        var cards = track.querySelectorAll('.review-card');
+        cards.forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+            card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+          });
+        });
+
+        function stepWidth() {
+          var card = track.querySelector('.review-card');
+          return card ? card.offsetWidth + 24 : 330;
+        }
+
+        if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -stepWidth(), behavior: 'smooth' }); });
+        if (next) next.addEventListener('click', function () { track.scrollBy({ left: stepWidth(), behavior: 'smooth' }); });
+
+        var isDown = false;
+        var startX = 0;
+        var scrollLeft = 0;
+
+        track.addEventListener('pointerdown', function (e) {
+          isDown = true;
+          track.setPointerCapture(e.pointerId);
+          startX = e.pageX - track.offsetLeft;
+          scrollLeft = track.scrollLeft;
+        });
+        track.addEventListener('pointerup', function () { isDown = false; });
+        track.addEventListener('pointerleave', function () { isDown = false; });
+        track.addEventListener('pointermove', function (e) {
+          if (!isDown) return;
+          e.preventDefault();
+          var x = e.pageX - track.offsetLeft;
+          track.scrollLeft = scrollLeft - ((x - startX) * 1.4);
+        });
+      }
+
+      function setupPlansLight() {
+        var cards = document.querySelectorAll('#planes-partum-premium .interactive-light');
+        if (!cards.length) return;
+        cards.forEach(function (wrapper) {
+          var card = wrapper.classList.contains('card-destacada-wrapper') ? wrapper.querySelector('.card-destacada-inner') : wrapper;
+          if (!card) return;
+          wrapper.addEventListener('mousemove', function (e) {
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', x + 'px');
+            card.style.setProperty('--mouse-y', y + 'px');
+          });
+        });
+      }
+
+      function setupCasesTilt() {
+        var cards = document.querySelectorAll('#casos-exito-premium [data-tilt]');
+        if (!cards.length) return;
+        var active = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)').matches;
+        if (!active || reduceMotion()) return;
+
+        cards.forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var rect = card.getBoundingClientRect();
+            var px = (e.clientX - rect.left) / rect.width;
+            var py = (e.clientY - rect.top) / rect.height;
+            var ry = (px - 0.5) * 8;
+            var rx = (0.5 - py) * 8;
+            card.style.transform = 'translateY(-8px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+          });
+          card.addEventListener('mouseleave', function () {
+            card.style.transform = '';
+          });
+        });
+      }
+
+      function setupServicesFlipTap() {
+        var cards = document.querySelectorAll('#servicios-premium-partum .flip-card');
+        cards.forEach(function (card) {
+          card.addEventListener('click', function (e) {
+            var link = e.target.closest('a');
+            if (link) return;
+            card.classList.toggle('is-flipped');
+          });
+          card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              card.classList.toggle('is-flipped');
+            }
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        setupParticleCanvas();
+        setupCountUps();
+        setupHeroBars();
+        setupServicesReveal();
+        setupServicesFlipTap();
+        setupMethodologyReveal();
+        setupReviewsCarousel();
+        setupPlansLight();
+        setupCasesTilt();
+      });
+    })();
+  </script>
 
   <script src="assets/js/global.js"></script>
 </body>
 </html>
-
