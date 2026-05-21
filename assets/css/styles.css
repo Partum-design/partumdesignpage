@@ -3,9 +3,17 @@ html {
 }
 
 body {
+  position: relative;
+  padding-top: 95px;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding-top: 75px;
+  }
 }
 
 img,
