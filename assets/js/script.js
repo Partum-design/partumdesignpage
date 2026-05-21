@@ -84,6 +84,34 @@
     }
   }
 
+  function setupPreloader() {
+    var preloader = document.getElementById("partum-preloader");
+    if (!preloader) return;
+
+    document.body.classList.add("partum-loading");
+
+    var hidePreloader = function () {
+      if (preloader.dataset.partumHidden === "true") return;
+      preloader.dataset.partumHidden = "true";
+      preloader.classList.add("is-hidden");
+      window.setTimeout(function () {
+        if (preloader.parentNode) {
+          preloader.parentNode.removeChild(preloader);
+        }
+        document.body.classList.remove("partum-loading");
+      }, 720);
+    };
+
+    if (document.readyState === "complete") {
+      window.setTimeout(hidePreloader, 180);
+      return;
+    }
+
+    window.addEventListener("load", function () {
+      window.setTimeout(hidePreloader, 180);
+    }, { once: true });
+  }
+
   function scrollServicesRoute() {
     var path = decodePath(window.location.pathname);
     if (path !== "/servicios") return;
@@ -119,6 +147,16 @@
           if (spans[1]) spans[1].style.opacity = "1";
         }
       });
+    }
+
+    if (nav && !nav.dataset.partumStickyBound) {
+      nav.dataset.partumStickyBound = "true";
+      var syncNavState = function () {
+        if (window.scrollY > 40) nav.classList.add("scrolled");
+        else nav.classList.remove("scrolled");
+      };
+      syncNavState();
+      window.addEventListener("scroll", syncNavState, { passive: true });
     }
 
     if (dropdownToggle && !dropdownToggle.dataset.partumBound) {
@@ -163,6 +201,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     enhanceImages();
+    setupPreloader();
     mountShellFragment("/header.html", "prepend", "header", function () {
       wireNavBehavior();
       setActiveNav();
