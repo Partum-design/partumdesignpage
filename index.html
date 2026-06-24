@@ -2733,36 +2733,66 @@
 }
 
 #logos-section-partum .logo-card {
-    height: 140px !important;
+    height: 170px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 20px 24px !important;
+    padding: 10px 12px !important;
     background: rgba(255,255,255,0.92) !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     box-shadow: 0 10px 24px rgba(15,23,42,0.04) !important;
-    transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease !important;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease !important;
+    opacity: 0 !important;
+    transform: translateY(26px) scale(.96) !important;
 }
+
+#logos-section-partum .logos-grid.in-view .logo-card {
+    animation: logoCardIn .7s cubic-bezier(.22,1,.36,1) forwards !important;
+}
+
+@keyframes logoCardIn {
+    to { opacity: 1 !important; transform: translateY(0) scale(1) !important; }
+}
+
+/* Entrada escalonada por columna/fila */
+#logos-section-partum .logo-card:nth-child(1)  { animation-delay: .05s !important; }
+#logos-section-partum .logo-card:nth-child(2)  { animation-delay: .10s !important; }
+#logos-section-partum .logo-card:nth-child(3)  { animation-delay: .15s !important; }
+#logos-section-partum .logo-card:nth-child(4)  { animation-delay: .20s !important; }
+#logos-section-partum .logo-card:nth-child(5)  { animation-delay: .25s !important; }
+#logos-section-partum .logo-card:nth-child(6)  { animation-delay: .30s !important; }
+#logos-section-partum .logo-card:nth-child(7)  { animation-delay: .35s !important; }
+#logos-section-partum .logo-card:nth-child(8)  { animation-delay: .40s !important; }
+#logos-section-partum .logo-card:nth-child(9)  { animation-delay: .45s !important; }
+#logos-section-partum .logo-card:nth-child(10) { animation-delay: .50s !important; }
+#logos-section-partum .logo-card:nth-child(11) { animation-delay: .55s !important; }
+#logos-section-partum .logo-card:nth-child(12) { animation-delay: .60s !important; }
+#logos-section-partum .logo-card:nth-child(13) { animation-delay: .65s !important; }
+#logos-section-partum .logo-card:nth-child(14) { animation-delay: .70s !important; }
+#logos-section-partum .logo-card:nth-child(15) { animation-delay: .75s !important; }
+#logos-section-partum .logo-card:nth-child(16) { animation-delay: .80s !important; }
+#logos-section-partum .logo-card:nth-child(17) { animation-delay: .85s !important; }
+#logos-section-partum .logo-card:nth-child(18) { animation-delay: .90s !important; }
 
 #logos-section-partum .logo-card img {
     display: block !important;
     width: 100% !important;
-    height: 110px !important;
+    height: 100% !important;
     max-width: 100% !important;
     object-fit: contain !important;
     filter: none !important;
-    transition: transform .28s ease !important;
+    transition: transform .4s cubic-bezier(.22,1,.36,1) !important;
 }
 
 #logos-section-partum .logo-card:hover {
-    transform: translateY(-4px) !important;
-    border-color: rgba(14,165,233,0.35) !important;
-    box-shadow: 0 18px 36px rgba(15,23,42,0.08) !important;
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: rgba(14,165,233,0.45) !important;
+    box-shadow: 0 24px 48px rgba(15,23,42,0.12) !important;
 }
 
 #logos-section-partum .logo-card:hover img {
-    transform: scale(1.04) !important;
+    transform: scale(1.10) !important;
 }
 
 @media(max-width:1100px){ #logos-section-partum .logos-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
@@ -2773,8 +2803,8 @@
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 10px !important;
     }
-    #logos-section-partum .logo-card { height: 110px !important; padding: 16px 18px !important; }
-    #logos-section-partum .logo-card img { height: 80px !important; width: 100% !important; }
+    #logos-section-partum .logo-card { height: 150px !important; padding: 10px 12px !important; }
+    #logos-section-partum .logo-card img { height: 100% !important; width: 100% !important; }
 }
 @media(max-width:390px){ #logos-section-partum .logos-grid { grid-template-columns: 1fr !important; } }
 
@@ -2904,6 +2934,20 @@
   </div>
 
 </section>
+
+<script>
+  (function () {
+    var grid = document.querySelector('#logos-section-partum .logos-grid');
+    if (!grid) return;
+    if (!('IntersectionObserver' in window)) { grid.classList.add('in-view'); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    io.observe(grid);
+  })();
+</script>
 
 </body>
 </html>
