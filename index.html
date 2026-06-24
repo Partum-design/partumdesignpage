@@ -1763,19 +1763,19 @@
     pointer-events: none !important; z-index: 1 !important;
 }
 
-/* ── 2. Imagen de Fondo Marketing / Analytics con Parallax ── */
+/* ── 2. Imagen de Fondo ── */
 #metodologia-partum-premium .bg-architecture {
     position: absolute !important;
     inset: 0 !important;
-    /* Nueva imagen enfocada en Data y Growth Marketing */
-    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop') !important;
+    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=40&w=1400&auto=format&fit=crop') !important;
     background-size: cover !important;
     background-position: center !important;
-    background-attachment: fixed !important;
-    opacity: 0.04 !important; /* Opacidad sutil para no robar atención */
+    background-attachment: scroll !important;
+    opacity: 0.04 !important;
     pointer-events: none !important;
     z-index: 0 !important;
     mix-blend-mode: multiply !important;
+    will-change: auto !important;
 }
 
 /* ── 3. Malla / Blueprint Grid ── */
@@ -1792,16 +1792,14 @@
     z-index: 1 !important;
 }
 
-/* Blobs Azules (Glow) */
-#metodologia-partum-premium .met-blob { 
-    position: absolute !important; 
-    border-radius: 50% !important; 
-    filter: blur(120px) !important; 
-    pointer-events: none !important; 
-    animation: metBreathe 10s ease-in-out infinite !important; 
+/* Blobs Azules (Glow) — estáticos, sin animación continua para no saturar el GPU */
+#metodologia-partum-premium .met-blob {
+    position: absolute !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    opacity: 0.25 !important;
     z-index: 1 !important;
 }
-@keyframes metBreathe { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:.5;transform:scale(1.1)} }
 
 #metodologia-partum-premium .met-wrap { 
     max-width: 1200px !important; 
@@ -1827,7 +1825,7 @@
     margin-bottom: 25px !important;
 }
 #metodologia-partum-premium .badge-dot { width:8px; height:8px; border-radius:50%; background:#2563eb; animation: metPulse 2s ease-in-out infinite; }
-@keyframes metPulse { 0%,100%{box-shadow:0 0 0 0 rgba(37, 99, 235, 0.4)} 50%{box-shadow:0 0 0 8px rgba(37, 99, 235, 0)} }
+@keyframes metPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
 
 #metodologia-partum-premium .h-title {
     font-size: clamp(36px, 5vw, 65px) !important; 
@@ -1863,15 +1861,17 @@
 /* STEPS CON Z-INDEX SUPERIOR PARA TAPAR LA LÍNEA */
 #metodologia-partum-premium .met-step {
     position: relative !important;
-    z-index: 10 !important; /* Se asegura de estar encima de la línea */
+    z-index: 10 !important;
     display: grid !important;
     grid-template-columns: 72px 1fr !important;
     gap: 0 40px !important;
-    padding-bottom: 40px !important; 
-    opacity: 0; transform: translateX(-30px);
-    transition: opacity .7s cubic-bezier(.34,1.56,.64,1), transform .7s cubic-bezier(.34,1.56,.64,1) !important;
+    padding-bottom: 40px !important;
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity .5s ease, transform .5s ease !important;
+    will-change: opacity, transform !important;
 }
-#metodologia-partum-premium .met-step.visible { opacity: 1 !important; transform: translateX(0) !important; }
+#metodologia-partum-premium .met-step.visible { opacity: 1 !important; transform: translateX(0) !important; will-change: auto !important; }
 @media(min-width:768px){ #metodologia-partum-premium .met-step { grid-template-columns: 120px 1fr !important; gap: 0 50px !important; } }
 @media(min-width:1024px){ #metodologia-partum-premium .met-step { grid-template-columns: 160px 1fr !important; gap: 0 60px !important; } }
 
@@ -1880,9 +1880,9 @@
     border-radius: 20px !important;
     display: flex !important; align-items: center !important; justify-content: center !important;
     position: relative !important; z-index: 2 !important;
-    background: linear-gradient(135deg, var(--met-blue-navy), var(--met-blue-royal)) !important; 
-    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3) !important;
-    transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .4s !important;
+    background: linear-gradient(135deg, var(--met-blue-navy), var(--met-blue-royal)) !important;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25) !important;
+    transition: transform .3s ease, box-shadow .3s ease !important;
 }
 @media(min-width:768px){ #metodologia-partum-premium .step-dot { width: 85px !important; height: 85px !important; } }
 
@@ -1890,14 +1890,14 @@
     background: #ffffff !important;
     border: 1px solid #eaeaea !important;
     border-radius: 12px !important;
-    padding: 40px 45px !important; 
-    transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s, border-color .4s !important;
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05) !important;
+    padding: 40px 45px !important;
+    transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
 }
 #metodologia-partum-premium .met-step:hover .met-step-card {
-    transform: translateX(10px) !important;
+    transform: translateX(8px) !important;
     border-color: #2563eb !important;
-    box-shadow: 0 20px 50px rgba(37, 99, 235, 0.1) !important;
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.12) !important;
 }
 
 #metodologia-partum-premium .prog-fill { 
@@ -1929,21 +1929,6 @@
 }
 #metodologia-partum-premium .met-cta:hover { transform:scale(1.05) !important; box-shadow:0 15px 30px rgba(37,99,235,.4) !important; background:#1d4ed8 !important; }
 
-/* ── 4. Partículas Flotantes (Glow Dust) ── */
-#metodologia-partum-premium .met-ptcl { 
-    position:absolute !important; 
-    border-radius:50% !important; 
-    pointer-events:none !important; 
-    opacity:0 !important; 
-    filter: blur(1px) !important;
-    box-shadow: 0 0 8px currentColor !important;
-}
-@keyframes metRise {
-    0%   { opacity:0; transform:translate(0, 0) scale(0.5); }
-    20%  { opacity:0.6; }
-    80%  { opacity:0.4; }
-    100% { opacity:0; transform:translate(var(--dx), -180px) scale(1.3); }
-}
 
 /* ════════════════════════════════════════════════════════
    AJUSTES RESPONSIVOS AGREGADOS PARA MOVILES Y TABLETS
@@ -2049,12 +2034,9 @@
   <div class="bg-architecture"></div>
   <div class="bg-blueprint-grid"></div>
 
-  <!-- Ambient Blobs -->
-  <div class="met-blob" style="width:600px;height:600px;top:-100px;left:-100px;background:radial-gradient(circle,rgba(37,99,235,.07) 0%,transparent 70%);"></div>
-  <div class="met-blob" style="width:500px;height:500px;bottom:-100px;right:-100px;background:radial-gradient(circle,rgba(15,44,89,.06) 0%,transparent 70%);animation-delay:5s"></div>
-
-  <!-- Contenedor Partículas -->
-  <div id="met-particles-host" style="position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2"></div>
+  <!-- Ambient Blobs — estáticos, sin filtro blur para no afectar rendimiento -->
+  <div class="met-blob" style="width:500px;height:500px;top:-80px;left:-80px;background:radial-gradient(circle,rgba(37,99,235,.06) 0%,transparent 70%);"></div>
+  <div class="met-blob" style="width:400px;height:400px;bottom:-80px;right:-80px;background:radial-gradient(circle,rgba(15,44,89,.05) 0%,transparent 70%);"></div>
 
   <div class="met-wrap">
 
@@ -2186,80 +2168,35 @@
 
 <script>
 (function() {
-    /* ── SCROLL REVEAL ── */
-    const steps = document.querySelectorAll('#metodologia-partum-premium .met-step');
-    const bottom = document.getElementById('met-bottom-trigger');
+    var steps = document.querySelectorAll('#metodologia-partum-premium .met-step');
+    var bottom = document.getElementById('met-bottom-trigger');
 
-    const metObserver = new IntersectionObserver(entries => {
-        entries.forEach(e => {
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
             if (!e.isIntersecting) return;
-            const el = e.target;
-            const del = parseInt(el.dataset?.delay) || 0;
-            const prg = parseInt(el.dataset?.prog) || 0;
-
-            setTimeout(() => {
+            var el = e.target;
+            var del = parseInt(el.dataset.delay) || 0;
+            var prg = parseInt(el.dataset.prog) || 0;
+            setTimeout(function() {
                 el.classList.add('visible');
-                setTimeout(() => {
-                    const fill = el.querySelector('.prog-fill');
-                    if (fill) fill.style.width = prg + '%';
-                }, 500);
+                var fill = el.querySelector('.prog-fill');
+                if (fill) fill.style.width = prg + '%';
             }, del);
-
-            metObserver.unobserve(el);
+            observer.unobserve(el);
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    steps.forEach(s => metObserver.observe(s));
+    steps.forEach(function(s) { observer.observe(s); });
 
-    const bottomIo = new IntersectionObserver(entries => {
-        entries.forEach(e => { 
-            if (e.isIntersecting) { 
-                bottom.classList.add('visible'); 
-                bottomIo.unobserve(bottom); 
-            } 
-        });
-    }, { threshold: 0.2 });
-    if(bottom) bottomIo.observe(bottom);
-
-    /* ── MEJORA DE PARTÍCULAS (Glow Dust) ── */
-    const COLORS = ['#0f2c59', '#1e3a8a', '#2563eb', '#60a5fa', '#3b82f6'];
-    const host = document.getElementById('met-particles-host');
-
-    function spawnMetParticle() {
-        if(!host) return;
-        const el = document.createElement('div');
-        el.className = 'met-ptcl';
-        
-        // Tamaños más delicados (2px a 5px)
-        const sz = Math.random() * 3 + 2; 
-        const dur = Math.random() * 8 + 10; // Movimiento más lento y fluido (10 a 18s)
-        const del = Math.random() * 2;
-        const dx = (Math.random() - 0.5) * 80; // Deriva lateral aleatoria
-        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-
-        el.style.cssText = `
-            width:${sz}px; height:${sz}px;
-            background:${color};
-            color:${color}; /* Usado para el shadow en CSS */
-            left:${Math.random() * 100}%; bottom:-20px;
-            --dx: ${dx}px;
-            animation:metRise ${dur}s ${del}s ease-in-out forwards;
-        `;
-        host.appendChild(el);
-        
-        // Eliminar del DOM después de que termine la animación
-        setTimeout(() => el.remove(), (dur + del + 1) * 1000);
+    if (bottom) {
+        var bottomObs = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+                bottom.classList.add('visible');
+                bottomObs.disconnect();
+            }
+        }, { threshold: 0.2 });
+        bottomObs.observe(bottom);
     }
-    
-    // Generar partículas mucho más rápido (cada 500ms) pero solo si la sección está en pantalla
-    setInterval(() => {
-        const rect = host.getBoundingClientRect();
-        if(rect.top < window.innerHeight && rect.bottom > 0) {
-            spawnMetParticle();
-            // A veces generamos 2 partículas de golpe para mayor densidad
-            if (Math.random() > 0.5) spawnMetParticle(); 
-        }
-    }, 500);
 })();
 </script>
 </body>
