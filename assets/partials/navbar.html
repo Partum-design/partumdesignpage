@@ -5,8 +5,8 @@
     :root {
         --dark-bg: #010a13;
         --accent: #6366f1;
-        --nav-height: 108px;
-        --nav-height-scrolled: 94px;
+        --nav-height: 96px;
+        --nav-height-scrolled: 82px;
         --text-white: #ffffff;
         --text-muted: rgba(255, 255, 255, 0.75);
         --glass-bg: rgba(1, 10, 19, 0.85);
@@ -50,8 +50,8 @@
     /* ── LOGO ── */
     .logo {
         display: block;
-        width: 240px;
-        height: 50px;
+        width: 228px;
+        height: 70px;
         transition: all 0.4s ease;
         flex-shrink: 0;
         z-index: 100000;
@@ -65,7 +65,7 @@
         object-position: left center;
     }
 
-    .navbar.scrolled .logo { width: 360px; height: 82px; }
+    .navbar.scrolled .logo { width: 196px; height: 60px; }
 
     /* ── MENÚ DESKTOP ── */
     .nav-content-wrapper {
@@ -194,9 +194,9 @@
 
     /* ── MÓVIL ── */
     @media (max-width: 1024px) {
-        .navbar { height: 82px; }
+        .navbar { height: 78px; }
         .nav-container { padding: 0 20px; }
-        .logo { width: min(240px, 58vw); height: 58px; }
+        .logo { width: min(190px, 52vw); height: 56px; }
         .mobile-toggle { display: flex; }
 
         .nav-content-wrapper {
@@ -292,7 +292,7 @@
         top: 14px;
         left: 50%;
         width: min(calc(100% - 32px), 1360px);
-        height: 108px;
+        height: 96px;
         transform: translateX(-50%);
         background: linear-gradient(135deg, rgba(4,14,24,0.72), rgba(9,22,34,0.5));
         border: 1px solid rgba(255,255,255,0.1);
@@ -326,8 +326,8 @@
         padding: 0 26px;
     }
 
-    .logo { width: 420px; height: 96px; }
-    .navbar.scrolled .logo { width: 360px; height: 82px; }
+    .logo { width: 228px; height: 70px; }
+    .navbar.scrolled .logo { width: 196px; height: 60px; }
     .nav-content-wrapper { gap: 28px; }
     .nav-menu { gap: 28px; }
     .nav-link { font-weight: 600; padding: 10px 2px; }
@@ -365,14 +365,14 @@
         .navbar {
             top: 10px;
             width: calc(100% - 24px);
-            height: 82px;
+            height: 78px;
             border-radius: 16px;
         }
-        .navbar.scrolled { height: 76px; }
+        .navbar.scrolled { height: 70px; }
         .nav-container { padding: 0 16px; }
-        .logo { width: min(240px, 58vw); height: 58px; }
+        .logo { width: min(190px, 52vw); height: 56px; }
         .nav-content-wrapper {
-            top: 96px;
+            top: 90px;
             left: 50%;
             width: calc(100vw - 24px);
             height: auto;
@@ -393,7 +393,7 @@
 <nav class="navbar" id="main-navbar">
     <div class="nav-container">
         <a href="/" class="logo">
-            <img src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Logo Partum Design" class="logo-img">
+            <img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Logo Partum Design" class="logo-img">
         </a>
 
         <div class="nav-content-wrapper">

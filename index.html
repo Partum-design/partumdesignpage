@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partum Design — Agencia Digital</title>
-    <link rel="icon" type="image/png" href="/uploads/logotipo%20de%20partum%20design/favicon.png">
+    <link rel="icon" type="image/png" href="/uploads/logotipo%20de%20partum%20design/favicon-cropped.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -2743,11 +2743,15 @@
     border-radius: 10px !important;
     box-shadow: 0 10px 24px rgba(15,23,42,0.04) !important;
     transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease !important;
+}
+
+/* Solo se ocultan si el JS añade la animación (a prueba de fallos) */
+#logos-section-partum .logos-grid.js-anim .logo-card {
     opacity: 0 !important;
     transform: translateY(26px) scale(.96) !important;
 }
 
-#logos-section-partum .logos-grid.in-view .logo-card {
+#logos-section-partum .logos-grid.js-anim.in-view .logo-card {
     animation: logoCardIn .7s cubic-bezier(.22,1,.36,1) forwards !important;
 }
 
@@ -2939,13 +2943,18 @@
   (function () {
     var grid = document.querySelector('#logos-section-partum .logos-grid');
     if (!grid) return;
-    if (!('IntersectionObserver' in window)) { grid.classList.add('in-view'); return; }
+    // Activa el modo animado (oculta las tarjetas) solo ahora que sabemos que el JS corre
+    grid.classList.add('js-anim');
+    function reveal() { grid.classList.add('in-view'); }
+    if (!('IntersectionObserver' in window)) { reveal(); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+        if (e.isIntersecting) { reveal(); io.disconnect(); }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     io.observe(grid);
+    // Respaldo: si por alguna razón el observer no dispara, mostrar a los 1.5s
+    setTimeout(reveal, 1500);
   })();
 </script>
 

@@ -3,15 +3,15 @@
 
     /* ─── NAVBAR HTML + CSS incrustado (sin petición de red) ─── */
     var NAV_CSS = [
-        ':root{--dark-bg:#010a13;--accent:#0ea5e9;--nav-height:108px;--nav-height-scrolled:94px;--text-white:#fff;--text-muted:rgba(255,255,255,.72);--glass-bg:rgba(4,14,24,.68)}',
+        ':root{--dark-bg:#010a13;--accent:#0ea5e9;--nav-height:96px;--nav-height-scrolled:82px;--text-white:#fff;--text-muted:rgba(255,255,255,.72);--glass-bg:rgba(4,14,24,.68)}',
         'html{scroll-behavior:smooth}',
         '.navbar{position:fixed;top:14px;left:50%;width:min(calc(100% - 32px),1360px);height:var(--nav-height);z-index:99999;display:flex;align-items:center;transform:translateX(-50%);transition:top .34s cubic-bezier(.4,0,.2,1),height .34s cubic-bezier(.4,0,.2,1),background .34s,box-shadow .34s,border-color .34s;background:linear-gradient(135deg,rgba(4,14,24,.72),rgba(9,22,34,.5));backdrop-filter:blur(22px) saturate(135%);-webkit-backdrop-filter:blur(22px) saturate(135%);border:1px solid rgba(255,255,255,.1);border-radius:18px;box-shadow:0 18px 46px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08);will-change:height,background}',
         '.navbar::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(90deg,rgba(14,165,233,.28),transparent 28%,transparent 72%,rgba(99,102,241,.2));opacity:.45}',
         '.navbar.scrolled{top:10px;height:var(--nav-height-scrolled);background:rgba(4,12,22,.88);border-color:rgba(255,255,255,.12);box-shadow:0 18px 56px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08)}',
         '.nav-container{position:relative;z-index:1;width:100%;max-width:1440px;margin:0 auto;padding:0 26px;display:flex;align-items:center;justify-content:space-between}',
-        '.logo{display:block;width:420px;height:96px;transition:width .34s ease,height .34s ease;flex-shrink:0;z-index:100000;position:relative}',
+        '.logo{display:block;width:228px;height:70px;transition:width .34s ease,height .34s ease;flex-shrink:0;z-index:100000;position:relative}',
         '.logo-img{width:100%;height:100%;object-fit:contain;object-position:left center}',
-        '.navbar.scrolled .logo{width:360px;height:82px}',
+        '.navbar.scrolled .logo{width:196px;height:60px}',
         '.nav-content-wrapper{display:flex;align-items:center;gap:28px}',
         '.nav-menu{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:0}',
         '.nav-item{position:relative}',
@@ -30,12 +30,12 @@
         '.mobile-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;z-index:100000;padding:0;width:44px;height:44px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.04)}',
         '.mobile-toggle span{width:28px;height:2px;background:var(--text-white);transition:.3s cubic-bezier(.68,-.55,.265,1.55);border-radius:2px;display:block}',
         '@media(max-width:1024px){',
-        '.navbar{top:10px;width:calc(100% - 24px);height:82px;border-radius:16px}',
-        '.navbar.scrolled{height:76px}',
+        '.navbar{top:10px;width:calc(100% - 24px);height:78px;border-radius:16px}',
+        '.navbar.scrolled{height:70px}',
         '.nav-container{padding:0 16px}',
-        '.logo{width:min(240px,58vw);height:58px}',
+        '.logo{width:min(190px,52vw);height:56px}',
         '.mobile-toggle{display:flex}',
-        '.nav-content-wrapper{position:fixed;top:96px;left:50%;width:calc(100vw - 24px);height:auto;max-height:calc(100svh - 116px);overflow-y:auto;background:rgba(4,12,22,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:18px;box-shadow:0 22px 54px rgba(0,0,0,.42);flex-direction:column;justify-content:flex-start;align-items:center;opacity:0;visibility:hidden;transform:translate(-50%,-12px);transition:opacity .34s,transform .34s,visibility .34s;padding:22px;z-index:99998}',
+        '.nav-content-wrapper{position:fixed;top:90px;left:50%;width:calc(100vw - 24px);height:auto;max-height:calc(100svh - 110px);overflow-y:auto;background:rgba(4,12,22,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:18px;box-shadow:0 22px 54px rgba(0,0,0,.42);flex-direction:column;justify-content:flex-start;align-items:center;opacity:0;visibility:hidden;transform:translate(-50%,-12px);transition:opacity .34s,transform .34s,visibility .34s;padding:22px;z-index:99998}',
         '.navbar.mobile-active .nav-content-wrapper{opacity:1;visibility:visible;transform:translate(-50%,0)}',
         '.nav-menu{flex-direction:column;width:100%;text-align:center;gap:4px}',
         '.nav-item{width:100%}',
@@ -53,7 +53,7 @@
 
     var NAV_HTML = '<nav class="navbar" id="main-navbar">' +
         '<div class="nav-container">' +
-            '<a href="/" class="logo"><img src="/uploads/logotipo%20de%20partum%20design/LOGO%20PARA%20FONDOS%20OBSCUROS.png" alt="Logo Partum Design" class="logo-img" width="240" height="50" fetchpriority="high"></a>' +
+            '<a href="/" class="logo"><img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Logo Partum Design" class="logo-img" width="228" height="70" fetchpriority="high"></a>' +
             '<div class="nav-content-wrapper">' +
                 '<ul class="nav-menu">' +
                     '<li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>' +
