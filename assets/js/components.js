@@ -53,7 +53,7 @@
 
     var NAV_HTML = '<nav class="navbar" id="main-navbar">' +
         '<div class="nav-container">' +
-            '<a href="/" class="logo"><img src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Logo Partum Design" class="logo-img" width="240" height="50" fetchpriority="high"></a>' +
+            '<a href="/" class="logo"><img src="/uploads/logotipo%20de%20partum%20design/LOGO%20PARA%20FONDOS%20OBSCUROS.png" alt="Logo Partum Design" class="logo-img" width="240" height="50" fetchpriority="high"></a>' +
             '<div class="nav-content-wrapper">' +
                 '<ul class="nav-menu">' +
                     '<li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>' +
