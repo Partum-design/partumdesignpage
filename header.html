@@ -30,8 +30,7 @@
             color: var(--text-white);
             background: var(--dark-bg);
             overflow-x: hidden;
-            /* ESTO EVITA QUE EL MENU TAPE EL HERO */
-            padding-top: var(--nav-height); 
+            padding-top: 0;
         }
 
         /* ── NAVBAR PRINCIPAL ── */
@@ -218,7 +217,7 @@
         /* ── DISEÑO MÓVIL OPTIMIZADO ── */
         @media (max-width: 1024px) {
             body {
-                padding-top: 75px; /* Ajuste del padding para móvil */
+                padding-top: 0;
             }
 
             .navbar { height: 75px; }
@@ -310,6 +309,110 @@
                 max-width: 300px;
                 text-align: center;
             }
+        }
+
+        /* ── AJUSTE VISUAL: HEADER FLOTANTE ── */
+        body { padding-top: 0; }
+
+        .navbar {
+            top: 14px;
+            left: 50%;
+            width: min(calc(100% - 32px), 1360px);
+            height: 78px;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(4,14,24,0.72), rgba(9,22,34,0.5));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            box-shadow: 0 18px 46px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
+            backdrop-filter: blur(22px) saturate(135%);
+            -webkit-backdrop-filter: blur(22px) saturate(135%);
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background: linear-gradient(90deg, rgba(14,165,233,0.28), transparent 28%, transparent 72%, rgba(99,102,241,0.2));
+            opacity: 0.45;
+        }
+
+        .navbar.scrolled {
+            top: 10px;
+            height: 68px;
+            background: rgba(4,12,22,0.88);
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 18px 56px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+
+        .nav-container {
+            position: relative;
+            z-index: 1;
+            padding: 0 26px;
+        }
+
+        .logo { width: 206px; height: 44px; }
+        .navbar.scrolled .logo { width: 178px; height: 38px; }
+        .nav-content-wrapper { gap: 28px; }
+        .nav-menu { gap: 28px; }
+        .nav-link { font-weight: 600; padding: 10px 2px; }
+        .nav-link:hover::after, .nav-item.active > .nav-link::after { width: 100%; }
+
+        .dropdown {
+            top: calc(100% + 12px);
+            border-color: rgba(255,255,255,0.08);
+            border-radius: 14px;
+            background: rgba(6,16,28,0.94);
+            box-shadow: 0 24px 54px rgba(0,0,0,0.46);
+        }
+
+        .nav-btn {
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: 900;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+        }
+
+        .mobile-toggle {
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+        }
+
+        @media (max-width: 1024px) {
+            body { padding-top: 0; }
+            .navbar {
+                top: 10px;
+                width: calc(100% - 24px);
+                height: 66px;
+                border-radius: 16px;
+            }
+            .navbar.scrolled { height: 64px; }
+            .nav-container { padding: 0 16px; }
+            .logo { width: 164px; height: 36px; }
+            .nav-content-wrapper {
+                top: 76px;
+                left: 50%;
+                width: calc(100vw - 24px);
+                height: auto;
+                max-height: calc(100svh - 96px);
+                overflow-y: auto;
+                transform: translate(-50%, -12px);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 18px;
+                box-shadow: 0 22px 54px rgba(0,0,0,0.42);
+            }
+            .navbar.mobile-active .nav-content-wrapper { transform: translate(-50%, 0); }
+            .nav-link { font-size: 1.08rem; border-radius: 12px; }
+            .nav-link:hover, .nav-item.active > .nav-link { background: rgba(255,255,255,0.06); }
+            .nav-btn { margin-top: 16px; font-size: 0.92rem; }
         }
     </style>
 </head>

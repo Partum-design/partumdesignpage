@@ -2678,9 +2678,9 @@
 
 /* TÍTULO REDUCIDO Y PROPORCIONADO */
 #logos-section-partum .logos-title {
-    font-size: clamp(32px, 4.5vw, 50px) !important; /* Reducido de 76px a 50px máximo */
+    font-size: 50px !important;
     font-weight: 900 !important;
-    letter-spacing: -.04em !important;
+    letter-spacing: 0 !important;
     line-height: 1.1 !important;
     color: #0f172a !important;
 }
@@ -2691,6 +2691,8 @@
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
+@media(max-width:700px){ #logos-section-partum .logos-title { font-size: 36px !important; } }
+@media(max-width:440px){ #logos-section-partum .logos-title { font-size: 30px !important; } }
 
 /* DIVIDER */
 #logos-section-partum .logos-divider {
@@ -2707,43 +2709,74 @@
 #logos-section-partum .div-dots { display: flex !important; gap: 5px !important; }
 #logos-section-partum .div-dot { width: 5px !important; height: 5px !important; border-radius: 50% !important; }
 
-/* GSLOGO CONTAINER (FULL WIDTH & COLORIDO) */
+/* LOGO WALL (assets locales de uploads) */
 #logos-section-partum .gslogo-container {
     position: relative !important;
     width: 100% !important;
-    padding: 60px 0 !important; 
+    padding: 34px 0 !important;
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
     border-top: 1px solid rgba(226,232,240,.8) !important;
     border-bottom: 1px solid rgba(226,232,240,.8) !important;
-    box-shadow: 0 4px 24px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.8) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8) !important;
     z-index: 10 !important;
 }
 
-/* Estilos para forzar el diseño del plugin gslogo */
-#logos-section-partum .gslogo-container a {
-    display: inline-block !important;
-    transition: transform .3s cubic-bezier(.34,1.56,.64,1) !important;
+#logos-section-partum .logos-grid {
+    width: min(1180px, calc(100% - 48px)) !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    position: relative !important;
+    z-index: 2 !important;
 }
 
-#logos-section-partum .gslogo-container img {
-    max-height: 75px !important; /* Logos más grandes */
+#logos-section-partum .logo-card {
+    height: 104px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 18px 22px !important;
+    background: rgba(255,255,255,0.92) !important;
+    border: 1px solid rgba(148,163,184,0.22) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 24px rgba(15,23,42,0.04) !important;
+    transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease !important;
+}
+
+#logos-section-partum .logo-card img {
+    display: block !important;
+    max-width: 100% !important;
+    max-height: 64px !important;
     width: auto !important;
+    height: auto !important;
     object-fit: contain !important;
-    filter: grayscale(0%) opacity(1) !important; /* Siempre a color y 100% visibles */
-    transition: all .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1) !important;
+    filter: none !important;
+    transition: transform .28s ease !important;
 }
 
-#logos-section-partum .gslogo-container a:hover img,
-#logos-section-partum .gslogo-container img:hover {
-    transform: scale(1.08) !important; /* Solo hace el efecto de crecer suavemente al pasar el mouse */
-    cursor: pointer !important;
+#logos-section-partum .logo-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(14,165,233,0.35) !important;
+    box-shadow: 0 18px 36px rgba(15,23,42,0.08) !important;
 }
 
-/* Mask fade edges para el contenedor del plugin */
-#logos-section-partum .gslogo-container > * {
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent) !important;
+#logos-section-partum .logo-card:hover img {
+    transform: scale(1.04) !important;
 }
+
+@media(max-width:1100px){ #logos-section-partum .logos-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+@media(max-width:720px){
+    #logos-section-partum .gslogo-container { padding: 24px 0 !important; }
+    #logos-section-partum .logos-grid {
+        width: min(100% - 32px, 620px) !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+    #logos-section-partum .logo-card { height: 88px !important; padding: 14px 16px !important; }
+    #logos-section-partum .logo-card img { max-height: 54px !important; }
+}
+@media(max-width:390px){ #logos-section-partum .logos-grid { grid-template-columns: 1fr !important; } }
 
 /* BOTTOM STATS */
 #logos-section-partum .logos-stats {
@@ -2763,12 +2796,13 @@
     gap: 4px !important;
 }
 #logos-section-partum .stat-num {
-    font-size: clamp(22px, 3vw, 30px) !important;
+    font-size: 30px !important;
     font-weight: 900 !important;
-    letter-spacing: -.03em !important;
+    letter-spacing: 0 !important;
     color: #0f172a !important;
     line-height: 1 !important;
 }
+@media(max-width:580px){ #logos-section-partum .stat-num { font-size: 24px !important; } }
 #logos-section-partum .stat-label {
     font-size: 9px !important;
     font-weight: 800 !important;
@@ -2821,9 +2855,22 @@
     </div>
   </div>
 
-  <!-- Contenedor para el Shortcode o Plugin de Logos -->
-  <div class="gslogo-container">
-    [gslogo id=50]
+  <!-- Logotipos locales desde uploads -->
+  <div class="gslogo-container" aria-label="Logotipos de marcas que confían en Partum Design">
+    <div class="logos-grid">
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-1.png.webp" alt="Cliente Partum Design 1" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-2.png.webp" alt="Cliente Partum Design 2" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-3.png.webp" alt="Cliente Partum Design 3" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-4.png.webp" alt="Cliente Partum Design 4" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-5.png.webp" alt="Cliente Partum Design 5" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-6.png.webp" alt="Cliente Partum Design 6" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-7.png.webp" alt="Cliente Partum Design 7" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-8.png.webp" alt="Cliente Partum Design 8" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-9.png.webp" alt="Cliente Partum Design 9" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-10.png.webp" alt="Cliente Partum Design 10" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-11.png.webp" alt="Cliente Partum Design 11" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="/uploads/2026/02/gs-logo-slider-12.png.webp" alt="Cliente Partum Design 12" loading="lazy" decoding="async"></div>
+    </div>
   </div>
 
   <div class="logos-wrap">

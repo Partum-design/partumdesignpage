@@ -4,7 +4,7 @@ html {
 
 body {
   position: relative;
-  padding-top: 95px;
+  padding-top: 0;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -77,7 +77,7 @@ body.partum-loading {
 
 @media (max-width: 1024px) {
   body {
-    padding-top: 75px;
+    padding-top: 0;
   }
 }
 
