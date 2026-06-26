@@ -578,13 +578,25 @@
             #premium-hero-section .chip-user { right: 5px; bottom: 5px; padding: 8px 12px; gap: 6px; }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
 </head>
 <body>
 
 <section id="premium-hero-section">
-    <video autoplay loop muted playsinline class="video-bg">
-        <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/2383633_Angel_De_La_Independencia_Mexico_City_3840x2160.mp4" type="video/mp4">
-    </video>
+    <video id="hero-video" autoplay loop muted playsinline class="video-bg"></video>
+    <script>
+    (function(){
+        var vid = document.getElementById('hero-video');
+        var src = 'https://stream.mux.com/QgTir2Bu4u6d01CqyKEBCks68PIm2nCM7vhwXgenS00tw.m3u8';
+        if (vid.canPlayType('application/vnd.apple.mpegurl')) {
+            vid.src = src;
+        } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+            var hls = new Hls({ autoStartLoad: true, startLevel: -1 });
+            hls.loadSource(src);
+            hls.attachMedia(vid);
+        }
+    })();
+    </script>
     <div class="overlay"></div>
     <div class="grid-overlay"></div>
     <div class="orb orb-tl"></div>
@@ -601,20 +613,20 @@
                     <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/Mesa-de-trabajo-1@300x-2-e1771263865148.png" alt="user"></div>
                     <div class="av av-count">+200</div>
                 </div>
-                <span class="badge-text">Liderando la innovación digital</span>
+                <span class="badge-text">200+ marcas trabajan con nosotros</span>
             </div>
 
             <h1>
-                <span class="headline-accent">Escalamos tu </span>
-                <span class="headline-solid">Visión digital.</span>
+                <span class="headline-accent">Construimos tu </span>
+                <span class="headline-solid">presencia digital.</span>
             </h1>
 
             <p class="hero-desc">
-                Transformamos ideas en <strong>productos digitales de alto rendimiento</strong>. Especialistas en experiencias premium que impulsan el crecimiento real de tu negocio.
+                Tomamos tu idea y la convertimos en algo que funciona en internet. <strong>Estrategia, diseño y código</strong> para que tu marca llegue a más gente y venda más.
             </p>
 
             <div class="cta-row">
-                <a href="/contacto" class="btn-primary">Cotiza tu proyecto</a>
+                <a href="/contacto" class="btn-primary">Inicia tu proyecto</a>
                 <a href="https://www.facebook.com/share/v/1AhCervjnu/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
                     <div class="play-ring"><i class="fa-solid fa-play"></i></div>
                     Ver Demo
@@ -625,7 +637,7 @@
         <!-- RIGHT -->
         <div class="hero-right">
             <div class="chip chip-roi">
-                <div class="chip-roi-label">Retorno total</div>
+                <div class="chip-roi-label">Retorno de inversión</div>
                 <div class="chip-roi-val">+240% ROI</div>
             </div>
             <div class="chip chip-user">
@@ -638,13 +650,13 @@
             <div class="dash-card">
                 <div class="dash-topbar">
                     <div class="win-dots"><div class="wd wd-r"></div><div class="wd wd-y"></div><div class="wd wd-g"></div></div>
-                    <div class="dash-title">Analytics · Overview</div>
-                    <div class="live-badge"><div class="ld"></div>En vivo</div>
+                    <div class="dash-title">Resultados · Panel del cliente</div>
+                    <div class="live-badge"><div class="ld"></div>En tiempo real</div>
                 </div>
                 <div class="chart-zone">
                     <div class="kpi-row">
                         <div>
-                            <div class="kpi-label-text">Ingresos digitales</div>
+                            <div class="kpi-label-text">Facturación digital</div>
                             <div class="kpi-value" id="kpi-val">$184,920</div>
                         </div>
                         <div class="kpi-delta">↑ 38.4%</div>
@@ -669,7 +681,7 @@
                 </div>
                 <div class="metrics-strip">
                     <div class="metric">
-                        <div class="metric-label">Tráfico web</div>
+                        <div class="metric-label">Alcance orgánico</div>
                         <div class="metric-val">85%</div>
                         <div class="metric-bar"><div class="bar-fill bar-a"></div></div>
                     </div>
@@ -679,7 +691,7 @@
                         <div class="metric-bar"><div class="bar-fill bar-b"></div></div>
                     </div>
                     <div class="metric">
-                        <div class="metric-label">Retención</div>
+                        <div class="metric-label">Fidelización</div>
                         <div class="metric-val">73%</div>
                         <div class="metric-bar"><div class="bar-fill bar-c"></div></div>
                     </div>
@@ -692,15 +704,15 @@
     <div class="stats-row">
         <div class="stat-item">
             <div class="stat-value"><span class="stat-num" id="stat-roi">+240%</span></div>
-            <div class="stat-label">ROI promedio</div>
+            <div class="stat-label">ROI promedio por cliente</div>
         </div>
         <div class="stat-item">
             <div class="stat-value"><span id="stat-brands">200</span><span class="stat-num"></span></div>
-            <div class="stat-label">Marcas escaladas</div>
+            <div class="stat-label">Marcas atendidas</div>
         </div>
         <div class="stat-item">
             <div class="stat-value"><span id="stat-sat">98</span><span class="stat-num"></span></div>
-            <div class="stat-label">Satisfacción cliente</div>
+            <div class="stat-label">Clientes satisfechos</div>
         </div>
     </div>
 </section>
@@ -948,14 +960,14 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-sm mb-6">
                         <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
                         <span class="text-indigo-800 font-bold tracking-[0.15em] text-[10px] sm:text-xs uppercase">
-                            Agencia Premium
+                            Partum Design
                         </span>
                     </div>
                     
                     <h2 class="premium-headline text-[#0f172a]">
-                        Estrategia visual,
+                        Diseño con criterio,
                         <span class="block" style="color: #0055ff;">
-                            ejecución perfecta.
+                            código sin excusas.
                         </span>
                     </h2>
                 </div>
@@ -965,7 +977,7 @@
                 </div>
 
                 <p class="reveal d3 text-slate-600 text-lg sm:text-xl font-medium leading-relaxed max-w-lg">
-                    Transformamos la complejidad del mundo digital en oportunidades claras de crecimiento para tu marca mediante ecosistemas escalables.
+                    Hacemos que tu marca funcione en digital. Desde el logotipo hasta la campaña que trae clientes.
                 </p>
 
                 <div class="reveal d4 grid grid-cols-3 gap-4 max-w-md">
@@ -1021,7 +1033,7 @@
                                     <i class="fas fa-layer-group text-blue-400 text-xl"></i>
                                 </div>
                                 <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Logotipos y<br>Branding</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Creamos marcas memorables y guías de estilo que conectan estratégicamente con tu audiencia, asegurando coherencia.</p>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Diseñamos tu logo, paleta y manual de marca. Todo lo que necesitas para que tu identidad sea reconocible desde el primer vistazo.</p>
                             </div>
                         </div>
                     </div>
@@ -1050,7 +1062,7 @@
                                     <i class="fas fa-code text-emerald-400 text-xl"></i>
                                 </div>
                                 <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Soluciones<br>a Medida</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Programación robusta e interfaces intuitivas diseñadas para optimizar la experiencia del usuario y tus conversiones.</p>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Desarrollamos sitios y apps que cargan rápido, se ven bien y convierten. Sin plantillas genéricas ni código de dudosa procedencia.</p>
                             </div>
                         </div>
                     </div>
@@ -1079,7 +1091,7 @@
                                     <i class="fas fa-chart-line text-amber-400 text-xl"></i>
                                 </div>
                                 <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Campañas de<br>Conversión</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Estrategias basadas en datos. Optimizamos tu presupuesto publicitario para atraer clientes potenciales reales y escalar tu negocio.</p>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Gestionamos tus campañas en Meta, Google y TikTok. Medimos el costo por cliente y ajustamos hasta que el número tenga sentido.</p>
                             </div>
                         </div>
                     </div>
@@ -1108,7 +1120,7 @@
                                     <i class="fas fa-video text-purple-400 text-xl"></i>
                                 </div>
                                 <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Multimedia de<br>Alto Nivel</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Producción audiovisual y sesiones fotográficas profesionales que elevan el prestigio y la percepción de tu marca.</p>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Fotos y videos de producto, locación o equipo. Material listo para ads, redes y tu sitio.</p>
                             </div>
                         </div>
                     </div>
@@ -1587,17 +1599,17 @@
         <div>
           <div class="trust-badge">
             <span class="badge-dot"></span>
-            <span class="badge-text">Confianza Nivel Elite</span>
+            <span class="badge-text">Comprometidos con el resultado</span>
           </div>
         </div>
 
         <h2 class="trust-headline">
           <em> Tu visión,<br>
-          protegida por<br>expertos reales.</em>
+          bien ejecutada<br>por quien sabe.</em>
         </h2>
 
         <p class="trust-subtext">
-          No somos una agencia más de paso. Construimos infraestructuras de crecimiento sólidas donde otros solo ven campañas temporales.
+          No tomamos proyectos para olvidarlos. Cada cliente tiene un equipo asignado y acceso directo a quienes hacen el trabajo.
         </p>
 
         <div class="trust-features">
@@ -1606,8 +1618,8 @@
               <i class="fas fa-shield-halved"></i>
             </div>
             <div class="feat-text">
-              <h4>Seguridad Blindada</h4>
-              <p>Metodologías de entrega puntual y reportes en tiempo real que te mantienen siempre en control.</p>
+              <h4>Entregas a tiempo</h4>
+              <p>Reportes semanales y canal directo con tu equipo. Sabes qué se está haciendo y cuándo estará listo.</p>
             </div>
           </div>
 
@@ -1616,8 +1628,8 @@
               <i class="fas fa-chart-line"></i>
             </div>
             <div class="feat-text">
-              <h4>Crecimiento Escalable</h4>
-              <p>Transformamos tu inversión en un activo digital de alto rendimiento con retornos medibles.</p>
+              <h4>Resultados medibles</h4>
+              <p>Cada peso invertido tiene un objetivo claro. Medimos visitas, leads y ventas, no métricas de vanidad.</p>
             </div>
           </div>
         </div>
@@ -1630,17 +1642,17 @@
             <div class="trust-card-inner">
 
               <div class="trust-track">
-                <span class="track-label">Track Record Verificado</span>
+                <span class="track-label">Historial comprobado</span>
                 <div class="big-number">
                   <span class="trust-counter" data-target="4">0</span>
                 </div>
-                <p class="track-sub">Años de maestría digital</p>
+                <p class="track-sub">Años en el mercado</p>
               </div>
 
               <div class="trust-stats">
                 <div class="trust-stat">
                   <div class="stat-num"><span class="trust-counter" data-target="200">0</span>+</div>
-                  <div class="stat-label">Proyectos Exitosos</div>
+                  <div class="stat-label">Proyectos entregados</div>
                 </div>
                 <div class="trust-stat">
                   <div class="stat-num green"><span class="trust-counter" data-target="99">0</span>%</div>
@@ -2045,7 +2057,7 @@
       <div>
         <div class="met-badge">
           <span class="badge-dot"></span>
-          <span style="font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#2563eb;">Proceso Comprobado</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:#2563eb;">Cómo trabajamos</span>
         </div>
         <h2 class="h-title">
           Metodología<br>
@@ -2053,7 +2065,7 @@
         </h2>
       </div>
       <p style="font-size: 18px; color: #555; line-height: 1.7; max-width: 450px;">
-        Adiós a la improvisación y al gasto a ciegas. Bienvenido a un sistema diseñado para brindar <strong>crecimiento predecible y escalabilidad absoluta</strong> a tu negocio.
+        Trabajamos con un proceso definido. <strong>Nada de improvisar ni cotizar al aire.</strong> Sabes qué esperar en cada etapa.
       </p>
     </div>
 
@@ -2070,8 +2082,8 @@
             <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">01</span>
             <div style="flex:1;">
                 <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Auditoría</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Diagnóstico Profundo</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Analizamos tu ecosistema digital, competidores y embudos actuales para detectar fugas de capital y descubrir oportunidades de crecimiento inmediato.</p>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Análisis inicial</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Revisamos tu presencia actual, a tus competidores y qué está funcionando. Así sabemos dónde está el problema antes de proponer cualquier solución.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2096,8 +2108,8 @@
             <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">02</span>
             <div style="flex:1;">
                 <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Estrategia</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Arquitectura de Conversión</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Diseñamos los sistemas de captación: Landing pages de alto rendimiento, ofertas irresistibles, creativos magnéticos y secuencias de automatización listas para convertir.</p>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Diseño del sistema</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Diseñamos tu landing, tu oferta y los anuncios. Todo conectado para que quien llegue tenga razones concretas para quedarse.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2122,8 +2134,8 @@
             <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">03</span>
             <div style="flex:1;">
                 <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Ejecución</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Adquisición a Escala</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Desplegamos campañas publicitarias omnicanal (Meta, Google, TikTok) con segmentaciones precisas e Inteligencia Artificial para maximizar el ROAS desde el primer momento.</p>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Campaña activa</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Lanzamos campañas en Meta, Google y TikTok. Segmentamos por comportamiento, no solo por demografía, y ajustamos el presupuesto según lo que están dando los números.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2148,8 +2160,8 @@
             <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">04</span>
             <div style="flex:1;">
                 <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Escalabilidad</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Optimización Continua</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Nuestro trabajo no termina al lanzar. Realizamos test A/B diarios, iteración de creativos y escalado de las campañas ganadoras para multiplicar tus ventas mes a mes.</p>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Mejora constante</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Lanzar es el inicio, no el final. Hacemos pruebas A/B, rotamos creativos y escalamos lo que convierte. El objetivo es que cada mes supere al anterior.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2403,11 +2415,11 @@
                     Portafolio v2.0
                 </div>
                 <h2 class="hdr-title">
-                    Casos de<br><em>Éxito Real.</em>
+                    Lo que hemos<br><em>construido.</em>
                 </h2>
             </div>
             <p class="hdr-sub reveal-item d2">
-                Ingeniería digital aplicada a marcas que buscan dominar su categoría.
+                Proyectos reales, resultados medibles.
             </p>
         </div>
 
@@ -2425,7 +2437,7 @@
                     <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:14px;">
                         <div>
                             <h3 class="hero-title">FitLife Global</h3>
-                            <p style="font-size:13px; color:#e2e8f0; line-height:1.5; max-width:340px;">Automatización de checkout que disparó la facturación a nuevos máximos históricos.</p>
+                            <p style="font-size:13px; color:#e2e8f0; line-height:1.5; max-width:340px;">Rediseñamos el flujo de checkout completo. La conversión subió +240% en los primeros 60 días.</p>
                         </div>
                         <div style="display:flex;align-items:flex-end;gap:20px">
                             <div style="text-align:right;">
@@ -2445,7 +2457,7 @@
                 <div class="hero-content" style="justify-content: flex-end !important; gap: 12px;">
                     <div style="background:rgba(16,185,129,.15); border:1px solid rgba(16,185,129,.3); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; width:fit-content;">App Design</div>
                     <h3 style="font-size:22px; font-weight:900; color:#fff;">Smart<br>CRM App</h3>
-                    <p style="font-size:12px; color:#cbd5e1;">UX de alta productividad comercial diseñada para convertir.</p>
+                    <p style="font-size:12px; color:#cbd5e1;">Diseñamos la UX completa de la app. Del wireframe al producto final en 18 días.</p>
                     <div style="display:flex; align-items:center; gap:10px;">
                         <span style="font-size:10px; font-weight:900; color:#fff; text-transform:uppercase;">18 Días Récord</span>
                         <div style="height:1px; flex:1; background:rgba(255,255,255,.1);"></div>
@@ -2463,7 +2475,7 @@
                         </div>
                         <div style="font-size:9px; font-weight:900; color:#8b5cf6; text-transform:uppercase; margin-bottom:8px;">SEO & Tráfico</div>
                         <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">MedBrand México</div>
-                        <p style="font-size:12px; color:#94a3b8;">Posicionamiento orgánico que triplicó visitas en 90 días.</p>
+                        <p style="font-size:12px; color:#94a3b8;">SEO técnico y contenido. Tráfico orgánico +310% en 90 días.</p>
                     </div>
                     <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
                         <div>
@@ -2484,7 +2496,7 @@
                         </div>
                         <div style="font-size:9px; font-weight:900; color:#f43f5e; text-transform:uppercase; margin-bottom:8px;">Paid Media</div>
                         <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">RetailPlus Latam</div>
-                        <p style="font-size:12px; color:#94a3b8;">Campañas con ROAS 8x en primer trimestre.</p>
+                        <p style="font-size:12px; color:#94a3b8;">Meta y Google Ads activos. ROAS 8x el primer trimestre.</p>
                     </div>
                     <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
                         <div>
@@ -2505,7 +2517,7 @@
                         </div>
                         <div style="font-size:9px; font-weight:900; color:#10b981; text-transform:uppercase; margin-bottom:8px;">Social Media</div>
                         <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">EcoStyle Brand</div>
-                        <p style="font-size:12px; color:#94a3b8;">Estrategia que generó comunidad masiva.</p>
+                        <p style="font-size:12px; color:#94a3b8;">Estrategia de contenido y social media. +180K seguidores en 6 meses.</p>
                     </div>
                     <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
                         <div>
@@ -2865,13 +2877,13 @@
   <div class="logos-wrap">
     <div class="logos-header">
       <div class="logos-eyebrow">
-        <span>Empresas que confían en nosotros</span>
+        <span>Empresas con las que trabajamos</span>
       </div>
       <h2 class="logos-title">
-        Marcas que eligen<br>
-        <em>resultados reales.</em>
+        Marcas que ya<br>
+        <em>trabajan con nosotros.</em>
       </h2>
-      <p style="font-size: 14px; font-weight: 400; color: #94a3b8; margin-top: 10px;">Más de 200 empresas han escalado su presencia digital con nosotros.</p>
+      <p style="font-size: 14px; font-weight: 400; color: #94a3b8; margin-top: 10px;">Más de 200 empresas en más de 15 industrias.</p>
     </div>
 
     <div class="logos-divider">
@@ -3174,7 +3186,7 @@
         
         <div class="header-content">
             <h2 class="h-title">
-                Opiniones que validan<br>nuestra <em>visión digital.</em>
+                Lo que dicen<br>nuestros <em>clientes.</em>
             </h2>
             <div class="rating-box">
                 <span class="rating-num">5.0</span>
@@ -3604,11 +3616,11 @@
         
         <div class="text-center mb-16 lg:mb-24">
             <h2 class="premium-title">
-                 Nuestros paquetes<br>
-                 <em>de alto impacto.</em>
+                 Nuestros planes<br>
+                 <em>y qué incluyen.</em>
             </h2>
             <p class="text-slate-400 uppercase text-[9px] md:text-[10px] tracking-[0.4em] font-bold mt-6">
-                Inversión estratégica para resultados exponenciales
+                Precios claros, sin letra chica
             </p>
         </div>
 
@@ -3687,7 +3699,7 @@
         
         <div class="mt-16 lg:mt-24 text-center">
             <p class="text-slate-600 text-[9px] font-bold uppercase tracking-[0.5em] mb-4">
-                Sistemas de alto rendimiento para el siglo XXI
+                ¿Dudas? Escríbenos y te orientamos sin compromiso
             </p>
         </div>
         
