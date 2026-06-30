@@ -196,6 +196,21 @@
             color: var(--text-white);
         }
 
+        .nav-btn-outline {
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-white);
+            color: var(--text-white);
+        }
+
         /* ── BOTÓN HAMBURGUESA (MÓVIL) ── */
         .mobile-toggle {
             display: none;
@@ -386,6 +401,14 @@
             background: rgba(255,255,255,0.04);
         }
 
+        @media (min-width: 1025px) and (max-width: 1320px) {
+            .nav-content-wrapper { gap: 16px; }
+            .nav-menu { gap: 16px; }
+            .nav-link { font-size: 0.82rem; }
+            .nav-btn-outline span, .nav-btn { font-size: 0.72rem; padding: 10px 14px; }
+            .logo { width: 190px; }
+        }
+
         @media (max-width: 1024px) {
             body { padding-top: 0; }
             .navbar {
@@ -421,14 +444,15 @@
     <nav class="navbar" id="main-navbar">
         <div class="nav-container">
             <a href="/inicio-rediseno" class="logo">
-                <img src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Logo Partum Design" class="logo-img">
+                <img src="/uploads/2024/10/xx-e1771301244701.png" alt="Logo Partum Design" class="logo-img">
             </a>
 
             <div class="nav-content-wrapper">
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="/inicio-rediseno" class="nav-link">Inicio</a></li>
                     <li class="nav-item"><a href="/nosotros" class="nav-link">Nosotros</a></li>
-                    
+                    <li class="nav-item"><a href="/desarrollo-web" class="nav-link">Soluciones Tecnológicas</a></li>
+
                     <li class="nav-item has-dropdown">
                         <a href="#" class="nav-link" id="servicios-toggle">
                             Servicios <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; transition: 0.3s;"></i>
@@ -460,9 +484,13 @@
                             </a>
                         </div>
                     </li>
+                    <li class="nav-item"><a href="https://partumdesign.com.mx/blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="/contacto2" class="nav-link">Contacto</a></li>
                 </ul>
 
+                <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="nav-btn nav-btn-outline">
+                    <i class="fa-brands fa-behance"></i> Portafolio
+                </a>
                 <a href="/contacto" class="nav-btn">Cotizar ahora</a>
             </div>
 

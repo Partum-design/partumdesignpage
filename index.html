@@ -40,52 +40,26 @@
             padding: 0; 
         }
 
-        /* ── VIDEO ── */
-        #premium-hero-section .video-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            filter: saturate(0.5) brightness(0.22);
-            transform: scale(1.04);
+        /* ── GRADIENT ANIMADO ── */
+        #premium-hero-section {
+            background: linear-gradient(132deg, #010a13, #02365e, #0055ff, #6366f1, #818cf8, #02365e, #010a13) !important;
+            background-size: 400% 400% !important;
+            animation: heroGradientFlow 18s ease infinite !important;
+        }
+
+        @keyframes heroGradientFlow {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         /* ── OVERLAYS ── */
-        #premium-hero-section .overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            background:
-                radial-gradient(ellipse 70% 55% at 50% -5%, rgba(99,102,241,0.22) 0%, transparent 65%),
-                radial-gradient(ellipse 50% 40% at 100% 100%, rgba(2,54,94,0.4) 0%, transparent 60%),
-                linear-gradient(180deg, rgba(1,10,19,0.6) 0%, rgba(1,10,19,0.92) 100%);
+        #premium-hero-section .overlay,
+        #premium-hero-section .grid-overlay,
+        #premium-hero-section .orb,
+        #premium-hero-section #particles {
+            display: none;
         }
-
-        /* subtle grid */
-        #premium-hero-section .grid-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-            background-size: 70px 70px;
-            mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 20%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 20%, transparent 100%);
-        }
-
-        /* ── GLOW ORBS ── */
-        #premium-hero-section .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            pointer-events: none;
-            z-index: 2;
-        }
-        #premium-hero-section .orb-tl { width: 600px; height: 600px; background: rgba(99,102,241,0.1); top: -180px; left: -100px; }
-        #premium-hero-section .orb-br { width: 400px; height: 400px; background: rgba(2,54,94,0.35); bottom: -100px; right: -80px; }
 
         /* ── HERO INNER ── */
         #premium-hero-section .hero-inner {
@@ -578,25 +552,10 @@
             #premium-hero-section .chip-user { right: 5px; bottom: 5px; padding: 8px 12px; gap: 6px; }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
 </head>
 <body>
 
 <section id="premium-hero-section">
-    <video id="hero-video" autoplay loop muted playsinline class="video-bg"></video>
-    <script>
-    (function(){
-        var vid = document.getElementById('hero-video');
-        var src = 'https://stream.mux.com/QgTir2Bu4u6d01CqyKEBCks68PIm2nCM7vhwXgenS00tw.m3u8';
-        if (vid.canPlayType('application/vnd.apple.mpegurl')) {
-            vid.src = src;
-        } else if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-            var hls = new Hls({ autoStartLoad: true, startLevel: -1 });
-            hls.loadSource(src);
-            hls.attachMedia(vid);
-        }
-    })();
-    </script>
     <div class="overlay"></div>
     <div class="grid-overlay"></div>
     <div class="orb orb-tl"></div>
@@ -608,12 +567,12 @@
         <div class="hero-left">
             <div class="badge">
                 <div class="avatar-stack">
-                    <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/Mesa-de-trabajo-1@300x-1-e1771264091734.png" alt="user"></div>
-                    <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/imgi_1_logo.fw_.png.webp" alt="user"></div>
-                    <div class="av"><img src="https://partumdesign.com.mx/wp-content/uploads/2026/02/Mesa-de-trabajo-1@300x-2-e1771263865148.png" alt="user"></div>
-                    <div class="av av-count">+200</div>
+                    <div class="av"><img src="/uploads/2026/02/Mesa-de-trabajo-1@300x-1-e1771264091734.png" alt="user"></div>
+                    <div class="av"><img src="/uploads/2026/02/imgi_1_logo.fw_.png.webp" alt="user"></div>
+                    <div class="av"><img src="/uploads/2026/02/Mesa-de-trabajo-1@300x-2-e1771263865148.png" alt="user"></div>
+                    <div class="av av-count">+300</div>
                 </div>
-                <span class="badge-text">200+ marcas trabajan con nosotros</span>
+                <span class="badge-text">300+ marcas trabajan con nosotros</span>
             </div>
 
             <h1>
@@ -626,10 +585,10 @@
             </p>
 
             <div class="cta-row">
-                <a href="/contacto" class="btn-primary">Inicia tu proyecto</a>
-                <a href="https://www.facebook.com/share/v/1AhCervjnu/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                    <div class="play-ring"><i class="fa-solid fa-play"></i></div>
-                    Ver Demo
+                <a href="https://api.whatsapp.com/send?phone=5215554152551&text=Hola%2C%20vi%20su%20sitio%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="btn-primary">Inicia tu proyecto</a>
+                <a href="/uploads/2025/03/BROCHURE-PARTUM-2025.pdf" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+                    <div class="play-ring"><i class="fa-solid fa-file-arrow-down"></i></div>
+                    Descargar Brochure Corporativo
                 </a>
             </div>
         </div>
@@ -641,7 +600,7 @@
                 <div class="chip-roi-val">+240% ROI</div>
             </div>
             <div class="chip chip-user">
-                <div class="chip-avatar">ER</div>
+                <div class="chip-avatar"><img src="/uploads/logotipo%20de%20partum%20design/favicon-cropped.png" alt="Partum Design" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;padding:6px;"></div>
                 <div>
                     <div class="chip-name">Partum Design</div>
                     <div class="chip-role">Agency</div>
@@ -707,7 +666,7 @@
             <div class="stat-label">ROI promedio por cliente</div>
         </div>
         <div class="stat-item">
-            <div class="stat-value"><span id="stat-brands">200</span><span class="stat-num"></span></div>
+            <div class="stat-value"><span id="stat-brands">300</span><span class="stat-num"></span></div>
             <div class="stat-label">Marcas atendidas</div>
         </div>
         <div class="stat-item">
@@ -780,7 +739,7 @@
         var stat98  = document.getElementById('stat-sat');
         var kpiVal  = document.getElementById('kpi-val');
         if (stat240) countUp(stat240, 240, '+', '%', 0, 2000, 600);
-        if (stat200) countUp(stat200, 200, '', '+', 0, 1600, 800);
+        if (stat200) countUp(stat200, 300, '', '+', 0, 1600, 800);
         if (stat98)  countUp(stat98, 98, '', '%', 0, 1800, 700);
         if (kpiVal)  countUp(kpiVal, 184920, '$', '', 0, 2200, 900);
         setTimeout(function() {
@@ -982,7 +941,7 @@
 
                 <div class="reveal d4 grid grid-cols-3 gap-4 max-w-md">
                     <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
-                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">200<span style="color: #0055ff;">+</span></div>
+                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">300<span style="color: #0055ff;">+</span></div>
                         <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Proyectos</div>
                     </div>
                     <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
@@ -990,7 +949,7 @@
                         <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Éxito</div>
                     </div>
                     <div class="text-center p-4 bg-white/80 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgb(15,23,42,0.06)] border border-white">
-                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">4<span style="color: #9333ea;">+</span></div>
+                        <div class="text-2xl sm:text-3xl font-black text-[#0f172a] mb-1">5<span style="color: #9333ea;">+</span></div>
                         <div class="text-[9px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-widest">Años</div>
                     </div>
                 </div>
@@ -1644,14 +1603,14 @@
               <div class="trust-track">
                 <span class="track-label">Historial comprobado</span>
                 <div class="big-number">
-                  <span class="trust-counter" data-target="4">0</span>
+                  <span class="trust-counter" data-target="5">0</span>
                 </div>
                 <p class="track-sub">Años en el mercado</p>
               </div>
 
               <div class="trust-stats">
                 <div class="trust-stat">
-                  <div class="stat-num"><span class="trust-counter" data-target="200">0</span>+</div>
+                  <div class="stat-num"><span class="trust-counter" data-target="300">0</span>+</div>
                   <div class="stat-label">Proyectos entregados</div>
                 </div>
                 <div class="trust-stat">
@@ -1659,13 +1618,6 @@
                   <div class="stat-label">Satisfacción</div>
                 </div>
               </div>
-
-              <a href="/contacto" class="trust-cta">
-                <span>Agendar Consulta Gratis</span>
-                <span class="cta-icon">
-                  <i class="fas fa-arrow-right"></i>
-                </span>
-              </a>
 
             </div>
           </div>
@@ -2428,7 +2380,7 @@
 
             <!-- HERO: FitLife Global -->
             <div class="pcard card-hero">
-                <img src="https://partumdesign.com.mx/wp-content/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg.webp" alt="FitLife">
+                <img src="/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg.webp" alt="FitLife">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <div style="background:rgba(99,102,241,.25); border:1px solid rgba(99,102,241,.5); color:#c7d2fe; padding:5px 12px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; width:fit-content;">
@@ -2452,7 +2404,7 @@
 
             <!-- SIDE: Smart CRM -->
             <div class="pcard card-side">
-                <img src="https://partumdesign.com.mx/wp-content/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg.webp" alt="CRM">
+                <img src="/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg.webp" alt="CRM">
                 <div class="hero-overlay" style="background: linear-gradient(to top, rgba(10,14,30,.98) 0%, rgba(10,14,30,.8) 40%, rgba(10,14,30,.5) 70%, rgba(10,14,30,.2) 100%) !important;"></div>
                 <div class="hero-content" style="justify-content: flex-end !important; gap: 12px;">
                     <div style="background:rgba(16,185,129,.15); border:1px solid rgba(16,185,129,.3); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; width:fit-content;">App Design</div>
@@ -2883,7 +2835,7 @@
         Marcas que ya<br>
         <em>trabajan con nosotros.</em>
       </h2>
-      <p style="font-size: 14px; font-weight: 400; color: #94a3b8; margin-top: 10px;">Más de 200 empresas en más de 15 industrias.</p>
+      <p style="font-size: 14px; font-weight: 400; color: #94a3b8; margin-top: 10px;">Más de 300 empresas en más de 15 industrias.</p>
     </div>
 
     <div class="logos-divider">

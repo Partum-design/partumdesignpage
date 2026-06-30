@@ -7,6 +7,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/inicio-rediseno",
+      "destination": "/index.html"
+    },
+    {
       "source": "/nosotros",
       "destination": "/nosotros.html"
     },
@@ -15,11 +19,19 @@
       "destination": "/contacto.html"
     },
     {
+      "source": "/contacto2",
+      "destination": "/contacto.html"
+    },
+    {
       "source": "/identidad-visual-y-corporativa",
       "destination": "/identidad-visual-y-corporativa.html"
     },
     {
       "source": "/desarrollo-web",
+      "destination": "/desarrollo-web.html"
+    },
+    {
+      "source": "/desarrollo-web-2",
       "destination": "/desarrollo-web.html"
     },
     {
@@ -33,6 +45,22 @@
     {
       "source": "/servicios",
       "destination": "/index.html"
+    },
+    {
+      "source": "/servicios-integrales",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/portafolio",
+      "destination": "https://www.behance.net/partumdesign2",
+      "permanent": false
+    },
+    {
+      "source": "/portafolio-audiovisual",
+      "destination": "https://www.behance.net/partumdesign2",
+      "permanent": false
     }
   ]
 }

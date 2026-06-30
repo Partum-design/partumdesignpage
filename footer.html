@@ -216,6 +216,47 @@
             color: var(--text-muted);
         }
 
+        /* ── BOTÓN FLOTANTE DE WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.7rem;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            z-index: 999999;
+            animation: whatsappPulse 2.4s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        @keyframes whatsappPulse {
+            0% { box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 0 rgba(37, 211, 102, 0.55); }
+            70% { box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 18px;
+                right: 18px;
+                width: 54px;
+                height: 54px;
+                font-size: 1.5rem;
+            }
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .footer-container {
@@ -257,7 +298,7 @@
             <!-- Columna 1: Brand & Social -->
             <div class="footer-brand">
                 <a href="/inicio-rediseno">
-                    <img src="https://partumdesign.com.mx/wp-content/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design Logo" class="footer-logo">
+                    <img src="/uploads/2024/10/xx-e1771301244701.png" alt="Partum Design Logo" class="footer-logo">
                 </a>
                 <p class="footer-desc">
                     Elevamos marcas mediante experiencias digitales innovadoras. Transformamos tu visión en resultados tangibles con diseño de alto impacto.
@@ -280,6 +321,7 @@
                     <li><a href="/inicio-rediseno" class="footer-link">Inicio</a></li>
                     <li><a href="/nosotros" class="footer-link">Nosotros</a></li>
                     <li><a href="/servicios-integrales" class="footer-link">Servicios</a></li>
+                    <li><a href="https://partumdesign.com.mx/blog" class="footer-link">Blog</a></li>
                     <li><a href="/contacto" class="footer-link">Contacto</a></li>
                 </ul>
             </div>
@@ -319,10 +361,15 @@
             <p>&copy; 2026 Partum Design Agency. Todos los derechos reservados.</p>
             <div class="footer-legal">
                 <a href="https://partumdesign.com.mx/terminos-y-condiciones/">Términos y Condiciones</a>
-                <a href="https://partumdesign.com.mx/wp-content/uploads/2025/03/BROCHURE-PARTUM-2025.pdf" target="_blank">Brochure 2025</a>
+                <a href="/uploads/2025/03/BROCHURE-PARTUM-2025.pdf" target="_blank">Brochure 2025</a>
             </div>
         </div>
     </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://api.whatsapp.com/send?phone=5215616044547&text=Hola%2C%20vi%20su%20sitio%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chatea por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>

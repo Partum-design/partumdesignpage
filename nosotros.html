@@ -135,7 +135,7 @@
             <!-- Capa oscura ajustada al 60% de opacidad para que el video se note perfectamente -->
             <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
             <video autoplay muted loop playsinline class="video-bg">
-                <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/6943283-hd_1920_1080_25fps.mp4" type="video/mp4">
+                <source src="/uploads/2026/02/6943283-hd_1920_1080_25fps.mp4" type="video/mp4">
             </video>
         </div>
 
@@ -163,11 +163,10 @@
                         <a href="/contacto2" class="btn-glow px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider text-white inline-block no-underline">
                             Iniciar Proyecto
                         </a>
-                        <a href="https://www.facebook.com/share/v/1BAs9vTZE7/" 
-                           target="_blank"
+                        <a href="#equipo"
                            class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl border border-white/20 text-white font-bold text-sm uppercase tracking-wider transition-colors hover:bg-white/10 no-underline backdrop-blur-sm">
-                            <i class="fas fa-play text-xs"></i>
-                            <span class="no-underline">Ver Demo</span>
+                            <i class="fas fa-users text-xs"></i>
+                            <span class="no-underline">Conócenos</span>
                         </a>
                     </div>
                 </div>
@@ -2149,11 +2148,6 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
                     <div class="dsf-stat-label">Proyectos Globales</div>
                 </div>
             </div>
-
-            <a href="#" class="dsf-btn">
-                Iniciar Proyecto Global
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
         </div>
 
         <!-- COLUMNA DERECHA: Mapa y Badges -->
@@ -2528,7 +2522,7 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
 </head>
 <body>
 
-<section class="team-section">
+<section class="team-section" id="equipo">
     <!-- Luces Ambientales -->
     <div class="glow-orb orb-top"></div>
     <div class="glow-orb orb-bottom"></div>
@@ -2544,62 +2538,91 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
 
         <div class="swiper teamSwiper">
             <div class="swiper-wrapper">
-                
-                <!-- Erick -->
+
+                <!-- Erick — CEO -->
                 <div class="swiper-slide">
-                    <div class="team-card">
+                    <div class="team-card" data-name="Lic. Erick Rocha" data-role="CEO · Director General" data-img="uploads/team/Erick%20Rocha.png" data-linkedin="https://www.linkedin.com/in/erickrocha8/">
                         <div class="team-image-wrapper">
                             <img src="uploads/team/Erick%20Rocha.png" class="team-img" alt="Erick Rocha">
                             <div class="social-overlay">
-                                <a href="https://www.linkedin.com/in/erickrocha8/" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.linkedin.com/in/erickrocha8/" class="social-btn" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                         <div class="team-info">
-                            <span class="member-role"><i class="fas fa-crown"></i> CEO / Director General</span>
+                            <span class="member-role"><i class="fas fa-crown"></i> CEO · Director General</span>
                             <h3 class="member-name">Lic. Erick Rocha</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- Sebastian -->
+                <!-- Perla — Sistema de Gestión -->
                 <div class="swiper-slide">
-                    <div class="team-card">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Sebastian%20Sixtos.png" class="team-img" alt="Sebastian Sixtos">
-                            <div class="social-overlay">
-                                <a href="#" class="social-btn"><i class="fas fa-bullhorn"></i></a>
-                            </div>
+                    <div class="team-card" data-name="Perla" data-role="SG · Sistema de Gestión" data-img="" data-linkedin="">
+                        <div class="team-image-wrapper team-image-placeholder" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display:flex; align-items:center; justify-content:center;">
+                            <span style="font-size:3rem; font-weight:800; color:#fff; letter-spacing:-2px; font-family:'Montserrat',sans-serif;">P</span>
                         </div>
                         <div class="team-info">
-                            <span class="member-role"><i class="fas fa-bullhorn"></i> Social Media Designer</span>
-                            <h3 class="member-name">Sebastian Sixtos</h3>
+                            <span class="member-role"><i class="fas fa-clipboard-check"></i> SG · Sistema de Gestión</span>
+                            <h3 class="member-name">Perla</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bryan -->
+                <!-- Danna — COO -->
                 <div class="swiper-slide">
-                    <div class="team-card">
+                    <div class="team-card" data-name="Ing. Danna Rodriguez" data-role="COO · Directora de Operaciones" data-img="uploads/team/Danna%20Rodriguez.webp" data-linkedin="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/">
                         <div class="team-image-wrapper">
-                            <img src="uploads/team/Bryan%20Lopez.webp" class="team-img" alt="Bryan López">
+                            <img src="uploads/team/Danna%20Rodriguez.webp" class="team-img" alt="Danna Rodriguez">
                             <div class="social-overlay">
-                                <a href="https://www.linkedin.com/in/bryanfdesigner/" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/" class="social-btn" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                         <div class="team-info">
-                            <span class="member-role"><i class="fas fa-laptop-code"></i> Director de Tecnología</span>
+                            <span class="member-role"><i class="fas fa-star"></i> COO · Directora de Operaciones</span>
+                            <h3 class="member-name">Ing. Danna Rodriguez</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bryan — OM / Desarrollo y Tecnología -->
+                <div class="swiper-slide">
+                    <div class="team-card" data-name="Lic. Bryan López" data-role="OM · Desarrollo y Tecnología" data-img="uploads/team/Bryan%20Lopez.webp" data-linkedin="https://www.linkedin.com/in/bryanfdesigner/">
+                        <div class="team-image-wrapper">
+                            <img src="uploads/team/Bryan%20Lopez.webp" class="team-img" alt="Bryan López">
+                            <div class="social-overlay">
+                                <a href="https://www.linkedin.com/in/bryanfdesigner/" class="social-btn" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <span class="member-role"><i class="fas fa-laptop-code"></i> OM · Desarrollo y Tecnología</span>
                             <h3 class="member-name">Lic. Bryan López</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- Luis -->
+                <!-- Gabriela — RH y Administración -->
                 <div class="swiper-slide">
-                    <div class="team-card">
+                    <div class="team-card" data-name="Lic. Gabriela Valenzo" data-role="RH y Administración" data-img="uploads/team/Gaby%20Valenzo.webp" data-linkedin="">
+                        <div class="team-image-wrapper">
+                            <img src="uploads/team/Gaby%20Valenzo.webp" class="team-img" alt="Gabriela Valenzo">
+                            <div class="social-overlay">
+                                <a href="#" class="social-btn" onclick="event.stopPropagation()"><i class="fas fa-users-gear"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <span class="member-role"><i class="fas fa-users-gear"></i> RH y Administración</span>
+                            <h3 class="member-name">Lic. Gabriela Valenzo</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luis — Brand Manager -->
+                <div class="swiper-slide">
+                    <div class="team-card" data-name="Lic. Luis Sánchez" data-role="Brand Manager" data-img="uploads/team/Luis%20Sanchez.png" data-linkedin="">
                         <div class="team-image-wrapper">
                             <img src="uploads/team/Luis%20Sanchez.png" class="team-img" alt="Luis Sánchez">
                             <div class="social-overlay">
-                                <a href="#" class="social-btn"><i class="fas fa-palette"></i></a>
+                                <a href="#" class="social-btn" onclick="event.stopPropagation()"><i class="fas fa-palette"></i></a>
                             </div>
                         </div>
                         <div class="team-info">
@@ -2609,50 +2632,31 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
                     </div>
                 </div>
 
-                <!-- Danna -->
+                <!-- Sebastian — Social Media Designer -->
                 <div class="swiper-slide">
-                    <div class="team-card">
+                    <div class="team-card" data-name="Sebastian Sixtos" data-role="Social Media Designer" data-img="uploads/team/Sebastian%20Sixtos.png" data-linkedin="">
                         <div class="team-image-wrapper">
-                            <img src="uploads/team/Danna%20Rodriguez.webp" class="team-img" alt="Danna Rodriguez">
+                            <img src="uploads/team/Sebastian%20Sixtos.png" class="team-img" alt="Sebastian Sixtos">
                             <div class="social-overlay">
-                                <a href="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-btn" onclick="event.stopPropagation()"><i class="fas fa-bullhorn"></i></a>
                             </div>
                         </div>
                         <div class="team-info">
-                            <span class="member-role"><i class="fas fa-star"></i> Directora de Operaciones</span>
-                            <h3 class="member-name">Ing. Danna Rodriguez</h3>
+                            <span class="member-role"><i class="fas fa-bullhorn"></i> Social Media Designer</span>
+                            <h3 class="member-name">Sebastian Sixtos</h3>
                         </div>
                     </div>
                 </div>
 
                 <!-- Fernanda -->
                 <div class="swiper-slide">
-                    <div class="team-card">
+                    <div class="team-card" data-name="Lic. Fernanda Samperio" data-role="Social Media Designer" data-img="" data-linkedin="">
                         <div class="team-image-wrapper team-image-placeholder" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display:flex; align-items:center; justify-content:center;">
                             <span style="font-size:3rem; font-weight:800; color:#fff; letter-spacing:-2px; font-family:'Montserrat',sans-serif;">FS</span>
-                            <div class="social-overlay">
-                                <a href="#" class="social-btn"><i class="fas fa-bullhorn"></i></a>
-                            </div>
                         </div>
                         <div class="team-info">
                             <span class="member-role"><i class="fas fa-bullhorn"></i> Social Media Designer</span>
                             <h3 class="member-name">Lic. Fernanda Samperio</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gabriela -->
-                <div class="swiper-slide">
-                    <div class="team-card">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Gaby%20Valenzo.webp" class="team-img" alt="Gabriela Valenzo">
-                            <div class="social-overlay">
-                                <a href="#" class="social-btn"><i class="fas fa-users-gear"></i></a>
-                            </div>
-                        </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-users-gear"></i> Recursos Humanos</span>
-                            <h3 class="member-name">Lic. Gabriela Valenzo</h3>
                         </div>
                     </div>
                 </div>
@@ -2663,6 +2667,115 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
         </div>
     </div>
 </section>
+
+<!-- MODAL DE TARJETA DE EQUIPO -->
+<div class="team-modal-backdrop" id="teamModalBackdrop">
+    <div class="team-modal" role="dialog" aria-modal="true">
+        <button class="team-modal-close" id="teamModalClose" aria-label="Cerrar">&times;</button>
+        <div class="team-modal-media" id="teamModalMedia"></div>
+        <div class="team-modal-body">
+            <span class="member-role" id="teamModalRole"></span>
+            <h3 id="teamModalName"></h3>
+            <a href="#" id="teamModalLinkedin" target="_blank" class="team-modal-linkedin">
+                <i class="fab fa-linkedin-in"></i> Ver perfil de LinkedIn
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .team-card { cursor: pointer; }
+
+    .team-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.85);
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        padding: 20px;
+    }
+
+    .team-modal-backdrop.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .team-modal {
+        background: #0f172a;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        max-width: 420px;
+        width: 100%;
+        overflow: hidden;
+        transform: translateY(20px) scale(0.97);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+
+    .team-modal-backdrop.active .team-modal {
+        transform: translateY(0) scale(1);
+    }
+
+    .team-modal-media {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-size: cover;
+        background-position: center;
+        background-color: #1e293b;
+    }
+
+    .team-modal-body {
+        padding: 28px 28px 32px;
+        text-align: center;
+    }
+
+    .team-modal-body h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 8px 0 18px;
+    }
+
+    .team-modal-linkedin {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        background: #0A66C2;
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: opacity 0.3s ease;
+    }
+
+    .team-modal-linkedin:hover { opacity: 0.85; }
+    .team-modal-linkedin.is-hidden { display: none; }
+
+    .team-modal-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+    }
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
@@ -2684,6 +2797,44 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
             860: { slidesPerView: 3 },
             1180: { slidesPerView: 4 }
         }
+    });
+
+    // --- Tarjetas de equipo expandibles (estilo Haften) ---
+    const teamModalBackdrop = document.getElementById('teamModalBackdrop');
+    const teamModalMedia = document.getElementById('teamModalMedia');
+    const teamModalName = document.getElementById('teamModalName');
+    const teamModalRole = document.getElementById('teamModalRole');
+    const teamModalLinkedin = document.getElementById('teamModalLinkedin');
+    const teamModalClose = document.getElementById('teamModalClose');
+
+    document.querySelectorAll('.team-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const img = card.dataset.img;
+            if (img) {
+                teamModalMedia.style.backgroundImage = `url('${img}')`;
+                teamModalMedia.style.background = '';
+                teamModalMedia.innerHTML = '';
+            } else {
+                teamModalMedia.style.backgroundImage = 'none';
+                teamModalMedia.style.background = card.querySelector('.team-image-placeholder').style.background;
+                teamModalMedia.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:800;color:#fff;font-family:'Montserrat',sans-serif;">${card.querySelector('.team-image-placeholder span').textContent}</div>`;
+            }
+            teamModalName.textContent = card.dataset.name;
+            teamModalRole.textContent = card.dataset.role;
+            const linkedin = card.dataset.linkedin;
+            if (linkedin) {
+                teamModalLinkedin.href = linkedin;
+                teamModalLinkedin.classList.remove('is-hidden');
+            } else {
+                teamModalLinkedin.classList.add('is-hidden');
+            }
+            teamModalBackdrop.classList.add('active');
+        });
+    });
+
+    teamModalClose.addEventListener('click', () => teamModalBackdrop.classList.remove('active'));
+    teamModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === teamModalBackdrop) teamModalBackdrop.classList.remove('active');
     });
 </script>
 
@@ -2924,7 +3075,7 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
     
     <div class="video-wrapper">
         <video autoplay muted loop playsinline class="bg-video" id="parallax-video">
-            <source src="https://partumdesign.com.mx/wp-content/uploads/2026/02/11690474-uhd_3840_2160_24fps.mp4" type="video/mp4">
+            <source src="/uploads/2026/02/11690474-uhd_3840_2160_24fps.mp4" type="video/mp4">
         </video>
         
         <div class="video-overlay-blue"></div>
@@ -2945,11 +3096,7 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
         </p>
 
         <div class="btn-wrapper">
-            <a href="#" class="btn-glow-primary group">
-                <span>Iniciar Proyecto</span>
-                <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-            <a href="#" class="btn-outline">
+            <a href="https://api.whatsapp.com/send?phone=5215616044547&text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Nosotros%20y%20quiero%20platicar%20de%20mi%20proyecto" target="_blank" rel="noopener noreferrer" class="btn-outline">
                 <i class="fab fa-whatsapp text-lg"></i>
                 <span>Chat Directo</span>
             </a>
