@@ -2393,283 +2393,178 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
         @keyframes auroraMove1 { from { transform: translate(0,0) scale(1); } to { transform: translate(120px,90px) scale(1.15); } }
         @keyframes auroraMove2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-110px,-80px) scale(1.1); } }
 
-        /* ═══════════ ORGANIGRAMA ═══════════ */
-        .org-chart {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            width: 100% !important;
-        }
+        /* ═══════════ ORGANIGRAMA CIRCULAR ═══════════ */
+        .org-chart { width: 100% !important; }
 
-        /* Nodo superior (Dirección) */
-        .org-top { display: flex !important; justify-content: center !important; perspective: 1200px !important; }
-
-        /* Conector vertical central */
-        .org-trunk {
-            width: 2px !important;
-            height: 44px !important;
-            background: linear-gradient(180deg, var(--indigo), rgba(99,102,241,0.15)) !important;
-        }
-
-        /* Fila de áreas */
-        .org-areas {
+        .org-wheel {
             display: grid !important;
-            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-            gap: 28px !important;
-            width: 100% !important;
-            position: relative !important;
-            align-items: start !important;
-        }
-        /* Línea horizontal que une las áreas */
-        .org-areas::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -22px !important;
-            left: 16.66% !important;
-            right: 16.66% !important;
-            height: 2px !important;
-            background: rgba(99,102,241,0.25) !important;
-        }
-
-        .org-area {
-            position: relative !important;
-            background: rgba(15, 23, 42, 0.35) !important;
-            border: 1px solid rgba(255,255,255,0.06) !important;
-            border-top: 1px solid rgba(255,255,255,0.14) !important;
-            backdrop-filter: blur(16px) !important;
-            -webkit-backdrop-filter: blur(16px) !important;
-            border-radius: 24px !important;
-            padding: 22px 18px 20px !important;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
-        }
-        .org-area::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -22px !important; left: 50% !important;
-            width: 2px !important; height: 22px !important;
-            background: rgba(99,102,241,0.25) !important;
-            transform: translateX(-50%) !important;
-        }
-
-        .org-area-head {
-            display: flex !important;
+            grid-template-columns: 1fr minmax(200px, 260px) 1fr !important;
+            grid-template-areas: "tl center tr" "bl center br" !important;
             align-items: center !important;
-            gap: 12px !important;
-            padding-bottom: 16px !important;
-            margin-bottom: 18px !important;
-            border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-        }
-        .org-area-icon {
-            width: 44px !important; height: 44px !important;
-            flex-shrink: 0 !important;
-            border-radius: 13px !important;
-            display: flex !important; align-items: center !important; justify-content: center !important;
-            background: linear-gradient(135deg, rgba(99,102,241,0.22), rgba(139,92,246,0.22)) !important;
-            border: 1px solid rgba(99,102,241,0.35) !important;
-            color: #c7d2fe !important;
-            font-size: 1.1rem !important;
-            box-shadow: 0 0 18px rgba(99,102,241,0.15) !important;
-        }
-        .org-area-titles { display: flex !important; flex-direction: column !important; gap: 3px !important; }
-        .org-area-name {
-            font-size: 14px !important; font-weight: 800 !important; color: #fff !important;
-            letter-spacing: -0.01em !important; line-height: 1.15 !important;
-        }
-        .org-area-desc {
-            font-size: 11px !important; font-weight: 500 !important; color: rgba(255,255,255,0.5) !important;
-            line-height: 1.3 !important;
+            gap: 64px 18px !important;
+            width: 100% !important;
         }
 
-        /* perspectiva para el tilt 3D */
-        .org-area-members {
-            display: flex !important; flex-direction: column !important; gap: 16px !important;
-            perspective: 1200px !important;
-        }
-
-        /* ═══════════ TARJETA 3D ═══════════ */
-        .org-member {
+        /* ── Centro: Dirección General ── */
+        .org-center { grid-area: center !important; display: flex !important; justify-content: center !important; perspective: 1400px !important; }
+        .org-hub {
             position: relative !important;
-            border-radius: 20px !important;
-            padding: 22px 18px !important;
-            background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)) !important;
-            border: 1px solid rgba(255,255,255,0.08) !important;
-            cursor: default !important;
-            transform-style: preserve-3d !important;
+            width: 240px !important; aspect-ratio: 1 / 1 !important;
+            clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%) !important;
+            background: radial-gradient(circle at 50% 38%, rgba(59,130,246,0.24), rgba(15,23,42,0.5) 72%) !important;
+            border: 1px solid rgba(37,99,235,0.4) !important;
+            display: flex !important; align-items: center !important; justify-content: center !important;
+            box-shadow: 0 0 70px rgba(37,99,235,0.28), inset 0 0 40px rgba(59,130,246,0.1) !important;
             transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) !important;
-            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease, border-color 0.4s ease !important;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.35) !important;
-            overflow: hidden !important;
-            /* entrada */
-            opacity: 0 !important;
-            translate: 0 40px !important;
+            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1) !important;
+            opacity: 0 !important; translate: 0 30px !important;
         }
-        .org-member.is-visible { opacity: 1 !important; translate: 0 0 !important; transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.7s ease, translate 0.7s cubic-bezier(0.23,1,0.32,1) !important; }
-        .org-member:hover {
-            border-color: rgba(99,102,241,0.45) !important;
-            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.2) inset !important;
-        }
-        /* brillo que sigue al cursor */
-        .org-shine {
-            position: absolute !important; inset: 0 !important;
-            border-radius: inherit !important; pointer-events: none !important;
+        .org-hub.is-visible { opacity: 1 !important; translate: 0 0 !important; transition: opacity 0.7s ease, translate 0.7s cubic-bezier(0.23,1,0.32,1) !important; }
+        .hub-shine {
+            position: absolute !important; inset: 0 !important; clip-path: inherit !important; pointer-events: none !important;
             opacity: 0 !important; transition: opacity 0.3s ease !important;
-            background: radial-gradient(380px circle at var(--mx,50%) var(--my,0%), rgba(99,102,241,0.22), transparent 60%) !important;
+            background: radial-gradient(320px circle at var(--mx,50%) var(--my,0%), rgba(59,130,246,0.3), transparent 60%) !important;
         }
-        .org-member:hover .org-shine { opacity: 1 !important; }
-
-        .org-card-inner {
-            display: flex !important; flex-direction: column !important; align-items: center !important;
-            text-align: center !important; gap: 10px !important;
-            transform: translateZ(45px) !important;
-            transform-style: preserve-3d !important;
+        .org-hub:hover .hub-shine { opacity: 1 !important; }
+        .org-hub-inner {
+            display: flex !important; flex-direction: column !important; align-items: center !important; gap: 8px !important;
+            text-align: center !important; padding: 18px !important;
+            transform: translateZ(40px) !important;
         }
-
-        /* Tarjeta destacada de Dirección General */
-        .org-member.is-lead {
-            padding: 34px 46px !important;
-            border-radius: 26px !important;
-            background: linear-gradient(160deg, rgba(99,102,241,0.14), rgba(139,92,246,0.05)) !important;
-            border: 1px solid rgba(99,102,241,0.3) !important;
+        .hub-avatar {
+            width: 96px !important; height: 96px !important; border-radius: 50% !important; overflow: hidden !important;
+            background: #0f172a !important; border: 3px solid rgba(147,197,253,0.5) !important;
+            box-shadow: 0 0 24px rgba(37,99,235,0.4) !important;
         }
-        .org-member.is-lead .org-card-inner { gap: 12px !important; }
-
-        /* Avatar */
-        .org-avatar {
-            position: relative !important;
-            width: 86px !important; height: 86px !important;
-            flex-shrink: 0 !important;
-            border-radius: 50% !important;
-            overflow: hidden !important;
-            background: #0f172a !important;
-            border: 3px solid rgba(255,255,255,0.12) !important;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease !important;
-            display: flex !important; align-items: center !important; justify-content: center !important;
-        }
-        .org-member:hover .org-avatar { border-color: var(--indigo) !important; box-shadow: 0 0 24px rgba(99,102,241,0.4) !important; }
-        .org-member.is-lead .org-avatar { width: 124px !important; height: 124px !important; }
-        .org-avatar img {
-            width: 100% !important; height: 100% !important;
-            object-fit: cover !important; object-position: center top !important;
-            display: block !important; border-radius: 50% !important;
-            transition: transform 0.6s cubic-bezier(0.23,1,0.32,1) !important;
-        }
-        .org-member:hover .org-avatar img { transform: scale(1.12) !important; }
-        .org-avatar-fallback {
-            width: 100% !important; height: 100% !important;
-            display: flex !important; align-items: center !important; justify-content: center !important;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
-            color: #fff !important; font-weight: 800 !important; font-size: 1.6rem !important;
-            letter-spacing: -1px !important;
-        }
-        .org-member.is-lead .org-avatar-fallback { font-size: 2.6rem !important; }
-
-        .org-member-info { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 7px !important; min-width: 0 !important; width: 100% !important; }
-
-        .member-role {
-            font-family: 'Montserrat', sans-serif !important;
-            font-size: 10px !important;
-            font-weight: 800 !important;
-            color: #c7d2fe !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.16em !important;
-            margin: 0 !important;
-            display: inline-flex !important; align-items: center !important; gap: 7px !important;
-            padding: 5px 12px !important;
-            border-radius: 100px !important;
-            background: rgba(99,102,241,0.14) !important;
-            border: 1px solid rgba(99,102,241,0.25) !important;
-        }
-        .org-member.is-lead .member-role { font-size: 11px !important; color: #fde68a !important; background: rgba(244,180,30,0.12) !important; border-color: rgba(244,180,30,0.3) !important; }
-
-        .member-name {
-            font-family: 'Montserrat', sans-serif !important;
-            font-size: 17px !important;
-            font-weight: 800 !important;
-            color: #ffffff !important;
-            margin: 0 !important;
-            letter-spacing: -0.01em !important;
-            line-height: 1.2 !important;
-        }
-        .org-member.is-lead .member-name { font-size: 26px !important; }
-
-        /* ── Bloque expandible: oculto por defecto, se revela en hover ── */
-        .org-reveal {
-            width: 100% !important;
-            display: grid !important;
-            grid-template-rows: 0fr !important;
-            opacity: 0 !important;
-            margin-top: 0 !important;
-            transition: grid-template-rows 0.5s cubic-bezier(0.23,1,0.32,1), opacity 0.35s ease, margin-top 0.4s ease !important;
-        }
-        .org-reveal > * { overflow: hidden !important; min-height: 0 !important; }
-        .org-member:hover .org-reveal,
-        .org-member:focus-within .org-reveal {
-            grid-template-rows: 1fr !important;
-            opacity: 1 !important;
-            margin-top: 12px !important;
-        }
-        /* Pista sutil en estado inactivo */
-        .org-hint {
-            font-size: 9px !important; font-weight: 700 !important;
-            letter-spacing: 0.18em !important; text-transform: uppercase !important;
-            color: rgba(199,210,254,0.55) !important;
+        .hub-avatar img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center top !important; }
+        .hub-role {
+            font-family: 'Montserrat', sans-serif !important; font-size: 10px !important; font-weight: 800 !important;
+            color: #bfdbfe !important; text-transform: uppercase !important; letter-spacing: 0.14em !important;
             display: inline-flex !important; align-items: center !important; gap: 6px !important;
-            margin-top: 8px !important;
-            transition: opacity 0.3s ease, max-height 0.4s ease !important;
+            padding: 4px 10px !important; border-radius: 100px !important;
+            background: rgba(37,99,235,0.16) !important; border: 1px solid rgba(37,99,235,0.35) !important;
         }
-        .org-hint::before { content: '' !important; width: 5px !important; height: 5px !important; border-radius: 50% !important; background: var(--indigo) !important; box-shadow: 0 0 8px var(--indigo) !important; }
-        .org-member:hover .org-hint,
-        .org-member:focus-within .org-hint { opacity: 0 !important; max-height: 0 !important; margin-top: 0 !important; }
-        /* La tarjeta de Dirección siempre va expandida */
-        .org-member.is-lead .org-reveal { grid-template-rows: 1fr !important; opacity: 1 !important; margin-top: 12px !important; }
-        .org-member.is-lead .org-reveal-inner { transform: none !important; }
-        .org-member.is-lead .org-hint { display: none !important; }
+        .hub-name { font-family: 'Montserrat', sans-serif !important; font-size: 18px !important; font-weight: 800 !important; color: #fff !important; margin: 0 !important; }
+        .hub-socials { display: flex !important; gap: 8px !important; margin-top: 2px !important; }
 
-        /* Contenedor interno del reveal */
-        .org-reveal-inner {
-            display: flex !important; flex-direction: column !important; align-items: center !important;
-            gap: 12px !important; width: 100% !important;
-            transform: translateY(10px) !important;
-            transition: transform 0.5s cubic-bezier(0.23,1,0.32,1) !important;
-        }
-        .org-member:hover .org-reveal-inner,
-        .org-member:focus-within .org-reveal-inner { transform: translateY(0) !important; }
+        /* ── Ramas ── */
+        .org-branch { display: flex !important; align-items: center !important; gap: 14px !important; }
+        .org-branch.pos-tl { grid-area: tl !important; justify-self: end !important; flex-direction: row-reverse !important; }
+        .org-branch.pos-tr { grid-area: tr !important; justify-self: start !important; }
+        .org-branch.pos-bl { grid-area: bl !important; justify-self: end !important; flex-direction: row-reverse !important; }
+        .org-branch.pos-br { grid-area: br !important; justify-self: start !important; }
 
-        /* Contacto */
-        .org-contact {
-            display: flex !important; flex-direction: column !important; gap: 5px !important;
-            width: 100% !important;
+        .branch-connector {
+            flex-shrink: 0 !important;
+            height: 30px !important; min-width: 44px !important;
+            display: flex !important; align-items: center !important; justify-content: center !important;
+            background: var(--area-color) !important;
+            clip-path: polygon(18% 0%, 100% 0%, 82% 100%, 0% 100%) !important;
+            color: #0b0f1a !important; font-family: 'Montserrat', sans-serif !important; font-weight: 900 !important; font-size: 13px !important;
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--area-color) 45%, transparent) !important;
         }
-        .org-contact a {
-            display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important;
-            font-size: 11.5px !important; font-weight: 500 !important;
-            color: rgba(255,255,255,0.6) !important; text-decoration: none !important;
-            transition: color 0.25s ease !important;
-            word-break: break-all !important;
-        }
-        .org-contact a i { color: var(--indigo) !important; font-size: 12px !important; width: 14px !important; text-align: center !important; flex-shrink: 0 !important; }
-        .org-contact a:hover { color: #fff !important; }
+        .side-left .branch-connector { clip-path: polygon(0% 0%, 82% 0%, 100% 100%, 18% 100%) !important; }
 
-        /* Redes */
-        .org-socials { display: flex !important; gap: 10px !important; }
+        .branch-hex { position: relative !important; display: flex !important; flex-direction: column !important; align-items: center !important; perspective: 1000px !important; }
+        .hex-shape {
+            position: relative !important;
+            width: 162px !important; height: 140px !important;
+            clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%) !important;
+            background: linear-gradient(160deg, color-mix(in srgb, var(--area-color) 60%, #0f172a), color-mix(in srgb, var(--area-color) 16%, #0f172a)) !important;
+            border: 1px solid color-mix(in srgb, var(--area-color) 55%, transparent) !important;
+            display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: flex-end !important;
+            padding: 44px 12px 14px !important;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4), 0 0 24px color-mix(in srgb, var(--area-color) 28%, transparent) !important;
+            transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) !important;
+            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1) !important;
+            opacity: 0 !important; translate: 0 30px !important;
+        }
+        .hex-shape.is-visible { opacity: 1 !important; translate: 0 0 !important; transition: opacity 0.7s ease, translate 0.7s cubic-bezier(0.23,1,0.32,1) !important; }
+        .hex-shine {
+            position: absolute !important; inset: 0 !important; clip-path: inherit !important; pointer-events: none !important;
+            opacity: 0 !important; transition: opacity 0.3s ease !important;
+            background: radial-gradient(260px circle at var(--mx,50%) var(--my,0%), color-mix(in srgb, var(--area-color) 30%, transparent), transparent 60%) !important;
+        }
+        .hex-shape:hover .hex-shine { opacity: 1 !important; }
+        .hex-avatar {
+            position: absolute !important; top: -22px !important; left: 50% !important; transform: translateX(-50%) !important;
+            width: 78px !important; height: 78px !important; border-radius: 50% !important; overflow: hidden !important;
+            background: #0f172a !important; border: 3px solid rgba(255,255,255,0.25) !important;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.45) !important;
+            z-index: 2 !important;
+        }
+        .hex-avatar img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center top !important; }
+        .hex-body { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 3px !important; text-align: center !important; max-width: 118px !important; }
+        .hex-role {
+            font-size: 10px !important; font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 0.08em !important;
+            line-height: 1.25 !important;
+            color: color-mix(in srgb, var(--area-color) 70%, white) !important;
+        }
+        .hex-name { font-family: 'Montserrat', sans-serif !important; font-size: 13.5px !important; font-weight: 800 !important; color: #fff !important; margin: 0 !important; }
+        .branch-tag {
+            margin-top: 10px !important; font-size: 10px !important; font-weight: 700 !important;
+            color: color-mix(in srgb, var(--area-color) 75%, white) !important;
+            display: inline-flex !important; align-items: center !important; gap: 6px !important;
+            padding: 4px 10px !important; border-radius: 100px !important;
+            background: color-mix(in srgb, var(--area-color) 12%, transparent) !important;
+            border: 1px solid color-mix(in srgb, var(--area-color) 28%, transparent) !important;
+        }
+        .hex-contact {
+            display: flex !important; gap: 6px !important; margin-top: 8px !important;
+            max-height: 0 !important; opacity: 0 !important; overflow: hidden !important;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease !important;
+        }
+        .branch-hex:hover .hex-contact,
+        .branch-hex:focus-within .hex-contact { max-height: 40px !important; opacity: 1 !important; }
+
+        /* ── Satélites ── */
+        .branch-satellites { display: flex !important; flex-direction: column !important; gap: 14px !important; }
+        .satellite { display: flex !important; align-items: center !important; gap: 10px !important; opacity: 0 !important; translate: 0 16px !important; transition: opacity 0.6s ease, translate 0.6s cubic-bezier(0.23,1,0.32,1) !important; }
+        .satellite.is-visible { opacity: 1 !important; translate: 0 0 !important; }
+        .side-left .satellite { flex-direction: row-reverse !important; text-align: right !important; }
+        .side-right .satellite { text-align: left !important; }
+        .sat-avatar {
+            width: 52px !important; height: 52px !important; border-radius: 50% !important; overflow: hidden !important;
+            flex-shrink: 0 !important; background: #0f172a !important; border: 2px solid var(--area-color) !important;
+            box-shadow: 0 0 10px color-mix(in srgb, var(--area-color) 35%, transparent) !important;
+        }
+        .sat-avatar img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center top !important; }
+        .sat-label { display: flex !important; flex-direction: column !important; line-height: 1.2 !important; max-width: 108px !important; flex-shrink: 0 !important; }
+        .sat-name { font-family: 'Montserrat', sans-serif !important; font-weight: 800 !important; font-size: 12.5px !important; color: #fff !important; }
+        .sat-role { font-size: 10px !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.03em !important; line-height: 1.25 !important; color: color-mix(in srgb, var(--area-color) 70%, white) !important; }
+
+        /* Redes (reutilizado en hub y hex) */
         .org-social-btn {
-            width: 38px !important; height: 38px !important;
+            width: 30px !important; height: 30px !important;
             display: flex !important; align-items: center !important; justify-content: center !important;
             border-radius: 50% !important;
-            background: rgba(255,255,255,0.06) !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
             color: #fff !important; text-decoration: none !important;
-            font-size: 0.95rem !important;
+            font-size: 0.75rem !important;
             transition: all 0.3s cubic-bezier(0.23,1,0.32,1) !important;
         }
-        .org-social-btn:hover { background: var(--indigo) !important; border-color: var(--indigo) !important; transform: translateY(-3px) !important; }
+        .org-social-btn:hover { background: var(--indigo) !important; border-color: var(--indigo) !important; transform: translateY(-2px) !important; }
         .org-social-btn.s-wa:hover { background: #25D366 !important; border-color: #25D366 !important; }
         .org-social-btn.s-in:hover { background: #0A66C2 !important; border-color: #0A66C2 !important; }
 
-        @media (max-width: 860px) {
-            .org-areas { grid-template-columns: 1fr !important; gap: 36px !important; }
-            .org-areas::before { display: none !important; }
-            .org-area::before { display: none !important; }
+        @media (max-width: 980px) {
+            .org-wheel { grid-template-columns: 1fr !important; grid-template-areas: "center" "tl" "tr" "bl" "br" !important; gap: 48px !important; justify-items: center !important; }
+            .org-branch, .org-branch.pos-tl, .org-branch.pos-tr, .org-branch.pos-bl, .org-branch.pos-br {
+                flex-direction: column !important; justify-self: center !important; width: 100% !important; max-width: 380px !important; gap: 18px !important;
+            }
+            .branch-connector {
+                clip-path: none !important; border-radius: 100px !important; height: 26px !important; padding: 0 16px !important;
+            }
+            .branch-satellites { flex-direction: column !important; align-items: center !important; width: 100% !important; gap: 16px !important; }
+            .side-left .satellite, .side-right .satellite { flex-direction: row !important; text-align: left !important; }
+            .side-left .sat-label, .side-right .sat-label { text-align: left !important; }
+        }
+        @media (max-width: 480px) {
+            .org-hub { width: 210px !important; }
+            .hex-shape { width: 148px !important; height: 132px !important; padding: 40px 10px 12px !important; }
+            .hex-body { max-width: 108px !important; }
+            .org-social-btn { width: 34px !important; height: 34px !important; font-size: 0.85rem !important; }
         }
 
     </style>
@@ -2696,205 +2591,121 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
         </div>
 
         <div class="org-chart">
+            <div class="org-wheel">
 
-            <!-- ─── Dirección General ─── -->
-            <div class="org-top">
-                <div class="org-member is-lead">
-                    <div class="org-shine"></div>
-                    <div class="org-card-inner">
-                        <div class="org-avatar"><img src="uploads/team/Erick%20Rocha.png" alt="Erick Rocha"></div>
-                        <div class="org-member-info">
-                            <span class="member-role"><i class="fas fa-crown"></i> CEO · Dirección General</span>
-                            <h3 class="member-name">Lic. Erick Rocha</h3>
-                            <span class="org-hint">Ver contacto</span>
-                            <div class="org-reveal"><div class="org-reveal-inner">
-                            <div class="org-contact">
-                                <a href="mailto:erick.rocha@partumdesign.com.mx"><i class="fas fa-envelope"></i> erick.rocha@partumdesign.com.mx</a>
-                                <a href="tel:+5215616044547"><i class="fas fa-phone"></i> +52 1 56 1604 4547</a>
-                            </div>
-                            <div class="org-socials">
+                <!-- ─── Centro: Dirección General ─── -->
+                <div class="org-center">
+                    <div class="org-hub">
+                        <div class="hub-shine"></div>
+                        <div class="org-hub-inner">
+                            <div class="hub-avatar"><img src="uploads/team/Erick%20Rocha.png" alt="Erick Rocha"></div>
+                            <span class="hub-role"><i class="fas fa-crown"></i> CEO · Dirección</span>
+                            <h3 class="hub-name">Lic. Erick Rocha</h3>
+                            <div class="hub-socials">
                                 <a class="org-social-btn s-mail" href="mailto:erick.rocha@partumdesign.com.mx" aria-label="Correo de Erick Rocha"><i class="fas fa-envelope"></i></a>
                                 <a class="org-social-btn s-wa" href="https://wa.me/525616044547" target="_blank" rel="noopener" aria-label="WhatsApp de Erick Rocha"><i class="fab fa-whatsapp"></i></a>
                                 <a class="org-social-btn s-in" href="https://www.linkedin.com/in/erickrocha8/" target="_blank" rel="noopener" aria-label="LinkedIn de Erick Rocha"><i class="fab fa-linkedin-in"></i></a>
                             </div>
-                            </div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="org-trunk"></div>
-
-            <!-- ─── Áreas ─── -->
-            <div class="org-areas">
-
-                <!-- Área: Operaciones -->
-                <div class="org-area">
-                    <div class="org-area-head">
-                        <div class="org-area-icon"><i class="fas fa-sitemap"></i></div>
-                        <div class="org-area-titles">
-                            <span class="org-area-name">Operaciones &amp; Gestión</span>
-                            <span class="org-area-desc">Coordinan procesos, calidad y personas</span>
-                        </div>
-                    </div>
-                    <div class="org-area-members">
-                        <div class="org-member">
-                            <div class="org-shine"></div>
-                            <div class="org-card-inner">
-                                <div class="org-avatar"><img src="uploads/team/Danna%20Rodriguez.webp" alt="Danna Rodriguez"></div>
-                                <div class="org-member-info">
-                                    <span class="member-role"><i class="fas fa-diagram-project"></i> Directora de Operaciones</span>
-                                    <h3 class="member-name">Ing. Danna Rodriguez</h3>
-                                    <span class="org-hint">Ver contacto</span>
-                                    <div class="org-reveal"><div class="org-reveal-inner">
-                                    <div class="org-contact">
-                                        <a href="mailto:danna@indusec.com.mx"><i class="fas fa-envelope"></i> danna@indusec.com.mx</a>
-                                        <a href="tel:+5215540152551"><i class="fas fa-phone"></i> +52 1 55 4015 2551</a>
-                                    </div>
-                                    <div class="org-socials">
-                                        <a class="org-social-btn s-mail" href="mailto:danna@indusec.com.mx" aria-label="Correo de Danna Rodriguez"><i class="fas fa-envelope"></i></a>
-                                        <a class="org-social-btn s-wa" href="https://wa.me/525540152551" target="_blank" rel="noopener" aria-label="WhatsApp de Danna Rodriguez"><i class="fab fa-whatsapp"></i></a>
-                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/" target="_blank" rel="noopener" aria-label="LinkedIn de Danna Rodriguez"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    </div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="org-member">
-                            <div class="org-shine"></div>
-                            <div class="org-card-inner">
-                                <div class="org-avatar"><img src="uploads/team/Perla%20Ure%C3%B1a.png" alt="Perla Ureña"></div>
-                                <div class="org-member-info">
-                                    <span class="member-role"><i class="fas fa-clipboard-check"></i> Sistema de Gestión</span>
-                                    <h3 class="member-name">Ing. Perla Ureña</h3>
-                                    <span class="org-hint">Ver contacto</span>
-                                    <div class="org-reveal"><div class="org-reveal-inner">
-                                    <div class="org-contact">
-                                        <a href="mailto:perla@indusec.com.mx"><i class="fas fa-envelope"></i> perla@indusec.com.mx</a>
-                                        <a href="tel:+5215644112356"><i class="fas fa-phone"></i> +52 1 56 4411 2356</a>
-                                    </div>
-                                    <div class="org-socials">
-                                        <a class="org-social-btn s-mail" href="mailto:perla@indusec.com.mx" aria-label="Correo de Perla Ureña"><i class="fas fa-envelope"></i></a>
-                                        <a class="org-social-btn s-wa" href="https://wa.me/525644112356" target="_blank" rel="noopener" aria-label="WhatsApp de Perla Ureña"><i class="fab fa-whatsapp"></i></a>
-                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/in/perla-ure%C3%B1a/" target="_blank" rel="noopener" aria-label="LinkedIn de Perla Ureña"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    </div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="org-member">
-                            <div class="org-shine"></div>
-                            <div class="org-card-inner">
-                                <div class="org-avatar"><img src="uploads/team/Gaby%20Valenzo.webp" alt="Gabriela Valenzo"></div>
-                                <div class="org-member-info">
-                                    <span class="member-role"><i class="fas fa-user-group"></i> Recursos Humanos</span>
-                                    <h3 class="member-name">Lic. Gabriela Valenzo</h3>
-                                    <span class="org-hint">Ver contacto</span>
-                                    <div class="org-reveal"><div class="org-reveal-inner">
-                                    <div class="org-contact">
-                                        <a href="mailto:gabriela.valenzo@partumdesign.com.mx"><i class="fas fa-envelope"></i> gabriela.valenzo@partumdesign.com.mx</a>
-                                        <a href="tel:+5215524357217"><i class="fas fa-phone"></i> +52 1 55 2435 7217</a>
-                                    </div>
-                                    <div class="org-socials">
-                                        <a class="org-social-btn s-mail" href="mailto:gabriela.valenzo@partumdesign.com.mx" aria-label="Correo de Gabriela Valenzo"><i class="fas fa-envelope"></i></a>
-                                        <a class="org-social-btn s-wa" href="https://wa.me/525524357217" target="_blank" rel="noopener" aria-label="WhatsApp de Gabriela Valenzo"><i class="fab fa-whatsapp"></i></a>
-                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Gabriela Valenzo"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    </div></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Área: Tecnología -->
-                <div class="org-area">
-                    <div class="org-area-head">
-                        <div class="org-area-icon"><i class="fas fa-laptop-code"></i></div>
-                        <div class="org-area-titles">
-                            <span class="org-area-name">Tecnología &amp; Desarrollo</span>
-                            <span class="org-area-desc">Construyen y operan la plataforma digital</span>
+                <!-- ─── Rama: Diseño (arriba-izquierda) ─── -->
+                <div class="org-branch pos-tl side-left" style="--area-color:#d6249f;">
+                    <div class="branch-connector"><span>1</span></div>
+                    <div class="branch-hex">
+                        <div class="hex-avatar"><img src="uploads/team/Luis%20Sanchez.png" alt="Luis Sánchez"></div>
+                            <div class="hex-shape">
+                            <div class="hex-shine"></div>
+                                                        <div class="hex-body">
+                                <span class="hex-role">Brand Manager</span>
+                                <h4 class="hex-name">Lic. Luis Sánchez</h4>
+                            </div>
+                        </div>
+                        <span class="branch-tag"><i class="fas fa-palette"></i> Diseño &amp; Contenido</span>
+                        <div class="hex-contact">
+                            <a class="org-social-btn s-mail" href="mailto:luis@partumdesign.com.mx" aria-label="Correo de Luis Sánchez"><i class="fas fa-envelope"></i></a>
+                            <a class="org-social-btn s-wa" href="https://wa.me/525598796971" target="_blank" rel="noopener" aria-label="WhatsApp de Luis Sánchez"><i class="fab fa-whatsapp"></i></a>
+                            <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Luis Sánchez"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="org-area-members">
-                        <div class="org-member">
-                            <div class="org-shine"></div>
-                            <div class="org-card-inner">
-                                <div class="org-avatar"><img src="uploads/team/Bryan%20Lopez.webp" alt="Bryan López"></div>
-                                <div class="org-member-info">
-                                    <span class="member-role"><i class="fas fa-code"></i> Tecnología y Operaciones</span>
-                                    <h3 class="member-name">Lic. Bryan López</h3>
-                                    <span class="org-hint">Ver contacto</span>
-                                    <div class="org-reveal"><div class="org-reveal-inner">
-                                    <div class="org-contact">
-                                        <a href="mailto:bryan.lopez@partumdesign.com.mx"><i class="fas fa-envelope"></i> bryan.lopez@partumdesign.com.mx</a>
-                                        <a href="tel:+5215644112356"><i class="fas fa-phone"></i> +52 1 56 4411 2356</a>
-                                    </div>
-                                    <div class="org-socials">
-                                        <a class="org-social-btn s-mail" href="mailto:bryan.lopez@partumdesign.com.mx" aria-label="Correo de Bryan López"><i class="fas fa-envelope"></i></a>
-                                        <a class="org-social-btn s-wa" href="https://wa.me/525644112356" target="_blank" rel="noopener" aria-label="WhatsApp de Bryan López"><i class="fab fa-whatsapp"></i></a>
-                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/in/bryanfdesigner/" target="_blank" rel="noopener" aria-label="LinkedIn de Bryan López"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    </div></div>
-                                </div>
-                            </div>
+                    <div class="branch-satellites">
+                        <div class="satellite">
+                            <div class="sat-avatar"><img src="uploads/team/Sebastian%20Sixtos.png" alt="Sebastian Sixtos"></div>
+                            <div class="sat-label"><span class="sat-name">Ing. Sebastian Sixtos</span><span class="sat-role">Social Media Designer</span></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Área: Marca y Contenido -->
-                <div class="org-area">
-                    <div class="org-area-head">
-                        <div class="org-area-icon"><i class="fas fa-palette"></i></div>
-                        <div class="org-area-titles">
-                            <span class="org-area-name">Marca &amp; Contenido</span>
-                            <span class="org-area-desc">Diseñan la identidad y la voz de las marcas</span>
+                <!-- ─── Rama: Operaciones (arriba-derecha) ─── -->
+                <div class="org-branch pos-tr side-right" style="--area-color:#7a9a3f;">
+                    <div class="branch-connector"><span>2</span></div>
+                    <div class="branch-hex">
+                        <div class="hex-avatar"><img src="uploads/team/Danna%20Rodriguez.webp" alt="Danna Rodriguez"></div>
+                            <div class="hex-shape">
+                            <div class="hex-shine"></div>
+                                                        <div class="hex-body">
+                                <span class="hex-role">Directora de Operaciones</span>
+                                <h4 class="hex-name">Ing. Danna Rodriguez</h4>
+                            </div>
+                        </div>
+                        <span class="branch-tag"><i class="fas fa-sitemap"></i> Operaciones &amp; Gestión</span>
+                        <div class="hex-contact">
+                            <a class="org-social-btn s-mail" href="mailto:danna@indusec.com.mx" aria-label="Correo de Danna Rodriguez"><i class="fas fa-envelope"></i></a>
+                            <a class="org-social-btn s-wa" href="https://wa.me/525540152551" target="_blank" rel="noopener" aria-label="WhatsApp de Danna Rodriguez"><i class="fab fa-whatsapp"></i></a>
+                            <a class="org-social-btn s-in" href="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/" target="_blank" rel="noopener" aria-label="LinkedIn de Danna Rodriguez"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="org-area-members">
-                        <div class="org-member">
-                            <div class="org-shine"></div>
-                            <div class="org-card-inner">
-                                <div class="org-avatar"><img src="uploads/team/Luis%20Sanchez.png" alt="Luis Sánchez"></div>
-                                <div class="org-member-info">
-                                    <span class="member-role"><i class="fas fa-pen-nib"></i> Brand Manager</span>
-                                    <h3 class="member-name">Lic. Luis Sánchez</h3>
-                                    <span class="org-hint">Ver contacto</span>
-                                    <div class="org-reveal"><div class="org-reveal-inner">
-                                    <div class="org-contact">
-                                        <a href="mailto:luis@partumdesign.com.mx"><i class="fas fa-envelope"></i> luis@partumdesign.com.mx</a>
-                                        <a href="tel:+5215598796971"><i class="fas fa-phone"></i> +52 1 55 9879 6971</a>
-                                    </div>
-                                    <div class="org-socials">
-                                        <a class="org-social-btn s-mail" href="mailto:luis@partumdesign.com.mx" aria-label="Correo de Luis Sánchez"><i class="fas fa-envelope"></i></a>
-                                        <a class="org-social-btn s-wa" href="https://wa.me/525598796971" target="_blank" rel="noopener" aria-label="WhatsApp de Luis Sánchez"><i class="fab fa-whatsapp"></i></a>
-                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Luis Sánchez"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    </div></div>
-                                </div>
+                    <div class="branch-satellites">
+                        <div class="satellite">
+                            <div class="sat-avatar"><img src="uploads/team/Perla%20Ure%C3%B1a.png" alt="Perla Ureña"></div>
+                            <div class="sat-label"><span class="sat-name">Ing. Perla Ureña</span><span class="sat-role">Sistema de Gestión</span></div>
+                        </div>
+                        <div class="satellite">
+                            <div class="sat-avatar"><img src="uploads/team/Bryan%20Lopez.webp" alt="Lic. Bryan López"></div>
+                            <div class="sat-label"><span class="sat-name">Lic. Bryan López</span><span class="sat-role">Operation Manager</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ─── Rama: RRHH (abajo-izquierda) ─── -->
+                <div class="org-branch pos-bl side-left" style="--area-color:#8b5cf6;">
+                    <div class="branch-connector"><span>3</span></div>
+                    <div class="branch-hex">
+                        <div class="hex-avatar"><img src="uploads/team/Gaby%20Valenzo.webp" alt="Gabriela Valenzo"></div>
+                            <div class="hex-shape">
+                            <div class="hex-shine"></div>
+                                                        <div class="hex-body">
+                                <span class="hex-role">Recursos Humanos</span>
+                                <h4 class="hex-name">Lic. Gabriela Valenzo</h4>
                             </div>
                         </div>
-                        <div class="org-member">
-                            <div class="org-shine"></div>
-                            <div class="org-card-inner">
-                                <div class="org-avatar"><img src="uploads/team/Sebastian%20Sixtos.png" alt="Sebastian Sixtos"></div>
-                                <div class="org-member-info">
-                                    <span class="member-role"><i class="fas fa-hashtag"></i> Social Media Designer</span>
-                                    <h3 class="member-name">Ing. Sebastian Sixtos</h3>
-                                    <span class="org-hint">Ver contacto</span>
-                                    <div class="org-reveal"><div class="org-reveal-inner">
-                                    <div class="org-contact">
-                                        <a href="mailto:sebastian@partumdesign.com.mx"><i class="fas fa-envelope"></i> sebastian@partumdesign.com.mx</a>
-                                        <a href="tel:+5215510000003"><i class="fas fa-phone"></i> +52 1 55 1000 0003</a>
-                                    </div>
-                                    <div class="org-socials">
-                                        <a class="org-social-btn s-mail" href="mailto:sebastian@partumdesign.com.mx" aria-label="Correo de Sebastian Sixtos"><i class="fas fa-envelope"></i></a>
-                                        <a class="org-social-btn s-wa" href="https://wa.me/525510000003" target="_blank" rel="noopener" aria-label="WhatsApp de Sebastian Sixtos"><i class="fab fa-whatsapp"></i></a>
-                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Sebastian Sixtos"><i class="fab fa-linkedin-in"></i></a>
-                                    </div>
-                                    </div></div>
-                                </div>
+                        <span class="branch-tag"><i class="fas fa-user-group"></i> Recursos Humanos</span>
+                        <div class="hex-contact">
+                            <a class="org-social-btn s-mail" href="mailto:gabriela.valenzo@partumdesign.com.mx" aria-label="Correo de Gabriela Valenzo"><i class="fas fa-envelope"></i></a>
+                            <a class="org-social-btn s-wa" href="https://wa.me/525524357217" target="_blank" rel="noopener" aria-label="WhatsApp de Gabriela Valenzo"><i class="fab fa-whatsapp"></i></a>
+                            <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Gabriela Valenzo"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ─── Rama: Tecnología (abajo-derecha) ─── -->
+                <div class="org-branch pos-br side-right" style="--area-color:#ef4444;">
+                    <div class="branch-connector"><span>4</span></div>
+                    <div class="branch-hex">
+                        <div class="hex-avatar"><img src="uploads/team/Bryan%20Lopez.webp" alt="Lic. Bryan López"></div>
+                            <div class="hex-shape">
+                            <div class="hex-shine"></div>
+                                                        <div class="hex-body">
+                                <span class="hex-role">Tech Architect</span>
+                                <h4 class="hex-name">Lic. Bryan López</h4>
                             </div>
+                        </div>
+                        <span class="branch-tag"><i class="fas fa-laptop-code"></i> Tecnología &amp; Desarrollo</span>
+                        <div class="hex-contact">
+                            <a class="org-social-btn s-mail" href="mailto:bryan.lopez@partumdesign.com.mx" aria-label="Correo de Lic. Bryan López"><i class="fas fa-envelope"></i></a>
+                            <a class="org-social-btn s-wa" href="https://wa.me/525644112356" target="_blank" rel="noopener" aria-label="WhatsApp de Lic. Bryan López"><i class="fab fa-whatsapp"></i></a>
+                            <a class="org-social-btn s-in" href="https://www.linkedin.com/in/bryanfdesigner/" target="_blank" rel="noopener" aria-label="LinkedIn de Lic. Bryan López"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -2906,7 +2717,7 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
 
 <script>
     // --- Tilt 3D + brillo que sigue al cursor ---
-    document.querySelectorAll('.org-member').forEach(card => {
+    document.querySelectorAll('.hex-shape, .org-hub').forEach(card => {
         const MAX = 9; // grados de inclinación
         card.addEventListener('mousemove', e => {
             const r = card.getBoundingClientRect();
@@ -2936,7 +2747,7 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
         });
     }, { threshold: 0.3 });
 
-    document.querySelectorAll('.org-member').forEach((el, i) => {
+    document.querySelectorAll('.hex-shape, .org-hub, .satellite').forEach((el, i) => {
         el.dataset.delay = (i * 90);
         teamObserver.observe(el);
     });
