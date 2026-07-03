@@ -2250,7 +2250,6 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
     <title>Equipo — Partum Design</title>
     <!-- Importación de Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -2369,154 +2368,309 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
             color: transparent !important;
         }
 
-        /* ═══════════ SWIPER & CARDS ═══════════ */
-        .swiper { 
-            padding: 20px 10px 70px !important; /* Espacio para la sombra y paginación */
+        /* ═══════════ AURORA ANIMADA ═══════════ */
+        .aurora-bg {
+            position: absolute !important; inset: 0 !important;
+            z-index: 0 !important; pointer-events: none !important;
+            overflow: hidden !important; opacity: 0.5 !important;
         }
+        .aurora-shape {
+            position: absolute !important; border-radius: 50% !important;
+            filter: blur(110px) !important;
+        }
+        .aurora-1 {
+            width: 480px !important; height: 480px !important;
+            top: 6% !important; left: 8% !important;
+            background: rgba(99,102,241,0.35) !important;
+            animation: auroraMove1 16s ease-in-out infinite alternate !important;
+        }
+        .aurora-2 {
+            width: 520px !important; height: 520px !important;
+            bottom: 4% !important; right: 6% !important;
+            background: rgba(244,63,94,0.22) !important;
+            animation: auroraMove2 19s ease-in-out infinite alternate !important;
+        }
+        @keyframes auroraMove1 { from { transform: translate(0,0) scale(1); } to { transform: translate(120px,90px) scale(1.15); } }
+        @keyframes auroraMove2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-110px,-80px) scale(1.1); } }
 
-        .team-card {
-            background: var(--surface) !important;
-            border: 1px solid rgba(255, 255, 255, 0.06) !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-            border-radius: 28px !important; /* Borde ligeramente más suave */
-            overflow: hidden !important;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
-            height: 100% !important;
+        /* ═══════════ ORGANIGRAMA ═══════════ */
+        .org-chart {
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
-            padding: 40px 20px 30px !important;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
-            position: relative !important;
+            width: 100% !important;
         }
 
-        .team-card::after {
+        /* Nodo superior (Dirección) */
+        .org-top { display: flex !important; justify-content: center !important; perspective: 1200px !important; }
+
+        /* Conector vertical central */
+        .org-trunk {
+            width: 2px !important;
+            height: 44px !important;
+            background: linear-gradient(180deg, var(--indigo), rgba(99,102,241,0.15)) !important;
+        }
+
+        /* Fila de áreas */
+        .org-areas {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 28px !important;
+            width: 100% !important;
+            position: relative !important;
+            align-items: start !important;
+        }
+        /* Línea horizontal que une las áreas */
+        .org-areas::before {
             content: '' !important;
-            position: absolute !important; top: -50px !important; right: -50px !important;
-            width: 150px !important; height: 150px !important; border-radius: 50% !important;
-            background: radial-gradient(circle, var(--indigo) 0%, transparent 70%) !important;
-            opacity: 0.1 !important;
-            transition: opacity 0.5s ease !important;
-            pointer-events: none !important;
+            position: absolute !important;
+            top: -22px !important;
+            left: 16.66% !important;
+            right: 16.66% !important;
+            height: 2px !important;
+            background: rgba(99,102,241,0.25) !important;
         }
 
-        .team-card:hover {
-            transform: translateY(-10px) !important;
-            border-color: rgba(99, 102, 241, 0.3) !important;
-            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(99, 102, 241, 0.15) inset !important;
-        }
-        .team-card:hover::after { opacity: 0.25 !important; }
-
-        /* ═══════════ IMÁGENES CIRCULARES (CORRECCIÓN ESTRICTA) ═══════════ */
-        .team-image-wrapper {
+        .org-area {
             position: relative !important;
-            width: 150px !important;
-            height: 150px !important; 
-            border-radius: 50% !important; 
-            background: #0f172a !important; 
-            flex-shrink: 0 !important; 
-            border: 3px solid rgba(255, 255, 255, 0.08) !important;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
-            margin-bottom: 24px !important;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
-            z-index: 2 !important;
-            
-            /* REGLAS ESTRICTAS PARA QUE NUNCA SE VEA CUADRADO */
-            overflow: hidden !important;
-            transform: translateZ(0) !important; 
-            isolation: isolate !important;
-            mask-image: radial-gradient(white, black) !important;
-            -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+            background: rgba(15, 23, 42, 0.35) !important;
+            border: 1px solid rgba(255,255,255,0.06) !important;
+            border-top: 1px solid rgba(255,255,255,0.14) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-radius: 24px !important;
+            padding: 22px 18px 20px !important;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4) !important;
+        }
+        .org-area::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -22px !important; left: 50% !important;
+            width: 2px !important; height: 22px !important;
+            background: rgba(99,102,241,0.25) !important;
+            transform: translateX(-50%) !important;
         }
 
-        .team-card:hover .team-image-wrapper {
-            border-color: var(--indigo) !important; 
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.3) !important;
-            transform: translateY(-5px) !important; /* Levanta el marco en lugar de escalarlo */
-        }
-
-        .team-img {
-            width: 100% !important; 
-            height: 100% !important; 
-            object-fit: cover !important; 
-            object-position: center top !important; /* Mejor para retratos */
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1) !important;
-            display: block !important; 
-            border-radius: 50% !important;
-        }
-        /* Solo escalamos la imagen internamente */
-        .team-card:hover .team-img { 
-            transform: scale(1.15) !important; 
-        }
-
-        /* Overlay Social Elegante */
-        .social-overlay {
-            position: absolute !important; inset: 0 !important;
-            background: rgba(2, 6, 23, 0.65) !important; 
-            display: flex !important; align-items: center !important; justify-content: center !important;
-            opacity: 0 !important; 
-            transition: all 0.4s ease !important;
-            backdrop-filter: blur(2px) !important;
-            border-radius: 50% !important;
-        }
-        .team-card:hover .social-overlay { opacity: 1 !important; }
-
-        .social-btn {
-            width: 46px !important; height: 46px !important; background: #ffffff !important; color: #020617 !important;
-            border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important;
-            text-decoration: none !important;
-            font-size: 1.15rem !important;
-            /* Animación de deslizamiento hacia arriba */
-            transform: translateY(20px) !important; 
-            opacity: 0 !important;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
-        }
-        .team-card:hover .social-btn { 
-            transform: translateY(0) !important; 
-            opacity: 1 !important;
-        }
-        .social-btn:hover { 
-            background: var(--indigo) !important; 
-            color: #ffffff !important; 
-            transform: translateY(-3px) scale(1.05) !important; 
-        }
-
-        /* ═══════════ INFORMACIÓN ═══════════ */
-        .team-info { 
-            text-align: center !important;
-            flex-grow: 1 !important; 
+        .org-area-head {
             display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            z-index: 2 !important;
+            align-items: center !important;
+            gap: 12px !important;
+            padding-bottom: 16px !important;
+            margin-bottom: 18px !important;
+            border-bottom: 1px solid rgba(255,255,255,0.07) !important;
         }
-        
+        .org-area-icon {
+            width: 44px !important; height: 44px !important;
+            flex-shrink: 0 !important;
+            border-radius: 13px !important;
+            display: flex !important; align-items: center !important; justify-content: center !important;
+            background: linear-gradient(135deg, rgba(99,102,241,0.22), rgba(139,92,246,0.22)) !important;
+            border: 1px solid rgba(99,102,241,0.35) !important;
+            color: #c7d2fe !important;
+            font-size: 1.1rem !important;
+            box-shadow: 0 0 18px rgba(99,102,241,0.15) !important;
+        }
+        .org-area-titles { display: flex !important; flex-direction: column !important; gap: 3px !important; }
+        .org-area-name {
+            font-size: 14px !important; font-weight: 800 !important; color: #fff !important;
+            letter-spacing: -0.01em !important; line-height: 1.15 !important;
+        }
+        .org-area-desc {
+            font-size: 11px !important; font-weight: 500 !important; color: rgba(255,255,255,0.5) !important;
+            line-height: 1.3 !important;
+        }
+
+        /* perspectiva para el tilt 3D */
+        .org-area-members {
+            display: flex !important; flex-direction: column !important; gap: 16px !important;
+            perspective: 1200px !important;
+        }
+
+        /* ═══════════ TARJETA 3D ═══════════ */
+        .org-member {
+            position: relative !important;
+            border-radius: 20px !important;
+            padding: 22px 18px !important;
+            background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)) !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+            cursor: default !important;
+            transform-style: preserve-3d !important;
+            transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) !important;
+            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35) !important;
+            overflow: hidden !important;
+            /* entrada */
+            opacity: 0 !important;
+            translate: 0 40px !important;
+        }
+        .org-member.is-visible { opacity: 1 !important; translate: 0 0 !important; transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.7s ease, translate 0.7s cubic-bezier(0.23,1,0.32,1) !important; }
+        .org-member:hover {
+            border-color: rgba(99,102,241,0.45) !important;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.2) inset !important;
+        }
+        /* brillo que sigue al cursor */
+        .org-shine {
+            position: absolute !important; inset: 0 !important;
+            border-radius: inherit !important; pointer-events: none !important;
+            opacity: 0 !important; transition: opacity 0.3s ease !important;
+            background: radial-gradient(380px circle at var(--mx,50%) var(--my,0%), rgba(99,102,241,0.22), transparent 60%) !important;
+        }
+        .org-member:hover .org-shine { opacity: 1 !important; }
+
+        .org-card-inner {
+            display: flex !important; flex-direction: column !important; align-items: center !important;
+            text-align: center !important; gap: 10px !important;
+            transform: translateZ(45px) !important;
+            transform-style: preserve-3d !important;
+        }
+
+        /* Tarjeta destacada de Dirección General */
+        .org-member.is-lead {
+            padding: 34px 46px !important;
+            border-radius: 26px !important;
+            background: linear-gradient(160deg, rgba(99,102,241,0.14), rgba(139,92,246,0.05)) !important;
+            border: 1px solid rgba(99,102,241,0.3) !important;
+        }
+        .org-member.is-lead .org-card-inner { gap: 12px !important; }
+
+        /* Avatar */
+        .org-avatar {
+            position: relative !important;
+            width: 86px !important; height: 86px !important;
+            flex-shrink: 0 !important;
+            border-radius: 50% !important;
+            overflow: hidden !important;
+            background: #0f172a !important;
+            border: 3px solid rgba(255,255,255,0.12) !important;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease !important;
+            display: flex !important; align-items: center !important; justify-content: center !important;
+        }
+        .org-member:hover .org-avatar { border-color: var(--indigo) !important; box-shadow: 0 0 24px rgba(99,102,241,0.4) !important; }
+        .org-member.is-lead .org-avatar { width: 124px !important; height: 124px !important; }
+        .org-avatar img {
+            width: 100% !important; height: 100% !important;
+            object-fit: cover !important; object-position: center top !important;
+            display: block !important; border-radius: 50% !important;
+            transition: transform 0.6s cubic-bezier(0.23,1,0.32,1) !important;
+        }
+        .org-member:hover .org-avatar img { transform: scale(1.12) !important; }
+        .org-avatar-fallback {
+            width: 100% !important; height: 100% !important;
+            display: flex !important; align-items: center !important; justify-content: center !important;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+            color: #fff !important; font-weight: 800 !important; font-size: 1.6rem !important;
+            letter-spacing: -1px !important;
+        }
+        .org-member.is-lead .org-avatar-fallback { font-size: 2.6rem !important; }
+
+        .org-member-info { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 7px !important; min-width: 0 !important; width: 100% !important; }
+
         .member-role {
             font-family: 'Montserrat', sans-serif !important;
-            font-size: 10px !important; 
-            font-weight: 800 !important; 
-            color: var(--indigo) !important; 
-            text-transform: uppercase !important; 
-            letter-spacing: 0.2em !important; 
-            margin-bottom: 10px !important;
-            display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important;
+            font-size: 10px !important;
+            font-weight: 800 !important;
+            color: #c7d2fe !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.16em !important;
+            margin: 0 !important;
+            display: inline-flex !important; align-items: center !important; gap: 7px !important;
+            padding: 5px 12px !important;
+            border-radius: 100px !important;
+            background: rgba(99,102,241,0.14) !important;
+            border: 1px solid rgba(99,102,241,0.25) !important;
         }
+        .org-member.is-lead .member-role { font-size: 11px !important; color: #fde68a !important; background: rgba(244,180,30,0.12) !important; border-color: rgba(244,180,30,0.3) !important; }
 
-        .member-name { 
+        .member-name {
             font-family: 'Montserrat', sans-serif !important;
-            font-size: 20px !important; 
-            font-weight: 800 !important; 
-            color: #ffffff !important; 
-            margin: 0 !important; 
-            letter-spacing: -0.02em !important;
+            font-size: 17px !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            margin: 0 !important;
+            letter-spacing: -0.01em !important;
             line-height: 1.2 !important;
         }
+        .org-member.is-lead .member-name { font-size: 26px !important; }
 
-        /* ═══════════ PAGINACIÓN SWIPER ═══════════ */
-        .swiper-pagination-bullet { background: #ffffff !important; opacity: 0.2 !important; transition: all 0.3s ease !important; }
-        .swiper-pagination-bullet-active { background: linear-gradient(135deg, var(--indigo), var(--violet)) !important; width: 30px !important; border-radius: 10px !important; opacity: 1 !important; }
+        /* ── Bloque expandible: oculto por defecto, se revela en hover ── */
+        .org-reveal {
+            width: 100% !important;
+            display: grid !important;
+            grid-template-rows: 0fr !important;
+            opacity: 0 !important;
+            margin-top: 0 !important;
+            transition: grid-template-rows 0.5s cubic-bezier(0.23,1,0.32,1), opacity 0.35s ease, margin-top 0.4s ease !important;
+        }
+        .org-reveal > * { overflow: hidden !important; min-height: 0 !important; }
+        .org-member:hover .org-reveal,
+        .org-member:focus-within .org-reveal {
+            grid-template-rows: 1fr !important;
+            opacity: 1 !important;
+            margin-top: 12px !important;
+        }
+        /* Pista sutil en estado inactivo */
+        .org-hint {
+            font-size: 9px !important; font-weight: 700 !important;
+            letter-spacing: 0.18em !important; text-transform: uppercase !important;
+            color: rgba(199,210,254,0.55) !important;
+            display: inline-flex !important; align-items: center !important; gap: 6px !important;
+            margin-top: 8px !important;
+            transition: opacity 0.3s ease, max-height 0.4s ease !important;
+        }
+        .org-hint::before { content: '' !important; width: 5px !important; height: 5px !important; border-radius: 50% !important; background: var(--indigo) !important; box-shadow: 0 0 8px var(--indigo) !important; }
+        .org-member:hover .org-hint,
+        .org-member:focus-within .org-hint { opacity: 0 !important; max-height: 0 !important; margin-top: 0 !important; }
+        /* La tarjeta de Dirección siempre va expandida */
+        .org-member.is-lead .org-reveal { grid-template-rows: 1fr !important; opacity: 1 !important; margin-top: 12px !important; }
+        .org-member.is-lead .org-reveal-inner { transform: none !important; }
+        .org-member.is-lead .org-hint { display: none !important; }
+
+        /* Contenedor interno del reveal */
+        .org-reveal-inner {
+            display: flex !important; flex-direction: column !important; align-items: center !important;
+            gap: 12px !important; width: 100% !important;
+            transform: translateY(10px) !important;
+            transition: transform 0.5s cubic-bezier(0.23,1,0.32,1) !important;
+        }
+        .org-member:hover .org-reveal-inner,
+        .org-member:focus-within .org-reveal-inner { transform: translateY(0) !important; }
+
+        /* Contacto */
+        .org-contact {
+            display: flex !important; flex-direction: column !important; gap: 5px !important;
+            width: 100% !important;
+        }
+        .org-contact a {
+            display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important;
+            font-size: 11.5px !important; font-weight: 500 !important;
+            color: rgba(255,255,255,0.6) !important; text-decoration: none !important;
+            transition: color 0.25s ease !important;
+            word-break: break-all !important;
+        }
+        .org-contact a i { color: var(--indigo) !important; font-size: 12px !important; width: 14px !important; text-align: center !important; flex-shrink: 0 !important; }
+        .org-contact a:hover { color: #fff !important; }
+
+        /* Redes */
+        .org-socials { display: flex !important; gap: 10px !important; }
+        .org-social-btn {
+            width: 38px !important; height: 38px !important;
+            display: flex !important; align-items: center !important; justify-content: center !important;
+            border-radius: 50% !important;
+            background: rgba(255,255,255,0.06) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: #fff !important; text-decoration: none !important;
+            font-size: 0.95rem !important;
+            transition: all 0.3s cubic-bezier(0.23,1,0.32,1) !important;
+        }
+        .org-social-btn:hover { background: var(--indigo) !important; border-color: var(--indigo) !important; transform: translateY(-3px) !important; }
+        .org-social-btn.s-wa:hover { background: #25D366 !important; border-color: #25D366 !important; }
+        .org-social-btn.s-in:hover { background: #0A66C2 !important; border-color: #0A66C2 !important; }
+
+        @media (max-width: 860px) {
+            .org-areas { grid-template-columns: 1fr !important; gap: 36px !important; }
+            .org-areas::before { display: none !important; }
+            .org-area::before { display: none !important; }
+        }
 
     </style>
 </head>
@@ -2526,6 +2680,11 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
     <!-- Luces Ambientales -->
     <div class="glow-orb orb-top"></div>
     <div class="glow-orb orb-bottom"></div>
+    <!-- Aurora animada -->
+    <div class="aurora-bg">
+        <div class="aurora-shape aurora-1"></div>
+        <div class="aurora-shape aurora-2"></div>
+    </div>
 
     <div class="team-container">
         
@@ -2536,305 +2695,250 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
             <h2 class="team-title">Conoce a nuestro<br><em>Equipo.</em></h2>
         </div>
 
-        <div class="swiper teamSwiper">
-            <div class="swiper-wrapper">
+        <div class="org-chart">
 
-                <!-- Erick — CEO -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Lic. Erick Rocha" data-role="CEO · Director General" data-img="uploads/team/Erick%20Rocha.png" data-linkedin="https://www.linkedin.com/in/erickrocha8/">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Erick%20Rocha.png" class="team-img" alt="Erick Rocha">
-                            <div class="social-overlay">
-                                <a href="https://www.linkedin.com/in/erickrocha8/" class="social-btn" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-crown"></i> CEO · Director General</span>
+            <!-- ─── Dirección General ─── -->
+            <div class="org-top">
+                <div class="org-member is-lead">
+                    <div class="org-shine"></div>
+                    <div class="org-card-inner">
+                        <div class="org-avatar"><img src="uploads/team/Erick%20Rocha.png" alt="Erick Rocha"></div>
+                        <div class="org-member-info">
+                            <span class="member-role"><i class="fas fa-crown"></i> CEO · Dirección General</span>
                             <h3 class="member-name">Lic. Erick Rocha</h3>
+                            <span class="org-hint">Ver contacto</span>
+                            <div class="org-reveal"><div class="org-reveal-inner">
+                            <div class="org-contact">
+                                <a href="mailto:erick.rocha@partumdesign.com.mx"><i class="fas fa-envelope"></i> erick.rocha@partumdesign.com.mx</a>
+                                <a href="tel:+5215616044547"><i class="fas fa-phone"></i> +52 1 56 1604 4547</a>
+                            </div>
+                            <div class="org-socials">
+                                <a class="org-social-btn s-mail" href="mailto:erick.rocha@partumdesign.com.mx" aria-label="Correo de Erick Rocha"><i class="fas fa-envelope"></i></a>
+                                <a class="org-social-btn s-wa" href="https://wa.me/525616044547" target="_blank" rel="noopener" aria-label="WhatsApp de Erick Rocha"><i class="fab fa-whatsapp"></i></a>
+                                <a class="org-social-btn s-in" href="https://www.linkedin.com/in/erickrocha8/" target="_blank" rel="noopener" aria-label="LinkedIn de Erick Rocha"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            </div></div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Perla — Sistema de Gestión -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Perla" data-role="SG · Sistema de Gestión" data-img="" data-linkedin="">
-                        <div class="team-image-wrapper team-image-placeholder" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display:flex; align-items:center; justify-content:center;">
-                            <span style="font-size:3rem; font-weight:800; color:#fff; letter-spacing:-2px; font-family:'Montserrat',sans-serif;">P</span>
-                        </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-clipboard-check"></i> SG · Sistema de Gestión</span>
-                            <h3 class="member-name">Perla</h3>
+            <div class="org-trunk"></div>
+
+            <!-- ─── Áreas ─── -->
+            <div class="org-areas">
+
+                <!-- Área: Operaciones -->
+                <div class="org-area">
+                    <div class="org-area-head">
+                        <div class="org-area-icon"><i class="fas fa-sitemap"></i></div>
+                        <div class="org-area-titles">
+                            <span class="org-area-name">Operaciones &amp; Gestión</span>
+                            <span class="org-area-desc">Coordinan procesos, calidad y personas</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Danna — COO -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Ing. Danna Rodriguez" data-role="COO · Directora de Operaciones" data-img="uploads/team/Danna%20Rodriguez.webp" data-linkedin="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Danna%20Rodriguez.webp" class="team-img" alt="Danna Rodriguez">
-                            <div class="social-overlay">
-                                <a href="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/" class="social-btn" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="org-area-members">
+                        <div class="org-member">
+                            <div class="org-shine"></div>
+                            <div class="org-card-inner">
+                                <div class="org-avatar"><img src="uploads/team/Danna%20Rodriguez.webp" alt="Danna Rodriguez"></div>
+                                <div class="org-member-info">
+                                    <span class="member-role"><i class="fas fa-diagram-project"></i> Directora de Operaciones</span>
+                                    <h3 class="member-name">Ing. Danna Rodriguez</h3>
+                                    <span class="org-hint">Ver contacto</span>
+                                    <div class="org-reveal"><div class="org-reveal-inner">
+                                    <div class="org-contact">
+                                        <a href="mailto:danna@indusec.com.mx"><i class="fas fa-envelope"></i> danna@indusec.com.mx</a>
+                                        <a href="tel:+5215540152551"><i class="fas fa-phone"></i> +52 1 55 4015 2551</a>
+                                    </div>
+                                    <div class="org-socials">
+                                        <a class="org-social-btn s-mail" href="mailto:danna@indusec.com.mx" aria-label="Correo de Danna Rodriguez"><i class="fas fa-envelope"></i></a>
+                                        <a class="org-social-btn s-wa" href="https://wa.me/525540152551" target="_blank" rel="noopener" aria-label="WhatsApp de Danna Rodriguez"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/in/danna-rodriguez-valencia-47a7ab205/" target="_blank" rel="noopener" aria-label="LinkedIn de Danna Rodriguez"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    </div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-star"></i> COO · Directora de Operaciones</span>
-                            <h3 class="member-name">Ing. Danna Rodriguez</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bryan — OM / Desarrollo y Tecnología -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Lic. Bryan López" data-role="OM · Desarrollo y Tecnología" data-img="uploads/team/Bryan%20Lopez.webp" data-linkedin="https://www.linkedin.com/in/bryanfdesigner/">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Bryan%20Lopez.webp" class="team-img" alt="Bryan López">
-                            <div class="social-overlay">
-                                <a href="https://www.linkedin.com/in/bryanfdesigner/" class="social-btn" target="_blank" onclick="event.stopPropagation()"><i class="fab fa-linkedin-in"></i></a>
+                        <div class="org-member">
+                            <div class="org-shine"></div>
+                            <div class="org-card-inner">
+                                <div class="org-avatar"><img src="uploads/team/Perla%20Ure%C3%B1a.png" alt="Perla Ureña"></div>
+                                <div class="org-member-info">
+                                    <span class="member-role"><i class="fas fa-clipboard-check"></i> Sistema de Gestión</span>
+                                    <h3 class="member-name">Ing. Perla Ureña</h3>
+                                    <span class="org-hint">Ver contacto</span>
+                                    <div class="org-reveal"><div class="org-reveal-inner">
+                                    <div class="org-contact">
+                                        <a href="mailto:perla@indusec.com.mx"><i class="fas fa-envelope"></i> perla@indusec.com.mx</a>
+                                        <a href="tel:+5215644112356"><i class="fas fa-phone"></i> +52 1 56 4411 2356</a>
+                                    </div>
+                                    <div class="org-socials">
+                                        <a class="org-social-btn s-mail" href="mailto:perla@indusec.com.mx" aria-label="Correo de Perla Ureña"><i class="fas fa-envelope"></i></a>
+                                        <a class="org-social-btn s-wa" href="https://wa.me/525644112356" target="_blank" rel="noopener" aria-label="WhatsApp de Perla Ureña"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/in/perla-ure%C3%B1a/" target="_blank" rel="noopener" aria-label="LinkedIn de Perla Ureña"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    </div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-laptop-code"></i> OM · Desarrollo y Tecnología</span>
-                            <h3 class="member-name">Lic. Bryan López</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gabriela — RH y Administración -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Lic. Gabriela Valenzo" data-role="RH y Administración" data-img="uploads/team/Gaby%20Valenzo.webp" data-linkedin="">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Gaby%20Valenzo.webp" class="team-img" alt="Gabriela Valenzo">
-                            <div class="social-overlay">
-                                <a href="#" class="social-btn" onclick="event.stopPropagation()"><i class="fas fa-users-gear"></i></a>
+                        <div class="org-member">
+                            <div class="org-shine"></div>
+                            <div class="org-card-inner">
+                                <div class="org-avatar"><img src="uploads/team/Gaby%20Valenzo.webp" alt="Gabriela Valenzo"></div>
+                                <div class="org-member-info">
+                                    <span class="member-role"><i class="fas fa-user-group"></i> Recursos Humanos</span>
+                                    <h3 class="member-name">Lic. Gabriela Valenzo</h3>
+                                    <span class="org-hint">Ver contacto</span>
+                                    <div class="org-reveal"><div class="org-reveal-inner">
+                                    <div class="org-contact">
+                                        <a href="mailto:gabriela.valenzo@partumdesign.com.mx"><i class="fas fa-envelope"></i> gabriela.valenzo@partumdesign.com.mx</a>
+                                        <a href="tel:+5215524357217"><i class="fas fa-phone"></i> +52 1 55 2435 7217</a>
+                                    </div>
+                                    <div class="org-socials">
+                                        <a class="org-social-btn s-mail" href="mailto:gabriela.valenzo@partumdesign.com.mx" aria-label="Correo de Gabriela Valenzo"><i class="fas fa-envelope"></i></a>
+                                        <a class="org-social-btn s-wa" href="https://wa.me/525524357217" target="_blank" rel="noopener" aria-label="WhatsApp de Gabriela Valenzo"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Gabriela Valenzo"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    </div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-users-gear"></i> RH y Administración</span>
-                            <h3 class="member-name">Lic. Gabriela Valenzo</h3>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Luis — Brand Manager -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Lic. Luis Sánchez" data-role="Brand Manager" data-img="uploads/team/Luis%20Sanchez.png" data-linkedin="">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Luis%20Sanchez.png" class="team-img" alt="Luis Sánchez">
-                            <div class="social-overlay">
-                                <a href="#" class="social-btn" onclick="event.stopPropagation()"><i class="fas fa-palette"></i></a>
+                <!-- Área: Tecnología -->
+                <div class="org-area">
+                    <div class="org-area-head">
+                        <div class="org-area-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="org-area-titles">
+                            <span class="org-area-name">Tecnología &amp; Desarrollo</span>
+                            <span class="org-area-desc">Construyen y operan la plataforma digital</span>
+                        </div>
+                    </div>
+                    <div class="org-area-members">
+                        <div class="org-member">
+                            <div class="org-shine"></div>
+                            <div class="org-card-inner">
+                                <div class="org-avatar"><img src="uploads/team/Bryan%20Lopez.webp" alt="Bryan López"></div>
+                                <div class="org-member-info">
+                                    <span class="member-role"><i class="fas fa-code"></i> Tecnología y Operaciones</span>
+                                    <h3 class="member-name">Lic. Bryan López</h3>
+                                    <span class="org-hint">Ver contacto</span>
+                                    <div class="org-reveal"><div class="org-reveal-inner">
+                                    <div class="org-contact">
+                                        <a href="mailto:bryan.lopez@partumdesign.com.mx"><i class="fas fa-envelope"></i> bryan.lopez@partumdesign.com.mx</a>
+                                        <a href="tel:+5215644112356"><i class="fas fa-phone"></i> +52 1 56 4411 2356</a>
+                                    </div>
+                                    <div class="org-socials">
+                                        <a class="org-social-btn s-mail" href="mailto:bryan.lopez@partumdesign.com.mx" aria-label="Correo de Bryan López"><i class="fas fa-envelope"></i></a>
+                                        <a class="org-social-btn s-wa" href="https://wa.me/525644112356" target="_blank" rel="noopener" aria-label="WhatsApp de Bryan López"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/in/bryanfdesigner/" target="_blank" rel="noopener" aria-label="LinkedIn de Bryan López"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    </div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-palette"></i> Brand Manager</span>
-                            <h3 class="member-name">Lic. Luis Sánchez</h3>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Sebastian — Social Media Designer -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Sebastian Sixtos" data-role="Social Media Designer" data-img="uploads/team/Sebastian%20Sixtos.png" data-linkedin="">
-                        <div class="team-image-wrapper">
-                            <img src="uploads/team/Sebastian%20Sixtos.png" class="team-img" alt="Sebastian Sixtos">
-                            <div class="social-overlay">
-                                <a href="#" class="social-btn" onclick="event.stopPropagation()"><i class="fas fa-bullhorn"></i></a>
+                <!-- Área: Marca y Contenido -->
+                <div class="org-area">
+                    <div class="org-area-head">
+                        <div class="org-area-icon"><i class="fas fa-palette"></i></div>
+                        <div class="org-area-titles">
+                            <span class="org-area-name">Marca &amp; Contenido</span>
+                            <span class="org-area-desc">Diseñan la identidad y la voz de las marcas</span>
+                        </div>
+                    </div>
+                    <div class="org-area-members">
+                        <div class="org-member">
+                            <div class="org-shine"></div>
+                            <div class="org-card-inner">
+                                <div class="org-avatar"><img src="uploads/team/Luis%20Sanchez.png" alt="Luis Sánchez"></div>
+                                <div class="org-member-info">
+                                    <span class="member-role"><i class="fas fa-pen-nib"></i> Brand Manager</span>
+                                    <h3 class="member-name">Lic. Luis Sánchez</h3>
+                                    <span class="org-hint">Ver contacto</span>
+                                    <div class="org-reveal"><div class="org-reveal-inner">
+                                    <div class="org-contact">
+                                        <a href="mailto:luis@partumdesign.com.mx"><i class="fas fa-envelope"></i> luis@partumdesign.com.mx</a>
+                                        <a href="tel:+5215598796971"><i class="fas fa-phone"></i> +52 1 55 9879 6971</a>
+                                    </div>
+                                    <div class="org-socials">
+                                        <a class="org-social-btn s-mail" href="mailto:luis@partumdesign.com.mx" aria-label="Correo de Luis Sánchez"><i class="fas fa-envelope"></i></a>
+                                        <a class="org-social-btn s-wa" href="https://wa.me/525598796971" target="_blank" rel="noopener" aria-label="WhatsApp de Luis Sánchez"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Luis Sánchez"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    </div></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-bullhorn"></i> Social Media Designer</span>
-                            <h3 class="member-name">Sebastian Sixtos</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fernanda -->
-                <div class="swiper-slide">
-                    <div class="team-card" data-name="Lic. Fernanda Samperio" data-role="Social Media Designer" data-img="" data-linkedin="">
-                        <div class="team-image-wrapper team-image-placeholder" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); display:flex; align-items:center; justify-content:center;">
-                            <span style="font-size:3rem; font-weight:800; color:#fff; letter-spacing:-2px; font-family:'Montserrat',sans-serif;">FS</span>
-                        </div>
-                        <div class="team-info">
-                            <span class="member-role"><i class="fas fa-bullhorn"></i> Social Media Designer</span>
-                            <h3 class="member-name">Lic. Fernanda Samperio</h3>
+                        <div class="org-member">
+                            <div class="org-shine"></div>
+                            <div class="org-card-inner">
+                                <div class="org-avatar"><img src="uploads/team/Sebastian%20Sixtos.png" alt="Sebastian Sixtos"></div>
+                                <div class="org-member-info">
+                                    <span class="member-role"><i class="fas fa-hashtag"></i> Social Media Designer</span>
+                                    <h3 class="member-name">Ing. Sebastian Sixtos</h3>
+                                    <span class="org-hint">Ver contacto</span>
+                                    <div class="org-reveal"><div class="org-reveal-inner">
+                                    <div class="org-contact">
+                                        <a href="mailto:sebastian@partumdesign.com.mx"><i class="fas fa-envelope"></i> sebastian@partumdesign.com.mx</a>
+                                        <a href="tel:+5215510000003"><i class="fas fa-phone"></i> +52 1 55 1000 0003</a>
+                                    </div>
+                                    <div class="org-socials">
+                                        <a class="org-social-btn s-mail" href="mailto:sebastian@partumdesign.com.mx" aria-label="Correo de Sebastian Sixtos"><i class="fas fa-envelope"></i></a>
+                                        <a class="org-social-btn s-wa" href="https://wa.me/525510000003" target="_blank" rel="noopener" aria-label="WhatsApp de Sebastian Sixtos"><i class="fab fa-whatsapp"></i></a>
+                                        <a class="org-social-btn s-in" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn de Sebastian Sixtos"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    </div></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <!-- Paginación -->
-            <div class="swiper-pagination"></div>
         </div>
     </div>
 </section>
 
-<!-- MODAL DE TARJETA DE EQUIPO -->
-<div class="team-modal-backdrop" id="teamModalBackdrop">
-    <div class="team-modal" role="dialog" aria-modal="true">
-        <button class="team-modal-close" id="teamModalClose" aria-label="Cerrar">&times;</button>
-        <div class="team-modal-media" id="teamModalMedia"></div>
-        <div class="team-modal-body">
-            <span class="member-role" id="teamModalRole"></span>
-            <h3 id="teamModalName"></h3>
-            <a href="#" id="teamModalLinkedin" target="_blank" class="team-modal-linkedin">
-                <i class="fab fa-linkedin-in"></i> Ver perfil de LinkedIn
-            </a>
-        </div>
-    </div>
-</div>
-
-<style>
-    .team-card { cursor: pointer; }
-
-    .team-modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(2, 6, 23, 0.85);
-        backdrop-filter: blur(6px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 999999;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        padding: 20px;
-    }
-
-    .team-modal-backdrop.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .team-modal {
-        background: #0f172a;
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 20px;
-        max-width: 420px;
-        width: 100%;
-        overflow: hidden;
-        transform: translateY(20px) scale(0.97);
-        transition: transform 0.3s ease;
-        position: relative;
-    }
-
-    .team-modal-backdrop.active .team-modal {
-        transform: translateY(0) scale(1);
-    }
-
-    .team-modal-media {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        background-size: cover;
-        background-position: center;
-        background-color: #1e293b;
-    }
-
-    .team-modal-body {
-        padding: 28px 28px 32px;
-        text-align: center;
-    }
-
-    .team-modal-body h3 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: #fff;
-        margin: 8px 0 18px;
-    }
-
-    .team-modal-linkedin {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #fff;
-        background: #0A66C2;
-        padding: 10px 20px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 600;
-        transition: opacity 0.3s ease;
-    }
-
-    .team-modal-linkedin:hover { opacity: 0.85; }
-    .team-modal-linkedin.is-hidden { display: none; }
-
-    .team-modal-close {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: none;
-        background: rgba(255,255,255,0.1);
-        color: #fff;
-        font-size: 1.4rem;
-        line-height: 1;
-        cursor: pointer;
-        z-index: 2;
-    }
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    const swiper = new Swiper('.teamSwiper', {
-        slidesPerView: 1,
-        spaceBetween: 24,
-        loop: true,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            540: { slidesPerView: 2 },
-            860: { slidesPerView: 3 },
-            1180: { slidesPerView: 4 }
-        }
-    });
-
-    // --- Tarjetas de equipo expandibles (estilo Haften) ---
-    const teamModalBackdrop = document.getElementById('teamModalBackdrop');
-    const teamModalMedia = document.getElementById('teamModalMedia');
-    const teamModalName = document.getElementById('teamModalName');
-    const teamModalRole = document.getElementById('teamModalRole');
-    const teamModalLinkedin = document.getElementById('teamModalLinkedin');
-    const teamModalClose = document.getElementById('teamModalClose');
-
-    document.querySelectorAll('.team-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const img = card.dataset.img;
-            if (img) {
-                teamModalMedia.style.backgroundImage = `url('${img}')`;
-                teamModalMedia.style.background = '';
-                teamModalMedia.innerHTML = '';
-            } else {
-                teamModalMedia.style.backgroundImage = 'none';
-                teamModalMedia.style.background = card.querySelector('.team-image-placeholder').style.background;
-                teamModalMedia.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:800;color:#fff;font-family:'Montserrat',sans-serif;">${card.querySelector('.team-image-placeholder span').textContent}</div>`;
-            }
-            teamModalName.textContent = card.dataset.name;
-            teamModalRole.textContent = card.dataset.role;
-            const linkedin = card.dataset.linkedin;
-            if (linkedin) {
-                teamModalLinkedin.href = linkedin;
-                teamModalLinkedin.classList.remove('is-hidden');
-            } else {
-                teamModalLinkedin.classList.add('is-hidden');
-            }
-            teamModalBackdrop.classList.add('active');
+    // --- Tilt 3D + brillo que sigue al cursor ---
+    document.querySelectorAll('.org-member').forEach(card => {
+        const MAX = 9; // grados de inclinación
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width;
+            const py = (e.clientY - r.top) / r.height;
+            card.style.setProperty('--ry', `${(px - 0.5) * MAX * 2}deg`);
+            card.style.setProperty('--rx', `${-(py - 0.5) * MAX * 2}deg`);
+            card.style.setProperty('--mx', `${px * 100}%`);
+            card.style.setProperty('--my', `${py * 100}%`);
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--rx', '0deg');
+            card.style.setProperty('--ry', '0deg');
         });
     });
 
-    teamModalClose.addEventListener('click', () => teamModalBackdrop.classList.remove('active'));
-    teamModalBackdrop.addEventListener('click', (e) => {
-        if (e.target === teamModalBackdrop) teamModalBackdrop.classList.remove('active');
+    // --- Animación de entrada al hacer scroll ---
+    const teamObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = (el.dataset.delay || (i * 100)) + 'ms';
+                el.style.transitionDelay = delay;
+                el.classList.add('is-visible');
+                teamObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.org-member').forEach((el, i) => {
+        el.dataset.delay = (i * 90);
+        teamObserver.observe(el);
     });
 </script>
 
