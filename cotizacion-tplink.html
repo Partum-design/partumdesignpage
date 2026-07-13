@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Plan de Trabajo — Producción Audiovisual TP-Link | Partum Design</title>
+<link rel="icon" type="image/png" href="/uploads/logotipo%20de%20partum%20design/favicon-cropped.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F8FAFC;
+    --blue:#00A1E4;
+    --blue-deep:#1E40AF;
+    --blue-pastel:#E0F2FE;
+    --blue-pastel-soft:#F0F7FF;
+    --ink:#1E293B;
+    --ink-soft:#5B6B82;
+    --line:#DCE7F2;
+    --white:#fff;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Montserrat',sans-serif;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* ===== TOP BAR (marcas en sociedad) ===== */
+  .topbar{
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .topbar .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand-pair{display:flex;align-items:center;gap:18px;}
+  .brand-pair img{height:34px;width:auto;object-fit:contain;}
+  .brand-x{
+    color:var(--ink-soft);
+    font-size:.85rem;
+    font-weight:600;
+    letter-spacing:.05em;
+  }
+  .topbar-tag{
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--blue-deep);
+    background:var(--blue-pastel);
+    padding:8px 14px;
+    border-radius:999px;
+    border:1px solid #BFE3FA;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1100px 420px at 85% -10%, var(--blue-pastel) 0%, transparent 60%),
+      radial-gradient(700px 380px at -5% 110%, var(--blue-pastel-soft) 0%, transparent 60%),
+      var(--bg-soft);
+    padding:72px 0 60px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:-60px;top:-60px;
+    width:280px;height:280px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--blue),#7DD3FC);
+    opacity:.12;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue-deep);
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:2px;background:var(--blue);display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,4.4vw,3.4rem);
+    font-weight:800;
+    color:var(--ink);
+    line-height:1.12;
+    max-width:820px;
+    letter-spacing:-.01em;
+  }
+  .hero h1 span{color:var(--blue);}
+  .hero p.lead{
+    margin-top:20px;
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:680px;
+    line-height:1.65;
+  }
+  .hero-meta{
+    margin-top:36px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    background:var(--white);
+  }
+  .hero-meta div{
+    padding:20px 22px;
+    border-right:1px solid var(--line);
+  }
+  .hero-meta div:last-child{border-right:none;}
+  .hero-meta .k{
+    font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:6px;
+  }
+  .hero-meta .v{font-size:1.15rem;font-weight:800;color:var(--ink);font-family:'Montserrat',sans-serif;}
+  .hero-meta .v small{display:block;font-size:.72rem;font-weight:500;color:var(--ink-soft);margin-top:2px;}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:64px 0;}
+  .section-head{margin-bottom:38px;max-width:720px;}
+  .section-tag{
+    font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue-deep);margin-bottom:12px;display:block;
+  }
+  .section-head h2{
+    font-size:clamp(1.5rem,2.6vw,2.1rem);
+    font-weight:800;color:var(--ink);letter-spacing:-.01em;
+  }
+  .section-head p{margin-top:12px;color:var(--ink-soft);line-height:1.6;font-size:1rem;}
+  .alt{background:var(--bg-soft);}
+
+  /* ===== ART DIRECTION SWATCHES ===== */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .swatch{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--white);
+  }
+  .swatch .chip{height:64px;}
+  .swatch .info{padding:14px 16px;}
+  .swatch .info b{display:block;font-size:.85rem;color:var(--ink);margin-bottom:2px;}
+  .swatch .info span{font-size:.78rem;color:var(--ink-soft);font-family:monospace;}
+
+  /* ===== SUMMARY CARDS ===== */
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px 26px;
+    position:relative;
+  }
+  .card .num{
+    font-family:'Montserrat',sans-serif;
+    font-size:2.6rem;font-weight:900;color:var(--blue);line-height:1;
+  }
+  .card .label{margin-top:10px;font-weight:700;color:var(--ink);font-size:1rem;}
+  .card .sub{margin-top:6px;color:var(--ink-soft);font-size:.86rem;line-height:1.5;}
+
+  /* Flow diagram */
+  .flow{
+    margin-top:44px;
+    display:flex;align-items:stretch;gap:0;
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white);
+  }
+  .flow-step{flex:1;padding:26px 22px;position:relative;}
+  .flow-step:not(:last-child)::after{
+    content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);
+    color:var(--blue);font-weight:900;font-size:1.3rem;z-index:2;
+  }
+  .flow-step:nth-child(odd){background:var(--blue-pastel-soft);}
+  .flow-step:nth-child(even){background:var(--white);}
+  .flow-step h4{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-deep);font-weight:800;margin-bottom:8px;}
+  .flow-step p{font-size:1.02rem;font-weight:700;color:var(--ink);}
+  .flow-step small{display:block;margin-top:6px;color:var(--ink-soft);font-size:.82rem;}
+
+  /* ===== TABLE ===== */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--white);}
+  table{width:100%;border-collapse:collapse;min-width:680px;}
+  thead th{
+    background:var(--blue-deep);
+    color:var(--white);
+    text-align:left;
+    font-size:.74rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-weight:700;
+    padding:14px 18px;
+  }
+  tbody td{
+    padding:16px 18px;
+    border-top:1px solid var(--line);
+    font-size:.92rem;
+    color:var(--ink);
+    vertical-align:top;
+    line-height:1.5;
+  }
+  tbody tr:nth-child(even){background:var(--bg-soft);}
+  td.day{font-weight:800;color:var(--blue-deep);white-space:nowrap;font-family:'Montserrat',sans-serif;}
+  .pill{
+    display:inline-block;padding:4px 11px;border-radius:999px;font-size:.72rem;font-weight:700;
+    background:var(--blue-pastel);color:var(--blue-deep);border:1px solid #BFE3FA;
+  }
+  .pill.ok{background:#DCFCE7;color:#15803D;border-color:#BBF7D0;}
+
+  /* ===== PRODUCTION BLOCKS ===== */
+  .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .prod-card{
+    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px;
+  }
+  .prod-card .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--blue-deep);background:var(--blue-pastel-soft);padding:6px 12px;border-radius:8px;margin-bottom:16px;
+  }
+  .prod-card h3{font-size:1.2rem;font-weight:800;color:var(--ink);margin-bottom:6px;}
+  .prod-card>p.desc{color:var(--ink-soft);font-size:.92rem;margin-bottom:20px;line-height:1.55;}
+  .prod-list{list-style:none;}
+  .prod-list li{
+    display:flex;gap:14px;padding:14px 0;border-top:1px dashed var(--line);
+  }
+  .prod-list li:first-child{border-top:none;}
+  .prod-list .dot{
+    flex-shrink:0;width:30px;height:30px;border-radius:9px;background:var(--blue-pastel);
+    color:var(--blue-deep);font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center;
+    font-family:'Montserrat',sans-serif;
+  }
+  .prod-list b{font-size:.92rem;color:var(--ink);display:block;}
+  .prod-list span{font-size:.84rem;color:var(--ink-soft);}
+  .note-flex{
+    margin-top:24px;padding:18px 20px;border-radius:14px;background:#FFF7ED;border:1px solid #FED7AA;
+    font-size:.88rem;color:#9A3412;line-height:1.55;
+  }
+  .note-flex b{color:#7C2D12;}
+
+  /* ===== ROLLOUT CASCADE ===== */
+  .cascade{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:36px;
+  }
+  .cascade .cstep{padding:24px 20px;position:relative;border-right:1px solid var(--line);}
+  .cascade .cstep:last-child{border-right:none;background:var(--ink);color:var(--white);}
+  .cascade .cstep:nth-child(1){background:var(--blue-pastel-soft);}
+  .cascade .cstep:nth-child(2){background:var(--blue-pastel);}
+  .cascade .cstep:nth-child(3){background:#CFE8FB;}
+  .cascade .cstep .days{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-deep);}
+  .cascade .cstep:last-child .days{color:#BFDBFE;}
+  .cascade .cstep h4{margin-top:8px;font-size:1.05rem;font-weight:800;color:var(--ink);}
+  .cascade .cstep:last-child h4{color:var(--white);}
+  .cascade .cstep ul{margin-top:10px;padding-left:16px;font-size:.82rem;color:var(--ink-soft);line-height:1.7;}
+  .cascade .cstep:last-child ul{color:rgba(255,255,255,.75);}
+  .cascade .cstep::after{
+    content:"";position:absolute;right:-1px;top:50%;transform:translate(50%,-50%);
+    width:22px;height:22px;background:var(--blue);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;z-index:3;
+  }
+  .cascade .cstep:last-child::after{display:none;}
+
+  /* ===== CONDITIONS ===== */
+  .cond-list{display:grid;gap:16px;}
+  .cond{
+    display:flex;gap:18px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px 24px;
+  }
+  .cond .ic{
+    flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--blue-deep);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Montserrat',sans-serif;
+  }
+  .cond b{display:block;color:var(--ink);font-size:.98rem;margin-bottom:4px;}
+  .cond p{color:var(--ink-soft);font-size:.88rem;line-height:1.55;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--ink);
+    color:rgba(255,255,255,.7);
+    padding:44px 0;
+    margin-top:20px;
+  }
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  footer .flogos{display:flex;align-items:center;gap:16px;}
+  footer .flogos img{height:26px;filter:brightness(0) invert(1);opacity:.85;}
+  footer p{font-size:.78rem;}
+  footer a{color:#7DD3FC;text-decoration:none;}
+  .confidential{
+    text-align:center;font-size:.72rem;color:rgba(255,255,255,.35);margin-top:18px;letter-spacing:.04em;
+  }
+
+  @media (max-width:900px){
+    .hero-meta{grid-template-columns:repeat(2,1fr);}
+    .hero-meta div:nth-child(2){border-right:none;}
+    .cards3{grid-template-columns:1fr;}
+    .prod-grid{grid-template-columns:1fr;}
+    .cascade{grid-template-columns:1fr;}
+    .cascade .cstep{border-right:none;border-bottom:1px solid var(--line);}
+    .flow{flex-direction:column;}
+    .flow-step:not(:last-child)::after{content:"↓";right:50%;top:auto;bottom:-14px;transform:translateX(50%);}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand-pair">
+      <img src="/uploads/logotipo%20de%20partum%20design/LOGO%20PARA%20FONDOS%20CLAROS.png" alt="Partum Design">
+      <span class="brand-x">×</span>
+      <img src="/uploads/cotizacionTpLink/Tp-Link_logo_2016.png" alt="TP-Link">
+    </div>
+    <span class="topbar-tag">Documento confidencial de proyecto</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Plan de trabajo · Producción audiovisual</span>
+    <h1>Cronograma de producción para <span>TP-Link</span></h1>
+    <p class="lead">Ruta de trabajo completa para la producción de contenido multicanal: de la idea al entregable final, en tres fases claras y con entregas progresivas para que nunca esperen a ciegas.</p>
+
+    <div class="hero-meta">
+      <div>
+        <div class="k">Agencia</div>
+        <div class="v">Partum Design</div>
+      </div>
+      <div>
+        <div class="k">Cliente</div>
+        <div class="v">TP-Link</div>
+      </div>
+      <div>
+        <div class="k">Proyecto</div>
+        <div class="v">22 piezas <small>6 podcasts + 16 reels</small></div>
+      </div>
+      <div>
+        <div class="k">Duración estimada</div>
+        <div class="v">~33–38 días <small>hábiles, extremo a extremo</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Dirección de arte</span>
+      <h2>Guía visual del proyecto</h2>
+      <p>Paleta pensada para mantener la identidad limpia y profesional de Partum Design en sociedad con la marca TP-Link, usada como referencia en toda la documentación y plantillas del proyecto.</p>
+    </div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="chip" style="background:#FFFFFF;border-bottom:1px solid #DCE7F2;"></div>
+        <div class="info"><b>Fondo de página</b><span>#FFFFFF</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#F8FAFC;"></div>
+        <div class="info"><b>Gris ultra claro</b><span>#F8FAFC</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00A1E4;"></div>
+        <div class="info"><b>Azul TP-Link (acentos)</b><span>#00A1E4</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1E40AF;"></div>
+        <div class="info"><b>Azul corporativo suave</b><span>#1E40AF</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#E0F2FE;"></div>
+        <div class="info"><b>Azul pastel / hielo</b><span>#E0F2FE</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1E293B;"></div>
+        <div class="info"><b>Texto principal</b><span>#1E293B</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Resumen ejecutivo</span>
+      <h2>22 piezas de contenido, 3 fases, un solo flujo</h2>
+    </div>
+    <div class="cards3">
+      <div class="card">
+        <div class="num">06</div>
+        <div class="label">Episodios de podcast</div>
+        <div class="sub">Formato largo/medio, 1 a 2 grabaciones por jornada de rodaje.</div>
+      </div>
+      <div class="card">
+        <div class="num">16</div>
+        <div class="label">Videos cortos</div>
+        <div class="sub">Reels, unboxing y fun facts producidos en bloques ágiles.</div>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <div class="label">Fases del proyecto</div>
+        <div class="sub">Pre-producción, producción y post-producción con entregas en cascada.</div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <h4>Fase 1</h4>
+        <p>Pre-producción</p>
+        <small>8 días hábiles</small>
+      </div>
+      <div class="flow-step">
+        <h4>Fase 2</h4>
+        <p>Producción</p>
+        <small>5 a 10 días de rodaje</small>
+      </div>
+      <div class="flow-step">
+        <h4>Fase 3</h4>
+        <p>Post-producción</p>
+        <small>20 días · entregas progresivas</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Fase 1 · 8 días hábiles</span>
+      <h2>Pre-producción</h2>
+      <p>Base estratégica y creativa del proyecto. No requiere producción física, sino alineación, guiones y aprobaciones.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Día</th><th>Actividad / hito</th><th>Entregable / objetivo</th><th>Status del cliente</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="day">Día 1</td>
+            <td>Kick-off &amp; briefing creativo</td>
+            <td>Alineación de objetivos de TP-Link, tono de comunicación y definición de temas para los 6 podcasts y los 16 reels.</td>
+            <td><span class="pill">Llamada de arranque</span></td>
+          </tr>
+          <tr>
+            <td class="day">Día 2–4</td>
+            <td>Desarrollo de guiones y escaletas</td>
+            <td>Redacción de las estructuras de los 6 podcasts y guiones técnicos/literarios de los 16 reels (unboxing, fun facts, etc.).</td>
+            <td><span class="pill">En revisión interna</span></td>
+          </tr>
+          <tr>
+            <td class="day">Día 5–6</td>
+            <td>Propuesta de dirección de arte</td>
+            <td>Definición de locaciones (sets), props necesarios para unboxing y estilo visual del podcast.</td>
+            <td><span class="pill">Feedback y comentarios</span></td>
+          </tr>
+          <tr>
+            <td class="day">Día 7–8</td>
+            <td>Cierre y aprobación de guiones</td>
+            <td>Guiones finales aprobados y listos para producción. Planificación del calendario de rodaje.</td>
+            <td><span class="pill ok">Aprobación final (firma)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Fase 2 · ventana de 5 a 10 días de rodaje</span>
+      <h2>Producción</h2>
+      <p>La ejecución física depende directamente de la disponibilidad del talento, locaciones y agendas de TP-Link. Este es el tiempo neto requerido en set.</p>
+    </div>
+
+    <div class="prod-grid">
+      <div class="prod-card">
+        <span class="tag">🎙️ Bloque A · 3 a 6 días hábiles</span>
+        <h3>Grabación de podcasts</h3>
+        <p class="desc">Producción de 1 a 2 episodios por día para garantizar calidad técnica y rendimiento del talento.</p>
+        <ul class="prod-list">
+          <li><div class="dot">1</div><div><b>Día de rodaje 1</b><span>Grabación de episodios 1 y 2</span></div></li>
+          <li><div class="dot">2</div><div><b>Día de rodaje 2</b><span>Grabación de episodios 3 y 4</span></div></li>
+          <li><div class="dot">3</div><div><b>Día de rodaje 3</b><span>Grabación de episodios 5 y 6</span></div></li>
+          <li><div class="dot">·</div><div><b>Días 4 al 6</b><span>Colchón técnico o segmentación de agenda del talento</span></div></li>
+        </ul>
+      </div>
+
+      <div class="prod-card">
+        <span class="tag">📱 Bloque B · 2 a 4 días hábiles</span>
+        <h3>Grabación de videos cortos</h3>
+        <p class="desc">Producción ágil para los 16 reels / unboxing / fun facts.</p>
+        <ul class="prod-list">
+          <li><div class="dot">1</div><div><b>Día de rodaje 1 · Reels 1–5</b><span>Enfoque en unboxings (más detalle visual de producto)</span></div></li>
+          <li><div class="dot">2</div><div><b>Día de rodaje 2 · Reels 6–10</b><span>Enfoque en fun facts y tips rápidos</span></div></li>
+          <li><div class="dot">3</div><div><b>Día de rodaje 3 · Reels 11–16</b><span>Contenido dinámico/trends y tomas de apoyo (B-Roll)</span></div></li>
+          <li><div class="dot">·</div><div><b>Día 4</b><span>Colchón técnico para tomas adicionales de producto</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-flex">
+      <b>⚠️ Nota de flexibilidad:</b> las fechas exactas de rodaje se cruzarán con la disponibilidad de TP-Link. Las jornadas pueden ser consecutivas o divididas en semanas consecutivas según convenga a ambas partes.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Fase 3 · 20 días hábiles</span>
+      <h2>Post-producción con entregas en cascada</h2>
+      <p>Para agilizar tiempos y que TP-Link no espere hasta el final de los 20 días para ver resultados, implementamos un esquema de entregas progresivas (rollout calendar).</p>
+    </div>
+
+    <div class="cascade">
+      <div class="cstep">
+        <div class="days">Día 1–5</div>
+        <h4>Lote 1</h4>
+        <ul><li>2 podcasts</li><li>5 reels</li></ul>
+      </div>
+      <div class="cstep">
+        <div class="days">Día 6–10</div>
+        <h4>Lote 2</h4>
+        <ul><li>2 podcasts</li><li>5 reels</li></ul>
+      </div>
+      <div class="cstep">
+        <div class="days">Día 11–15</div>
+        <h4>Lote 3</h4>
+        <ul><li>2 podcasts</li><li>6 reels</li></ul>
+      </div>
+      <div class="cstep">
+        <div class="days">Día 16–20</div>
+        <h4>Ajustes finales</h4>
+        <ul><li>Cierre de proyecto</li><li>Masterización</li></ul>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Plazo de post-pro.</th><th>Materiales a entregar</th><th>Detalle del contenido</th><th>Fecha límite de feedback (TP-Link)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="day">Días 1–5</td>
+            <td><span class="pill">Lote 1</span></td>
+            <td>Podcast 1 y 2 (primer corte)<br>Reels 1 al 5 (versiones beta)</td>
+            <td>48 horas tras la entrega</td>
+          </tr>
+          <tr>
+            <td class="day">Días 6–10</td>
+            <td><span class="pill">Lote 2</span></td>
+            <td>Podcast 3 y 4 (primer corte)<br>Reels 6 al 10 (versiones beta)<br>Correcciones aplicadas del lote 1</td>
+            <td>48 horas tras la entrega</td>
+          </tr>
+          <tr>
+            <td class="day">Días 11–15</td>
+            <td><span class="pill">Lote 3</span></td>
+            <td>Podcast 5 y 6 (primer corte)<br>Reels 11 al 16 (versiones beta)<br>Correcciones aplicadas del lote 2</td>
+            <td>48 horas tras la entrega</td>
+          </tr>
+          <tr>
+            <td class="day">Días 16–20</td>
+            <td><span class="pill ok">Entrega final (master)</span></td>
+            <td>Entrega de los 6 podcasts editados finales<br>Entrega de los 16 reels finales en carpeta compartida</td>
+            <td>Cierre del proyecto</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">Condiciones clave</span>
+      <h2>Variables para cumplir el cronograma en tiempo y forma</h2>
+    </div>
+    <div class="cond-list">
+      <div class="cond">
+        <div class="ic">01</div>
+        <div><b>Flujo de feedback</b><p>Los 20 días de postproducción consideran que TP-Link responderá con comentarios en un lapso no mayor a 48 horas hábiles por lote entregado.</p></div>
+      </div>
+      <div class="cond">
+        <div class="ic">02</div>
+        <div><b>Disponibilidad de productos</b><p>Para los unboxings, todos los equipos TP-Link a grabar deben estar listos y físicamente en la locación antes del primer día de producción de reels.</p></div>
+      </div>
+      <div class="cond">
+        <div class="ic">03</div>
+        <div><b>Congelamiento de guiones</b><p>Una vez aprobada la Fase 1, cualquier cambio sustancial en guiones durante o después de la grabación podría alterar los costos y tiempos de entrega.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flogos">
+      <img src="/uploads/logotipo%20de%20partum%20design/LOGOTIPO%20BLANCO.png" alt="Partum Design">
+    </div>
+    <p>Partum Design × TP-Link — Plan de trabajo de producción audiovisual · <a href="mailto:hola@partumdesign.com.mx">partumdesign.com.mx</a></p>
+  </div>
+  <div class="confidential">Documento de uso interno del proyecto. No indexado ni enlazado en el sitio público.</div>
+</footer>
+
+</body>
+</html>
