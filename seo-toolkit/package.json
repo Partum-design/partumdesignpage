@@ -1,0 +1,44 @@
+{
+  "name": "partum-seo-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local SEO audit toolkit for https://www.partumdesign.com.mx/",
+  "type": "module",
+  "scripts": {
+    "doctor": "tsx scripts/doctor.ts",
+    "crawl": "tsx scripts/crawl.ts",
+    "inspect": "tsx scripts/inspect-url.ts",
+    "lighthouse": "tsx scripts/lighthouse.ts",
+    "indexability": "tsx scripts/check-indexability.ts",
+    "links": "tsx scripts/check-links.ts",
+    "metadata": "tsx scripts/check-metadata.ts",
+    "sitemap": "tsx scripts/check-sitemap.ts",
+    "robots": "tsx scripts/check-robots.ts",
+    "schema": "tsx scripts/validate-jsonld.ts",
+    "search-console": "tsx scripts/search-console.ts",
+    "analytics": "tsx scripts/analytics.ts",
+    "pagespeed": "tsx scripts/pagespeed.ts",
+    "report": "tsx scripts/generate-report.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.2.1",
+    "cheerio": "^1.0.0",
+    "fast-xml-parser": "^4.5.0",
+    "robots-parser": "^3.0.1",
+    "p-limit": "^6.1.0",
+    "zod": "^3.23.8",
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0",
+    "@google-analytics/data": "^4.11.0",
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.1",
+    "@types/node": "^22.7.5",
+    "@lhci/cli": "^0.14.0"
+  }
+}

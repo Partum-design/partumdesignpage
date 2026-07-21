@@ -1,0 +1,10 @@
+seo-toolkit/.env
+seo-toolkit/credentials/
+*.service-account.json
+google-credentials*.json
+seo-toolkit/output/browser-profile/
+seo-toolkit/node_modules/
+seo-toolkit/output/*
+!seo-toolkit/output/.gitkeep
+seo-toolkit/credentials/*
+!seo-toolkit/credentials/.gitkeep
