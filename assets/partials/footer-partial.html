@@ -30,8 +30,28 @@
         margin: 0 auto;
         padding: 0 40px;
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-        gap: 40px;
+        grid-template-columns: 1.3fr 0.85fr 0.85fr 0.85fr 1.1fr;
+        gap: 32px;
+    }
+
+    .footer-link-soon {
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.9rem;
+        cursor: default;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .footer-link-soon .soon-badge {
+        font-size: 0.62rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2px 7px;
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.5);
     }
 
     .footer-brand {
@@ -191,7 +211,7 @@
     @media (max-width: 1024px) {
         .footer-container {
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px 50px;
         }
         .footer-brand {
             grid-column: span 2;
@@ -260,7 +280,17 @@
             </ul>
         </div>
 
-        <!-- Columna 4: Contacto -->
+        <!-- Columna 4: Aplicaciones -->
+        <div>
+            <h3 class="footer-title">Aplicaciones</h3>
+            <ul class="footer-list">
+                <li><a href="https://get-nora-ai-landing.vercel.app/" class="footer-link" target="_blank" rel="noopener noreferrer">NORA AI</a></li>
+                <li><a href="https://medicalbypartum.vercel.app/" class="footer-link" target="_blank" rel="noopener noreferrer">Medical OS</a></li>
+                <li><span class="footer-link-soon">Indusec <span class="soon-badge">Próximamente</span></span></li>
+            </ul>
+        </div>
+
+        <!-- Columna 5: Contacto -->
         <div class="contact-box">
             <h3 class="footer-title">Hablemos</h3>
             <div class="contact-item">
