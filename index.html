@@ -357,24 +357,17 @@
         }
         #premium-hero-section .tool-chip i { color: var(--accent-light); font-size: 0.8rem; }
 
-        /* ── ESCENARIO 3D (LAPTOP) ── */
-        #premium-hero-section .laptop3d {
+        /* ── VISUAL DEL HERO: panel de dashboard con color y textura ── */
+        #premium-hero-section .hero-visual {
             position: relative;
             z-index: 1;
             width: 100%;
             aspect-ratio: 4 / 3;
             max-height: 60vh;
             pointer-events: none;
-        }
-
-        #premium-hero-section .laptop3d::before {
-            content: '';
-            position: absolute;
-            inset: 4% 6% 22%;
-            background: radial-gradient(56% 50% at 50% 44%, rgba(99,102,241,0.34), rgba(2,54,94,0.16) 48%, rgba(1,10,19,0) 74%);
-            filter: blur(26px);
-            opacity: 0.9;
-            animation: phFloat 7s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes phFloat {
@@ -382,33 +375,98 @@
             50% { transform: translateY(-14px); }
         }
 
-        #premium-hero-section .laptop3d canvas,
-        #premium-hero-section .laptop3d .laptop3d-poster {
+        #premium-hero-section .hv-mesh {
             position: absolute;
-            inset: 0;
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            inset: -10%;
+            z-index: 0;
+            background:
+                radial-gradient(45% 40% at 25% 20%, rgba(129,140,248,0.55), transparent 70%),
+                radial-gradient(40% 40% at 80% 30%, rgba(0,85,255,0.5), transparent 70%),
+                radial-gradient(50% 45% at 55% 85%, rgba(99,102,241,0.4), transparent 70%);
+            filter: blur(40px);
+            opacity: 0.9;
+            animation: phFloat 8s ease-in-out infinite;
         }
 
-        #premium-hero-section .laptop3d canvas {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 1s cubic-bezier(0.2,0.8,0.2,1), transform 1s cubic-bezier(0.2,0.8,0.2,1);
-            will-change: opacity, transform;
+        #premium-hero-section .hv-grid {
+            position: absolute;
+            inset: 6% 4%;
+            z-index: 1;
+            border-radius: 28px;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+            background-size: 28px 28px;
+            mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 40%, transparent 90%);
+            -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 40%, transparent 90%);
         }
-        #premium-hero-section .laptop3d.is-ready canvas { opacity: 1; transform: translateY(0); }
 
-        #premium-hero-section .laptop3d .laptop3d-poster {
+        #premium-hero-section .hv-panel {
+            position: relative;
+            z-index: 2;
+            width: min(420px, 88%);
+            background: rgba(8,14,28,0.72);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 22px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+            padding: 22px 24px 18px;
             animation: phFloat 7s ease-in-out infinite;
-            transition: opacity 0.8s ease;
+            animation-delay: -2s;
         }
-        #premium-hero-section .laptop3d.is-ready .laptop3d-poster { opacity: 0; }
+
+        #premium-hero-section .hv-panel-head {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 14px;
+        }
+        #premium-hero-section .hv-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 8px #34d399;
+            animation: brDotPulse 2s infinite;
+        }
+        @keyframes brDotPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        #premium-hero-section .hv-chart { width: 100%; height: auto; display: block; margin-bottom: 16px; }
+        #premium-hero-section .hv-line {
+            stroke-dasharray: 480;
+            stroke-dashoffset: 480;
+            animation: hvDraw 2.2s 0.4s cubic-bezier(0.2,0.8,0.2,1) forwards;
+        }
+        @keyframes hvDraw { to { stroke-dashoffset: 0; } }
+
+        #premium-hero-section .hv-panel-stats {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 14px;
+        }
+        #premium-hero-section .hv-panel-stats div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        #premium-hero-section .hv-panel-stats span {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        #premium-hero-section .hv-panel-stats div { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.06em; }
 
         @media (prefers-reduced-motion: reduce) {
-            #premium-hero-section .laptop3d::before,
-            #premium-hero-section .laptop3d .laptop3d-poster { animation: none; }
+            #premium-hero-section .hv-mesh,
+            #premium-hero-section .hv-panel,
+            #premium-hero-section .hv-dot,
+            #premium-hero-section .hv-line { animation: none; }
         }
 
         /* ── FLOATING CHIPS ── */
@@ -493,7 +551,7 @@
             #premium-hero-section .cta-row { justify-content: center; }
             #premium-hero-section .chip-roi { left: 2%; top: 2%; }
             #premium-hero-section .chip-user { right: -10px; }
-            #premium-hero-section .laptop3d { max-height: 52vh; }
+            #premium-hero-section .hero-visual { max-height: 52vh; }
         }
 
         @media (max-width: 768px) {
@@ -514,8 +572,8 @@
             #premium-hero-section .chip-avatar { width: 30px; height: 30px; font-size: 0.7rem; }
             #premium-hero-section .chip-name { font-size: 0.7rem; }
             #premium-hero-section .chip-role { font-size: 0.55rem; }
-            #premium-hero-section .laptop3d { aspect-ratio: 1 / 1; max-height: 50vh; }
-            #premium-hero-section .laptop3d::before { inset: 6% 2% 22%; filter: blur(18px); }
+            #premium-hero-section .hero-visual { aspect-ratio: 1 / 1; max-height: 50vh; }
+            #premium-hero-section .hv-mesh { filter: blur(24px); }
         }
 
         @media (max-width: 480px) {
@@ -562,6 +620,10 @@
                 Partum Design es una firma de consultoría y desarrollo tecnológico integral. Nuestro proceso inicia con una <strong>auditoría digital profunda</strong> y hacemos que las cosas sucedan: desde branding de alto impacto hasta ingeniería de software a la medida —CRM, apps móviles, herramientas de nivel bancario—. Combinamos talento y tecnología avanzada para que tu empresa opere más ágil, inteligente y rentable.
             </p>
 
+            <p class="hero-desc" style="animation-delay: 0.34s;">
+                Desarrollamos ecosistemas digitales, automatizamos procesos y escalamos tus ventas con estrategias respaldadas por datos e Inteligencia Artificial. <strong>Exclusivo para Pymes y Empresas B2B.</strong>
+            </p>
+
             <div class="cta-row">
                 <a href="https://wa.me/525616044547?text=Hola,%20me%20gustar%C3%ADa%20agendar%20mi%20Auditor%C3%ADa%20Digital%20con%20fecha%20y%20hora" target="_blank" rel="noopener noreferrer" class="btn-primary">Agenda tu Auditoría Digital</a>
                 <a href="#soluciones-negocio-partum" class="btn-ghost">
@@ -586,10 +648,28 @@
 
         <!-- RIGHT -->
         <div class="hero-right">
-            <!-- Escenario 3D: laptop que se abre y cierra con el scroll -->
-            <div class="laptop3d" id="laptop3d" aria-hidden="true">
-                <img class="laptop3d-poster" id="laptop3d-poster" src="/assets/models/laptop-partum-poster.webp" alt="" width="900" height="678" loading="eager" fetchpriority="low" decoding="async">
-                <canvas id="laptop3d-canvas"></canvas>
+            <!-- Panel de dashboard: visual con color y textura en vez del mockup de laptop -->
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hv-mesh"></div>
+                <div class="hv-grid"></div>
+                <div class="hv-panel">
+                    <div class="hv-panel-head"><span class="hv-dot"></span> Auditoría en vivo</div>
+                    <svg class="hv-chart" viewBox="0 0 320 130" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="hvGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#818cf8" stop-opacity="0.5"/>
+                                <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <path fill="url(#hvGrad)" d="M0,100 L40,88 L80,94 L120,64 L160,72 L200,40 L240,50 L280,16 L320,24 L320,130 L0,130 Z"/>
+                        <path class="hv-line" fill="none" stroke="#a5b4fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M0,100 L40,88 L80,94 L120,64 L160,72 L200,40 L240,50 L280,16 L320,24"/>
+                    </svg>
+                    <div class="hv-panel-stats">
+                        <div><span>+240%</span>ROI</div>
+                        <div><span>98%</span>Satisfacción</div>
+                        <div><span>24/7</span>IA activa</div>
+                    </div>
+                </div>
             </div>
             <div class="chip chip-roi">
                 <div class="chip-roi-label">Retorno de inversión</div>
@@ -711,438 +791,6 @@
     })();
 </script>
 
-<!-- ══════════════════════════════════════════════════════════════
-     HERO 3D — Laptop Partum
-     Se abre al entrar en pantalla y se cierra conforme bajas.
-════════════════════════════════════════════════════════════════ -->
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
-  }
-}
-</script>
-<script type="module">
-const stage  = document.getElementById('laptop3d');
-const canvas = document.getElementById('laptop3d-canvas');
-const hero   = document.getElementById('premium-hero-section');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function capable() {
-    try {
-        if (navigator.connection && navigator.connection.saveData) return false;
-        if (navigator.deviceMemory && navigator.deviceMemory < 2) return false;
-        const probe = document.createElement('canvas');
-        return !!(probe.getContext('webgl2') || probe.getContext('webgl'));
-    } catch (err) { return false; }
-}
-
-if (stage && canvas && hero && !reduceMotion && capable()) {
-    let booted = false;
-    const boot = function () {
-        if (booted) return;
-        booted = true;
-        const go = function () { start().catch(function () { stage.style.display = 'none'; }); };
-        if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 1200 });
-        else setTimeout(go, 350);
-    };
-    const watcher = new IntersectionObserver(function (entries) {
-        if (!entries.some(function (e) { return e.isIntersecting; })) return;
-        watcher.disconnect();
-        if (document.readyState === 'complete') boot();
-        else window.addEventListener('load', boot, { once: true });
-    }, { rootMargin: '300px' });
-    watcher.observe(stage);
-}
-
-async function start() {
-    const THREE = await import('three');
-    const mods = await Promise.all([
-        import('three/addons/loaders/GLTFLoader.js'),
-        import('three/addons/environments/RoomEnvironment.js')
-    ]);
-    const GLTFLoader = mods[0].GLTFLoader;
-    const RoomEnvironment = mods[1].RoomEnvironment;
-
-    /* ── Render ── */
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
-    renderer.setClearColor(0x000000, 0);
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
-
-    const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(30, 1, 0.05, 60);
-    const target = new THREE.Vector3(0.05, 0.30, 0);
-
-    const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-
-    const key = new THREE.DirectionalLight(0xffffff, 2.0);
-    key.position.set(2.4, 3.4, 2.6);
-    const rim = new THREE.DirectionalLight(0x818cf8, 3.6);
-    rim.position.set(-3.0, 1.6, -2.4);
-    const fill = new THREE.DirectionalLight(0x0055ff, 1.6);
-    fill.position.set(-1.8, -1.0, 2.6);
-    scene.add(key, rim, fill, new THREE.AmbientLight(0x9fb4ff, 0.35));
-
-    /* ── Modelo ── */
-    const gltf = await new GLTFLoader().loadAsync('/assets/models/laptop-partum.glb');
-    const root = gltf.scene;
-    root.updateMatrixWorld(true);
-
-    let mesh = null;
-    root.traverse(function (o) { if (o.isMesh && !mesh) mesh = o; });
-    if (!mesh) throw new Error('sin malla');
-
-    const geo = mesh.geometry;
-    geo.applyMatrix4(mesh.matrixWorld);
-    mesh.position.set(0, 0, 0);
-    mesh.quaternion.identity();
-    mesh.scale.set(1, 1, 1);
-
-    geo.computeBoundingBox();
-    let bb = geo.boundingBox;
-    const unit = 1 / (bb.max.x - bb.min.x);
-    geo.translate(-(bb.min.x + bb.max.x) / 2, -bb.min.y, -(bb.min.z + bb.max.z) / 2);
-    geo.scale(unit, unit, unit);
-    geo.computeBoundingBox();
-    bb = geo.boundingBox;
-
-    const mat = mesh.material;
-    mat.roughness = 0.38;
-    mat.metalness = 0.55;
-    mat.envMapIntensity = 1.25;
-    if (mat.map) mat.map.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
-
-    const laptop = new THREE.Group();
-    laptop.add(mesh);
-    scene.add(laptop);
-
-    /* ── Bisagra: separa la tapa del cuerpo ── */
-    const pos = geo.attributes.position;
-    const nrm = geo.attributes.normal;
-    const basePos = Float32Array.from(pos.array);
-    const baseNrm = Float32Array.from(nrm.array);
-
-    const lidCut = bb.min.y + 0.62 * (bb.max.y - bb.min.y);
-    const lidIdx = [];
-    for (let i = 0; i < pos.count; i++) if (pos.getY(i) > lidCut) lidIdx.push(i);
-
-    const lidSet = new Set(lidIdx);
-    const tris = geo.index ? geo.index.array : null;
-    let hy = 0, hz = 0, hn = 0;
-    if (tris) {
-        const seen = new Set();
-        for (let t = 0; t < tris.length; t += 3) {
-            const tri = [tris[t], tris[t + 1], tris[t + 2]];
-            if (!tri.some(function (v) { return lidSet.has(v); })) continue;
-            for (let k = 0; k < 3; k++) {
-                const v = tri[k];
-                if (lidSet.has(v) || seen.has(v)) continue;
-                seen.add(v);
-                hy += pos.getY(v); hz += pos.getZ(v); hn++;
-            }
-        }
-    }
-    const hingeY = hn ? hy / hn : bb.min.y;
-    const hingeZ = hn ? hz / hn : bb.max.z;
-
-    let cy = 0, cz = 0;
-    for (let i = 0; i < lidIdx.length; i++) { cy += pos.getY(lidIdx[i]); cz += pos.getZ(lidIdx[i]); }
-    cy = lidIdx.length ? cy / lidIdx.length : hingeY + 0.6;
-    cz = lidIdx.length ? cz / lidIdx.length : hingeZ;
-
-    const lidTilt = Math.atan2(cz - hingeZ, cy - hingeY);
-    const lidLen  = Math.hypot(cz - hingeZ, cy - hingeY);
-    const CLOSE   = lidTilt + 88 * Math.PI / 180;
-
-    const lidPivot = new THREE.Group();
-    lidPivot.position.set(0, hingeY, hingeZ);
-    laptop.add(lidPivot);
-
-    let lastAngle = null;
-    function setLid(angle) {
-        if (lastAngle !== null && Math.abs(angle - lastAngle) < 0.0004) return;
-        lastAngle = angle;
-        const c = Math.cos(angle), s = Math.sin(angle);
-        const P = pos.array, N = nrm.array;
-        for (let i = 0; i < lidIdx.length; i++) {
-            const o = lidIdx[i] * 3;
-            const y = basePos[o + 1] - hingeY, z = basePos[o + 2] - hingeZ;
-            P[o + 1] = hingeY + y * c - z * s;
-            P[o + 2] = hingeZ + y * s + z * c;
-            const ny = baseNrm[o + 1], nz = baseNrm[o + 2];
-            N[o + 1] = ny * c - nz * s;
-            N[o + 2] = ny * s + nz * c;
-        }
-        pos.needsUpdate = true;
-        nrm.needsUpdate = true;
-        lidPivot.rotation.x = angle;
-    }
-
-    /* ── Pantalla encendida (textura canvas) ── */
-    const scr = document.createElement('canvas');
-    scr.width = 1024; scr.height = 660;
-    const sctx = scr.getContext('2d');
-    const scrTex = new THREE.CanvasTexture(scr);
-    scrTex.flipY = false;
-    scrTex.wrapS = THREE.ClampToEdgeWrapping;
-    scrTex.repeat.x = -1;
-    scrTex.offset.x = 1;
-    scrTex.colorSpace = THREE.SRGBColorSpace;
-    scrTex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
-
-    const scrW = 0.90, scrH = lidLen * 0.875;
-    const screen = new THREE.Mesh(
-        new THREE.PlaneGeometry(scrW, scrH),
-        new THREE.MeshBasicMaterial({ map: scrTex, toneMapped: false })
-    );
-    const along = lidLen * 0.4925;
-    screen.position.set(
-        0,
-        Math.cos(lidTilt) * along + Math.sin(lidTilt) * 0.011,
-        Math.sin(lidTilt) * along - Math.cos(lidTilt) * 0.011
-    );
-    screen.rotation.x = lidTilt - Math.PI;
-    lidPivot.add(screen);
-
-    const screenLight = new THREE.PointLight(0x93a9ff, 0.9, 2.6, 2);
-    screenLight.position.set(0, Math.cos(lidTilt) * along * 0.8 - 0.12, Math.sin(lidTilt) * along - 0.30);
-    lidPivot.add(screenLight);
-
-    /* ── Sombra de contacto ── */
-    const shc = document.createElement('canvas');
-    shc.width = shc.height = 256;
-    const shx = shc.getContext('2d');
-    const shg = shx.createRadialGradient(128, 128, 6, 128, 128, 126);
-    shg.addColorStop(0, 'rgba(0,0,0,0.62)');
-    shg.addColorStop(0.55, 'rgba(0,0,0,0.26)');
-    shg.addColorStop(1, 'rgba(0,0,0,0)');
-    shx.fillStyle = shg;
-    shx.fillRect(0, 0, 256, 256);
-    const shadow = new THREE.Mesh(
-        new THREE.PlaneGeometry(2.0, 1.55),
-        new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(shc), transparent: true, depthWrite: false, opacity: 0.85 })
-    );
-    shadow.rotation.x = -Math.PI / 2;
-    shadow.position.y = 0.002;
-    laptop.add(shadow);
-
-    /* ── Dibujo del dashboard en la pantalla ── */
-    const SPARK = [[0, 95], [44, 84], [88, 73], [132, 90], [176, 68], [220, 45], [264, 58], [308, 38], [352, 30], [396, 20], [440, 8]];
-    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-
-    function drawScreen(reveal, time) {
-        const W = scr.width, H = scr.height, c = sctx;
-        const g = c.createLinearGradient(0, 0, W, H);
-        g.addColorStop(0, '#04101f'); g.addColorStop(0.5, '#071c3d'); g.addColorStop(1, '#080f2b');
-        c.fillStyle = g; c.fillRect(0, 0, W, H);
-
-        const rg = c.createRadialGradient(W * 0.78, -H * 0.2, 0, W * 0.78, -H * 0.2, H * 1.25);
-        rg.addColorStop(0, 'rgba(99,102,241,0.42)'); rg.addColorStop(1, 'rgba(99,102,241,0)');
-        c.fillStyle = rg; c.fillRect(0, 0, W, H);
-
-        c.strokeStyle = 'rgba(255,255,255,0.045)'; c.lineWidth = 2;
-        for (let x = 0; x <= W; x += 64) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, H); c.stroke(); }
-        for (let y = 0; y <= H; y += 66) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); }
-
-        /* barra superior */
-        c.fillStyle = 'rgba(255,255,255,0.05)'; c.fillRect(0, 0, W, 76);
-        c.fillStyle = 'rgba(255,255,255,0.10)'; c.fillRect(0, 74, W, 2);
-        const dots = ['#ff5f57', '#febc2e', '#28c840'];
-        for (let i = 0; i < 3; i++) {
-            c.beginPath(); c.arc(48 + i * 34, 38, 9, 0, Math.PI * 2);
-            c.fillStyle = dots[i]; c.fill();
-        }
-        c.font = '500 26px Inter, system-ui, sans-serif';
-        c.fillStyle = 'rgba(255,255,255,0.5)';
-        c.textBaseline = 'middle';
-        c.fillText('partumdesign.com.mx', 176, 40);
-
-        const pulse = 0.55 + 0.45 * Math.sin(time * 3.2);
-        c.beginPath(); c.arc(W - 232, 39, 8, 0, Math.PI * 2);
-        c.fillStyle = 'rgba(40,200,64,' + pulse.toFixed(3) + ')'; c.fill();
-        c.font = '600 24px Inter, system-ui, sans-serif';
-        c.fillStyle = 'rgba(255,255,255,0.55)';
-        c.fillText('EN VIVO', W - 212, 40);
-
-        /* KPI */
-        c.font = '600 24px Inter, system-ui, sans-serif';
-        c.fillStyle = 'rgba(255,255,255,0.42)';
-        c.fillText('FACTURACIÓN DIGITAL', 60, 138);
-
-        const val = Math.floor(184920 * easeOut(Math.min(1, reveal)));
-        c.font = '900 88px Inter, system-ui, sans-serif';
-        c.fillStyle = '#ffffff';
-        c.shadowColor = 'rgba(129,140,248,0.55)'; c.shadowBlur = 26;
-        c.fillText('$' + val.toLocaleString('en-US'), 58, 205);
-        c.shadowBlur = 0;
-
-        c.font = '700 28px Inter, system-ui, sans-serif';
-        const dTxt = '↑ 38.4%';
-        const dW = c.measureText(dTxt).width + 40;
-        c.fillStyle = 'rgba(40,200,100,0.16)';
-        c.beginPath(); c.roundRect(W - 60 - dW, 172, dW, 62, 16); c.fill();
-        c.fillStyle = '#4ade80';
-        c.fillText(dTxt, W - 40 - dW, 204);
-
-        /* sparkline */
-        const x0 = 58, x1 = W - 58, y0 = 268, y1 = 470;
-        const px = function (p) { return x0 + (p[0] / 440) * (x1 - x0); };
-        const py = function (p) { return y0 + (p[1] / 110) * (y1 - y0); };
-        const prog = Math.min(1, reveal * 1.15);
-        const cut  = easeOut(prog) * (SPARK.length - 1);
-
-        const pts = [];
-        for (let i = 0; i < SPARK.length; i++) {
-            if (i <= cut) pts.push([px(SPARK[i]), py(SPARK[i])]);
-            else if (i - 1 < cut) {
-                const f = cut - (i - 1);
-                pts.push([px(SPARK[i - 1]) + (px(SPARK[i]) - px(SPARK[i - 1])) * f,
-                          py(SPARK[i - 1]) + (py(SPARK[i]) - py(SPARK[i - 1])) * f]);
-            }
-        }
-        if (pts.length > 1) {
-            const ag = c.createLinearGradient(0, y0, 0, y1 + 20);
-            ag.addColorStop(0, 'rgba(99,102,241,0.45)');
-            ag.addColorStop(1, 'rgba(99,102,241,0)');
-            c.beginPath();
-            c.moveTo(pts[0][0], y1 + 18);
-            for (let i = 0; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]);
-            c.lineTo(pts[pts.length - 1][0], y1 + 18);
-            c.closePath();
-            c.fillStyle = ag; c.fill();
-
-            const lg = c.createLinearGradient(x0, 0, x1, 0);
-            lg.addColorStop(0, '#38bdf8'); lg.addColorStop(1, '#a5b4fc');
-            c.beginPath();
-            c.moveTo(pts[0][0], pts[0][1]);
-            for (let i = 1; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]);
-            c.strokeStyle = lg; c.lineWidth = 6; c.lineJoin = 'round'; c.lineCap = 'round';
-            c.shadowColor = 'rgba(129,140,248,0.7)'; c.shadowBlur = 18;
-            c.stroke();
-            c.shadowBlur = 0;
-
-            const last = pts[pts.length - 1];
-            c.beginPath(); c.arc(last[0], last[1], 16 + pulse * 5, 0, Math.PI * 2);
-            c.fillStyle = 'rgba(129,140,248,0.22)'; c.fill();
-            c.beginPath(); c.arc(last[0], last[1], 9, 0, Math.PI * 2);
-            c.fillStyle = '#c7d2fe'; c.fill();
-        }
-
-        /* métricas */
-        const labels = ['ALCANCE', 'CONVERSIÓN', 'FIDELIZACIÓN'];
-        const vals   = [0.85, 0.60, 0.73];
-        const cols   = ['#818cf8', '#a5b4fc', '#38bdf8'];
-        const colW   = (W - 116) / 3;
-        for (let i = 0; i < 3; i++) {
-            const bx = 58 + i * colW;
-            c.font = '600 22px Inter, system-ui, sans-serif';
-            c.fillStyle = 'rgba(255,255,255,0.4)';
-            c.fillText(labels[i], bx, 530);
-            c.font = '800 36px Inter, system-ui, sans-serif';
-            c.fillStyle = '#ffffff';
-            c.fillText(Math.round(vals[i] * 100 * easeOut(Math.min(1, reveal))) + '%', bx, 578);
-            c.fillStyle = 'rgba(255,255,255,0.09)';
-            c.beginPath(); c.roundRect(bx, 606, colW - 46, 10, 5); c.fill();
-            c.fillStyle = cols[i];
-            c.beginPath(); c.roundRect(bx, 606, (colW - 46) * vals[i] * easeOut(Math.min(1, reveal)), 10, 5); c.fill();
-        }
-    }
-
-    /* ── Encuadre ── */
-    let dist = 3;
-    const FIT_W = 1.54, FIT_H = 1.16;
-    function fit() {
-        const w = Math.max(1, stage.clientWidth), h = Math.max(1, stage.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, w < 640 ? 1.6 : 2));
-        renderer.setSize(w, h, false);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        const vf = camera.fov * Math.PI / 180;
-        const fw = camera.aspect < 1.2 ? FIT_W * 0.84 : FIT_W;
-        const dH = (FIT_H / 2) / Math.tan(vf / 2);
-        const dW = (fw / 2) / (Math.tan(vf / 2) * camera.aspect);
-        dist = Math.max(dH, dW);
-    }
-    fit();
-    if ('ResizeObserver' in window) new ResizeObserver(fit).observe(stage);
-    else window.addEventListener('resize', fit);
-
-    /* ── Interacción ── */
-    let mx = 0, my = 0, tx = 0, ty = 0;
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        window.addEventListener('pointermove', function (e) {
-            tx = (e.clientX / window.innerWidth - 0.5) * 2;
-            ty = (e.clientY / window.innerHeight - 0.5) * 2;
-        }, { passive: true });
-    }
-
-    function scrollP() {
-        const r = hero.getBoundingClientRect();
-        if (r.height <= 0) return 0;
-        return Math.min(1, Math.max(0, -r.top / (r.height * 0.68)));
-    }
-
-    let onScreen = true;
-    new IntersectionObserver(function (entries) {
-        onScreen = entries.some(function (e) { return e.isIntersecting; });
-    }, { rootMargin: '120px' }).observe(stage);
-
-    /* ── Loop ── */
-    let t = 0, open = 0, entry = 0, lastT = performance.now(), lastDraw = 0, shown = false;
-    setLid(-CLOSE);
-    drawScreen(0, 0);
-
-    function frame(now) {
-        requestAnimationFrame(frame);
-        const dt = Math.min(0.05, (now - lastT) / 1000);
-        lastT = now;
-        if (document.hidden || !onScreen) return;
-
-        t += dt;
-        entry = Math.min(1, entry + dt / 1.5);
-        const p = scrollP();
-        const goal = easeOut(entry) * (1 - p);
-        open += (goal - open) * Math.min(1, dt * 5.0);
-
-        setLid((open - 1) * CLOSE);
-
-        const lit = Math.max(0, Math.min(1, (open - 0.30) / 0.55));
-        screen.material.color.setScalar(0.05 + 0.95 * lit);
-        screenLight.intensity = 1.0 * lit;
-        shadow.material.opacity = 0.55 + 0.3 * (1 - p);
-
-        if (lit > 0.05 && now - lastDraw > 70) {
-            drawScreen(Math.max(0, (t - 0.25) / 1.9), t);
-            scrTex.needsUpdate = true;
-            lastDraw = now;
-        }
-
-        mx += (tx - mx) * Math.min(1, dt * 2.5);
-        my += (ty - my) * Math.min(1, dt * 2.5);
-
-        const yaw  = -0.26 + Math.sin(t * 0.24) * 0.09 + mx * 0.20 + p * 0.20;
-        const elev = 0.21 + Math.sin(t * 0.31) * 0.02 - my * 0.09 + p * 0.14;
-        const cd = Math.cos(elev) * dist;
-        camera.position.set(target.x + Math.sin(yaw) * cd, target.y + Math.sin(elev) * dist, -Math.cos(yaw) * cd);
-        camera.lookAt(target);
-
-        laptop.rotation.z = Math.sin(t * 0.21) * 0.012;
-        laptop.position.y = Math.sin(t * 0.5) * 0.012;
-
-        renderer.render(scene, camera);
-
-        if (!shown) { shown = true; stage.classList.add('is-ready'); }
-    }
-    requestAnimationFrame(frame);
-
-    if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(function () { lastDraw = 0; });
-    }
-}
-</script>
 
 </body>
 </html>
