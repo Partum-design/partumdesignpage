@@ -25,7 +25,7 @@
         '.dropdown-item:hover{background:rgba(255,255,255,.08);transform:translateX(2px)}',
         '.drop-content h4{font-size:.9rem;color:var(--text-white);margin:0 0 4px;font-weight:600;font-family:Inter,sans-serif}',
         '.drop-content p{font-size:.75rem;color:var(--text-muted);margin:0;font-family:Inter,sans-serif}',
-        '.nav-btn{background:var(--text-white);color:#010a13;padding:12px 22px;border-radius:12px;font-size:.78rem;font-weight:900;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;transition:background .25s,color .25s,box-shadow .25s,transform .25s;border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px rgba(0,0,0,.14);white-space:nowrap;font-family:Inter,sans-serif}',
+        '.nav-btn{background:var(--text-white);color:#010a13;padding:12px 22px;border-radius:12px;font-size:.78rem;font-weight:900;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;transition:background .25s,color .25s,box-shadow .25s,transform .25s;border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px rgba(0,0,0,.14);white-space:nowrap;font-family:Inter,sans-serif;display:inline-flex;align-items:center;gap:8px}',
         '.nav-btn:hover{background:rgba(255,255,255,.08);color:var(--text-white);box-shadow:0 0 0 1px rgba(255,255,255,.16);transform:translateY(-1px)}',
         '.mobile-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;z-index:100000;padding:0;width:44px;height:44px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.04)}',
         '.mobile-toggle span{width:28px;height:2px;background:var(--text-white);transition:.3s cubic-bezier(.68,-.55,.265,1.55);border-radius:2px;display:block}',
@@ -59,17 +59,17 @@
                     '<li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>' +
                     '<li class="nav-item"><a href="/nosotros" class="nav-link">Nosotros</a></li>' +
                     '<li class="nav-item has-dropdown">' +
-                        '<a href="#" class="nav-link" id="servicios-toggle">Servicios <i class="fa-solid fa-chevron-down" style="font-size:.8rem;transition:.3s"></i></a>' +
+                        '<a href="#" class="nav-link" id="servicios-toggle">Servicios B2B <i class="fa-solid fa-chevron-down" style="font-size:.8rem;transition:.3s"></i></a>' +
                         '<div class="dropdown">' +
-                            '<a href="/identidad-visual-y-corporativa" class="dropdown-item"><div class="drop-content"><h4>Estrategia Digital</h4><p>Crecimiento basado en datos.</p></div></a>' +
-                            '<a href="/desarrollo-web" class="dropdown-item"><div class="drop-content"><h4>Desarrollo Web</h4><p>Interfaces premium y alto rendimiento.</p></div></a>' +
-                            '<a href="/marketing-digital" class="dropdown-item"><div class="drop-content"><h4>Marketing Digital</h4><p>Posicionamiento y visibilidad de marca.</p></div></a>' +
+                            '<a href="/desarrollo-web" class="dropdown-item"><div class="drop-content"><h4>Tech &amp; Desarrollo IA</h4><p>Web, apps y software a la medida con IA.</p></div></a>' +
+                            '<a href="/marketing-digital" class="dropdown-item"><div class="drop-content"><h4>Estrategia &amp; Growth</h4><p>Performance ads y posicionamiento B2B.</p></div></a>' +
+                            '<a href="/identidad-visual-y-corporativa" class="dropdown-item"><div class="drop-content"><h4>Branding Corporativo</h4><p>Identidad visual que cierra negocios.</p></div></a>' +
                             '<a href="/produccion-audiovisual" class="dropdown-item"><div class="drop-content"><h4>Producción Audiovisual</h4><p>Contenido multimedia de alto impacto.</p></div></a>' +
                         '</div>' +
                     '</li>' +
                     '<li class="nav-item"><a href="/contacto" class="nav-link">Contacto</a></li>' +
                 '</ul>' +
-                '<a href="/contacto" class="nav-btn">Cotizar ahora</a>' +
+                '<a href="https://wa.me/525616044547?text=Hola,%20me%20gustar%C3%ADa%20agendar%20mi%20Auditor%C3%ADa%20Digital%20con%20fecha%20y%20hora" target="_blank" rel="noopener noreferrer" class="nav-btn"><i class="fa-regular fa-calendar-check"></i> Auditoría Digital</a>' +
             '</div>' +
             '<div class="mobile-toggle" id="burger-menu"><span></span><span></span><span></span></div>' +
         '</div>' +

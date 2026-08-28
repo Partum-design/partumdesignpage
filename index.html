@@ -53,13 +53,48 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ── OVERLAYS ── */
-        #premium-hero-section .overlay,
-        #premium-hero-section .grid-overlay,
-        #premium-hero-section .orb,
-        #premium-hero-section #particles {
-            display: none;
+        /* ── OVERLAYS: textura + orbes (antes display:none = fondo liso) ── */
+        #premium-hero-section .overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                radial-gradient(60% 50% at 15% 20%, rgba(99,102,241,0.20), transparent 60%),
+                radial-gradient(50% 45% at 85% 78%, rgba(0,85,255,0.18), transparent 60%);
         }
+
+        #premium-hero-section .grid-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.35;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 46px 46px;
+            mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, black 30%, transparent 90%);
+            -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 40%, black 30%, transparent 90%);
+        }
+
+        #premium-hero-section .orb {
+            position: absolute;
+            z-index: 1;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            opacity: 0.55;
+            animation: phOrbFloat 11s ease-in-out infinite alternate;
+        }
+        #premium-hero-section .orb-tl { top: -12%; left: -8%; width: 420px; height: 420px; background: radial-gradient(circle, rgba(129,140,248,0.55), transparent 70%); }
+        #premium-hero-section .orb-br { bottom: -14%; right: -6%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(0,85,255,0.5), transparent 70%); animation-delay: -5s; }
+
+        @keyframes phOrbFloat {
+            0%   { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-30px) scale(1.08); }
+        }
+
 
         /* ── HERO INNER ── */
         #premium-hero-section .hero-inner {
@@ -75,7 +110,7 @@
             width: 100%;
         }
 
-        #premium-hero-section .hero-left { flex: 1.1; }
+        #premium-hero-section .hero-left { flex: 1.1; min-width: 0; }
         #premium-hero-section .hero-right {
             flex: 0.95;
             position: relative;
@@ -273,6 +308,55 @@
             font-weight: 400;
         }
 
+        /* ── MARQUEE DE HERRAMIENTAS / IA ── */
+        #premium-hero-section .tools-marquee {
+            margin-top: 38px;
+            width: 100%;
+            max-width: 560px;
+            opacity: 0;
+            animation: phFadeUp 0.8s 0.5s cubic-bezier(0.2,0.8,0.2,1) forwards;
+        }
+        #premium-hero-section .tools-marquee-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 12px;
+        }
+        #premium-hero-section .tools-marquee-track {
+            width: 100%;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+        }
+        #premium-hero-section .tools-marquee-row {
+            display: flex;
+            width: max-content;
+            gap: 10px;
+            animation: toolsScroll 26s linear infinite;
+        }
+        #premium-hero-section .tools-marquee-row:hover { animation-play-state: paused; }
+        @keyframes toolsScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        #premium-hero-section .tool-chip {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.75);
+            white-space: nowrap;
+        }
+        #premium-hero-section .tool-chip i { color: var(--accent-light); font-size: 0.8rem; }
+
         /* ── ESCENARIO 3D (LAPTOP) ── */
         #premium-hero-section .laptop3d {
             position: relative;
@@ -404,7 +488,7 @@
 
         @media (max-width: 1024px) {
             #premium-hero-section .hero-inner { flex-direction: column; padding: 40px 40px; gap: 60px; text-align: center; }
-            #premium-hero-section .hero-left { display: flex; flex-direction: column; align-items: center; }
+            #premium-hero-section .hero-left { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 100%; min-width: 0; }
             #premium-hero-section .hero-right { width: 100%; max-width: 600px; margin: 0 auto; }
             #premium-hero-section .cta-row { justify-content: center; }
             #premium-hero-section .chip-roi { left: 2%; top: 2%; }
@@ -470,20 +554,33 @@
             </div>
 
             <h1>
-                <span class="headline-accent">Construimos tu </span>
-                <span class="headline-solid">presencia digital.</span>
+                <span class="headline-accent">Transformación Digital e IA</span>
+                <span class="headline-solid">para Escalar tu Empresa.</span>
             </h1>
 
             <p class="hero-desc">
-                Tomamos tu idea y la convertimos en algo que funciona en internet. <strong>Estrategia, diseño y código</strong> para que tu marca llegue a más gente y venda más.
+                Partum Design es una firma de consultoría y desarrollo tecnológico integral. Nuestro proceso inicia con una <strong>auditoría digital profunda</strong> y hacemos que las cosas sucedan: desde branding de alto impacto hasta ingeniería de software a la medida —CRM, apps móviles, herramientas de nivel bancario—. Combinamos talento y tecnología avanzada para que tu empresa opere más ágil, inteligente y rentable.
             </p>
 
             <div class="cta-row">
-                <a href="https://api.whatsapp.com/send?phone=5215554152551&text=Hola%2C%20vi%20su%20sitio%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="btn-primary">Inicia tu proyecto</a>
-                <a href="/uploads/2025/03/BROCHURE-PARTUM-2025.pdf" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                    <div class="play-ring"><i class="fa-solid fa-file-arrow-down"></i></div>
-                    Descargar Brochure Corporativo
+                <a href="https://wa.me/525616044547?text=Hola,%20me%20gustar%C3%ADa%20agendar%20mi%20Auditor%C3%ADa%20Digital%20con%20fecha%20y%20hora" target="_blank" rel="noopener noreferrer" class="btn-primary">Agenda tu Auditoría Digital</a>
+                <a href="#soluciones-negocio-partum" class="btn-ghost">
+                    <div class="play-ring"><i class="fa-solid fa-arrow-down"></i></div>
+                    Conocer Soluciones
                 </a>
+            </div>
+
+            <p style="margin-top: 22px; font-size: 0.78rem; color: rgba(255,255,255,0.45); opacity: 0; animation: phFadeUp 0.8s 0.46s cubic-bezier(0.2,0.8,0.2,1) forwards;">
+                <i class="fa-solid fa-robot" style="color: var(--accent-light);"></i>
+                ¿Tienes dudas? Pregúntale a <strong style="color: rgba(255,255,255,0.7);">Nora</strong>, nuestra asistente virtual con IA —
+                <a href="#soluciones-tech-partum" style="color: var(--accent-light); text-decoration: underline;">conócela aquí</a>
+            </p>
+
+            <div class="tools-marquee" aria-label="Herramientas e inteligencias artificiales que usamos">
+                <p class="tools-marquee-label">Trabajamos todos los días con</p>
+                <div class="tools-marquee-track">
+                    <div class="tools-marquee-row" id="toolsRow"></div>
+                </div>
             </div>
         </div>
 
@@ -589,6 +686,28 @@
         if (stat240) countUp(stat240, 240, '+', '%', 0, 2000, 600);
         if (stat200) countUp(stat200, 300, '', '+', 0, 1600, 800);
         if (stat98)  countUp(stat98, 98, '', '%', 0, 1800, 700);
+    })();
+
+    // Marquee de herramientas / IA que usamos
+    (function() {
+        var tools = [
+            { n: 'ChatGPT', i: 'fa-solid fa-comment-dots' },
+            { n: 'Claude', i: 'fa-solid fa-sparkles' },
+            { n: 'Gemini', i: 'fa-solid fa-gem' },
+            { n: 'Midjourney', i: 'fa-solid fa-wand-magic-sparkles' },
+            { n: 'Perplexity', i: 'fa-solid fa-magnifying-glass' },
+            { n: 'n8n', i: 'fa-solid fa-diagram-project' },
+            { n: 'Make', i: 'fa-solid fa-gears' },
+            { n: 'Zapier', i: 'fa-solid fa-bolt' }
+        ];
+        var row = document.getElementById('toolsRow');
+        if (!row) return;
+        [].concat(tools, tools).forEach(function(t) {
+            var chip = document.createElement('div');
+            chip.className = 'tool-chip';
+            chip.innerHTML = '<i class="' + t.i + '"></i><span>' + t.n + '</span>';
+            row.appendChild(chip);
+        });
     })();
 </script>
 
@@ -1255,9 +1374,9 @@ async function start() {
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
                                 <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
                                     <div class="w-12 h-12 rounded-xl bg-blue-600/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-blue-400/30">
-                                        <i class="fas fa-layer-group text-white text-xl"></i>
+                                        <i class="fas fa-code text-white text-xl"></i>
                                     </div>
-                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Identidad<br>Visual</h3>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Desarrollo<br>Web &amp; Apps B2B</h3>
                                 </div>
                                 <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
                                     <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
@@ -1266,10 +1385,10 @@ async function start() {
                             <!-- ATRÁS -->
                             <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-blue-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
                                 <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4 border border-blue-500/20">
-                                    <i class="fas fa-layer-group text-blue-400 text-xl"></i>
+                                    <i class="fas fa-code text-blue-400 text-xl"></i>
                                 </div>
-                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Logotipos y<br>Branding</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Diseñamos tu logo, paleta y manual de marca. Todo lo que necesitas para que tu identidad sea reconocible desde el primer vistazo.</p>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Software a<br>Medida</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Plataformas de alto rendimiento, portales de clientes y sistemas para automatizar tus procesos internos.</p>
                             </div>
                         </div>
                     </div>
@@ -1284,9 +1403,9 @@ async function start() {
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
                                 <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
                                     <div class="w-12 h-12 rounded-xl bg-emerald-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-emerald-400/30">
-                                        <i class="fas fa-code text-white text-xl"></i>
+                                        <i class="fas fa-robot text-white text-xl"></i>
                                     </div>
-                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Desarrollo<br>Web & Apps</h3>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Soluciones<br>con IA</h3>
                                 </div>
                                 <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
                                     <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
@@ -1295,10 +1414,10 @@ async function start() {
                             <!-- ATRÁS -->
                             <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-emerald-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
                                 <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-4 border border-emerald-500/20">
-                                    <i class="fas fa-code text-emerald-400 text-xl"></i>
+                                    <i class="fas fa-robot text-emerald-400 text-xl"></i>
                                 </div>
-                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Soluciones<br>a Medida</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Desarrollamos sitios y apps que cargan rápido, se ven bien y convierten. Sin plantillas genéricas ni código de dudosa procedencia.</p>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Bots &amp;<br>Automatización</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Integración de IA para análisis predictivo de datos y atención automatizada. Somos los creadores de Nora, nuestra asistente virtual.</p>
                             </div>
                         </div>
                     </div>
@@ -1315,7 +1434,7 @@ async function start() {
                                     <div class="w-12 h-12 rounded-xl bg-amber-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-amber-400/30">
                                         <i class="fas fa-chart-line text-white text-xl"></i>
                                     </div>
-                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Marketing<br>& Growth</h3>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Estrategia<br>&amp; Growth</h3>
                                 </div>
                                 <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
                                     <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
@@ -1326,8 +1445,8 @@ async function start() {
                                 <div class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20">
                                     <i class="fas fa-chart-line text-amber-400 text-xl"></i>
                                 </div>
-                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Campañas de<br>Conversión</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Gestionamos tus campañas en Meta, Google y TikTok. Medimos el costo por cliente y ajustamos hasta que el número tenga sentido.</p>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Performance<br>Ads B2B</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Campañas de alta conversión en Google y Meta enfocadas en Costo por Lead. Medimos el CPL y ajustamos hasta que el número tenga sentido.</p>
                             </div>
                         </div>
                     </div>
@@ -1342,9 +1461,9 @@ async function start() {
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/65 to-transparent z-10"></div>
                                 <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end z-20">
                                     <div class="w-12 h-12 rounded-xl bg-purple-500/90 backdrop-blur-md flex items-center justify-center mb-4 shadow-lg border border-purple-400/30">
-                                        <i class="fas fa-video text-white text-xl"></i>
+                                        <i class="fas fa-palette text-white text-xl"></i>
                                     </div>
-                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Video &<br>Fotografía</h3>
+                                    <h3 class="text-white !text-white text-2xl sm:text-[26px] font-bold card-text-shadow leading-tight tracking-tight">Branding<br>Corporativo</h3>
                                 </div>
                                 <div class="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#020617]/50 backdrop-blur-md flex items-center justify-center border border-white/20 text-white opacity-80 group-hover:opacity-100 transition-opacity z-20">
                                     <i class="fas fa-sync-alt text-xs animate-[spin_4s_linear_infinite] group-hover:animate-none"></i>
@@ -1353,10 +1472,10 @@ async function start() {
                             <!-- ATRÁS -->
                             <div class="face face-back p-6 sm:p-8 flex flex-col justify-center items-center text-center border border-purple-500/20" style="background: linear-gradient(135deg, #0f172a 0%, #020617 100%);">
                                 <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-4 border border-purple-500/20">
-                                    <i class="fas fa-video text-purple-400 text-xl"></i>
+                                    <i class="fas fa-palette text-purple-400 text-xl"></i>
                                 </div>
-                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Multimedia de<br>Alto Nivel</h4>
-                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Fotos y videos de producto, locación o equipo. Material listo para ads, redes y tu sitio.</p>
+                                <h4 class="text-white !text-white text-2xl sm:text-[26px] font-bold mb-3 tracking-tight leading-tight">Identidad &amp;<br>Rebranding B2B</h4>
+                                <p class="text-slate-300 !text-slate-300 text-sm sm:text-[15px] font-medium leading-relaxed">Identidad visual desde cero o rebranding para empresas consolidadas. Manuales de marca y sistemas de diseño corporativo.</p>
                             </div>
                         </div>
                     </div>
@@ -1396,6 +1515,288 @@ async function start() {
         });
     });
 </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluciones de Negocio - Partum Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+#soluciones-negocio-partum {
+    background: #010a13 !important;
+    padding: 110px 5% 120px !important;
+    font-family: 'Inter', sans-serif !important;
+    position: relative !important;
+    overflow: hidden !important;
+    color: #fff !important;
+}
+#soluciones-negocio-partum *, #soluciones-negocio-partum *::before, #soluciones-negocio-partum *::after { box-sizing: border-box !important; }
+#soluciones-negocio-partum .sn-wrap { max-width: 1240px !important; margin: 0 auto !important; position: relative !important; z-index: 2 !important; }
+
+#soluciones-negocio-partum .sn-header {
+    text-align: center !important;
+    max-width: 720px !important;
+    margin: 0 auto 64px !important;
+}
+#soluciones-negocio-partum .sn-eyebrow {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    font-size: 10px !important; font-weight: 800 !important; letter-spacing: .22em !important; text-transform: uppercase !important;
+    color: #818cf8 !important; margin-bottom: 16px !important;
+}
+#soluciones-negocio-partum .sn-title-band {
+    display: inline-block !important;
+    background: #000 !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 14px !important;
+    padding: 18px 40px !important;
+    margin-bottom: 18px !important;
+}
+#soluciones-negocio-partum .sn-title-band h2 {
+    font-size: clamp(26px, 3.4vw, 40px) !important; font-weight: 900 !important; letter-spacing: -0.02em !important; margin: 0 !important;
+    background: linear-gradient(135deg, #fff, #a5b4fc) !important;
+    -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important;
+}
+#soluciones-negocio-partum .sn-sub { color: rgba(255,255,255,0.55) !important; font-size: 1rem !important; line-height: 1.6 !important; }
+
+#soluciones-negocio-partum .sn-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+}
+@media (max-width: 980px) { #soluciones-negocio-partum .sn-grid { grid-template-columns: 1fr !important; max-width: 480px !important; margin: 0 auto !important; } }
+
+#soluciones-negocio-partum .sn-card {
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease !important;
+}
+#soluciones-negocio-partum .sn-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: rgba(99,102,241,0.4) !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.35) !important;
+}
+#soluciones-negocio-partum .sn-card-head {
+    background: #000 !important;
+    padding: 22px 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+}
+#soluciones-negocio-partum .sn-card-ico {
+    width: 42px !important; height: 42px !important; border-radius: 12px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    font-size: 1.05rem !important; flex-shrink: 0 !important;
+}
+#soluciones-negocio-partum .sn-card-head h3 { font-size: 1.15rem !important; font-weight: 800 !important; color: #fff !important; margin: 0 !important; letter-spacing: -0.01em !important; }
+
+#soluciones-negocio-partum .sn-card-body { padding: 26px 28px 30px !important; display: flex !important; flex-direction: column !important; flex: 1 !important; }
+#soluciones-negocio-partum .sn-card-desc { color: rgba(255,255,255,0.5) !important; font-size: 0.88rem !important; line-height: 1.6 !important; margin-bottom: 22px !important; }
+
+#soluciones-negocio-partum .sn-list { list-style: none !important; margin: 0 0 24px 0 !important; padding: 0 !important; flex: 1 !important; }
+#soluciones-negocio-partum .sn-list li { display: flex !important; gap: 12px !important; margin-bottom: 16px !important; }
+#soluciones-negocio-partum .sn-list li:last-child { margin-bottom: 0 !important; }
+#soluciones-negocio-partum .sn-list i { color: #4facfe !important; font-size: 0.85rem !important; margin-top: 3px !important; flex-shrink: 0 !important; }
+#soluciones-negocio-partum .sn-list strong { color: #fff !important; font-weight: 700 !important; }
+#soluciones-negocio-partum .sn-list span { color: rgba(255,255,255,0.55) !important; font-size: 0.86rem !important; line-height: 1.5 !important; }
+
+#soluciones-negocio-partum .sn-link {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    color: #fff !important; text-decoration: none !important; font-size: 0.78rem !important; font-weight: 800 !important;
+    text-transform: uppercase !important; letter-spacing: 0.08em !important;
+    padding-top: 18px !important; border-top: 1px solid rgba(255,255,255,0.08) !important;
+    transition: gap .25s ease, color .25s ease !important;
+}
+#soluciones-negocio-partum .sn-link:hover { gap: 12px !important; color: #a5b4fc !important; }
+</style>
+</head>
+<body>
+
+<section id="soluciones-negocio-partum">
+  <div class="sn-wrap">
+    <div class="sn-header">
+      <div class="sn-eyebrow"><i class="fa-solid fa-layer-group"></i> Lo que hacemos</div>
+      <div class="sn-title-band"><h2>Soluciones de Negocio</h2></div>
+      <p class="sn-sub">Infraestructura, estrategia y diseño diseñados específicamente para resolver los retos complejos del sector B2B.</p>
+    </div>
+
+    <div class="sn-grid">
+
+      <div class="sn-card">
+        <div class="sn-card-head">
+          <div class="sn-card-ico" style="background: rgba(0,85,255,0.15); color:#4facfe;"><i class="fa-solid fa-microchip"></i></div>
+          <h3>Tech &amp; Desarrollo IA</h3>
+        </div>
+        <div class="sn-card-body">
+          <p class="sn-card-desc">Construimos las herramientas que tu empresa necesita para operar y vender de manera más eficiente en la era de la Inteligencia Artificial.</p>
+          <ul class="sn-list">
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Desarrollo Web &amp; Apps B2B:</strong> Plataformas de alto rendimiento y portales de clientes.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Software a Medida:</strong> Sistemas para automatizar procesos internos y optimizar recursos.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Soluciones IA:</strong> Integración para análisis de datos y atención automatizada (Bots).</span></li>
+          </ul>
+          <a href="/desarrollo-web-2" class="sn-link">Conocer Tech &amp; Desarrollo IA <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sn-card">
+        <div class="sn-card-head">
+          <div class="sn-card-ico" style="background: rgba(16,185,129,0.15); color:#34d399;"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Estrategia &amp; Growth</h3>
+        </div>
+        <div class="sn-card-body">
+          <p class="sn-card-desc">Estrategias omnicanal basadas en datos para posicionar tu marca en B2B, aumentar tu pipeline de ventas y maximizar facturación.</p>
+          <ul class="sn-list">
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Consultoría:</strong> Auditoría competitiva y planeación estratégica a medida.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Performance Ads (B2B):</strong> Campañas de alta conversión en Google/Meta enfocadas en CPL.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Posicionamiento Orgánico:</strong> Presencia sólida y Social Selling que vende por sí sola.</span></li>
+          </ul>
+          <a href="/marketing-digital" class="sn-link">Conocer Estrategia &amp; Growth <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="sn-card">
+        <div class="sn-card-head">
+          <div class="sn-card-ico" style="background: rgba(244,63,94,0.15); color:#fb7185;"><i class="fa-solid fa-palette"></i></div>
+          <h3>Branding Corporativo</h3>
+        </div>
+        <div class="sn-card-body">
+          <p class="sn-card-desc">Diseñamos identidades visuales que transmiten confianza, innovación y autoridad. Para empresas nuevas o consolidadas.</p>
+          <ul class="sn-list">
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Identidad Visual:</strong> Desde cero, creando marcas que entran pisando fuerte al mercado.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Rebranding B2B:</strong> Evolución para empresas consolidadas que necesitan modernizarse.</span></li>
+            <li><i class="fa-solid fa-circle-check"></i><span><strong>Sistemas de Diseño:</strong> Coherencia visual en todos los puntos de contacto corporativos.</span></li>
+          </ul>
+          <a href="/identidad-visual-y-corporativa" class="sn-link">Conocer Branding Corporativo <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluciones Tech - Partum Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+#soluciones-tech-partum {
+    background: linear-gradient(180deg, #010a13 0%, #050e1c 100%) !important;
+    padding: 100px 5% 110px !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #fff !important;
+    position: relative !important;
+    border-top: 1px solid rgba(255,255,255,0.06) !important;
+}
+#soluciones-tech-partum *, #soluciones-tech-partum *::before, #soluciones-tech-partum *::after { box-sizing: border-box !important; }
+#soluciones-tech-partum .st-wrap { max-width: 1160px !important; margin: 0 auto !important; }
+
+#soluciones-tech-partum .st-header { text-align: center !important; max-width: 680px !important; margin: 0 auto 60px !important; }
+#soluciones-tech-partum .st-eyebrow {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    font-size: 10px !important; font-weight: 800 !important; letter-spacing: .22em !important; text-transform: uppercase !important;
+    color: #4facfe !important; margin-bottom: 16px !important;
+}
+#soluciones-tech-partum .st-header h2 { font-size: clamp(26px, 3.4vw, 40px) !important; font-weight: 900 !important; letter-spacing: -0.02em !important; margin: 0 0 16px 0 !important; }
+#soluciones-tech-partum .st-header h2 em {
+    font-style: normal !important;
+    background: linear-gradient(135deg, #4facfe, #818cf8) !important;
+    -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important;
+}
+#soluciones-tech-partum .st-header p { color: rgba(255,255,255,0.5) !important; font-size: 0.98rem !important; line-height: 1.65 !important; }
+
+#soluciones-tech-partum .st-grid { display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 26px !important; }
+@media (max-width: 980px) { #soluciones-tech-partum .st-grid { grid-template-columns: 1fr !important; max-width: 460px !important; margin: 0 auto !important; } }
+
+#soluciones-tech-partum .st-card {
+    background: rgba(255,255,255,0.035) !important;
+    border: 1px solid rgba(255,255,255,0.09) !important;
+    border-radius: 22px !important;
+    padding: 32px 28px !important;
+    display: flex !important; flex-direction: column !important;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease !important;
+}
+#soluciones-tech-partum .st-card:hover { transform: translateY(-6px) !important; border-color: rgba(79,172,254,0.4) !important; }
+#soluciones-tech-partum .st-card.st-featured { background: linear-gradient(160deg, rgba(79,172,254,0.1), rgba(99,102,241,0.04)) !important; border-color: rgba(79,172,254,0.35) !important; }
+
+#soluciones-tech-partum .st-badge {
+    align-self: flex-start !important;
+    font-size: 9px !important; font-weight: 800 !important; letter-spacing: .12em !important; text-transform: uppercase !important;
+    color: #4facfe !important; background: rgba(79,172,254,0.12) !important; border: 1px solid rgba(79,172,254,0.3) !important;
+    padding: 5px 12px !important; border-radius: 100px !important; margin-bottom: 18px !important;
+}
+#soluciones-tech-partum .st-ico {
+    width: 52px !important; height: 52px !important; border-radius: 14px !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    font-size: 1.3rem !important; margin-bottom: 18px !important;
+    background: rgba(255,255,255,0.06) !important; color: #4facfe !important;
+}
+#soluciones-tech-partum .st-card h3 { font-size: 1.25rem !important; font-weight: 800 !important; margin: 0 0 12px 0 !important; }
+#soluciones-tech-partum .st-card p { color: rgba(255,255,255,0.55) !important; font-size: 0.88rem !important; line-height: 1.65 !important; margin: 0 0 22px 0 !important; flex: 1 !important; }
+#soluciones-tech-partum .st-card a {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    color: #fff !important; text-decoration: none !important; font-size: 0.76rem !important; font-weight: 800 !important;
+    text-transform: uppercase !important; letter-spacing: 0.08em !important;
+    background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.14) !important;
+    padding: 12px 18px !important; border-radius: 12px !important; transition: all .25s ease !important; justify-content: center !important;
+}
+#soluciones-tech-partum .st-card a:hover { background: #fff !important; color: #010a13 !important; }
+</style>
+</head>
+<body>
+
+<section id="soluciones-tech-partum">
+  <div class="st-wrap">
+    <div class="st-header">
+      <div class="st-eyebrow"><i class="fa-solid fa-flask"></i> Productos propios</div>
+      <h2>Tecnología que nosotros mismos <em>construimos y usamos.</em></h2>
+      <p>Además de desarrollar para nuestros clientes, en Partum Design creamos nuestras propias soluciones de software. Estos son algunos de los productos nacidos en nuestro equipo.</p>
+    </div>
+
+    <div class="st-grid">
+
+      <div class="st-card st-featured">
+        <div class="st-badge">Creado por Partum Design</div>
+        <div class="st-ico"><i class="fa-solid fa-robot"></i></div>
+        <h3>Nora</h3>
+        <p>Nuestra inteligencia artificial residente. Resuelve dudas técnicas, califica leads B2B y agenda reuniones directo en tu calendario, las 24 horas. Nosotros somos los creadores de Nora.</p>
+        <a href="https://wa.me/525616044547?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20Nora" target="_blank" rel="noopener noreferrer">Chatea con Nora <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="st-card">
+        <div class="st-badge">Creado por Partum Design</div>
+        <div class="st-ico"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Indusecc</h3>
+        <p>Solución propia orientada a seguridad industrial, desarrollada por nuestro equipo de ingeniería. Sitio propio próximamente — contáctanos si quieres conocer el proyecto de cerca.</p>
+        <a href="https://wa.me/525616044547?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20Indusecc" target="_blank" rel="noopener noreferrer">Contáctanos <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="st-card">
+        <div class="st-badge">Creado por Partum Design</div>
+        <div class="st-ico"><i class="fa-solid fa-briefcase-medical"></i></div>
+        <h3>Medical OS</h3>
+        <p>Solución propia orientada al sector salud, desarrollada por nuestro equipo de ingeniería. Sitio propio próximamente — contáctanos si quieres conocer el proyecto de cerca.</p>
+        <a href="https://wa.me/525616044547?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20Medical%20OS" target="_blank" rel="noopener noreferrer">Contáctanos <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
@@ -2290,11 +2691,11 @@ async function start() {
         </div>
         <h2 class="h-title">
           Metodología<br>
-          <em>Growth.</em>
+          <em>B2B.</em>
         </h2>
       </div>
       <p style="font-size: 18px; color: #555; line-height: 1.7; max-width: 450px;">
-        Trabajamos con un proceso definido. <strong>Nada de improvisar ni cotizar al aire.</strong> Sabes qué esperar en cada etapa.
+        Un proceso basado en datos, <strong>sin improvisaciones.</strong> Orientado a la rentabilidad y la optimización continua.
       </p>
     </div>
 
@@ -2303,16 +2704,16 @@ async function start() {
       <!-- Step 01 -->
       <div class="met-step" data-delay="0" data-prog="25">
         <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
-          <div class="step-dot"><i class="fas fa-magnifying-glass-chart" style="font-size:28px; color:white;"></i></div>
+          <div class="step-dot" style="background: linear-gradient(135deg, #0f2c59, #2563eb) !important;"><i class="fas fa-magnifying-glass-chart" style="font-size:28px; color:white;"></i></div>
           <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">01</div>
         </div>
         <div class="met-step-card">
           <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
             <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">01</span>
             <div style="flex:1;">
-                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Auditoría</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Análisis inicial</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Revisamos tu presencia actual, a tus competidores y qué está funcionando. Así sabemos dónde está el problema antes de proponer cualquier solución.</p>
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Diagnóstico</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Auditoría Tech &amp; Data</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Analizamos tu infraestructura actual, cuellos de botella y oportunidades en tu mercado.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2329,16 +2730,16 @@ async function start() {
       <!-- Step 02 -->
       <div class="met-step" data-delay="150" data-prog="50">
         <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
-          <div class="step-dot"><i class="fas fa-sitemap" style="font-size:28px; color:white;"></i></div>
+          <div class="step-dot" style="background: linear-gradient(135deg, #0f766e, #10b981) !important;"><i class="fas fa-sitemap" style="font-size:28px; color:white;"></i></div>
           <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">02</div>
         </div>
         <div class="met-step-card">
           <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
-            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">02</span>
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(16, 185, 129, 0.12);">02</span>
             <div style="flex:1;">
-                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Estrategia</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Diseño del sistema</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Diseñamos tu landing, tu oferta y los anuncios. Todo conectado para que quien llegue tenga razones concretas para quedarse.</p>
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#0f766e; margin-bottom:8px;">Planeación</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Estrategia &amp; Planning</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Diseñamos la arquitectura del software o el embudo de captación específico para tu ICP (perfil de cliente ideal).</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2355,16 +2756,16 @@ async function start() {
       <!-- Step 03 -->
       <div class="met-step" data-delay="300" data-prog="75">
         <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
-          <div class="step-dot"><i class="fas fa-rocket" style="font-size:28px; color:white;"></i></div>
+          <div class="step-dot" style="background: linear-gradient(135deg, #6d28d9, #a855f7) !important;"><i class="fas fa-code" style="font-size:26px; color:white;"></i></div>
           <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">03</div>
         </div>
         <div class="met-step-card">
           <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
-            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">03</span>
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(168, 85, 247, 0.12);">03</span>
             <div style="flex:1;">
-                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Ejecución</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Campaña activa</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Lanzamos campañas en Meta, Google y TikTok. Segmentamos por comportamiento, no solo por demografía, y ajustamos el presupuesto según lo que están dando los números.</p>
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#6d28d9; margin-bottom:8px;">Construcción</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Desarrollo &amp; Ejecución</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Implementamos código limpio, integramos IA y lanzamos campañas segmentadas.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2381,16 +2782,16 @@ async function start() {
       <!-- Step 04 -->
       <div class="met-step" data-delay="450" data-prog="100">
         <div style="display:flex; flex-direction:column; align-items:center; position:relative; z-index:2;">
-          <div class="step-dot"><i class="fas fa-chart-line" style="font-size:28px; color:white;"></i></div>
+          <div class="step-dot" style="background: linear-gradient(135deg, #b45309, #f59e0b) !important;"><i class="fas fa-chart-line" style="font-size:28px; color:white;"></i></div>
           <div style="font-size:13px; font-weight:900; color:#999; margin-top:15px; background:#fcfcfd; padding:4px 10px; border-radius:6px; z-index:2;">04</div>
         </div>
         <div class="met-step-card">
           <div style="display:flex; align-items:center; gap:30px;" class="card-inner-flex">
-            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(37, 99, 235, 0.1);">04</span>
+            <span style="font-size: clamp(60px, 8vw, 100px); font-weight:900; color: rgba(245, 158, 11, 0.12);">04</span>
             <div style="flex:1;">
-                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#2563eb; margin-bottom:8px;">Escalabilidad</div>
-                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Mejora constante</h4>
-                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Lanzar es el inicio, no el final. Hacemos pruebas A/B, rotamos creativos y escalamos lo que convierte. El objetivo es que cada mes supere al anterior.</p>
+                <div style="font-size:10px; font-weight:900; text-transform:uppercase; color:#b45309; margin-bottom:8px;">Growth</div>
+                <h4 style="font-size:24px; font-weight:900; color:#111; margin-bottom:12px;">Escalabilidad</h4>
+                <p style="font-size:16px; color:#555; line-height:1.7; text-align:justify;">Iteración constante. Medimos datos, optimizamos conversiones y escalamos resultados.</p>
                 <div style="margin-top:20px;">
                     <div style="height:3px; background:#eee; border-radius:99px; overflow:hidden;">
                         <div class="prog-fill"></div>
@@ -2405,6 +2806,16 @@ async function start() {
       </div>
 
     </div> <!-- Cierre met-timeline -->
+
+    <div class="met-bottom" id="met-bottom-trigger">
+      <div>
+        <div style="font-size:11px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; color:#4facfe; margin-bottom:8px;">Paso 1: Agenda tu sesión</div>
+        <div style="font-size:20px; font-weight:800; color:#fff;">¿Listo para descubrir dónde está el problema?</div>
+      </div>
+      <a href="https://wa.me/525616044547?text=Hola,%20me%20gustar%C3%ADa%20agendar%20mi%20Auditor%C3%ADa%20Digital%20con%20fecha%20y%20hora" target="_blank" rel="noopener noreferrer" class="met-cta">
+        <i class="fa-regular fa-calendar-check"></i> Agenda tu Auditoría Digital
+      </a>
+    </div>
   </div> <!-- Cierre met-wrap -->
 </section>
 
@@ -2832,6 +3243,73 @@ async function start() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Diagnóstico - Partum Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+#cta-diagnostico-partum {
+    background: #010a13 !important;
+    padding: 100px 5% !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #fff !important;
+}
+#cta-diagnostico-partum *, #cta-diagnostico-partum *::before, #cta-diagnostico-partum *::after { box-sizing: border-box !important; }
+#cta-diagnostico-partum .cd-wrap { max-width: 900px !important; margin: 0 auto !important; text-align: center !important; }
+#cta-diagnostico-partum h2 { font-size: clamp(28px, 4vw, 42px) !important; font-weight: 900 !important; letter-spacing: -0.02em !important; margin: 0 0 20px 0 !important; }
+#cta-diagnostico-partum p.cd-lead { color: rgba(255,255,255,0.55) !important; font-size: 1.05rem !important; line-height: 1.7 !important; max-width: 640px !important; margin: 0 auto 50px !important; }
+
+#cta-diagnostico-partum .cd-card {
+    background: linear-gradient(160deg, #12161f 0%, #0a0d14 100%) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 24px !important;
+    padding: 44px 40px !important;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.4) !important;
+}
+#cta-diagnostico-partum .cd-step-label {
+    font-size: 10px !important; font-weight: 900 !important; letter-spacing: .28em !important; text-transform: uppercase !important;
+    color: #4facfe !important; margin-bottom: 20px !important;
+}
+#cta-diagnostico-partum .cd-btn {
+    display: inline-flex !important; align-items: center !important; gap: 12px !important;
+    background: #fff !important; color: #010a13 !important;
+    padding: 18px 38px !important; border-radius: 14px !important;
+    font-size: 0.85rem !important; font-weight: 900 !important; letter-spacing: 0.06em !important; text-transform: uppercase !important;
+    text-decoration: none !important; transition: all .3s ease !important;
+}
+#cta-diagnostico-partum .cd-btn:hover { transform: translateY(-3px) !important; box-shadow: 0 20px 40px rgba(79,172,254,0.3) !important; }
+#cta-diagnostico-partum .cd-note {
+    margin-top: 22px !important; font-size: 0.8rem !important; color: rgba(255,255,255,0.4) !important;
+    display: flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; flex-wrap: wrap !important;
+}
+</style>
+</head>
+<body>
+
+<section id="cta-diagnostico-partum">
+  <div class="cd-wrap">
+    <h2>¿Tu empresa está <em style="font-style:normal; background:linear-gradient(135deg,#4facfe,#818cf8); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">estancada tecnológicamente?</em></h2>
+    <p class="cd-lead">Deja de adivinar. Obtén un diagnóstico claro sobre el estado actual de tu infraestructura digital, desarrollo, branding y estrategia de captación de leads.</p>
+
+    <div class="cd-card">
+      <div class="cd-step-label">Paso 1: Agenda tu sesión</div>
+      <a href="https://wa.me/525616044547?text=Hola,%20me%20gustar%C3%ADa%20agendar%20mi%20Auditor%C3%ADa%20Digital%20con%20fecha%20y%20hora" target="_blank" rel="noopener noreferrer" class="cd-btn">
+        <i class="fa-regular fa-calendar-check"></i> Agenda tu Auditoría Digital
+      </a>
+      <div class="cd-note">
+        <i class="fa-solid fa-lock"></i> Habla directamente con un consultor tecnológico experto en B2B. No es una llamada de ventas de presión, es una evaluación de valor real para tu empresa.
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Logos Section - Partum Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -2951,7 +3429,10 @@ async function start() {
 #logos-section-partum .div-dots { display: flex !important; gap: 5px !important; }
 #logos-section-partum .div-dot { width: 5px !important; height: 5px !important; border-radius: 50% !important; }
 
-/* LOGO WALL (assets locales de uploads) */
+/* ════════════════════════════════════════════════════════
+   LOGO WALL — Marquee de doble fila (estilo Haften: tarjetas
+   uniformes + scroll infinito en direcciones opuestas)
+   ════════════════════════════════════════════════════════ */
 #logos-section-partum .gslogo-container {
     position: relative !important;
     width: 100% !important;
@@ -2963,91 +3444,76 @@ async function start() {
     z-index: 10 !important;
 }
 
-#logos-section-partum .logos-grid {
-    width: min(1180px, calc(100% - 48px)) !important;
-    margin: 0 auto !important;
-    display: grid !important;
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-    gap: 12px !important;
-    position: relative !important;
-    z-index: 2 !important;
+#logos-section-partum .logos-marquee {
+    overflow: hidden !important;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent) !important;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent) !important;
+}
+#logos-section-partum .logos-marquee + .logos-marquee { margin-top: 14px !important; }
+
+#logos-section-partum .logos-row {
+    display: flex !important;
+    width: max-content !important;
+    animation: logosScroll 46s linear infinite !important;
+}
+#logos-section-partum .logos-row.rev {
+    animation-direction: reverse !important;
+    animation-duration: 58s !important;
+}
+#logos-section-partum .logos-marquee:hover .logos-row {
+    animation-play-state: paused !important;
+}
+
+@keyframes logosScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
 }
 
 #logos-section-partum .logo-card {
-    height: 170px !important;
+    flex-shrink: 0 !important;
+    width: 210px !important;
+    height: 96px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 10px 12px !important;
-    background: rgba(255,255,255,0.92) !important;
+    margin: 0 8px !important;
+    padding: 14px 22px !important;
+    background: rgba(255,255,255,0.95) !important;
     border: 1px solid rgba(148,163,184,0.22) !important;
-    border-radius: 10px !important;
+    border-radius: 14px !important;
     box-shadow: 0 10px 24px rgba(15,23,42,0.04) !important;
     transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease !important;
-    /* Animación 100% CSS — base SIEMPRE visible (opacity por defecto = 1) */
-    animation-name: logoCardIn !important;
-    animation-duration: .7s !important;
-    animation-timing-function: cubic-bezier(.22,1,.36,1) !important;
-    animation-fill-mode: both !important;
 }
-
-@keyframes logoCardIn {
-    from { opacity: 0; transform: translateY(26px) scale(.96); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Entrada escalonada por columna/fila */
-#logos-section-partum .logo-card:nth-child(1)  { animation-delay: .05s !important; }
-#logos-section-partum .logo-card:nth-child(2)  { animation-delay: .10s !important; }
-#logos-section-partum .logo-card:nth-child(3)  { animation-delay: .15s !important; }
-#logos-section-partum .logo-card:nth-child(4)  { animation-delay: .20s !important; }
-#logos-section-partum .logo-card:nth-child(5)  { animation-delay: .25s !important; }
-#logos-section-partum .logo-card:nth-child(6)  { animation-delay: .30s !important; }
-#logos-section-partum .logo-card:nth-child(7)  { animation-delay: .35s !important; }
-#logos-section-partum .logo-card:nth-child(8)  { animation-delay: .40s !important; }
-#logos-section-partum .logo-card:nth-child(9)  { animation-delay: .45s !important; }
-#logos-section-partum .logo-card:nth-child(10) { animation-delay: .50s !important; }
-#logos-section-partum .logo-card:nth-child(11) { animation-delay: .55s !important; }
-#logos-section-partum .logo-card:nth-child(12) { animation-delay: .60s !important; }
-#logos-section-partum .logo-card:nth-child(13) { animation-delay: .65s !important; }
-#logos-section-partum .logo-card:nth-child(14) { animation-delay: .70s !important; }
-#logos-section-partum .logo-card:nth-child(15) { animation-delay: .75s !important; }
-#logos-section-partum .logo-card:nth-child(16) { animation-delay: .80s !important; }
-#logos-section-partum .logo-card:nth-child(17) { animation-delay: .85s !important; }
-#logos-section-partum .logo-card:nth-child(18) { animation-delay: .90s !important; }
 
 #logos-section-partum .logo-card img {
     display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
+    max-width: 140px !important;
+    max-height: 52px !important;
+    width: auto !important;
+    height: auto !important;
     object-fit: contain !important;
-    filter: none !important;
-    transition: transform .4s cubic-bezier(.22,1,.36,1) !important;
+    filter: grayscale(65%) !important;
+    opacity: .82 !important;
+    transition: filter .35s ease, opacity .35s ease, transform .4s cubic-bezier(.22,1,.36,1) !important;
 }
 
 #logos-section-partum .logo-card:hover {
-    transform: translateY(-8px) scale(1.02) !important;
+    transform: translateY(-6px) !important;
     border-color: rgba(14,165,233,0.45) !important;
     box-shadow: 0 24px 48px rgba(15,23,42,0.12) !important;
 }
 
 #logos-section-partum .logo-card:hover img {
-    transform: scale(1.10) !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    transform: scale(1.06) !important;
 }
 
-@media(max-width:1100px){ #logos-section-partum .logos-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
 @media(max-width:720px){
     #logos-section-partum .gslogo-container { padding: 24px 0 !important; }
-    #logos-section-partum .logos-grid {
-        width: min(100% - 32px, 620px) !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 10px !important;
-    }
-    #logos-section-partum .logo-card { height: 150px !important; padding: 10px 12px !important; }
-    #logos-section-partum .logo-card img { height: 100% !important; width: 100% !important; }
+    #logos-section-partum .logo-card { width: 168px !important; height: 80px !important; padding: 10px 16px !important; margin: 0 6px !important; }
+    #logos-section-partum .logo-card img { max-width: 112px !important; max-height: 40px !important; }
 }
-@media(max-width:390px){ #logos-section-partum .logos-grid { grid-template-columns: 1fr !important; } }
 
 /* BOTTOM STATS */
 #logos-section-partum .logos-stats {
@@ -3126,29 +3592,58 @@ async function start() {
     </div>
   </div>
 
-  <!-- Logotipos locales desde uploads -->
+  <!-- Logotipos locales desde uploads — doble marquee infinito (patrón Haften) -->
   <div class="gslogo-container" aria-label="Logotipos de marcas que confían en Partum Design">
-    <div class="logos-grid">
-      <div class="logo-card"><img src="uploads/clientes/Brasa%20Prive.webp" alt="Brasa Privé" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/BRAVO%20LOGIX.png" alt="Bravo Logix" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/dahua.webp" alt="Dahua" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/efficient%20plastic%20colors.webp" alt="Efficient Plastic Colors" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/GRUPO%20AD.webp" alt="Grupo AD" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/Grupo%20Sum.svg" alt="Grupo Sum" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/Haften.webp" alt="Haften" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/JP%20Dental.webp" alt="JP Dental" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/KARINA%20POOT.webp" alt="Karina Poot" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/PLus%20Secure.webp" alt="Plus Secure" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/PREFABRICADOS.webp" alt="Prefabricados" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/safe%20proptech.webp" alt="Safe Proptech" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/Smart%20Storage.webp" alt="Smart Storage" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/SUNLUX.webp" alt="Sunlux" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/TEKPRO.webp" alt="Tekpro" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/TRITTON.png" alt="Tritton" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/XIGMA%20INGENIERIA.webp" alt="Xigma Ingeniería" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/LABORATORIO%20BIOS.png" alt="Laboratorio BIOS" loading="lazy" decoding="async"></div>
+    <div class="logos-marquee">
+      <div class="logos-row" id="logosRow1"></div>
+    </div>
+    <div class="logos-marquee">
+      <div class="logos-row rev" id="logosRow2"></div>
     </div>
   </div>
+
+  <script>
+  (function(){
+    var partumClientLogos = [
+      { n: 'Brasa Privé', f: 'Brasa%20Prive.webp' },
+      { n: 'Bravo Logix', f: 'BRAVO%20LOGIX.png' },
+      { n: 'Dahua', f: 'dahua.webp' },
+      { n: 'Efficient Plastic Colors', f: 'efficient%20plastic%20colors.webp' },
+      { n: 'Grupo AD', f: 'GRUPO%20AD.webp' },
+      { n: 'Grupo Sum', f: 'Grupo%20Sum.svg' },
+      { n: 'Haften', f: 'Haften.webp' },
+      { n: 'JP Dental', f: 'JP%20Dental.webp' },
+      { n: 'Karina Poot', f: 'KARINA%20POOT.webp' },
+      { n: 'Plus Secure', f: 'PLus%20Secure.webp' },
+      { n: 'Prefabricados', f: 'PREFABRICADOS.webp' },
+      { n: 'Safe Proptech', f: 'safe%20proptech.webp' },
+      { n: 'Smart Storage', f: 'Smart%20Storage.webp' },
+      { n: 'Sunlux', f: 'SUNLUX.webp' },
+      { n: 'Tekpro', f: 'TEKPRO.webp' },
+      { n: 'Tritton', f: 'TRITTON.png' },
+      { n: 'Xigma Ingeniería', f: 'XIGMA%20INGENIERIA.webp' },
+      { n: 'Laboratorio BIOS', f: 'LABORATORIO%20BIOS.png' }
+    ];
+    function mkLogoCard(b) {
+      var c = document.createElement('div');
+      c.className = 'logo-card';
+      var img = document.createElement('img');
+      img.src = 'uploads/clientes/' + b.f;
+      img.alt = b.n;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      c.appendChild(img);
+      return c;
+    }
+    var row1 = document.getElementById('logosRow1');
+    var row2 = document.getElementById('logosRow2');
+    if (!row1 || !row2) return;
+    var half = Math.ceil(partumClientLogos.length / 2);
+    var offset = partumClientLogos.slice(half).concat(partumClientLogos.slice(0, half));
+    [].concat(partumClientLogos, partumClientLogos).forEach(function(b){ row1.appendChild(mkLogoCard(b)); });
+    [].concat(offset, offset).forEach(function(b){ row2.appendChild(mkLogoCard(b)); });
+  })();
+  </script>
 
   <div class="logos-wrap">
     <div class="logos-stats">
@@ -3844,12 +4339,16 @@ async function start() {
     <div class="relative z-10">
         
         <div class="text-center mb-16 lg:mb-24">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(0,85,255,0.1); border: 1px solid rgba(0,85,255,0.3);">
+                <i class="fa-solid fa-rocket text-[11px]" style="color:#4facfe;"></i>
+                <span class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.15em]" style="color:#4facfe;">Ideal si eres emprendedor o Pyme</span>
+            </div>
             <h2 class="premium-title">
                  Nuestros planes<br>
                  <em>y qué incluyen.</em>
             </h2>
-            <p class="text-slate-400 uppercase text-[9px] md:text-[10px] tracking-[0.4em] font-bold mt-6">
-                Precios claros, sin letra chica
+            <p class="text-slate-400 text-sm md:text-base mt-6 max-w-2xl mx-auto" style="line-height:1.6;">
+                Paquetes diseñados para negocios que están arrancando o formalizando su presencia digital: sin letra chica, sin complicaciones técnicas de tu lado.
             </p>
         </div>
 
@@ -3859,45 +4358,54 @@ async function start() {
                 <div class="card-content-wrapper">
                     <div class="mb-8">
                         <h3 class="plan-title">Essential Kit</h3>
-                        <p class="plan-subtitle">Presencia & Marca</p>
+                        <p class="plan-subtitle">Página Web &amp; Branding</p>
                         <div class="flex items-baseline gap-2">
-                            <span class="plan-price">$1,200</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
+                            <span class="plan-price">$3,999</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-bold">+ IVA</span>
                         </div>
                     </div>
-                    
+
                     <ul class="plan-list">
-                        <li><i class="fa-solid fa-check"></i><span>Identidad Visual (Logo & UI Kit)</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Web One-Page de Alto Impacto</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Optimización SEO Estructural</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Dominio y hosting gratis 1 año</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Diseño de hasta 3 secciones</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Formulario de contacto</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Botón de WhatsApp</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Diseño de logotipo</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>3 aplicativos de papelería a elegir</span></li>
                     </ul>
-                    
-                    <a href="/contacto2" class="btn-outline">Cotizar Proyecto</a>
+
+                    <a href="https://wa.me/525616044547?text=Hola,%20me%20interesa%20el%20Paquete%20Essential%20Kit%20(%243%2C999%20%2B%20IVA)" target="_blank" rel="noopener noreferrer" class="btn-outline">Cotizar Essential Kit</a>
                 </div>
             </div>
 
             <div class="card-destacada-wrapper interactive-light">
                 <div class="card-destacada-inner">
                     <div class="badge-popular">Más Popular</div>
-                    
+
                     <div class="card-content-wrapper">
                         <div class="mb-8 mt-4">
-                            <h3 class="plan-title">Growth Engine</h3>
-                            <p class="plan-subtitle">Web + Ads + Conversión</p>
+                            <h3 class="plan-title">Corporate</h3>
+                            <p class="plan-subtitle">Página Web &amp; Branding</p>
                             <div class="flex items-baseline gap-2">
-                                <span class="plan-price">$2,500</span>
-                                <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
+                                <span class="plan-price">$6,599</span>
+                                <span class="text-[10px] text-slate-500 uppercase font-bold">+ IVA</span>
                             </div>
                         </div>
 
                         <ul class="plan-list">
-                            <li><i class="fa-solid fa-fire text-orange-500 animate-pulse mt-1"></i><span class="text-white font-medium">Funnel de Ventas Completo</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Gestión de Meta & Google Ads</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Landing Pages Optimizadas</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Dashboard de Resultados 24/7</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Dominio y hosting gratis 1 año</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Diseño de hasta 4 secciones</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Formulario de contacto</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Botón de WhatsApp</span></li>
+                            <li><i class="fa-solid fa-fire text-orange-500 animate-pulse mt-1"></i><span class="text-white font-medium">Vinculación con Google Ads y Analytics</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Asistente con IA</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Agenda con Calendar</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Diseño de logotipo</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>5 aplicativos de papelería a elegir</span></li>
+                            <li><i class="fa-solid fa-check"></i><span>Manual de identidad corporativa</span></li>
                         </ul>
 
-                        <a href="/contacto2" class="btn-solid">Hablar con un Especialista</a>
+                        <a href="https://wa.me/525616044547?text=Hola,%20me%20interesa%20el%20Paquete%20Corporate%20(%246%2C599%20%2B%20IVA)" target="_blank" rel="noopener noreferrer" class="btn-solid">Hablar con un Especialista</a>
                     </div>
                 </div>
             </div>
@@ -3908,24 +4416,34 @@ async function start() {
                         <h3 class="plan-title">Elite Partner</h3>
                         <p class="plan-subtitle">Solución 360° Premium</p>
                         <div class="flex items-baseline gap-2">
-                            <span class="plan-price">$4,500</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
+                            <span class="plan-price">$15,599</span>
+                            <span class="text-[10px] text-slate-500 uppercase font-bold">+ IVA</span>
                         </div>
                     </div>
 
                     <ul class="plan-list">
-                        <li><i class="fa-solid fa-check"></i><span>Todo lo del Plan Performance</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Rebranding & Estrategia de Marca</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Estrategia de Contenido & CRM</span></li>
-                        <li><i class="fa-solid fa-star text-amber-400 mt-1"></i><span class="text-white font-medium">Soporte Prioritario VIP</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Dominio y hosting gratis 3 años</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Diseño de hasta 8 secciones</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Formulario de contacto</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Botón de WhatsApp</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Vinculación con Google Ads y Analytics</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Asistente con IA</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Agenda con Calendar</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Optimización y SEO automatizado con IA</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Integración con CRM</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Conexión con cotizador personalizado</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Diseño de logotipo</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>10 aplicativos de papelería a elegir</span></li>
+                        <li><i class="fa-solid fa-check"></i><span>Manual de identidad corporativa</span></li>
+                        <li><i class="fa-solid fa-star text-amber-400 mt-1"></i><span class="text-white font-medium">Brochure corporativo / CV empresarial</span></li>
                     </ul>
 
-                    <a href="/contacto2" class="btn-outline">Solicitar Consultoría</a>
+                    <a href="https://wa.me/525616044547?text=Hola,%20me%20interesa%20el%20Paquete%20Elite%20Partner%20(%2415%2C599%20%2B%20IVA)" target="_blank" rel="noopener noreferrer" class="btn-outline">Solicitar Consultoría</a>
                 </div>
             </div>
 
-        </div> 
-        
+        </div>
+
         <div class="mt-16 lg:mt-24 text-center">
             <p class="text-slate-600 text-[9px] font-bold uppercase tracking-[0.5em] mb-4">
                 ¿Dudas? Escríbenos y te orientamos sin compromiso

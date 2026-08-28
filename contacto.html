@@ -45,6 +45,16 @@
             isolation: isolate;
         }
 
+        /* El menú flotante (inyectado por components.js) mide ~88px de alto
+           en móvil/tablet (top:10px + height:78px). El padding-top de 80px
+           no alcanza a librarlo y tapa el status-pill y el H1. */
+        @media (max-width: 1024px) {
+            .hero-contact { padding-top: 140px; }
+        }
+        @media (max-width: 480px) {
+            .hero-contact { padding-top: 130px; }
+        }
+
         /* ── Aislar de estilos externos (WordPress/Elementor/Divi) ── */
         .hero-contact .pill-text { color: rgba(165,180,252,0.8) !important; }
         .hero-contact .pill-text span { color: white !important; }
