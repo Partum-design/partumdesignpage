@@ -92,6 +92,29 @@
 </head>
 <body>
 
+<div id="partum-preloader" style="position:fixed;inset:0;z-index:2147483647;background:#010a13;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;">
+    <img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Partum Design" style="width:170px;max-width:55vw;height:auto;animation:partumPreloaderPulse 1.3s ease-in-out infinite;">
+</div>
+<style>@keyframes partumPreloaderPulse{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}</style>
+<script>
+(function () {
+    var pl = document.getElementById('partum-preloader');
+    if (!pl) return;
+    var alreadySeen = false;
+    try {
+        alreadySeen = !!sessionStorage.getItem('partumPreloaderSeen');
+        sessionStorage.setItem('partumPreloaderSeen', '1');
+    } catch (e) {}
+    if (alreadySeen) { pl.style.display = 'none'; return; }
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            pl.style.opacity = '0';
+            setTimeout(function () { if (pl.parentNode) pl.parentNode.removeChild(pl); }, 550);
+        }, 200);
+    });
+})();
+</script>
+
 <div class="bg-dark-premium" id="hero-trigger">
     
     <video autoplay loop muted playsinline class="video-bg">

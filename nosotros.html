@@ -126,6 +126,29 @@
 </head>
 <body class="bg-slate-900 text-white m-0 p-0">
 
+<div id="partum-preloader" style="position:fixed;inset:0;z-index:2147483647;background:#010a13;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;">
+    <img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Partum Design" style="width:170px;max-width:55vw;height:auto;animation:partumPreloaderPulse 1.3s ease-in-out infinite;">
+</div>
+<style>@keyframes partumPreloaderPulse{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}</style>
+<script>
+(function () {
+    var pl = document.getElementById('partum-preloader');
+    if (!pl) return;
+    var alreadySeen = false;
+    try {
+        alreadySeen = !!sessionStorage.getItem('partumPreloaderSeen');
+        sessionStorage.setItem('partumPreloaderSeen', '1');
+    } catch (e) {}
+    if (alreadySeen) { pl.style.display = 'none'; return; }
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            pl.style.opacity = '0';
+            setTimeout(function () { if (pl.parentNode) pl.parentNode.removeChild(pl); }, 550);
+        }, 200);
+    });
+})();
+</script>
+
 <!-- CONTENEDOR ENCAPSULADO -->
 <div id="partum-hero-code">
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -2645,7 +2668,7 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
                             <div class="hex-shape">
                             <div class="hex-shine"></div>
                                                         <div class="hex-body">
-                                <span class="hex-role">Directora de Operaciones</span>
+                                <span class="hex-role">SDR · BDR</span>
                                 <h4 class="hex-name">Ing. Danna Rodriguez</h4>
                             </div>
                         </div>
@@ -2658,8 +2681,8 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
                     </div>
                     <div class="branch-satellites">
                         <div class="satellite">
-                            <div class="sat-avatar"><img src="uploads/team/Perla%20Ure%C3%B1a.png" alt="Perla Ureña"></div>
-                            <div class="sat-label"><span class="sat-name">Ing. Perla Ureña</span><span class="sat-role">Sistema de Gestión</span></div>
+                            <div class="sat-avatar" style="display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:#fff;">HR</div>
+                            <div class="sat-label"><span class="sat-name">Héctor Román</span><span class="sat-role">Sistema de Gestión</span></div>
                         </div>
                         <div class="satellite">
                             <div class="sat-avatar"><img src="uploads/team/Bryan%20Lopez.webp" alt="Lic. Bryan López"></div>

@@ -591,6 +591,29 @@
 </head>
 <body>
 
+<div id="partum-preloader" style="position:fixed;inset:0;z-index:2147483647;background:#010a13;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;">
+    <img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Partum Design" style="width:170px;max-width:55vw;height:auto;animation:partumPreloaderPulse 1.3s ease-in-out infinite;">
+</div>
+<style>@keyframes partumPreloaderPulse{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}</style>
+<script>
+(function () {
+    var pl = document.getElementById('partum-preloader');
+    if (!pl) return;
+    var alreadySeen = false;
+    try {
+        alreadySeen = !!sessionStorage.getItem('partumPreloaderSeen');
+        sessionStorage.setItem('partumPreloaderSeen', '1');
+    } catch (e) {}
+    if (alreadySeen) { pl.style.display = 'none'; return; }
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            pl.style.opacity = '0';
+            setTimeout(function () { if (pl.parentNode) pl.parentNode.removeChild(pl); }, 550);
+        }, 200);
+    });
+})();
+</script>
+
 <section id="premium-hero-section">
     <div class="overlay"></div>
     <div class="grid-overlay"></div>
@@ -617,11 +640,7 @@
             </h1>
 
             <p class="hero-desc">
-                Partum Design es una firma de consultoría y desarrollo tecnológico integral. Nuestro proceso inicia con una <strong>auditoría digital profunda</strong> y hacemos que las cosas sucedan: desde branding de alto impacto hasta ingeniería de software a la medida —CRM, apps móviles, herramientas de nivel bancario—. Combinamos talento y tecnología avanzada para que tu empresa opere más ágil, inteligente y rentable.
-            </p>
-
-            <p class="hero-desc" style="animation-delay: 0.34s;">
-                Desarrollamos ecosistemas digitales, automatizamos procesos y escalamos tus ventas con estrategias respaldadas por datos e Inteligencia Artificial. <strong>Exclusivo para Pymes y Empresas B2B.</strong>
+                Auditoría, desarrollo de software y branding con Inteligencia Artificial. <strong>Exclusivo para Pymes y Empresas B2B.</strong>
             </p>
 
             <div class="cta-row">
@@ -791,6 +810,74 @@
     })();
 </script>
 
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiénes Somos - Partum Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+#quienes-somos-partum {
+    background: #010a13 !important;
+    padding: 76px 5% !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #fff !important;
+    border-top: 1px solid rgba(255,255,255,0.06) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+#quienes-somos-partum *, #quienes-somos-partum *::before, #quienes-somos-partum *::after { box-sizing: border-box !important; }
+#quienes-somos-partum .qs-wrap {
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: 0.9fr 1.4fr !important;
+    gap: 48px !important;
+    align-items: start !important;
+}
+@media (max-width: 800px) { #quienes-somos-partum .qs-wrap { grid-template-columns: 1fr !important; gap: 22px !important; } }
+
+#quienes-somos-partum .qs-eyebrow {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    font-size: 10px !important; font-weight: 800 !important; letter-spacing: .22em !important; text-transform: uppercase !important;
+    color: #818cf8 !important; margin-bottom: 14px !important;
+}
+#quienes-somos-partum h2 {
+    font-size: clamp(24px, 2.6vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.02em !important; line-height: 1.2 !important;
+    margin: 0 0 20px 0 !important;
+}
+#quienes-somos-partum .qs-link {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    color: #a5b4fc !important; text-decoration: none !important; font-size: 0.82rem !important; font-weight: 700 !important;
+}
+#quienes-somos-partum .qs-link:hover { text-decoration: underline !important; }
+
+#quienes-somos-partum .qs-body p {
+    color: rgba(255,255,255,0.6) !important; font-size: 0.98rem !important; line-height: 1.75 !important; margin: 0 0 18px 0 !important;
+}
+#quienes-somos-partum .qs-body p:last-child { margin-bottom: 0 !important; }
+#quienes-somos-partum .qs-body strong { color: rgba(255,255,255,0.92) !important; font-weight: 600 !important; }
+</style>
+</head>
+<body>
+
+<section id="quienes-somos-partum">
+  <div class="qs-wrap">
+    <div>
+      <div class="qs-eyebrow"><i class="fa-solid fa-quote-left"></i> Quiénes somos</div>
+      <h2>El partner tecnológico y estratégico de tu empresa.</h2>
+      <a href="/nosotros" class="qs-link">Conoce a nuestro equipo <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="qs-body">
+      <p>Partum Design es una firma de consultoría y desarrollo tecnológico integral. Nuestro proceso inicia con una <strong>auditoría digital profunda</strong> y hacemos que las cosas sucedan: desde branding de alto impacto hasta ingeniería de software a la medida —CRM, apps móviles, herramientas de nivel bancario—. Combinamos talento y tecnología avanzada para que tu empresa opere más ágil, inteligente y rentable.</p>
+      <p>Desarrollamos ecosistemas digitales, automatizamos procesos y escalamos tus ventas con estrategias respaldadas por datos e Inteligencia Artificial. <strong>Exclusivo para Pymes y Empresas B2B.</strong></p>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
@@ -3135,14 +3222,13 @@
 
 #logos-section-partum .logo-card img {
     display: block !important;
-    max-width: 140px !important;
-    max-height: 52px !important;
+    height: 42px !important;
     width: auto !important;
-    height: auto !important;
+    max-width: 172px !important;
     object-fit: contain !important;
-    filter: grayscale(65%) !important;
-    opacity: .82 !important;
-    transition: filter .35s ease, opacity .35s ease, transform .4s cubic-bezier(.22,1,.36,1) !important;
+    filter: none !important;
+    opacity: 1 !important;
+    transition: transform .4s cubic-bezier(.22,1,.36,1) !important;
 }
 
 #logos-section-partum .logo-card:hover {
@@ -3152,15 +3238,13 @@
 }
 
 #logos-section-partum .logo-card:hover img {
-    filter: grayscale(0%) !important;
-    opacity: 1 !important;
     transform: scale(1.06) !important;
 }
 
 @media(max-width:720px){
     #logos-section-partum .gslogo-container { padding: 24px 0 !important; }
     #logos-section-partum .logo-card { width: 168px !important; height: 80px !important; padding: 10px 16px !important; margin: 0 6px !important; }
-    #logos-section-partum .logo-card img { max-width: 112px !important; max-height: 40px !important; }
+    #logos-section-partum .logo-card img { height: 34px !important; max-width: 136px !important; }
 }
 
 /* BOTTOM STATS */

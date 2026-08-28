@@ -75,6 +75,62 @@
         '</div>' +
     '</nav>';
 
+    /* ─── Cursor personalizado (punto + circulito) ─── */
+    var CURSOR_CSS = '@media (hover:hover) and (pointer:fine){' +
+        'html,body,a,button,input,textarea,select,[role="button"],.nav-link,.dropdown-item{cursor:none !important}' +
+        '.partum-cursor-dot{position:fixed;top:0;left:0;width:7px;height:7px;border-radius:50%;background:#818cf8;pointer-events:none;z-index:2147483647;transform:translate(-50%,-50%);transition:opacity .2s ease,background .2s ease;will-change:transform}' +
+        '.partum-cursor-ring{position:fixed;top:0;left:0;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(129,140,248,.55);pointer-events:none;z-index:2147483646;transform:translate(-50%,-50%);transition:width .25s cubic-bezier(.16,1,.3,1),height .25s cubic-bezier(.16,1,.3,1),border-color .25s ease,background .25s ease,opacity .2s ease;will-change:transform}' +
+        '.partum-cursor-ring.is-active{width:50px;height:50px;border-color:rgba(129,140,248,.9);background:rgba(129,140,248,.1)}' +
+        '.partum-cursor-dot.is-hidden,.partum-cursor-ring.is-hidden{opacity:0}' +
+        '}';
+
+    function initCursor() {
+        if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+        if (document.querySelector('.partum-cursor-dot')) return;
+
+        var dot = document.createElement('div');
+        dot.className = 'partum-cursor-dot is-hidden';
+        var ring = document.createElement('div');
+        ring.className = 'partum-cursor-ring is-hidden';
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
+
+        var mx = -100, my = -100, rx = -100, ry = -100, shown = false;
+        var HOVER_SEL = 'a, button, [role="button"], input, textarea, select, .nav-link, .dropdown-item, .logo-card, .st-card, .sn-card';
+
+        document.addEventListener('mousemove', function (e) {
+            mx = e.clientX; my = e.clientY;
+            dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+            if (!shown) {
+                shown = true;
+                rx = mx; ry = my;
+                dot.classList.remove('is-hidden');
+                ring.classList.remove('is-hidden');
+            }
+        }, { passive: true });
+
+        document.addEventListener('mouseover', function (e) {
+            var el = e.target.closest && e.target.closest(HOVER_SEL);
+            if (el) ring.classList.add('is-active');
+        });
+        document.addEventListener('mouseout', function (e) {
+            var el = e.target.closest && e.target.closest(HOVER_SEL);
+            if (el) ring.classList.remove('is-active');
+        });
+        document.addEventListener('mouseleave', function () {
+            dot.classList.add('is-hidden');
+            ring.classList.add('is-hidden');
+        });
+
+        function loop() {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+    }
+
     /* ─── Asegurar dependencias (Inter + FontAwesome) ─── */
     function ensureDeps() {
         if (!document.querySelector('link[href*="Inter"]')) {
@@ -178,6 +234,12 @@
         var styleEl = document.createElement('style');
         styleEl.textContent = NAV_CSS;
         document.head.appendChild(styleEl);
+
+        /* Cursor personalizado */
+        var cursorStyleEl = document.createElement('style');
+        cursorStyleEl.textContent = CURSOR_CSS;
+        document.head.appendChild(cursorStyleEl);
+        initCursor();
 
         var headerEl = document.createElement('div');
         headerEl.id = 'site-header';
