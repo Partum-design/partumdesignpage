@@ -211,8 +211,13 @@
         ════════════════════════════════════════════ */
         .orbital-scale-wrapper {
             display: flex; align-items: center; justify-content: center;
-            width: 100%; height: 500px; 
-            perspective: 1000px; 
+            width: 100%; height: 500px;
+            perspective: 1000px;
+            /* .orbital-wrap mide 500x500px fijos y solo se reduce
+               visualmente con transform:scale() en móvil; sin overflow
+               hidden aquí, ese tamaño fijo fuerza el ancho de la columna
+               del grid y desborda el hero horizontalmente. */
+            overflow: hidden;
         }
 
         .orbital-wrap {
@@ -366,7 +371,7 @@
         ════════════════════════════════════════════ */
         
         @media (max-width: 1280px) {
-            .orbital-wrap { transform: scale(0.9); } 
+            .orbital-scale-wrapper { transform: scale(0.9); } 
         }
 
         @media (max-width: 1100px) {
@@ -383,12 +388,12 @@
             }
             
             .orbital-scale-wrapper { height: 500px; }
-            .orbital-wrap { transform: scale(0.95); } 
+            .orbital-scale-wrapper { transform: scale(0.95); } 
         }
 
         @media (max-width: 768px) {
             .orbital-scale-wrapper { height: 420px; }
-            .orbital-wrap { transform: scale(0.85); }
+            .orbital-scale-wrapper { transform: scale(0.85); }
         }
 
         @media (max-width: 640px) {
@@ -398,12 +403,12 @@
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
             
             .orbital-scale-wrapper { height: 340px; margin-top: -10px; }
-            .orbital-wrap { transform: scale(0.65); }
+            .orbital-scale-wrapper { transform: scale(0.65); }
         }
 
         @media (max-width: 400px) {
             .orbital-scale-wrapper { height: 300px; }
-            .orbital-wrap { transform: scale(0.55); }
+            .orbital-scale-wrapper { transform: scale(0.55); }
         }
     </style>
 </head>

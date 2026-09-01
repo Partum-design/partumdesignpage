@@ -31,6 +31,23 @@
 
         #partum-hero-code .font-code { font-family: 'Fira Code', monospace !important; }
 
+        /* Respaldo en CSS plano del centrado del hero: no depende de que
+           Tailwind (CDN) termine de cargar para evitar que el badge + H1
+           colapsen arriba de la pantalla. */
+        #partum-hero-code > section {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 100vh !important;
+            min-height: 100svh !important;
+        }
+
+        /* El menú flotante (inyectado por components.js) mide ~88px de alto
+           en móvil/tablet y tapa el badge + H1 de este hero centrado. */
+        @media (max-width: 1024px) {
+            #partum-hero-code > section { padding-top: 96px !important; }
+        }
+
         /* --- TÍTULO MASIVO Y EQUILIBRADO --- */
         #partum-hero-code .text-huge {
             font-family: 'Montserrat', sans-serif !important;
@@ -2784,7 +2801,6 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto — Partum Design</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Importación de Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">

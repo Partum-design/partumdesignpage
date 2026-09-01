@@ -334,7 +334,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estrategia y Beneficios — Partum Design</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -644,6 +643,7 @@
             padding: clamp(80px, 10vw, 140px) 24px !important;
             isolation: isolate !important;
             -webkit-font-smoothing: antialiased !important;
+            overflow-x: hidden !important;
         }
 
         #av-portfolio-pro-dark *, 
@@ -841,7 +841,11 @@
         }
 
         #av-portfolio-pro-dark .img-after {
-            width: 100vw !important; max-width: none !important;
+            /* 200% de .after-wrap (que mide 50% del slider) = ancho completo
+               del slider por defecto, sin depender de JS ni exceder el viewport
+               como pasaba con el 100vw anterior. El JS re-ajusta esto en px
+               exactos durante el arrastre. */
+            width: 200% !important; max-width: 200% !important;
             height: 100% !important; object-fit: cover !important;
         }
 
@@ -1018,6 +1022,8 @@
         window.addEventListener('resize', sync);
         window.addEventListener('load', sync);
         sync();
+        requestAnimationFrame(sync);
+        setTimeout(sync, 300);
     })();
 </script>
 
@@ -1030,7 +1036,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cierre de Conversión — Partum Design</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -1308,11 +1313,8 @@
 
                     <div class="av-vr-container">
                         <div class="av-vr-loader">
-                            <i class="fa-solid fa-rotate fa-spin" style="color:var(--av-blue); font-size: 24px;"></i>
-                            <span>Iniciando Entorno</span>
-                        </div>
-                        <div class="wpvr-wrapper" style="position:relative; z-index:2; width:100%; height:100%;">
-                            [wpvr id="2043"]
+                            <i class="fa-solid fa-cube" style="color:var(--av-blue); font-size: 24px;"></i>
+                            <span>Vista 360°</span>
                         </div>
                     </div>
 
