@@ -11,6 +11,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #hero-audiovisual-partum
         ════════════════════════════════════════════════════════ */
@@ -334,9 +388,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estrategia y Beneficios — Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #av-strategy-refined
@@ -620,9 +672,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Audiovisual — Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #av-portfolio-pro-dark
@@ -908,7 +958,7 @@
         <!-- GRID DE PROYECTOS -->
         <div class="av-grid">
             
-            <a href="/portafolio-audiovisual" target="_blank" rel="noopener noreferrer" class="av-card card-lg">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="av-card card-lg">
                 <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=1200" alt="Campaña Ads">
                 <div class="btn-play"><i class="fa-solid fa-play"></i></div>
                 <div class="av-card-hud">
@@ -917,7 +967,7 @@
                 </div>
             </a>
 
-            <a href="/portafolio-audiovisual" target="_blank" rel="noopener noreferrer" class="av-card card-sm">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="av-card card-sm">
                 <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&q=80&w=800" alt="Social Media">
                 <div class="btn-play"><i class="fa-solid fa-play"></i></div>
                 <div class="av-card-hud">
@@ -926,7 +976,7 @@
                 </div>
             </a>
 
-            <a href="/portafolio-audiovisual" target="_blank" rel="noopener noreferrer" class="av-card card-half">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="av-card card-half">
                 <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=1000" alt="Corporate">
                 <div class="btn-play"><i class="fa-solid fa-play"></i></div>
                 <div class="av-card-hud">
@@ -935,7 +985,7 @@
                 </div>
             </a>
 
-            <a href="/portafolio-audiovisual" target="_blank" rel="noopener noreferrer" class="av-card card-half">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="av-card card-half">
                 <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1000" alt="Storytelling">
                 <div class="btn-play"><i class="fa-solid fa-play"></i></div>
                 <div class="av-card-hud">
@@ -1036,9 +1086,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cierre de Conversión — Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #av-final-cta-compact
@@ -1297,7 +1345,7 @@
                     <a href="https://wa.me/525616044547?text=Hola,%20me%20interesa%20cotizar%20un%20proyecto%20audiovisual%20de%20élite." target="_blank" class="av-button btn-fill">
                         Cotizar proyecto <i class="fa-solid fa-arrow-right"></i>
                     </a>
-                    <a href="#portafolio" class="av-button btn-ghost">
+                    <a href="#av-portfolio-pro-dark" class="av-button btn-ghost">
                         Explorar Reel <i class="fa-solid fa-play"></i>
                     </a>
                 </div>
@@ -1319,7 +1367,7 @@
                     </div>
 
                     <div class="av-card-footer">
-                        <a href="/portafolio-audiovisual" class="av-footer-link">
+                        <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="av-footer-link">
                             Portafolio de Producción <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </div>

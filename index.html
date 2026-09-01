@@ -9,6 +9,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #premium-hero-section
         ════════════════════════════════════════════════════════ */
@@ -890,7 +944,6 @@
     <title>Servicios Premium - Partum Design</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* ════════════════════════════════════════════════════════
@@ -1269,8 +1322,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soluciones de Negocio - Partum Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 #soluciones-negocio-partum {
     background: #010a13 !important;
@@ -1436,8 +1487,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soluciones Tech - Partum Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 #soluciones-tech-partum {
     background: linear-gradient(180deg, #010a13 0%, #050e1c 100%) !important;
@@ -1551,10 +1600,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trust Section - Partum Design</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
     /* ════════════════════════════════════════════════════════
        ENCAPSULAMIENTO TOTAL - ID: #trust-section-premium
@@ -2112,7 +2159,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metodología Growth - Partum Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ════════════════════════════════════════════════════════
    ENCAPSULAMIENTO TOTAL - ID: #metodologia-partum-premium
@@ -2605,7 +2651,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casos de Éxito - Partum Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ════════════════════════════════════════════════════════
    ENCAPSULAMIENTO TOTAL - ID: #casos-exito-premium
@@ -2986,8 +3031,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CTA Diagnóstico - Partum Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 #cta-diagnostico-partum {
     background: #010a13 !important;
@@ -3053,8 +3096,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Logos Section - Partum Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ════════════════════════════════════════════════════════
    ENCAPSULAMIENTO TOTAL - ID: #logos-section-partum
@@ -3429,7 +3470,6 @@
     <title>Reseñas - Partum Design</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         /* ════════════════════════════════════════════════════════
@@ -3806,7 +3846,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes - Partum</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ════════════════════════════════════════════════════════

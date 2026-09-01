@@ -8,9 +8,62 @@
     <link rel="icon" type="image/png" href="/uploads/logotipo%20de%20partum%20design/favicon-cropped.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -753,9 +806,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introducción Marketing - Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1212,9 +1262,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes de Marketing - Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }

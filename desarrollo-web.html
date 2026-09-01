@@ -12,6 +12,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
         :root { 
             --brand-blue: #0055ff;
             --dark-bg: #010a13;
@@ -250,7 +304,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Soluciones Tech B2B - Partum Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 #svc1-soluciones-tech { background:#010a13 !important; padding:110px 5% !important; font-family:'Inter',sans-serif !important; color:#fff !important; }
 #svc1-soluciones-tech *, #svc1-soluciones-tech *::before, #svc1-soluciones-tech *::after { box-sizing:border-box !important; }
@@ -1322,8 +1375,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planes de Desarrollo Web — Partum Design</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ════════════════════════════════════════════════════════
@@ -1818,8 +1869,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Pro — Partum Design</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ════════════════════════════════════════════════════════
            PORTFOLIO ENCAPSULADO - ID: #partum-portfolio-premium
@@ -2117,7 +2166,7 @@
         <div class="pf-grid">
 
             <!-- PROYECTO 1: UI/UX -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-7 pf-reveal" style="transition-delay: 0.1s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-7 pf-reveal" style="transition-delay: 0.1s;">
                 <div class="pf-visual">
                     <!-- Mensaje de interacción -->
                     <div class="pf-hint-tag">
@@ -2148,7 +2197,7 @@
             </a>
 
             <!-- PROYECTO 2: DASHBOARD -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-5 pf-reveal" style="transition-delay: 0.2s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-5 pf-reveal" style="transition-delay: 0.2s;">
                 <div class="pf-visual" style="padding: 30px 20px 0 !important;">
                     <div class="pf-hint-tag">
                         <i class="fas fa-mouse-pointer"></i>
@@ -2177,7 +2226,7 @@
             </a>
 
             <!-- PROYECTO 3: CÓDIGO (Ingeniería) -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-6 pf-reveal" style="transition-delay: 0.3s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-6 pf-reveal" style="transition-delay: 0.3s;">
                 <div class="pf-visual">
                     <div class="pf-hint-tag">
                         <i class="fas fa-mouse-pointer"></i>
@@ -2207,7 +2256,7 @@
             </a>
 
             <!-- PROYECTO 4: CÓDIGO (Infraestructura) -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-6 pf-reveal" style="transition-delay: 0.4s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pf-card pf-span-6 pf-reveal" style="transition-delay: 0.4s;">
                 <div class="pf-visual">
                     <div class="pf-hint-tag">
                         <i class="fas fa-mouse-pointer"></i>

@@ -12,6 +12,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #branding-hero-direct-pro
         ════════════════════════════════════════════════════════ */
@@ -277,7 +331,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arquitectura Visual B2B - Partum Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 #svc3-arquitectura-visual { background:#010a13 !important; padding:110px 5% !important; font-family:'Inter',sans-serif !important; color:#fff !important; }
 #svc3-arquitectura-visual *, #svc3-arquitectura-visual *::before, #svc3-arquitectura-visual *::after { box-sizing:border-box !important; }
@@ -426,7 +479,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Qué es la Identidad Corporativa? — Partum Design</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1526,8 +1578,6 @@ function toggleCheck(item) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Qué incluye nuestro servicio? — Partum Design</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 /* ════════════════════════════════════════════════════════
    ENCAPSULAMIENTO TOTAL - ID: #partum-servicios-radial
@@ -2417,7 +2467,7 @@ function toggleCheck(item) {
         <strong>Todo incluido en un solo proyecto.</strong> Sin costos ocultos, sin módulos extras. Una inversión que trabaja para tu marca durante años.
       </div>
       <div class="cta-btns">
-        <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="btn-s"><i class="fa-solid fa-eye"></i> Ver portafolio</a>
+        <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="btn-s"><i class="fa-solid fa-eye"></i> Ver portafolio</a>
         <a href="/contacto" class="btn-p">Agendar asesoría <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
@@ -2511,9 +2561,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio Identidad Corporativa — Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ════════════════════════════════════════════════════════
            ENCAPSULAMIENTO TOTAL - ID: #partum-portfolio-branding
@@ -2895,7 +2943,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
         <div class="pt-grid">
             
             <!-- Item 1: Manual de Marca (Hero) -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pt-card card-1 reveal" style="transition-delay: 0.1s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pt-card card-1 reveal" style="transition-delay: 0.1s;">
                 <img src="/uploads/gs-behance/MANUAL-DE-IDENTIDAD-CORPORATIVA-CONCRETOS-NANFA.jpg" alt="Manual de Marca y Pantones — Concretos Nanfa">
                 <div class="pt-overlay">
                     <span class="pt-cat-tag">Manual de Marca & Lineamientos</span>
@@ -2908,7 +2956,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
             </a>
 
             <!-- Item 2: Logotipo / Construcción -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pt-card card-2 reveal" style="transition-delay: 0.2s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pt-card card-2 reveal" style="transition-delay: 0.2s;">
                 <img src="/uploads/gs-behance/Logotipo-Asesor-de-Moda.jpg" alt="Diseño de Logotipo — Asesor de Moda">
                 <div class="pt-overlay">
                     <span class="pt-cat-tag">Logotipo & Tipografía</span>
@@ -2921,7 +2969,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
             </a>
 
             <!-- Item 3: Papelería -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pt-card card-3 reveal" style="transition-delay: 0.3s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pt-card card-3 reveal" style="transition-delay: 0.3s;">
                 <img src="/uploads/gs-behance/HOJA-MEMBRETADA-CONCRETOS-NANFA.jpg" alt="Papelería Corporativa — Concretos Nanfa">
                 <div class="pt-overlay">
                     <span class="pt-cat-tag">Aplicaciones Físicas</span>
@@ -2934,7 +2982,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
             </a>
 
             <!-- Item 4: Empaque / Mockup -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pt-card card-4 reveal" style="transition-delay: 0.4s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pt-card card-4 reveal" style="transition-delay: 0.4s;">
                 <img src="/uploads/gs-behance/PLAYERA-CONCRETOS-NANFA.jpg" alt="Aplicación de marca en merchandising — Concretos Nanfa">
                 <div class="pt-overlay">
                     <span class="pt-cat-tag">Packaging Design</span>
@@ -2947,7 +2995,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
             </a>
 
             <!-- Item 5: Redes / Digital -->
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="pt-card card-5 reveal" style="transition-delay: 0.5s;">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="pt-card card-5 reveal" style="transition-delay: 0.5s;">
                 <img src="/uploads/gs-behance/Aplicativo-de-Bolsa-Marca-de-Asesor-de-Moda.jpg" alt="Aplicativo de marca digital — Asesor de Moda">
                 <div class="pt-overlay">
                     <span class="pt-cat-tag">Entorno Digital</span>
@@ -2963,7 +3011,7 @@ document.querySelectorAll('#partum-servicios-radial .ml-trigger').forEach(trigge
 
         <!-- CTA FINAL -->
         <div class="pt-cta-wrap reveal" style="transition-delay: 0.6s;">
-            <a href="/portafolio" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <a href="https://www.behance.net/partumdesign2" target="_blank" rel="noopener noreferrer" class="btn-primary">
                 Ver portafolio completo <i class="fa-solid fa-images"></i>
             </a>
         </div>
