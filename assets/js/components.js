@@ -101,11 +101,11 @@
         document.addEventListener('mousemove', function (e) {
             mx = e.clientX; my = e.clientY;
             dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+            dot.classList.remove('is-hidden');
+            ring.classList.remove('is-hidden');
             if (!shown) {
                 shown = true;
                 rx = mx; ry = my;
-                dot.classList.remove('is-hidden');
-                ring.classList.remove('is-hidden');
             }
         }, { passive: true });
 

@@ -3239,6 +3239,13 @@
     transition: transform .4s cubic-bezier(.22,1,.36,1) !important;
 }
 
+/* El logo de Grupo Sum es casi cuadrado (no un wordmark ancho), así que con
+   el tope de alto general se veía muy chico dentro de su tarjeta. Único
+   logo con un tope más grande, a petición explícita. */
+#logos-section-partum .logo-card img[alt="Grupo Sum"] {
+    max-height: 66px !important;
+}
+
 #logos-section-partum .logo-card:hover {
     transform: translateY(-6px) !important;
     border-color: rgba(14,165,233,0.45) !important;
@@ -3253,6 +3260,7 @@
     #logos-section-partum .gslogo-container { padding: 24px 0 !important; }
     #logos-section-partum .logo-card { width: 168px !important; height: 80px !important; padding: 10px 16px !important; margin: 0 6px !important; }
     #logos-section-partum .logo-card img { max-height: 34px !important; max-width: 116px !important; }
+    #logos-section-partum .logo-card img[alt="Grupo Sum"] { max-height: 52px !important; }
 }
 
 /* BOTTOM STATS */
