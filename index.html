@@ -16,8 +16,8 @@
 p {
     text-align: justify;
     text-align-last: left;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
 }
 
 /* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
@@ -326,6 +326,36 @@ p {
             margin-right: 4px;
         }
 
+        /* ── ACCIONES RÁPIDAS: WHATSAPP Y NORA ── */
+        #premium-hero-section .quick-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+            opacity: 0;
+            animation: phFadeUp 0.8s 0.46s cubic-bezier(0.2,0.8,0.2,1) forwards;
+        }
+        #premium-hero-section .quick-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.14);
+            color: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.04);
+            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+        #premium-hero-section .quick-action-btn i { font-size: 0.95rem; }
+        #premium-hero-section .quick-action-btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
+        #premium-hero-section .qa-whatsapp { color: #3ee089; border-color: rgba(37,211,102,0.35); background: rgba(37,211,102,0.1); }
+        #premium-hero-section .qa-whatsapp:hover { background: rgba(37,211,102,0.18); }
+        #premium-hero-section .qa-nora i { color: var(--accent-light); }
+
         /* ── STATS (Centrado en el fondo) ── */
         #premium-hero-section .stats-row {
             display: flex;
@@ -599,7 +629,10 @@ p {
         /* ════════════ RESPONSIVE QUERIES REFINADOS ════════════ */
 
         @media (max-width: 1024px) {
-            #premium-hero-section .hero-inner { flex-direction: column; padding: 40px 40px; gap: 60px; text-align: center; }
+            /* padding-top ampliado: el navbar es flotante (top:10px, height:78px)
+               y aquí el hero pasa a columna, así que el badge queda pegado bajo
+               el logo si no se le da espacio para despejarlo. */
+            #premium-hero-section .hero-inner { flex-direction: column; padding: 128px 40px 40px; gap: 60px; text-align: center; }
             #premium-hero-section .hero-left { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 100%; min-width: 0; }
             #premium-hero-section .hero-right { width: 100%; max-width: 600px; margin: 0 auto; }
             #premium-hero-section .cta-row { justify-content: center; }
@@ -609,7 +642,7 @@ p {
         }
 
         @media (max-width: 768px) {
-            #premium-hero-section .hero-inner { padding: 30px 24px; gap: 50px; }
+            #premium-hero-section .hero-inner { padding: 118px 24px 30px; gap: 50px; }
             /* Ajuste proporcional también en móviles */
             #premium-hero-section h1 { font-size: clamp(2rem, 7vw, 3.2rem) !important; margin-bottom: 20px !important; }
             #premium-hero-section .hero-desc { font-size: 0.95rem; margin-bottom: 30px; }
@@ -631,7 +664,7 @@ p {
         }
 
         @media (max-width: 480px) {
-            #premium-hero-section .hero-inner { padding: 20px 16px; gap: 40px; }
+            #premium-hero-section .hero-inner { padding: 110px 16px 20px; gap: 40px; }
             #premium-hero-section .badge { padding: 5px 12px 5px 6px; margin-bottom: 24px; }
             #premium-hero-section .badge-text { font-size: 0.6rem; }
             #premium-hero-section .cta-row { flex-direction: column; width: 100%; gap: 12px; }
@@ -694,7 +727,7 @@ p {
             </h1>
 
             <p class="hero-desc">
-                Auditoría, desarrollo de software y branding con Inteligencia Artificial. <strong>Exclusivo para Pymes y Empresas B2B.</strong>
+                Auditoría digital, desarrollo de software y branding — todo potenciado con Inteligencia Artificial. <strong>Exclusivo para Pymes y Empresas B2B.</strong>
             </p>
 
             <div class="cta-row">
@@ -705,11 +738,14 @@ p {
                 </a>
             </div>
 
-            <p style="margin-top: 22px; font-size: 0.78rem; color: rgba(255,255,255,0.45); opacity: 0; animation: phFadeUp 0.8s 0.46s cubic-bezier(0.2,0.8,0.2,1) forwards;">
-                <i class="fa-solid fa-robot" style="color: var(--accent-light);"></i>
-                ¿Tienes dudas? Pregúntale a <strong style="color: rgba(255,255,255,0.7);">Nora</strong>, nuestra asistente virtual con IA —
-                <a href="#soluciones-tech-partum" style="color: var(--accent-light); text-decoration: underline;">conócela aquí</a>
-            </p>
+            <div class="quick-actions">
+                <a href="https://wa.me/525616044547?text=Hola,%20vi%20su%20sitio%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener noreferrer" class="quick-action-btn qa-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Escríbenos por WhatsApp
+                </a>
+                <a href="https://wa.me/525616044547?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20Nora" target="_blank" rel="noopener noreferrer" class="quick-action-btn qa-nora">
+                    <i class="fa-solid fa-robot"></i> Chatea con Nora
+                </a>
+            </div>
 
             <div class="tools-marquee" aria-label="Herramientas e inteligencias artificiales que usamos">
                 <p class="tools-marquee-label">Trabajamos todos los días con</p>
@@ -877,12 +913,29 @@ p {
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 #quienes-somos-partum {
-    background: #010a13 !important;
+    background:
+        radial-gradient(ellipse 620px 420px at 8% 0%, rgba(99,102,241,0.16), transparent 60%),
+        radial-gradient(ellipse 560px 460px at 96% 100%, rgba(0,85,255,0.14), transparent 60%),
+        linear-gradient(180deg, #010a13 0%, #05121f 50%, #010a13 100%) !important;
     padding: 76px 5% !important;
     font-family: 'Inter', sans-serif !important;
     color: #fff !important;
     border-top: 1px solid rgba(255,255,255,0.06) !important;
     border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+#quienes-somos-partum::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px) !important;
+    background-size: 42px 42px !important;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 75%) !important;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 0%, transparent 75%) !important;
+    pointer-events: none !important;
 }
 #quienes-somos-partum *, #quienes-somos-partum *::before, #quienes-somos-partum *::after { box-sizing: border-box !important; }
 #quienes-somos-partum .qs-wrap {
@@ -892,6 +945,8 @@ p {
     grid-template-columns: 0.9fr 1.4fr !important;
     gap: 48px !important;
     align-items: start !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 @media (max-width: 800px) { #quienes-somos-partum .qs-wrap { grid-template-columns: 1fr !important; gap: 22px !important; } }
 
@@ -1103,10 +1158,10 @@ p {
     <div class="blob w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] bg-purple-300/50 mix-blend-multiply top-[20%] right-[-10%]" style="animation-delay: -10s;"></div>
 
     <div class="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 w-full max-w-[1300px]">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
 
             <!-- ── LEFT CONTENT ── -->
-            <div class="lg:col-span-5 xl:col-span-5 space-y-8 sm:space-y-10">
+            <div class="lg:col-span-5 xl:col-span-5 space-y-6 sm:space-y-10">
 
                 <div class="reveal d1">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-md border border-slate-200/80 shadow-sm mb-6">
@@ -1324,7 +1379,10 @@ p {
 <title>Soluciones de Negocio - Partum Design</title>
 <style>
 #soluciones-negocio-partum {
-    background: #010a13 !important;
+    background:
+        radial-gradient(ellipse 640px 480px at 90% -8%, rgba(0,85,255,0.16), transparent 60%),
+        radial-gradient(ellipse 520px 420px at 4% 108%, rgba(129,140,248,0.14), transparent 60%),
+        #010a13 !important;
     padding: 110px 5% 120px !important;
     font-family: 'Inter', sans-serif !important;
     position: relative !important;
@@ -1367,13 +1425,22 @@ p {
 @media (max-width: 980px) { #soluciones-negocio-partum .sn-grid { grid-template-columns: 1fr !important; max-width: 480px !important; margin: 0 auto !important; } }
 
 #soluciones-negocio-partum .sn-card {
-    background: rgba(255,255,255,0.03) !important;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)) !important;
     border: 1px solid rgba(255,255,255,0.08) !important;
     border-radius: 24px !important;
     overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
+    position: relative !important;
     transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .35s ease, box-shadow .35s ease !important;
+}
+#soluciones-negocio-partum .sn-card::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: radial-gradient(circle at 18% 0%, var(--sn-accent, rgba(99,102,241,0.2)), transparent 60%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
 }
 #soluciones-negocio-partum .sn-card:hover {
     transform: translateY(-8px) !important;
@@ -1381,11 +1448,14 @@ p {
     box-shadow: 0 30px 60px rgba(0,0,0,0.35) !important;
 }
 #soluciones-negocio-partum .sn-card-head {
-    background: #000 !important;
+    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3)) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
     padding: 22px 28px !important;
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 #soluciones-negocio-partum .sn-card-ico {
     width: 42px !important; height: 42px !important; border-radius: 12px !important;
@@ -1394,7 +1464,7 @@ p {
 }
 #soluciones-negocio-partum .sn-card-head h3 { font-size: 1.15rem !important; font-weight: 800 !important; color: #fff !important; margin: 0 !important; letter-spacing: -0.01em !important; }
 
-#soluciones-negocio-partum .sn-card-body { padding: 26px 28px 30px !important; display: flex !important; flex-direction: column !important; flex: 1 !important; }
+#soluciones-negocio-partum .sn-card-body { position: relative !important; z-index: 1 !important; padding: 26px 28px 30px !important; display: flex !important; flex-direction: column !important; flex: 1 !important; }
 #soluciones-negocio-partum .sn-card-desc { color: rgba(255,255,255,0.5) !important; font-size: 0.88rem !important; line-height: 1.6 !important; margin-bottom: 22px !important; }
 
 #soluciones-negocio-partum .sn-list { list-style: none !important; margin: 0 0 24px 0 !important; padding: 0 !important; flex: 1 !important; }
@@ -1426,7 +1496,7 @@ p {
 
     <div class="sn-grid">
 
-      <div class="sn-card">
+      <div class="sn-card" style="--sn-accent: rgba(0,85,255,0.22);">
         <div class="sn-card-head">
           <div class="sn-card-ico" style="background: rgba(0,85,255,0.15); color:#4facfe;"><i class="fa-solid fa-microchip"></i></div>
           <h3>Tech &amp; Desarrollo IA</h3>
@@ -1442,7 +1512,7 @@ p {
         </div>
       </div>
 
-      <div class="sn-card">
+      <div class="sn-card" style="--sn-accent: rgba(16,185,129,0.22);">
         <div class="sn-card-head">
           <div class="sn-card-ico" style="background: rgba(16,185,129,0.15); color:#34d399;"><i class="fa-solid fa-chart-line"></i></div>
           <h3>Estrategia &amp; Growth</h3>
@@ -1458,7 +1528,7 @@ p {
         </div>
       </div>
 
-      <div class="sn-card">
+      <div class="sn-card" style="--sn-accent: rgba(244,63,94,0.2);">
         <div class="sn-card-head">
           <div class="sn-card-ico" style="background: rgba(244,63,94,0.15); color:#fb7185;"><i class="fa-solid fa-palette"></i></div>
           <h3>Branding Corporativo</h3>
@@ -1541,6 +1611,7 @@ p {
 }
 #soluciones-tech-partum .st-card h3 { font-size: 1.25rem !important; font-weight: 800 !important; margin: 0 0 12px 0 !important; }
 #soluciones-tech-partum .st-card p { color: rgba(255,255,255,0.55) !important; font-size: 0.88rem !important; line-height: 1.65 !important; margin: 0 0 22px 0 !important; flex: 1 !important; }
+#soluciones-tech-partum .st-card p strong { color: rgba(255,255,255,0.92) !important; font-weight: 700 !important; }
 #soluciones-tech-partum .st-card a {
     display: inline-flex !important; align-items: center !important; gap: 8px !important;
     color: #fff !important; text-decoration: none !important; font-size: 0.76rem !important; font-weight: 800 !important;
@@ -1567,7 +1638,7 @@ p {
         <div class="st-badge">Creado por Partum Design</div>
         <div class="st-ico"><i class="fa-solid fa-robot"></i></div>
         <h3>Nora</h3>
-        <p>Nuestra inteligencia artificial residente. Resuelve dudas técnicas, califica leads B2B y agenda reuniones directo en tu calendario, las 24 horas. Nosotros somos los creadores de Nora.</p>
+        <p><strong>Tu Ecosistema B2B 24/7 en WhatsApp: Ventas + Reclutamiento.</strong> No es un chatbot. Es tu ecosistema completo que atiende, da seguimiento, agenda y contrata por ti.</p>
         <a href="https://wa.me/525616044547?text=Hola,%20quiero%20saber%20m%C3%A1s%20sobre%20Nora" target="_blank" rel="noopener noreferrer">Chatea con Nora <i class="fa-solid fa-arrow-right"></i></a>
       </div>
 
