@@ -25,7 +25,7 @@
         '.dropdown-item:hover{background:rgba(255,255,255,.08);transform:translateX(2px)}',
         '.drop-content h4{font-size:.9rem;color:var(--text-white);margin:0 0 4px;font-weight:600;font-family:Inter,sans-serif}',
         '.drop-content p{font-size:.75rem;color:var(--text-muted);margin:0;font-family:Inter,sans-serif}',
-        '.nav-btn{background:var(--text-white);color:#010a13;padding:12px 22px;border-radius:12px;font-size:.78rem;font-weight:900;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;transition:background .25s,color .25s,box-shadow .25s,transform .25s;border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px rgba(0,0,0,.14);white-space:nowrap;font-family:Inter,sans-serif}',
+        '.nav-btn{background:var(--text-white);color:#010a13;padding:12px 22px;border-radius:12px;font-size:.78rem;font-weight:900;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;transition:background .25s,color .25s,box-shadow .25s,transform .25s;border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 24px rgba(0,0,0,.14);white-space:nowrap;font-family:Inter,sans-serif;display:inline-flex;align-items:center;gap:8px}',
         '.nav-btn:hover{background:rgba(255,255,255,.08);color:var(--text-white);box-shadow:0 0 0 1px rgba(255,255,255,.16);transform:translateY(-1px)}',
         '.mobile-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;z-index:100000;padding:0;width:44px;height:44px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.04)}',
         '.mobile-toggle span{width:28px;height:2px;background:var(--text-white);transition:.3s cubic-bezier(.68,-.55,.265,1.55);border-radius:2px;display:block}',
@@ -59,21 +59,77 @@
                     '<li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>' +
                     '<li class="nav-item"><a href="/nosotros" class="nav-link">Nosotros</a></li>' +
                     '<li class="nav-item has-dropdown">' +
-                        '<a href="#" class="nav-link" id="servicios-toggle">Servicios <i class="fa-solid fa-chevron-down" style="font-size:.8rem;transition:.3s"></i></a>' +
+                        '<a href="#" class="nav-link" id="servicios-toggle">Servicios B2B <i class="fa-solid fa-chevron-down" style="font-size:.8rem;transition:.3s"></i></a>' +
                         '<div class="dropdown">' +
-                            '<a href="/identidad-visual-y-corporativa" class="dropdown-item"><div class="drop-content"><h4>Estrategia Digital</h4><p>Crecimiento basado en datos.</p></div></a>' +
-                            '<a href="/desarrollo-web" class="dropdown-item"><div class="drop-content"><h4>Desarrollo Web</h4><p>Interfaces premium y alto rendimiento.</p></div></a>' +
-                            '<a href="/marketing-digital" class="dropdown-item"><div class="drop-content"><h4>Marketing Digital</h4><p>Posicionamiento y visibilidad de marca.</p></div></a>' +
+                            '<a href="/desarrollo-web" class="dropdown-item"><div class="drop-content"><h4>Tech &amp; Desarrollo IA</h4><p>Web, apps y software a la medida con IA.</p></div></a>' +
+                            '<a href="/marketing-digital" class="dropdown-item"><div class="drop-content"><h4>Estrategia &amp; Growth</h4><p>Performance ads y posicionamiento B2B.</p></div></a>' +
+                            '<a href="/identidad-visual-y-corporativa" class="dropdown-item"><div class="drop-content"><h4>Branding Corporativo</h4><p>Identidad visual que cierra negocios.</p></div></a>' +
                             '<a href="/produccion-audiovisual" class="dropdown-item"><div class="drop-content"><h4>Producción Audiovisual</h4><p>Contenido multimedia de alto impacto.</p></div></a>' +
                         '</div>' +
                     '</li>' +
                     '<li class="nav-item"><a href="/contacto" class="nav-link">Contacto</a></li>' +
                 '</ul>' +
-                '<a href="/contacto" class="nav-btn">Cotizar ahora</a>' +
+                '<a href="https://wa.me/525616044547?text=Hola,%20me%20gustar%C3%ADa%20agendar%20mi%20Auditor%C3%ADa%20Digital%20con%20fecha%20y%20hora" target="_blank" rel="noopener noreferrer" class="nav-btn"><i class="fa-regular fa-calendar-check"></i> Auditoría Digital</a>' +
             '</div>' +
             '<div class="mobile-toggle" id="burger-menu"><span></span><span></span><span></span></div>' +
         '</div>' +
     '</nav>';
+
+    /* ─── Cursor personalizado (punto + circulito) ─── */
+    var CURSOR_CSS = '@media (hover:hover) and (pointer:fine){' +
+        'html,body,a,button,input,textarea,select,[role="button"],.nav-link,.dropdown-item{cursor:none !important}' +
+        '.partum-cursor-dot{position:fixed;top:0;left:0;width:7px;height:7px;border-radius:50%;background:#818cf8;pointer-events:none;z-index:2147483647;transform:translate(-50%,-50%);transition:opacity .2s ease,background .2s ease;will-change:transform}' +
+        '.partum-cursor-ring{position:fixed;top:0;left:0;width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(129,140,248,.55);pointer-events:none;z-index:2147483646;transform:translate(-50%,-50%);transition:width .25s cubic-bezier(.16,1,.3,1),height .25s cubic-bezier(.16,1,.3,1),border-color .25s ease,background .25s ease,opacity .2s ease;will-change:transform}' +
+        '.partum-cursor-ring.is-active{width:50px;height:50px;border-color:rgba(129,140,248,.9);background:rgba(129,140,248,.1)}' +
+        '.partum-cursor-dot.is-hidden,.partum-cursor-ring.is-hidden{opacity:0}' +
+        '}';
+
+    function initCursor() {
+        if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+        if (document.querySelector('.partum-cursor-dot')) return;
+
+        var dot = document.createElement('div');
+        dot.className = 'partum-cursor-dot is-hidden';
+        var ring = document.createElement('div');
+        ring.className = 'partum-cursor-ring is-hidden';
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
+
+        var mx = -100, my = -100, rx = -100, ry = -100, shown = false;
+        var HOVER_SEL = 'a, button, [role="button"], input, textarea, select, .nav-link, .dropdown-item, .logo-card, .st-card, .sn-card';
+
+        document.addEventListener('mousemove', function (e) {
+            mx = e.clientX; my = e.clientY;
+            dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+            dot.classList.remove('is-hidden');
+            ring.classList.remove('is-hidden');
+            if (!shown) {
+                shown = true;
+                rx = mx; ry = my;
+            }
+        }, { passive: true });
+
+        document.addEventListener('mouseover', function (e) {
+            var el = e.target.closest && e.target.closest(HOVER_SEL);
+            if (el) ring.classList.add('is-active');
+        });
+        document.addEventListener('mouseout', function (e) {
+            var el = e.target.closest && e.target.closest(HOVER_SEL);
+            if (el) ring.classList.remove('is-active');
+        });
+        document.addEventListener('mouseleave', function () {
+            dot.classList.add('is-hidden');
+            ring.classList.add('is-hidden');
+        });
+
+        function loop() {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+    }
 
     /* ─── Asegurar dependencias (Inter + FontAwesome) ─── */
     function ensureDeps() {
@@ -178,6 +234,12 @@
         var styleEl = document.createElement('style');
         styleEl.textContent = NAV_CSS;
         document.head.appendChild(styleEl);
+
+        /* Cursor personalizado */
+        var cursorStyleEl = document.createElement('style');
+        cursorStyleEl.textContent = CURSOR_CSS;
+        document.head.appendChild(cursorStyleEl);
+        initCursor();
 
         var headerEl = document.createElement('div');
         headerEl.id = 'site-header';

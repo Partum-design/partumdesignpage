@@ -10,6 +10,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
@@ -43,6 +97,16 @@
             background-color: #010a13 !important;
             color: white !important;
             isolation: isolate;
+        }
+
+        /* El menú flotante (inyectado por components.js) mide ~88px de alto
+           en móvil/tablet (top:10px + height:78px). El padding-top de 80px
+           no alcanza a librarlo y tapa el status-pill y el H1. */
+        @media (max-width: 1024px) {
+            .hero-contact { padding-top: 140px; }
+        }
+        @media (max-width: 480px) {
+            .hero-contact { padding-top: 130px; }
         }
 
         /* ── Aislar de estilos externos (WordPress/Elementor/Divi) ── */
@@ -375,6 +439,29 @@
 </head>
 <body>
 
+<div id="partum-preloader" style="position:fixed;inset:0;z-index:2147483647;background:#010a13;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;">
+    <img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Partum Design" style="width:170px;max-width:55vw;height:auto;animation:partumPreloaderPulse 1.3s ease-in-out infinite;">
+</div>
+<style>@keyframes partumPreloaderPulse{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}</style>
+<script>
+(function () {
+    var pl = document.getElementById('partum-preloader');
+    if (!pl) return;
+    var alreadySeen = false;
+    try {
+        alreadySeen = !!sessionStorage.getItem('partumPreloaderSeen');
+        sessionStorage.setItem('partumPreloaderSeen', '1');
+    } catch (e) {}
+    if (alreadySeen) { pl.style.display = 'none'; return; }
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            pl.style.opacity = '0';
+            setTimeout(function () { if (pl.parentNode) pl.parentNode.removeChild(pl); }, 550);
+        }, 200);
+    });
+})();
+</script>
+
 <section class="hero-contact">
 
     <!-- Fondo -->
@@ -428,11 +515,11 @@
 
         <!-- Canales -->
         <div class="channels">
-            <a href="mailto:contacto@partumdesign.agency" class="channel-chip">
+            <a href="mailto:contacto@partumdesign.com.mx" class="channel-chip">
                 <div class="ch-icon ch-icon-email"><i class="fa-solid fa-envelope"></i></div>
                 <div class="ch-info">
                     <div class="ch-label">Email</div>
-                    <div class="ch-value">contacto@partumdesign.agency</div>
+                    <div class="ch-value">contacto@partumdesign.com.mx</div>
                 </div>
             </a>
 
@@ -524,10 +611,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto — Formulario</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Montserrat para máxima jerarquía e Inter para lectura -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -929,20 +1014,20 @@
                         <label class="input-label">Servicio de interés</label>
                         <div class="service-grid">
                             <label class="service-chip">
-                                <input type="radio" name="servicio" value="web">
-                                <span class="chip-label">Desarrollo Web</span>
+                                <input type="radio" name="servicio" value="tech">
+                                <span class="chip-label">Tech &amp; Desarrollo IA</span>
                             </label>
                             <label class="service-chip">
                                 <input type="radio" name="servicio" value="estrategia">
-                                <span class="chip-label">Estrategia Digital</span>
+                                <span class="chip-label">Estrategia &amp; Growth</span>
                             </label>
                             <label class="service-chip">
                                 <input type="radio" name="servicio" value="marca">
-                                <span class="chip-label">Branding</span>
+                                <span class="chip-label">Branding Corporativo</span>
                             </label>
                             <label class="service-chip">
-                                <input type="radio" name="servicio" value="ecommerce">
-                                <span class="chip-label">E-commerce</span>
+                                <input type="radio" name="servicio" value="audiovisual">
+                                <span class="chip-label">Producción Audiovisual</span>
                             </label>
                         </div>
                     </div>
@@ -961,7 +1046,7 @@
             <!-- Map Side -->
             <div class="map-side">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.702203117502!2d-99.0768478!3d19.5113401!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fb1b61678825%3A0xc3f673400569727!2sAv.%20Dolores%20Hidalgo%20233%2C%20San%20Felipe%20de%20Jes%C3%BAs%2C%20Gustavo%20A.%20Madero%2C%2007510%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1700000000000"
+                    src="https://www.google.com/maps?q=Pernambuco%20734%2C%20Lindavista%2C%20Gustavo%20A.%20Madero%2C%2007300%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX&output=embed"
                     allowfullscreen="" loading="lazy">
                 </iframe>
 
@@ -970,14 +1055,14 @@
                         <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                         <div class="info-body">
                             <div class="info-label">Sede Central</div>
-                            <div class="info-value">Av. Dolores Hidalgo 233, CDMX</div>
+                            <div class="info-value">Pernambuco 734, Lindavista, CDMX</div>
                         </div>
                     </div>
                     <div class="info-row">
                         <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                         <div class="info-body">
                             <div class="info-label">Atención Directa</div>
-                            <div class="info-value">+55 9526 3993</div>
+                            <div class="info-value">+52 56 1604 4547</div>
                         </div>
                     </div>
 
@@ -1018,9 +1103,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Experience — Partum Design</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* ════════════════════════════════════════════════════════
            RESET + ROOT

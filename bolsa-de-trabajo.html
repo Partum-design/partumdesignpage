@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolsa de Trabajo — Partum Design</title>
+    <meta name="description" content="Únete al equipo de Partum Design. Envíanos tu CV y cuéntanos en qué área te gustaría crecer con nosotros.">
+    <link rel="icon" type="image/png" href="/uploads/logotipo%20de%20partum%20design/favicon-cropped.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+
+/* Texto justificado en parrafos de cuerpo (no afecta titulos, botones,
+   badges ni parrafos que ya tengan su propio text-align explicito, que
+   siguen ganando por especificidad sobre este selector de elemento). */
+p {
+    text-align: justify;
+    text-align-last: left;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Excepciones: parrafos cortos dentro de encabezados de seccion, heroes,
+   tarjetas de contacto/dropdown y footer que se disenaron centrados (o
+   centrados solo en movil). text-align:inherit restringe estos casos a
+   como se veian antes de la regla justify de arriba, en cualquier ancho
+   de pantalla, sin tener que repetir cada media query original. */
+.av-content-side p,
+.av-header p,
+.av-lab-info p,
+.bt-confirm p,
+.bt-hero p,
+.cd-wrap p,
+.contact-inner p,
+.contact-item p,
+.content-container p,
+.drop-content p,
+.dsf-content p,
+.footer-bottom p,
+.footer-brand p,
+.ha-info-content p,
+.ha-play-starter p,
+.hero-left p,
+.left p,
+.logos-header p,
+.met-header p,
+.mvv-header p,
+.pf-header p,
+.plans-header p,
+.platforms p,
+.pt-header p,
+.pw-header p,
+.pw-modal-cta p,
+.section-header p,
+.sn-header p,
+.st-header p,
+.sv-header p,
+.tools-marquee p,
+.trust-content p,
+.trust-track p {
+    text-align: inherit;
+    text-align-last: auto;
+    -webkit-hyphens: manual;
+    hyphens: manual;
+}
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --brand-blue: #02365e;
+            --dark-bg: #010a13;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .bt-hero {
+            position: relative;
+            padding: 170px 24px 90px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .bt-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(55% 45% at 20% 15%, rgba(99,102,241,0.22), transparent 60%),
+                radial-gradient(45% 40% at 85% 75%, rgba(0,85,255,0.18), transparent 60%);
+            pointer-events: none;
+        }
+        .bt-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3);
+            border-radius: 100px; padding: 7px 18px; margin-bottom: 26px;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light);
+            position: relative; z-index: 2;
+        }
+        .bt-hero h1 {
+            position: relative; z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.6rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+        .bt-hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #4facfe, var(--accent-light));
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .bt-hero p {
+            position: relative; z-index: 2;
+            max-width: 620px; margin: 0 auto;
+            color: rgba(255,255,255,0.55); font-size: 1.02rem; line-height: 1.7;
+        }
+
+        /* ── VALORES / POR QUÉ TRABAJAR AQUÍ ── */
+        .bt-values {
+            max-width: 1100px; margin: 0 auto; padding: 0 24px 90px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+        }
+        @media (max-width: 800px) { .bt-values { grid-template-columns: 1fr; max-width: 420px; } }
+        .bt-value-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px; padding: 26px 24px;
+        }
+        .bt-value-card i { color: var(--accent-light); font-size: 1.3rem; margin-bottom: 14px; display: block; }
+        .bt-value-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+        .bt-value-card p { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; }
+
+        /* ── FORM ── */
+        .bt-form-section { padding: 0 24px 130px; }
+        .bt-monolith {
+            max-width: 760px; margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 28px;
+            padding: 48px 44px;
+        }
+        @media (max-width: 640px) { .bt-monolith { padding: 34px 22px; } }
+        .bt-form-header { margin-bottom: 32px; }
+        .bt-form-header h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+        .bt-form-header h2 span { color: var(--accent-light); }
+        .bt-form-header p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+        .bt-fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        @media (max-width: 640px) { .bt-fields-row { grid-template-columns: 1fr; } }
+        .bt-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .bt-fields-row .bt-input-group { margin-bottom: 0; }
+        .bt-input-label { font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.7); }
+        .bt-input-field, .bt-select-field {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+        .bt-input-field:focus, .bt-select-field:focus {
+            outline: none; border-color: var(--accent-light); background: rgba(255,255,255,0.06);
+        }
+        .bt-select-field option { background: #0a1420; color: #fff; }
+
+        .bt-upload {
+            border: 1.5px dashed rgba(255,255,255,0.2);
+            border-radius: 14px;
+            padding: 26px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.25s ease, background 0.25s ease;
+            position: relative;
+        }
+        .bt-upload:hover { border-color: var(--accent-light); background: rgba(99,102,241,0.05); }
+        .bt-upload i { font-size: 1.4rem; color: var(--accent-light); margin-bottom: 10px; display: block; }
+        .bt-upload span { font-size: 0.85rem; color: rgba(255,255,255,0.55); display: block; }
+        .bt-upload strong { color: #fff; }
+        .bt-upload input[type="file"] {
+            position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+        }
+        .bt-upload-filename { margin-top: 10px; font-size: 0.8rem; color: var(--accent-light); font-weight: 600; display: none; }
+
+        .bt-btn-send {
+            width: 100%;
+            background: #fff; color: #010a13;
+            border: none; border-radius: 14px;
+            padding: 17px; margin-top: 28px;
+            font-size: 0.85rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase;
+            cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .bt-btn-send:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(99,102,241,0.3); }
+
+        .bt-form-note {
+            margin-top: 18px; text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.4);
+        }
+        .bt-form-note a { color: var(--accent-light); text-decoration: underline; }
+
+        .bt-confirm {
+            display: none;
+            text-align: center;
+            padding: 30px 10px 6px;
+        }
+        .bt-confirm i { font-size: 2.2rem; color: #34d399; margin-bottom: 14px; }
+        .bt-confirm h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+        .bt-confirm p { color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6; max-width: 420px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<div id="partum-preloader" style="position:fixed;inset:0;z-index:2147483647;background:#010a13;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease;">
+    <img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Partum Design" style="width:170px;max-width:55vw;height:auto;animation:partumPreloaderPulse 1.3s ease-in-out infinite;">
+</div>
+<style>@keyframes partumPreloaderPulse{0%,100%{opacity:.5;transform:scale(.95)}50%{opacity:1;transform:scale(1)}}</style>
+<script>
+(function () {
+    var pl = document.getElementById('partum-preloader');
+    if (!pl) return;
+    var alreadySeen = false;
+    try {
+        alreadySeen = !!sessionStorage.getItem('partumPreloaderSeen');
+        sessionStorage.setItem('partumPreloaderSeen', '1');
+    } catch (e) {}
+    if (alreadySeen) { pl.style.display = 'none'; return; }
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            pl.style.opacity = '0';
+            setTimeout(function () { if (pl.parentNode) pl.parentNode.removeChild(pl); }, 550);
+        }, 200);
+    });
+})();
+</script>
+
+<section class="bt-hero">
+    <div class="bt-eyebrow"><i class="fa-solid fa-people-group"></i> Bolsa de trabajo</div>
+    <h1>Construye el futuro <em>tecnológico</em> con nosotros.</h1>
+    <p>En Partum Design combinamos talento y tecnología para escalar empresas. Si te apasiona el diseño, el desarrollo o la estrategia digital, cuéntanos tu historia.</p>
+</section>
+
+<div class="bt-values">
+    <div class="bt-value-card">
+        <i class="fa-solid fa-rocket"></i>
+        <h3>Proyectos reales</h3>
+        <p>Trabajas en marcas y sistemas que impactan a cientos de empresas B2B, no en ejercicios de práctica.</p>
+    </div>
+    <div class="bt-value-card">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Tecnología de punta</h3>
+        <p>Usamos IA todos los días — desde nuestro propio desarrollo hasta las herramientas con las que trabajamos.</p>
+    </div>
+    <div class="bt-value-card">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        <h3>Crecimiento real</h3>
+        <p>Equipo pequeño, decisiones rápidas y oportunidad de crecer con la agencia, no perderte en ella.</p>
+    </div>
+</div>
+
+<section class="bt-form-section">
+    <div class="bt-monolith">
+        <div class="bt-form-header">
+            <h2>Cuéntanos de <span>ti.</span></h2>
+            <p>Completa el formulario y adjunta tu CV. Si tu perfil encaja con una vacante activa o futura, te contactaremos.</p>
+        </div>
+
+        <form id="bolsaTrabajoForm">
+            <div class="bt-fields-row">
+                <div class="bt-input-group">
+                    <label class="bt-input-label">Nombre completo</label>
+                    <input type="text" class="bt-input-field" placeholder="Tu nombre" required>
+                </div>
+                <div class="bt-input-group">
+                    <label class="bt-input-label">Correo</label>
+                    <input type="email" class="bt-input-field" placeholder="ejemplo@correo.com" required>
+                </div>
+            </div>
+
+            <div class="bt-fields-row">
+                <div class="bt-input-group">
+                    <label class="bt-input-label">Teléfono</label>
+                    <input type="tel" class="bt-input-field" placeholder="55 1234 5678">
+                </div>
+                <div class="bt-input-group">
+                    <label class="bt-input-label">Área de interés</label>
+                    <select class="bt-select-field">
+                        <option>Desarrollo &amp; Tech / IA</option>
+                        <option>Diseño &amp; Branding</option>
+                        <option>Estrategia &amp; Growth / Ads</option>
+                        <option>Producción Audiovisual</option>
+                        <option>Otra</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bt-input-group">
+                <label class="bt-input-label">Cuéntanos sobre ti</label>
+                <textarea class="bt-input-field" rows="4" placeholder="Experiencia, portafolio, disponibilidad..."></textarea>
+            </div>
+
+            <div class="bt-input-group">
+                <label class="bt-input-label">Adjunta tu CV (PDF)</label>
+                <label class="bt-upload">
+                    <input type="file" accept=".pdf,.doc,.docx" id="bt-cv-input">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span><strong>Haz clic para subir</strong> o arrastra tu archivo aquí</span>
+                    <div class="bt-upload-filename" id="bt-cv-filename"></div>
+                </label>
+            </div>
+
+            <button type="submit" class="bt-btn-send">Enviar postulación <i class="fa-solid fa-paper-plane"></i></button>
+
+            <div class="bt-form-note">
+                También puedes escribirnos directo a <a href="https://wa.me/525616044547?text=Hola,%20quiero%20enviar%20mi%20CV%20para%20la%20bolsa%20de%20trabajo" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                o a <a href="mailto:contacto@partumdesign.com.mx">contacto@partumdesign.com.mx</a>
+            </div>
+        </form>
+
+        <div class="bt-confirm" id="bt-confirm">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>¡Gracias por postularte!</h3>
+            <p>Recibimos tu información. Nuestro equipo la revisará y, si tu perfil encaja con una vacante, te contactaremos.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var fileInput = document.getElementById('bt-cv-input');
+        var fileLabel = document.getElementById('bt-cv-filename');
+        if (fileInput) {
+            fileInput.addEventListener('change', function () {
+                if (fileInput.files && fileInput.files[0]) {
+                    fileLabel.textContent = fileInput.files[0].name;
+                    fileLabel.style.display = 'block';
+                }
+            });
+        }
+
+        var form = document.getElementById('bolsaTrabajoForm');
+        var confirmBox = document.getElementById('bt-confirm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                form.style.display = 'none';
+                confirmBox.style.display = 'block';
+            });
+        }
+    });
+</script>
+
+<script src="/assets/js/components.js"></script>
+</body>
+</html>
