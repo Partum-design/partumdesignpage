@@ -132,8 +132,10 @@
         
         <!-- VIDEO DE FONDO -->
         <div class="video-bg-container">
-            <!-- Capa oscura ajustada al 60% de opacidad para que el video se note perfectamente -->
-            <div class="absolute inset-0 bg-slate-900/60 z-10"></div>
+            <!-- Overlay reducido y en degradado (antes bg-slate-900/60 plano, dejaba el video muy lavado):
+                 más oscuro donde está el texto (izquierda) para contraste, más claro hacia la derecha
+                 para que el video se aprecie nítido. -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/45 to-slate-950/20 z-10"></div>
             <video autoplay muted loop playsinline class="video-bg">
                 <source src="/uploads/2026/02/6943283-hd_1920_1080_25fps.mp4" type="video/mp4">
             </video>
@@ -434,7 +436,7 @@
         }
         .service-name-overlay p {
             font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; color: rgba(255,255,255,0.3);
+            text-transform: uppercase; color: rgba(255,255,255,0.68);
         }
 
         /* Tabs */
@@ -460,7 +462,7 @@
         .service-tab:nth-child(4) .tab-icon { color: #10b981; }
         .tab-label {
             font-size: clamp(7px,1vw,8.5px); font-weight: 800; letter-spacing: 0.08em;
-            text-transform: uppercase; color: rgba(255,255,255,0.3);
+            text-transform: uppercase; color: rgba(255,255,255,0.62);
             line-height: 1.3; transition: color 0.3s;
         }
         .service-tab.active .tab-label { color: rgba(255,255,255,0.8); }
@@ -647,8 +649,16 @@ const SERVICES = [
 ];
 
 function resize() {
-    W = canvas.width  = area.offsetWidth;
-    H = canvas.height = area.offsetHeight;
+    // Fix: antes el backing store del canvas se fijaba en píxeles CSS (offsetWidth/Height)
+    // sin considerar devicePixelRatio, por lo que en pantallas HiDPI/Retina el dibujo salía
+    // pixelado/borroso. Ahora el backing store se escala por DPR y el contexto se reescala
+    // para que el resto del código de dibujo siga usando W/H en píxeles lógicos (CSS).
+    var dpr = window.devicePixelRatio || 1;
+    W = area.offsetWidth;
+    H = area.offsetHeight;
+    canvas.width  = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
 // ──────────────────────────────────────
@@ -1404,12 +1414,10 @@ area.addEventListener('mousemove', e => {
     mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top;
 });
 area.addEventListener('mouseleave', () => { mouse.x=-1; mouse.y=-1; });
-area.addEventListener('touchmove', e => {
-    e.preventDefault();
-    const r=area.getBoundingClientRect();
-    mouse.x=e.touches[0].clientX-r.left; mouse.y=e.touches[0].clientY-r.top;
-}, {passive:false});
-area.addEventListener('touchend', () => { mouse.x=-1; mouse.y=-1; });
+/* Fix: el listener de touchmove llamaba a e.preventDefault() en todo momento,
+   bloqueando el scroll vertical de la página cada vez que un dedo pasaba sobre
+   este panel decorativo en móvil. Se retira: el efecto de "seguir el cursor"
+   es cosmético y no vale la pena trabar la navegación por él en táctil. */
 
 document.querySelectorAll('.service-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -2062,8 +2070,11 @@ document.querySelectorAll('.reveal-up').forEach(el => obs.observe(el));
             justify-content: center !important;
         }
 
-        /* El contenedor que jsVectorMap usa */
-        #interactive-map { width: 100% !important; height: 100% !important; min-height: 350px !important; }
+        /* El contenedor que jsVectorMap usa.
+           touch-action: pan-y asegura que el scroll vertical de la página siempre
+           gane sobre cualquier gesto dentro del mapa (sin zoom accidental al pasar
+           el dedo), sin recurrir a preventDefault() global. */
+        #interactive-map { width: 100% !important; height: 100% !important; min-height: 350px !important; touch-action: pan-y !important; }
 
         /* Badges Flotantes */
         .dsf-badge {

@@ -1,6 +1,62 @@
 (function () {
     'use strict';
 
+    /* ─── Constantes centralizadas de contacto (única fuente de verdad) ───
+       No inventar números ni enlaces: reutiliza el WhatsApp real ya usado
+       de forma consistente en contacto.html y el footer. Nora todavía no
+       tiene un enlace de WhatsApp propio configurado en el proyecto: en
+       cuanto exista, reemplazar NORA_WHATSAPP_URL aquí (un solo lugar). */
+    var WHATSAPP_NUMBER = '525616044547';
+    var WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola, vi su sitio y quiero más información');
+    /* Pendiente: enlace real de WhatsApp de Nora (aún no existe en el proyecto).
+       Mientras tanto, enruta al WhatsApp general de Partum con un mensaje
+       que ya menciona a Nora, para no dejar un botón muerto. */
+    var NORA_WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent('Hola, quiero saber más sobre Nora, su ecosistema de WhatsApp');
+    window.PARTUM_CONTACT = { whatsappNumber: WHATSAPP_NUMBER, whatsappUrl: WHATSAPP_URL, noraWhatsappUrl: NORA_WHATSAPP_URL };
+
+    /* ─── Reset global anti-cortes de palabra (Fase 2: correcciones globales) ─── */
+    var GLOBAL_CSS = [
+        'html,body{hyphens:none!important;-webkit-hyphens:none!important;-ms-hyphens:none!important;word-break:normal!important;overflow-wrap:normal!important;}',
+        'h1,h2,h3,h4,h5,h6,p,span,a,li,button{hyphens:none!important;-webkit-hyphens:none!important;-ms-hyphens:none!important;word-break:normal!important;overflow-wrap:normal!important;}'
+    ].join('');
+
+    /* ─── Botones flotantes: WhatsApp + Nora ─── */
+    var FLOAT_CSS = [
+        '.partum-float-stack{position:fixed;right:18px;bottom:18px;z-index:99997;display:flex;flex-direction:column-reverse;align-items:flex-end;gap:12px;}',
+        '@supports (bottom: env(safe-area-inset-bottom)){.partum-float-stack{bottom:calc(18px + env(safe-area-inset-bottom));}}',
+        '.partum-float-btn{display:flex;align-items:center;gap:10px;height:52px;padding:0 18px 0 0;border-radius:999px;text-decoration:none;color:#fff;font-family:Inter,sans-serif;font-weight:700;font-size:.82rem;box-shadow:0 12px 28px rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.18);transition:transform .25s ease,box-shadow .25s ease;white-space:nowrap;}',
+        '.partum-float-btn:hover,.partum-float-btn:focus-visible{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.34);}',
+        '.partum-float-btn:focus-visible{outline:2px solid #818cf8;outline-offset:3px;}',
+        '.partum-float-icon{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;flex-shrink:0;font-size:1.35rem;background:rgba(255,255,255,.16);}',
+        '.partum-float-label{max-width:0;overflow:hidden;transition:max-width .3s ease,opacity .3s ease,margin .3s ease;opacity:0;}',
+        '.partum-float-btn:hover .partum-float-label,.partum-float-btn:focus-visible .partum-float-label{max-width:180px;opacity:1;}',
+        '.partum-float-btn.wa{background:linear-gradient(135deg,#25D366,#128C7E);}',
+        '.partum-float-btn.nora{background:linear-gradient(135deg,#6366f1,#818cf8);}',
+        '@media (max-width:1024px){.partum-float-stack{right:14px;bottom:14px;gap:10px;}.partum-float-btn{height:48px;}.partum-float-icon{width:48px;height:48px;font-size:1.2rem;}.partum-float-label{display:none;}}',
+        '@media (max-width:1024px){.partum-float-btn{padding:0;width:48px;justify-content:center;}}'
+    ].join('');
+
+    var FLOAT_HTML = '<div class="partum-float-stack" id="partum-float-stack">' +
+        '<a class="partum-float-btn nora" href="' + NORA_WHATSAPP_URL + '" target="_blank" rel="noopener noreferrer" aria-label="Chatea con Nora, la asistente virtual de Partum Design">' +
+            '<span class="partum-float-icon"><i class="fa-solid fa-robot" aria-hidden="true"></i></span>' +
+            '<span class="partum-float-label">Chatea con Nora</span>' +
+        '</a>' +
+        '<a class="partum-float-btn wa" href="' + WHATSAPP_URL + '" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">' +
+            '<span class="partum-float-icon"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>' +
+            '<span class="partum-float-label">WhatsApp</span>' +
+        '</a>' +
+    '</div>';
+
+    function initFloatButtons() {
+        if (document.getElementById('partum-float-stack')) return;
+        var styleEl = document.createElement('style');
+        styleEl.textContent = FLOAT_CSS;
+        document.head.appendChild(styleEl);
+        var wrap = document.createElement('div');
+        wrap.innerHTML = FLOAT_HTML;
+        document.body.appendChild(wrap.firstChild);
+    }
+
     /* ─── NAVBAR HTML + CSS incrustado (sin petición de red) ─── */
     var NAV_CSS = [
         ':root{--dark-bg:#010a13;--accent:#0ea5e9;--nav-height:96px;--nav-height-scrolled:82px;--text-white:#fff;--text-muted:rgba(255,255,255,.72);--glass-bg:rgba(4,14,24,.68)}',
@@ -174,6 +230,11 @@
     function init() {
         ensureDeps();
 
+        /* Reset global anti-cortes de palabra, aplica a las 7 páginas vivas */
+        var globalStyleEl = document.createElement('style');
+        globalStyleEl.textContent = GLOBAL_CSS;
+        document.head.appendChild(globalStyleEl);
+
         /* Navbar — sin petición de red, aparece inmediatamente */
         var styleEl = document.createElement('style');
         styleEl.textContent = NAV_CSS;
@@ -187,6 +248,7 @@
         applyBodyPadding();
         window.addEventListener('resize', applyBodyPadding, { passive: true });
         initNavbar();
+        initFloatButtons();
 
         /* Footer — petición asíncrona al fondo de la página */
         var footerEl = document.createElement('div');

@@ -403,7 +403,7 @@
         /* ════════════ RESPONSIVE QUERIES REFINADOS ════════════ */
 
         @media (max-width: 1024px) {
-            #premium-hero-section .hero-inner { flex-direction: column; padding: 40px 40px; gap: 60px; text-align: center; }
+            #premium-hero-section .hero-inner { flex-direction: column; padding: 116px 40px 40px; gap: 60px; text-align: center; }
             #premium-hero-section .hero-left { display: flex; flex-direction: column; align-items: center; }
             #premium-hero-section .hero-right { width: 100%; max-width: 600px; margin: 0 auto; }
             #premium-hero-section .cta-row { justify-content: center; }
@@ -413,7 +413,7 @@
         }
 
         @media (max-width: 768px) {
-            #premium-hero-section .hero-inner { padding: 30px 24px; gap: 50px; }
+            #premium-hero-section .hero-inner { padding: 108px 24px 30px; gap: 50px; }
             /* Ajuste proporcional también en móviles */
             #premium-hero-section h1 { font-size: clamp(2rem, 7vw, 3.2rem) !important; margin-bottom: 20px !important; }
             #premium-hero-section .hero-desc { font-size: 0.95rem; margin-bottom: 30px; }
@@ -435,7 +435,7 @@
         }
 
         @media (max-width: 480px) {
-            #premium-hero-section .hero-inner { padding: 20px 16px; gap: 40px; }
+            #premium-hero-section .hero-inner { padding: 100px 16px 20px; gap: 40px; }
             #premium-hero-section .badge { padding: 5px 12px 5px 6px; margin-bottom: 24px; }
             #premium-hero-section .badge-text { font-size: 0.6rem; }
             #premium-hero-section .cta-row { flex-direction: column; width: 100%; gap: 12px; }
@@ -2449,6 +2449,104 @@ async function start() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nora - Ecosistema B2B - Partum Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+#nora-ecosystem-premium {
+    position: relative !important; overflow: hidden !important;
+    background: radial-gradient(circle at 15% 20%, rgba(99,102,241,.16), transparent 45%), radial-gradient(circle at 85% 80%, rgba(37,211,102,.12), transparent 45%), #060b16 !important;
+    padding: 110px 24px !important;
+    font-family: 'Inter', sans-serif !important;
+}
+#nora-ecosystem-premium *, #nora-ecosystem-premium *::before, #nora-ecosystem-premium *::after { box-sizing: border-box !important; }
+#nora-ecosystem-premium .nep-wrap { position: relative !important; z-index: 2 !important; max-width: 1180px !important; margin: 0 auto !important; display: grid !important; grid-template-columns: 1.05fr .95fr !important; gap: 64px !important; align-items: center !important; }
+#nora-ecosystem-premium .nep-eyebrow { display: inline-flex !important; align-items: center !important; gap: 10px !important; padding: 7px 16px !important; border-radius: 999px !important; background: rgba(37,211,102,.12) !important; border: 1px solid rgba(37,211,102,.35) !important; color: #6ee7b7 !important; font-size: .68rem !important; font-weight: 800 !important; letter-spacing: .16em !important; text-transform: uppercase !important; margin-bottom: 26px !important; }
+#nora-ecosystem-premium .nep-eyebrow .dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #34d399 !important; animation: nepPulse 1.8s ease-in-out infinite !important; }
+@keyframes nepPulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+#nora-ecosystem-premium h2 {
+    font-family: 'Montserrat', sans-serif !important; font-weight: 900 !important;
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem) !important; line-height: 1.16 !important; letter-spacing: -.02em !important;
+    color: #fff !important; margin-bottom: 22px !important;
+    hyphens: none !important; word-break: normal !important; overflow-wrap: normal !important;
+}
+#nora-ecosystem-premium h2 em { font-style: normal !important; background: linear-gradient(135deg, #34d399, #818cf8) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+#nora-ecosystem-premium .nep-lead { font-size: 1.05rem !important; font-weight: 700 !important; color: #e2e8f0 !important; line-height: 1.6 !important; margin-bottom: 34px !important; max-width: 520px !important; }
+#nora-ecosystem-premium .nep-lead strong { color: #fff !important; }
+#nora-ecosystem-premium .nep-feature-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 14px !important; margin-bottom: 38px !important; }
+#nora-ecosystem-premium .nep-feature { display: flex !important; align-items: flex-start !important; gap: 10px !important; padding: 14px 16px !important; border-radius: 14px !important; background: rgba(255,255,255,.04) !important; border: 1px solid rgba(255,255,255,.08) !important; }
+#nora-ecosystem-premium .nep-feature i { color: #34d399 !important; margin-top: 3px !important; flex-shrink: 0 !important; }
+#nora-ecosystem-premium .nep-feature span { color: #cbd5e1 !important; font-size: .88rem !important; font-weight: 500 !important; line-height: 1.4 !important; }
+#nora-ecosystem-premium .nep-cta { display: inline-flex !important; align-items: center !important; gap: 12px !important; padding: 18px 30px !important; border-radius: 14px !important; background: linear-gradient(135deg,#25D366,#128C7E) !important; color: #fff !important; font-weight: 900 !important; font-size: .8rem !important; text-transform: uppercase !important; letter-spacing: .12em !important; text-decoration: none !important; box-shadow: 0 18px 40px rgba(37,211,102,.28) !important; transition: transform .25s ease, box-shadow .25s ease !important; }
+#nora-ecosystem-premium .nep-cta:hover, #nora-ecosystem-premium .nep-cta:focus-visible { transform: translateY(-3px) !important; box-shadow: 0 24px 50px rgba(37,211,102,.4) !important; }
+#nora-ecosystem-premium .nep-cta:focus-visible { outline: 2px solid #818cf8 !important; outline-offset: 3px !important; }
+#nora-ecosystem-premium .nep-visual { position: relative !important; border-radius: 28px !important; background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02)) !important; border: 1px solid rgba(255,255,255,.1) !important; padding: 30px !important; box-shadow: 0 30px 70px rgba(0,0,0,.4) !important; }
+#nora-ecosystem-premium .nep-chat-bubble { background: #ffffff !important; color: #0f172a !important; border-radius: 16px 16px 16px 4px !important; padding: 12px 16px !important; font-size: .85rem !important; font-weight: 600 !important; max-width: 82% !important; margin-bottom: 14px !important; box-shadow: 0 8px 20px rgba(0,0,0,.2) !important; }
+#nora-ecosystem-premium .nep-chat-bubble.reply { background: #dcf8c6 !important; margin-left: auto !important; border-radius: 16px 16px 4px 16px !important; }
+#nora-ecosystem-premium .nep-chat-head { display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 22px !important; padding-bottom: 18px !important; border-bottom: 1px solid rgba(255,255,255,.1) !important; }
+#nora-ecosystem-premium .nep-avatar { width: 46px !important; height: 46px !important; border-radius: 50% !important; background: linear-gradient(135deg,#34d399,#6366f1) !important; display: flex !important; align-items: center !important; justify-content: center !important; color: #fff !important; font-size: 1.15rem !important; flex-shrink: 0 !important; }
+#nora-ecosystem-premium .nep-chat-name { color: #fff !important; font-weight: 800 !important; font-size: .95rem !important; }
+#nora-ecosystem-premium .nep-chat-status { color: #6ee7b7 !important; font-size: .72rem !important; font-weight: 600 !important; }
+@media (max-width: 980px) {
+    #nora-ecosystem-premium .nep-wrap { grid-template-columns: 1fr !important; gap: 44px !important; }
+    #nora-ecosystem-premium .nep-visual { order: -1 !important; max-width: 460px !important; margin: 0 auto !important; width: 100% !important; }
+}
+@media (max-width: 560px) {
+    #nora-ecosystem-premium { padding: 76px 18px !important; }
+    #nora-ecosystem-premium .nep-feature-grid { grid-template-columns: 1fr !important; }
+    #nora-ecosystem-premium .nep-cta { width: 100% !important; justify-content: center !important; }
+}
+</style>
+</head>
+<body>
+
+<section id="nora-ecosystem-premium">
+    <div class="nep-wrap">
+        <div>
+            <span class="nep-eyebrow"><span class="dot"></span> Impulsado por IA · Vive en WhatsApp</span>
+            <h2>Tu Ecosistema B2B 24/7 en WhatsApp: <em>Ventas + Reclutamiento.</em></h2>
+            <p class="nep-lead"><strong>No es un chatbot.</strong> Es tu ecosistema completo que atiende, da seguimiento, agenda y convierte, sin que tu equipo tenga que estar pegado al teléfono.</p>
+
+            <div class="nep-feature-grid">
+                <div class="nep-feature"><i class="fa-solid fa-comments" aria-hidden="true"></i><span>Atiende prospectos al instante</span></div>
+                <div class="nep-feature"><i class="fa-solid fa-arrows-spin" aria-hidden="true"></i><span>Da seguimiento sin perder contexto</span></div>
+                <div class="nep-feature"><i class="fa-solid fa-filter" aria-hidden="true"></i><span>Califica leads automáticamente</span></div>
+                <div class="nep-feature"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><span>Agenda reuniones por sí sola</span></div>
+                <div class="nep-feature"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span>Apoya todo el proceso de ventas</span></div>
+                <div class="nep-feature"><i class="fa-solid fa-user-tie" aria-hidden="true"></i><span>Apoya procesos de reclutamiento</span></div>
+            </div>
+
+            <!-- Enlace real pendiente: Nora aún no tiene número de WhatsApp Business propio en el proyecto.
+                 Mientras se centraliza (misma constante NORA_WHATSAPP_URL de assets/js/components.js),
+                 este botón enruta al WhatsApp oficial de Partum con un mensaje que ya menciona a Nora. -->
+            <a href="https://wa.me/525616044547?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Nora%2C%20su%20ecosistema%20de%20WhatsApp" target="_blank" rel="noopener noreferrer" class="nep-cta">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chatea con Nora
+            </a>
+        </div>
+
+        <div class="nep-visual">
+            <div class="nep-chat-head">
+                <div class="nep-avatar"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+                <div>
+                    <div class="nep-chat-name">Nora · Partum Design</div>
+                    <div class="nep-chat-status">● Operando 24/7 en WhatsApp</div>
+                </div>
+            </div>
+            <div class="nep-chat-bubble">¡Hola! Soy Nora 👋 ¿Buscas una cotización o quieres unirte al equipo?</div>
+            <div class="nep-chat-bubble reply">Quiero cotizar un sitio web para mi empresa</div>
+            <div class="nep-chat-bubble">Perfecto, te hago 3 preguntas rápidas y agendo tu llamada con el equipo comercial ✅</div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casos de Éxito - Partum Design</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -2655,104 +2753,82 @@ async function start() {
         <!-- MAIN GRID -->
         <div class="main-grid reveal-item d3">
 
-            <!-- HERO: FitLife Global -->
+            <!-- HERO: Smart Storage (proyecto real, mockup en uploads/gs-behance) -->
             <div class="pcard card-hero">
-                <img src="/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg.webp" alt="FitLife">
+                <img src="/uploads/gs-behance/MOCKUP-SMART-STORAGE.jpeg" alt="Proyecto Smart Storage" loading="lazy" decoding="async">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <div style="background:rgba(99,102,241,.25); border:1px solid rgba(99,102,241,.5); color:#c7d2fe; padding:5px 12px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; width:fit-content;">
-                        E-commerce Elite
+                        Identidad & Producto Digital
                     </div>
                     <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:14px;">
                         <div>
-                            <h3 class="hero-title">FitLife Global</h3>
-                            <p style="font-size:13px; color:#e2e8f0; line-height:1.5; max-width:340px;">Rediseñamos el flujo de checkout completo. La conversión subió +240% en los primeros 60 días.</p>
+                            <h3 class="hero-title">Smart Storage</h3>
+                            <p style="font-size:13px; color:#e2e8f0; line-height:1.5; max-width:340px;">Identidad de marca y diseño de aplicativo para un servicio de almacenamiento inteligente.</p>
                         </div>
-                        <div style="display:flex;align-items:flex-end;gap:20px">
-                            <div style="text-align:right;">
-                                <div class="success-counter-num" id="sc_ctr1" data-target="240" style="font-size:clamp(36px,5vw,58px); font-weight:900; background:linear-gradient(135deg,#818cf8,#a78bfa); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; line-height:1;">+0%</div>
-                                <div style="font-size:9px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:#64748b; margin-top:4px;">Conversión</div>
-                            </div>
-                            <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
-                        </div>
+                        <div class="arrow-btn"><i class="fas fa-arrow-right"></i></div>
                     </div>
                 </div>
             </div>
 
-            <!-- SIDE: Smart CRM -->
+            <!-- SIDE: Haften (cliente real, logo en uploads/clientes) -->
             <div class="pcard card-side">
-                <img src="/uploads/2025/12/b4b3eca4-3a9d-4d4f-a72c-f1a4e08d4484.jpg.webp" alt="CRM">
-                <div class="hero-overlay" style="background: linear-gradient(to top, rgba(10,14,30,.98) 0%, rgba(10,14,30,.8) 40%, rgba(10,14,30,.5) 70%, rgba(10,14,30,.2) 100%) !important;"></div>
+                <img src="/uploads/clientes/Haften.webp" alt="Proyecto Haften" loading="lazy" decoding="async" style="object-fit:contain; background:#0a0e1e; padding:40px;">
+                <div class="hero-overlay" style="background: linear-gradient(to top, rgba(10,14,30,.98) 0%, rgba(10,14,30,.85) 45%, rgba(10,14,30,.6) 100%) !important;"></div>
                 <div class="hero-content" style="justify-content: flex-end !important; gap: 12px;">
-                    <div style="background:rgba(16,185,129,.15); border:1px solid rgba(16,185,129,.3); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; width:fit-content;">App Design</div>
-                    <h3 style="font-size:22px; font-weight:900; color:#fff;">Smart<br>CRM App</h3>
-                    <p style="font-size:12px; color:#cbd5e1;">Diseñamos la UX completa de la app. Del wireframe al producto final en 18 días.</p>
-                    <div style="display:flex; align-items:center; gap:10px;">
-                        <span style="font-size:10px; font-weight:900; color:#fff; text-transform:uppercase;">18 Días Récord</span>
-                        <div style="height:1px; flex:1; background:rgba(255,255,255,.1);"></div>
-                        <div class="arrow-btn" style="border-color:rgba(255,255,255,.15)"><i class="fas fa-arrow-right"></i></div>
-                    </div>
+                    <div style="background:rgba(16,185,129,.15); border:1px solid rgba(16,185,129,.3); color:#6ee7b7; padding:3px 10px; border-radius:99px; font-size:9px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; width:fit-content;">Identidad de Marca</div>
+                    <h3 style="font-size:22px; font-weight:900; color:#fff;">Haften</h3>
+                    <p style="font-size:12px; color:#cbd5e1;">Desarrollo de identidad visual y presencia de marca.</p>
+                    <div class="arrow-btn" style="border-color:rgba(255,255,255,.15)"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </div>
 
-            <!-- SMALL 1 -->
+            <!-- SMALL 1: Laboratorios BIOS -->
             <div class="pcard card-small">
                 <div class="small-content">
                     <div>
                         <div class="small-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 20px rgba(139,92,246,.3)">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-flask"></i>
                         </div>
-                        <div style="font-size:9px; font-weight:900; color:#8b5cf6; text-transform:uppercase; margin-bottom:8px;">SEO & Tráfico</div>
-                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">MedBrand México</div>
-                        <p style="font-size:12px; color:#94a3b8;">SEO técnico y contenido. Tráfico orgánico +310% en 90 días.</p>
+                        <div style="font-size:9px; font-weight:900; color:#8b5cf6; text-transform:uppercase; margin-bottom:8px;">Identidad de Marca</div>
+                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">Laboratorios BIOS</div>
+                        <p style="font-size:12px; color:#94a3b8;">Identidad visual para laboratorio clínico.</p>
                     </div>
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
-                        <div>
-                            <div class="success-counter-num" id="sc_ctr2" data-target="310" style="font-size:24px; font-weight:900; color:#8b5cf6;">+0%</div>
-                            <div style="font-size:9px; font-weight:800; color:#94a3b8; text-transform:uppercase;">Tráfico orgánico</div>
-                        </div>
+                    <div style="display:flex; align-items:center; justify-content:flex-end; margin-top:20px;">
                         <div class="arrow-btn" style="border:1px solid #e2e8f0; color:#94a3b8;"><i class="fas fa-arrow-right"></i></div>
                     </div>
                 </div>
             </div>
 
-            <!-- SMALL 2 -->
+            <!-- SMALL 2: Efficient Plastic Colors -->
             <div class="pcard card-small">
                 <div class="small-content">
                     <div>
                         <div class="small-icon" style="background:linear-gradient(135deg,#f43f5e,#e11d48);box-shadow:0 8px 20px rgba(244,63,94,.3)">
-                            <i class="fas fa-bullhorn"></i>
+                            <i class="fas fa-industry"></i>
                         </div>
-                        <div style="font-size:9px; font-weight:900; color:#f43f5e; text-transform:uppercase; margin-bottom:8px;">Paid Media</div>
-                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">RetailPlus Latam</div>
-                        <p style="font-size:12px; color:#94a3b8;">Meta y Google Ads activos. ROAS 8x el primer trimestre.</p>
+                        <div style="font-size:9px; font-weight:900; color:#f43f5e; text-transform:uppercase; margin-bottom:8px;">Identidad Industrial</div>
+                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">Efficient Plastic Colors</div>
+                        <p style="font-size:12px; color:#94a3b8;">Identidad de marca para proveedor industrial.</p>
                     </div>
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
-                        <div>
-                            <div class="success-counter-num" id="sc_ctr3" data-target="8" style="font-size:24px; font-weight:900; color:#f43f5e;">0x</div>
-                            <div style="font-size:9px; font-weight:800; color:#94a3b8; text-transform:uppercase;">ROAS promedio</div>
-                        </div>
+                    <div style="display:flex; align-items:center; justify-content:flex-end; margin-top:20px;">
                         <div class="arrow-btn" style="border:1px solid #e2e8f0; color:#94a3b8;"><i class="fas fa-arrow-right"></i></div>
                     </div>
                 </div>
             </div>
 
-            <!-- SMALL 3 -->
+            <!-- SMALL 3: Karina Poot -->
             <div class="pcard card-small">
                 <div class="small-content">
                     <div>
                         <div class="small-icon" style="background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 8px 20px rgba(16,185,129,.3)">
-                            <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-user-tie"></i>
                         </div>
-                        <div style="font-size:9px; font-weight:900; color:#10b981; text-transform:uppercase; margin-bottom:8px;">Social Media</div>
-                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">EcoStyle Brand</div>
-                        <p style="font-size:12px; color:#94a3b8;">Estrategia de contenido y social media. +180K seguidores en 6 meses.</p>
+                        <div style="font-size:9px; font-weight:900; color:#10b981; text-transform:uppercase; margin-bottom:8px;">Identidad & Aplicativo</div>
+                        <div style="font-size:18px; font-weight:900; color:#0f172a; margin-bottom:6px;">Karina Poot</div>
+                        <p style="font-size:12px; color:#94a3b8;">Identidad de marca y aplicativo para asesoría de imagen.</p>
                     </div>
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
-                        <div>
-                            <div class="success-counter-num" id="sc_ctr4" data-target="180" style="font-size:24px; font-weight:900; color:#10b981;">+0K</div>
-                            <div style="font-size:9px; font-weight:800; color:#94a3b8; text-transform:uppercase;">Seguidores</div>
-                        </div>
+                    <div style="display:flex; align-items:center; justify-content:flex-end; margin-top:20px;">
                         <div class="arrow-btn" style="border:1px solid #e2e8f0; color:#94a3b8;"><i class="fas fa-arrow-right"></i></div>
                     </div>
                 </div>
@@ -2768,43 +2844,6 @@ async function start() {
     document.addEventListener('DOMContentLoaded', () => {
         const root = document.getElementById('casos-exito-premium');
         if (!root) return;
-
-        /* ── COUNTERS ── */
-        const COUNTERS_CONFIG = [
-            { id:'sc_ctr1', target:240, prefix:'+', suffix:'%' },
-            { id:'sc_ctr2', target:310, prefix:'+', suffix:'%' },
-            { id:'sc_ctr3', target:8,   prefix:'',  suffix:'x' },
-            { id:'sc_ctr4', target:180, prefix:'+', suffix:'K' },
-        ];
-
-        function animateCounter(el, target, suffix, prefix) {
-            const dur = 2000;
-            const start = performance.now();
-            const update = now => {
-                const t = Math.min((now - start) / dur, 1);
-                const ease = 1 - Math.pow(1 - t, 3);
-                const val = Math.floor(ease * target);
-                el.textContent = (prefix||'') + val + (suffix||'');
-                if (t < 1) requestAnimationFrame(update);
-                else el.textContent = (prefix||'') + target + (suffix||'');
-            };
-            requestAnimationFrame(update);
-        }
-
-        const counterIO = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const cfg = COUNTERS_CONFIG.find(c => c.id === el.id);
-                if (cfg) animateCounter(el, cfg.target, cfg.suffix, cfg.prefix);
-                counterIO.unobserve(el);
-            });
-        }, { threshold: 0.3 });
-
-        COUNTERS_CONFIG.forEach(c => {
-            const el = root.querySelector('#' + c.id);
-            if (el) counterIO.observe(el);
-        });
 
         /* ── TILT on hero ── */
         const hero = root.querySelector('.card-hero');
@@ -2824,6 +2863,134 @@ async function start() {
     });
 })();
 </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Auditoría Digital - Partum Design</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+#auditoria-cta-premium {
+    position: relative !important;
+    overflow: hidden !important;
+    background: linear-gradient(135deg, #010a13 0%, #02365e 55%, #0f172a 100%) !important;
+    padding: 90px 24px !important;
+    font-family: 'Inter', sans-serif !important;
+}
+#auditoria-cta-premium *, #auditoria-cta-premium *::before, #auditoria-cta-premium *::after { box-sizing: border-box !important; }
+#auditoria-cta-premium::before {
+    content: '' !important;
+    position: absolute !important; inset: 0 !important;
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) !important;
+    background-size: 46px 46px !important;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%) !important;
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%) !important;
+    pointer-events: none !important;
+}
+#auditoria-cta-premium .actp-glow { position: absolute !important; width: 520px !important; height: 520px !important; border-radius: 50% !important; filter: blur(120px) !important; pointer-events: none !important; }
+#auditoria-cta-premium .actp-glow-a { top: -180px !important; left: -140px !important; background: radial-gradient(circle, rgba(99,102,241,.35) 0%, transparent 70%) !important; }
+#auditoria-cta-premium .actp-glow-b { bottom: -200px !important; right: -160px !important; background: radial-gradient(circle, rgba(14,165,233,.28) 0%, transparent 70%) !important; }
+#auditoria-cta-premium .actp-wrap {
+    position: relative !important; z-index: 2 !important;
+    max-width: 940px !important; margin: 0 auto !important;
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 32px !important;
+    padding: 56px !important;
+    text-align: center !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    box-shadow: 0 30px 80px rgba(0,0,0,.35) !important;
+}
+#auditoria-cta-premium .actp-badge {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    padding: 7px 16px !important; border-radius: 999px !important;
+    background: rgba(239,68,68,.12) !important; border: 1px solid rgba(248,113,113,.4) !important;
+    color: #fca5a5 !important; font-size: .68rem !important; font-weight: 800 !important;
+    letter-spacing: .14em !important; text-transform: uppercase !important; margin-bottom: 26px !important;
+}
+#auditoria-cta-premium .actp-badge .dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #f87171 !important; animation: actpPulse 1.8s ease-in-out infinite !important; }
+@keyframes actpPulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+#auditoria-cta-premium h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: clamp(1.9rem, 4.2vw, 3rem) !important;
+    font-weight: 900 !important; color: #fff !important;
+    line-height: 1.18 !important; letter-spacing: -.02em !important;
+    max-width: 780px !important; margin: 0 auto 20px !important;
+    hyphens: none !important; word-break: normal !important; overflow-wrap: normal !important;
+}
+#auditoria-cta-premium h2 em {
+    font-style: normal !important;
+    background: linear-gradient(135deg, #818cf8, #38bdf8) !important;
+    -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important;
+}
+#auditoria-cta-premium p.actp-sub {
+    color: rgba(255,255,255,.82) !important;
+    font-size: clamp(1rem, 1.6vw, 1.15rem) !important;
+    line-height: 1.6 !important;
+    max-width: 620px !important; margin: 0 auto 36px !important;
+}
+#auditoria-cta-premium .actp-benefits {
+    display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 14px !important; margin-bottom: 40px !important;
+}
+#auditoria-cta-premium .actp-benefit {
+    display: inline-flex !important; align-items: center !important; gap: 8px !important;
+    padding: 9px 16px !important; border-radius: 999px !important;
+    background: rgba(255,255,255,.06) !important; border: 1px solid rgba(255,255,255,.1) !important;
+    color: #e2e8f0 !important; font-size: .82rem !important; font-weight: 600 !important;
+}
+#auditoria-cta-premium .actp-benefit i { color: #38bdf8 !important; }
+#auditoria-cta-premium .actp-cta {
+    display: inline-flex !important; align-items: center !important; gap: 12px !important;
+    padding: 19px 34px !important; border-radius: 14px !important;
+    background: #fff !important; color: #010a13 !important;
+    font-weight: 900 !important; font-size: .82rem !important;
+    text-transform: uppercase !important; letter-spacing: .12em !important;
+    text-decoration: none !important;
+    box-shadow: 0 18px 40px rgba(56,189,248,.28) !important;
+    transition: transform .25s ease, box-shadow .25s ease !important;
+}
+#auditoria-cta-premium .actp-cta:hover, #auditoria-cta-premium .actp-cta:focus-visible {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 24px 50px rgba(56,189,248,.4) !important;
+}
+#auditoria-cta-premium .actp-cta:focus-visible { outline: 2px solid #818cf8 !important; outline-offset: 3px !important; }
+#auditoria-cta-premium .actp-note { margin-top: 18px !important; font-size: .72rem !important; color: rgba(255,255,255,.5) !important; letter-spacing: .04em !important; }
+@media (max-width: 640px) {
+    #auditoria-cta-premium { padding: 64px 16px !important; }
+    #auditoria-cta-premium .actp-wrap { padding: 36px 22px !important; border-radius: 24px !important; }
+    #auditoria-cta-premium .actp-benefits { gap: 10px !important; }
+    #auditoria-cta-premium .actp-cta { width: 100% !important; justify-content: center !important; }
+}
+</style>
+</head>
+<body>
+
+<section id="auditoria-cta-premium">
+    <div class="actp-glow actp-glow-a"></div>
+    <div class="actp-glow actp-glow-b"></div>
+    <div class="actp-wrap">
+        <span class="actp-badge"><span class="dot"></span> Diagnóstico gratuito</span>
+        <h2>¿Tu empresa está <em>estancada tecnológicamente?</em></h2>
+        <p class="actp-sub">
+            Una auditoría digital de 30 minutos te muestra, sin compromiso, en dónde estás perdiendo clientes hoy: web, redes, SEO y procesos.
+        </p>
+        <div class="actp-benefits">
+            <span class="actp-benefit"><i class="fa-solid fa-magnifying-glass-chart"></i> Diagnóstico de tu presencia digital</span>
+            <span class="actp-benefit"><i class="fa-solid fa-list-check"></i> Plan de acción priorizado</span>
+            <span class="actp-benefit"><i class="fa-solid fa-clock"></i> Sin costo, sin compromiso</span>
+        </div>
+        <a href="https://wa.me/525616044547?text=Hola%2C%20quiero%20agendar%20mi%20auditor%C3%ADa%20digital%20gratuita" target="_blank" rel="noopener noreferrer" class="actp-cta">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Agenda tu auditoría digital
+        </a>
+        <p class="actp-note">Respondemos por WhatsApp en menos de 24 horas.</p>
+    </div>
+</section>
+
 </body>
 </html>
 
@@ -2964,11 +3131,11 @@ async function start() {
 }
 
 #logos-section-partum .logos-grid {
-    width: min(1180px, calc(100% - 48px)) !important;
+    width: min(920px, calc(100% - 48px)) !important;
     margin: 0 auto !important;
     display: grid !important;
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-    gap: 12px !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
     position: relative !important;
     z-index: 2 !important;
 }
@@ -3036,7 +3203,7 @@ async function start() {
     transform: scale(1.10) !important;
 }
 
-@media(max-width:1100px){ #logos-section-partum .logos-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+@media(max-width:600px){ #logos-section-partum .logos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } }
 @media(max-width:720px){
     #logos-section-partum .gslogo-container { padding: 24px 0 !important; }
     #logos-section-partum .logos-grid {
@@ -3129,24 +3296,14 @@ async function start() {
   <!-- Logotipos locales desde uploads -->
   <div class="gslogo-container" aria-label="Logotipos de marcas que confían en Partum Design">
     <div class="logos-grid">
-      <div class="logo-card"><img src="uploads/clientes/Brasa%20Prive.webp" alt="Brasa Privé" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/BRAVO%20LOGIX.png" alt="Bravo Logix" loading="lazy" decoding="async"></div>
+      <!-- Solo las 8 marcas solicitadas. LAD no cuenta con logotipo en el repositorio: se omite en vez de inventarlo (ver reporte final). -->
       <div class="logo-card"><img src="uploads/clientes/dahua.webp" alt="Dahua" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/efficient%20plastic%20colors.webp" alt="Efficient Plastic Colors" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/GRUPO%20AD.webp" alt="Grupo AD" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/Grupo%20Sum.svg" alt="Grupo Sum" loading="lazy" decoding="async"></div>
       <div class="logo-card"><img src="uploads/clientes/Haften.webp" alt="Haften" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/JP%20Dental.webp" alt="JP Dental" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/KARINA%20POOT.webp" alt="Karina Poot" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/PLus%20Secure.webp" alt="Plus Secure" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/PREFABRICADOS.webp" alt="Prefabricados" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/safe%20proptech.webp" alt="Safe Proptech" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/Smart%20Storage.webp" alt="Smart Storage" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/SUNLUX.webp" alt="Sunlux" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/TEKPRO.webp" alt="Tekpro" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="uploads/clientes/LABORATORIO%20BIOS.png" alt="Laboratorio BIOS" loading="lazy" decoding="async"></div>
       <div class="logo-card"><img src="uploads/clientes/TRITTON.png" alt="Tritton" loading="lazy" decoding="async"></div>
       <div class="logo-card"><img src="uploads/clientes/XIGMA%20INGENIERIA.webp" alt="Xigma Ingeniería" loading="lazy" decoding="async"></div>
-      <div class="logo-card"><img src="uploads/clientes/LABORATORIO%20BIOS.png" alt="Laboratorio BIOS" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="uploads/clientes/PLus%20Secure.webp" alt="Plus Secure" loading="lazy" decoding="async"></div>
+      <div class="logo-card"><img src="uploads/clientes/efficient%20plastic%20colors.webp" alt="Efficient Plastic Colors" loading="lazy" decoding="async"></div>
     </div>
   </div>
 
@@ -3559,402 +3716,8 @@ async function start() {
 </body>
 </html>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planes - Partum</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* ════════════════════════════════════════════════════════
-           ENCAPSULAMIENTO DE ESTILOS (SCOPE: #planes-partum-premium)
-        ════════════════════════════════════════════════════════ */
-
-        #planes-partum-premium {
-            padding: 120px 5% !important;
-            background-color: #010a13 !important; 
-            position: relative !important;
-            overflow: hidden !important;
-            color: white !important;
-            font-family: 'Montserrat', sans-serif !important;
-        }
-
-        #planes-partum-premium *,
-        #planes-partum-premium *::before,
-        #planes-partum-premium *::after {
-            box-sizing: border-box !important;
-        }
-
-        /* ── Textura de fondo ── */
-        #planes-partum-premium .bg-grid-texture {
-            position: absolute !important;
-            inset: 0 !important;
-            opacity: 0.05 !important;
-            pointer-events: none !important;
-            background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px) !important;
-            background-size: 50px 50px !important;
-            z-index: 0 !important;
-            mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 10%, transparent 80%) !important;
-            -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 10%, transparent 80%) !important;
-        }
-
-        /* ── Orbes de Luz Ambiental (NUEVO) ── */
-        #planes-partum-premium .light-orb {
-            position: absolute !important;
-            border-radius: 50% !important;
-            filter: blur(100px) !important;
-            pointer-events: none !important;
-            z-index: 1 !important;
-            animation: orbFloat 10s infinite alternate ease-in-out !important;
-        }
-        #planes-partum-premium .orb-1 { top: -10%; left: -5%; width: 450px; height: 450px; background: rgba(0, 85, 255, 0.15) !important; }
-        #planes-partum-premium .orb-2 { bottom: -10%; right: -5%; width: 550px; height: 550px; background: rgba(79, 172, 254, 0.12) !important; animation-delay: -5s !important; }
-        #planes-partum-premium .orb-3 { top: 40%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: rgba(0, 85, 255, 0.1) !important; animation-delay: -2s !important; }
-
-        @keyframes orbFloat {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-40px) scale(1.1); }
-        }
-
-        /* ── TÍTULO (REDUCIDO) ── */
-        #planes-partum-premium .premium-title {
-            font-size: clamp(28px, 4vw, 48px) !important; /* Tamaño reducido */
-            font-weight: 900 !important;
-            letter-spacing: -.03em !important;
-            line-height: 1.2 !important;
-            color: #ffffff !important;
-            position: relative !important;
-            z-index: 10 !important;
-            margin-bottom: 20px !important;
-        }
-        #planes-partum-premium .premium-title em {
-            font-style: normal !important;
-            background: linear-gradient(135deg, #4facfe 0%, #0055ff 100%) !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-        }
-
-        /* ── GRID CSS PURO ── */
-        #planes-partum-premium .planes-grid {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 2rem !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            align-items: stretch !important; 
-            position: relative !important;
-            z-index: 10 !important;
-        }
-
-        @media (max-width: 992px) {
-            #planes-partum-premium .planes-grid {
-                grid-template-columns: 1fr !important; 
-                max-width: 500px !important;
-            }
-        }
-
-        /* ── TARJETAS GLASSMORPHISM ── */
-        #planes-partum-premium .glass-card {
-            background: rgba(255, 255, 255, 0.02) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.05) !important;
-            border-radius: 2.5rem !important;
-            padding: 2.5rem !important;
-            display: flex !important;
-            flex-direction: column !important;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-
-        /* Efecto de Luz por Cursor en Tarjetas */
-        #planes-partum-premium .glass-card::before,
-        #planes-partum-premium .card-destacada-inner::before {
-            content: "" !important;
-            position: absolute !important;
-            inset: 0 !important;
-            border-radius: inherit !important;
-            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 85, 255, 0.2), transparent 40%) !important;
-            opacity: 0 !important;
-            transition: opacity 0.4s ease !important;
-            pointer-events: none !important;
-            z-index: 0 !important;
-        }
-        #planes-partum-premium .glass-card:hover::before,
-        #planes-partum-premium .card-destacada-inner:hover::before {
-            opacity: 1 !important;
-        }
-
-        /* Asegurar que el contenido quede por encima de la luz */
-        #planes-partum-premium .card-content-wrapper {
-            position: relative !important;
-            z-index: 10 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            height: 100% !important;
-        }
-
-        /* Hover Tarjetas Laterales */
-        #planes-partum-premium .card-normal {
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
-        }
-        #planes-partum-premium .card-normal:hover {
-            border-color: rgba(0, 85, 255, 0.5) !important;
-            transform: translateY(-8px) !important;
-            box-shadow: 0 15px 40px -10px rgba(0, 85, 255, 0.2), inset 0 0 20px rgba(0, 85, 255, 0.05) !important;
-        }
-
-        /* Tarjeta Central */
-        #planes-partum-premium .card-destacada-wrapper {
-            background: linear-gradient(to bottom, rgba(0, 85, 255, 0.8), rgba(0, 85, 255, 0.1) 60%, transparent) !important;
-            padding: 1px !important;
-            border-radius: 2.5rem !important;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            position: relative !important;
-        }
-        
-        /* ── FORMACIÓN EN "U" INVERTIDA ── */
-        @media (min-width: 993px) {
-            #planes-partum-premium .planes-grid { 
-                margin-bottom: 60px !important; 
-            }
-            #planes-partum-premium .card-normal { 
-                transform: translateY(45px) !important; 
-            }
-            #planes-partum-premium .card-normal:hover {
-                transform: translateY(35px) !important;
-                border-color: rgba(0, 85, 255, 0.5) !important;
-            }
-            #planes-partum-premium .card-destacada-wrapper { 
-                transform: translateY(-25px) !important; 
-            }
-            #planes-partum-premium .card-destacada-wrapper:hover {
-                transform: translateY(-35px) scale(1.02) !important;
-            }
-        }
-
-        #planes-partum-premium .card-destacada-inner {
-            background: #020d1a !important; 
-            border-radius: calc(2.5rem - 1px) !important;
-            height: 100% !important;
-            padding: 2.5rem !important;
-            display: flex !important;
-            flex-direction: column !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-
-        #planes-partum-premium .badge-popular {
-            position: absolute !important;
-            top: 0 !important; 
-            right: 2.5rem !important;
-            background: linear-gradient(135deg, #0055ff, #4facfe) !important;
-            color: white !important;
-            font-size: 0.6rem !important;
-            font-weight: 900 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.2em !important;
-            padding: 0.5rem 1.2rem !important;
-            border-radius: 0 0 0.75rem 0.75rem !important;
-            box-shadow: 0 8px 24px rgba(0, 85, 255, 0.4) !important;
-            z-index: 20 !important;
-        }
-
-        /* --- BOTONES --- */
-        #planes-partum-premium .btn-outline {
-            width: 100% !important;
-            padding: 1.2rem !important;
-            border-radius: 1rem !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
-            background: transparent !important;
-            color: white !important;
-            font-size: 0.65rem !important;
-            font-weight: 900 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.2em !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            margin-top: auto !important; 
-            text-align: center !important;
-            text-decoration: none !important;
-            display: block !important;
-            position: relative !important;
-            z-index: 10 !important;
-        }
-        #planes-partum-premium .btn-outline:hover {
-            background: white !important;
-            color: black !important;
-            border-color: white !important;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.2) !important;
-        }
-
-        #planes-partum-premium .btn-solid {
-            width: 100% !important;
-            padding: 1.2rem !important;
-            border-radius: 1rem !important;
-            background: white !important;
-            border: none !important;
-            color: #010a13 !important;
-            font-size: 0.65rem !important;
-            font-weight: 900 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 0.2em !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            margin-top: auto !important;
-            text-align: center !important;
-            text-decoration: none !important;
-            display: block !important;
-            box-shadow: 0 20px 40px -10px rgba(0, 85, 255, 0.5) !important;
-            position: relative !important;
-            z-index: 10 !important;
-        }
-        #planes-partum-premium .btn-solid:hover {
-            transform: scale(0.97) !important;
-            background: #e2e8f0 !important;
-        }
-
-        /* --- TIPOGRAFÍAS INTERNAS --- */
-        #planes-partum-premium .plan-title { font-size: 1.6rem !important; font-weight: 800 !important; margin-bottom: 0.5rem !important; color: white !important; }
-        #planes-partum-premium .plan-subtitle { color: #ffffff !important; font-size: 0.65rem !important; text-transform: uppercase !important; font-weight: 800 !important; letter-spacing: 0.2em !important; margin-bottom: 1.5rem !important; }
-        #planes-partum-premium .plan-price { font-size: 2.4rem !important; font-weight: 900 !important; color: white !important; }
-        
-        #planes-partum-premium .plan-list { list-style: none !important; padding: 0 !important; margin: 0 0 2.5rem 0 !important; flex-grow: 1 !important; }
-        #planes-partum-premium .plan-list li { display: flex !important; align-items: flex-start !important; gap: 0.8rem !important; font-size: 0.95rem !important; color: #cbd5e1 !important; margin-bottom: 1.2rem !important; line-height: 1.4 !important; font-weight: 400 !important; }
-        #planes-partum-premium .plan-list i.fa-check { color: #4facfe !important; margin-top: 0.25rem !important; font-size: 0.9rem !important; }
-
-    </style>
-</head>
-<body>
-
-<section id="planes-partum-premium">
-    <div class="bg-grid-texture"></div>
-    
-    <div class="light-orb orb-1"></div>
-    <div class="light-orb orb-2"></div>
-    <div class="light-orb orb-3"></div>
-
-    <div class="relative z-10">
-        
-        <div class="text-center mb-16 lg:mb-24">
-            <h2 class="premium-title">
-                 Nuestros planes<br>
-                 <em>y qué incluyen.</em>
-            </h2>
-            <p class="text-slate-400 uppercase text-[9px] md:text-[10px] tracking-[0.4em] font-bold mt-6">
-                Precios claros, sin letra chica
-            </p>
-        </div>
-
-        <div class="planes-grid">
-
-            <div class="glass-card card-normal interactive-light">
-                <div class="card-content-wrapper">
-                    <div class="mb-8">
-                        <h3 class="plan-title">Essential Kit</h3>
-                        <p class="plan-subtitle">Presencia & Marca</p>
-                        <div class="flex items-baseline gap-2">
-                            <span class="plan-price">$1,200</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
-                        </div>
-                    </div>
-                    
-                    <ul class="plan-list">
-                        <li><i class="fa-solid fa-check"></i><span>Identidad Visual (Logo & UI Kit)</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Web One-Page de Alto Impacto</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Optimización SEO Estructural</span></li>
-                    </ul>
-                    
-                    <a href="/contacto2" class="btn-outline">Cotizar Proyecto</a>
-                </div>
-            </div>
-
-            <div class="card-destacada-wrapper interactive-light">
-                <div class="card-destacada-inner">
-                    <div class="badge-popular">Más Popular</div>
-                    
-                    <div class="card-content-wrapper">
-                        <div class="mb-8 mt-4">
-                            <h3 class="plan-title">Growth Engine</h3>
-                            <p class="plan-subtitle">Web + Ads + Conversión</p>
-                            <div class="flex items-baseline gap-2">
-                                <span class="plan-price">$2,500</span>
-                                <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
-                            </div>
-                        </div>
-
-                        <ul class="plan-list">
-                            <li><i class="fa-solid fa-fire text-orange-500 animate-pulse mt-1"></i><span class="text-white font-medium">Funnel de Ventas Completo</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Gestión de Meta & Google Ads</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Landing Pages Optimizadas</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Dashboard de Resultados 24/7</span></li>
-                        </ul>
-
-                        <a href="/contacto2" class="btn-solid">Hablar con un Especialista</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card card-normal interactive-light">
-                <div class="card-content-wrapper">
-                    <div class="mb-8">
-                        <h3 class="plan-title">Elite Partner</h3>
-                        <p class="plan-subtitle">Solución 360° Premium</p>
-                        <div class="flex items-baseline gap-2">
-                            <span class="plan-price">$4,500</span>
-                            <span class="text-[10px] text-slate-500 uppercase font-bold">Desde</span>
-                        </div>
-                    </div>
-
-                    <ul class="plan-list">
-                        <li><i class="fa-solid fa-check"></i><span>Todo lo del Plan Performance</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Rebranding & Estrategia de Marca</span></li>
-                        <li><i class="fa-solid fa-check"></i><span>Estrategia de Contenido & CRM</span></li>
-                        <li><i class="fa-solid fa-star text-amber-400 mt-1"></i><span class="text-white font-medium">Soporte Prioritario VIP</span></li>
-                    </ul>
-
-                    <a href="/contacto2" class="btn-outline">Solicitar Consultoría</a>
-                </div>
-            </div>
-
-        </div> 
-        
-        <div class="mt-16 lg:mt-24 text-center">
-            <p class="text-slate-600 text-[9px] font-bold uppercase tracking-[0.5em] mb-4">
-                ¿Dudas? Escríbenos y te orientamos sin compromiso
-            </p>
-        </div>
-        
-    </div>
-</section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('#planes-partum-premium .interactive-light');
-        
-        cards.forEach(wrapper => {
-            const card = wrapper.classList.contains('card-destacada-wrapper') 
-                         ? wrapper.querySelector('.card-destacada-inner') 
-                         : wrapper;
-
-            wrapper.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    });
-</script>
+<div id="planes-partum-mount" data-planes-mount></div>
+<script src="/assets/js/planes-partum.js"></script>
 
 <script src="/assets/js/components.js"></script>
 </body>

@@ -112,7 +112,7 @@
             text-transform: uppercase !important;
             letter-spacing: 4px !important;
             color: #ffffff !important;
-            opacity: 0.5 !important;
+            opacity: 0.8 !important;
         }
 
         /* --- CONTENIDO DE INFORMACIÓN --- */
@@ -159,7 +159,7 @@
 
         #hero-audiovisual-partum .ha-desc {
             font-size: clamp(14px, 1.5vw, 17px) !important;
-            color: rgba(255,255,255,0.6) !important;
+            color: rgba(255,255,255,0.85) !important;
             max-width: 550px !important;
             line-height: 1.7 !important;
             margin-bottom: 40px !important;
@@ -199,7 +199,7 @@
             padding: 0 40px !important;
             font-family: monospace !important;
             font-size: 10px !important;
-            color: rgba(255,255,255,0.25) !important;
+            color: rgba(255,255,255,0.62) !important;
             letter-spacing: 2px !important;
             z-index: 10 !important;
             opacity: 0 !important;
@@ -241,9 +241,9 @@
 
     <!-- INFORMACIÓN REVELADA -->
     <div class="ha-info-content">
-        <div style="display:inline-flex; align-items:center; gap:10px; margin-bottom:15px; opacity:0.5;">
+        <div style="display:inline-flex; align-items:center; gap:10px; margin-bottom:15px; opacity:0.85;">
             <div style="width:6px; height:6px; background:#ef4444; border-radius:50%; animation: haRecPulse 1.5s infinite;"></div>
-            <span style="font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:2px;">4K HDR Production System</span>
+            <span style="font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#ffffff;">4K HDR Production System</span>
         </div>
         <style>@keyframes haRecPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }</style>
 
@@ -1305,6 +1305,10 @@
 
     </div>
 </section>
+
+<!-- Paquetes generales de Partum Design, misma fuente de datos que el Home (assets/js/planes-partum.js) -->
+<div id="planes-partum-mount" data-planes-mount></div>
+<script src="/assets/js/planes-partum.js"></script>
 
 <script src="/assets/js/components.js"></script>
 </body>
