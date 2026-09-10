@@ -7,7 +7,18 @@ README.txt
 SEO_SETUP.md
 CLAUDE.md
 
-# Residuos de WordPress ya removidos del repo; por si alguien los reintroduce.
-uploads/wpo/
+# Residuos de plugins/CMS de WordPress ya removidos del repo; por si alguien
+# los reintroduce sin darse cuenta.
+uploads/ai-builder/
 uploads/ast-block-templates-json/
+uploads/astra-docs/
+uploads/astra-sites/
+uploads/burst/
+uploads/elementor/
+uploads/rank-math/
+uploads/shield/
+uploads/uag-plugin/
+uploads/windpress/
+uploads/wpo/
 uploads/.htaccess
+uploads/trustindex-google-widget.css
