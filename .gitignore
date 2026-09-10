@@ -8,3 +8,9 @@ seo-toolkit/output/*
 !seo-toolkit/output/.gitkeep
 seo-toolkit/credentials/*
 !seo-toolkit/credentials/.gitkeep
+
+# Residuos de exportacion de WordPress: no se usan en el sitio estatico
+# y no deben volver a commitearse (ver CLAUDE.md - storage de Vercel).
+uploads/wpo/
+uploads/ast-block-templates-json/
+uploads/.htaccess

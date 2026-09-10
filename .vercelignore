@@ -1,0 +1,13 @@
+# No forma parte del sitio publico: no debe subirse en cada deployment.
+seo-toolkit/
+.claude/
+.githooks/
+README.md
+README.txt
+SEO_SETUP.md
+CLAUDE.md
+
+# Residuos de WordPress ya removidos del repo; por si alguien los reintroduce.
+uploads/wpo/
+uploads/ast-block-templates-json/
+uploads/.htaccess

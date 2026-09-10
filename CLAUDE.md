@@ -39,3 +39,26 @@ Ver `SEO_SETUP.md` para el detalle completo de la instalacion, y
 `.claude/skills/_shared/security-rules.md` para las reglas de seguridad
 completas.
 <!-- END PARTUM SEO TOOLKIT -->
+
+## Storage de deployments (Vercel)
+
+El 2026-09-10 el storage de deployments en Vercel llego a ~23.47GB porque
+`uploads/` (carpeta migrada de WordPress) pesaba 659MB y se re-subia completa
+en cada deploy (~35 deploys x 659MB). El 416MB que no usaba ninguna pagina del
+sitio se quito del repo (respaldo completo en
+`~/Documentos/partumdesign-uploads-backup/`, fuera de git).
+
+Reglas para que no se repita:
+
+- No commitear imagenes/videos sin comprimir/optimizar. Hay un pre-commit
+  hook en `.githooks/pre-commit` (activado con
+  `git config core.hooksPath .githooks`) que bloquea archivos nuevos >15MB;
+  si de verdad se necesita, usar `git commit --no-verify` a conciencia.
+- Antes de agregar algo a `uploads/`, confirmar que algun `.html`/`.css`/`.js`
+  lo referencia. Si no se usa en el sitio, no va al repo.
+- `.vercelignore` excluye `seo-toolkit/`, `.claude/`, `.githooks/` y
+  documentacion (`README*`, `SEO_SETUP.md`, `CLAUDE.md`) del deployment.
+- El storage acumulado de los ~35 deployments viejos en Vercel no baja solo
+  con esto (Vercel conserva cada deployment historico); para liberarlo hay
+  que borrar deployments antiguos desde el dashboard de Vercel o con
+  `vercel remove`, con autorizacion explicita del usuario en ese momento.

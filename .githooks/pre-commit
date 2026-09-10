@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Blocks commits that add new files heavier than the limit below.
+# Reason: an unoptimized 659MB WordPress media dump in uploads/ got committed
+# and re-shipped in full on every deployment (~35 deploys x 659MB = ~23GB of
+# Vercel deployment storage). See partumdesign-uploads-backup/ for the removed
+# files and CLAUDE.md for the full story.
+#
+# To bypass intentionally (e.g. a real, already-compressed hero video):
+#   git commit --no-verify
+
+LIMIT_MB=15
+LIMIT_BYTES=$((LIMIT_MB * 1024 * 1024))
+
+big_files=""
+while IFS= read -r -d '' file; do
+  # only check newly added files (A) or modified (M), skip deletions
+  status=$(git diff --cached --name-status -z -- "$file" | cut -d '' -f1 | head -c1)
+  [ "$status" = "D" ] && continue
+  [ -f "$file" ] || continue
+  size=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null)
+  if [ -n "$size" ] && [ "$size" -gt "$LIMIT_BYTES" ]; then
+    human=$(numfmt --to=iec-i --suffix=B "$size" 2>/dev/null || echo "${size} bytes")
+    big_files="${big_files}  ${file}  (${human})\n"
+  fi
+done < <(git diff --cached --name-only -z --diff-filter=ACM)
+
+if [ -n "$big_files" ]; then
+  echo ""
+  echo "pre-commit: archivo(s) mayores a ${LIMIT_MB}MB detectados:"
+  echo -e "$big_files"
+  echo "Esto es lo que hizo crecer el storage de deployments en Vercel a 23GB."
+  echo "Comprime/optimiza el archivo antes de subirlo, o usa un host externo"
+  echo "(Vercel Blob, Cloudinary, etc.) en vez de commitearlo al repo."
+  echo ""
+  echo "Si de verdad necesitas subirlo tal cual: git commit --no-verify"
+  echo ""
+  exit 1
+fi
+
+exit 0
