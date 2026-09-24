@@ -22,3 +22,7 @@ uploads/windpress/
 uploads/wpo/
 uploads/.htaccess
 uploads/trustindex-google-widget.css
+
+# Fuentes de la plantilla v2 (se insertan en los .html con tools/build-partials.py)
+partials/
+tools/

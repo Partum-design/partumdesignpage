@@ -1,0 +1,39 @@
+    <a class="skip" href="#main">Saltar al contenido</a>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2=".35"><stop offset="0" stop-color="#0a4f86"/><stop offset=".5" stop-color="#0093b8"/><stop offset="1" stop-color="#3fe0ff"/></linearGradient>
+        <linearGradient id="loaderGrad" x1="0" y1="0" x2="1" y2=".35"><stop offset="0" stop-color="#02365e"/><stop offset="1" stop-color="#3fe0ff"/></linearGradient>
+        <linearGradient id="diagGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#d64dff"/></linearGradient>
+        <filter id="ringBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="26"/></filter>
+        <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fe0ff"/><stop offset="1" stop-color="#3fe0ff" stop-opacity="0"/></linearGradient>
+      </defs>
+    </svg>
+    <div class="loader" aria-hidden="true">
+      <svg viewBox="-10 -10 835 900"><path pathLength="1" d="M552 500 A250 250 0 1 0 264 500 L612 744"/><path pathLength="1" d="M283 647 L545 831"/></svg>
+    </div>
+    <header class="nav" id="nav">
+      <a class="nav__logo" href="/" aria-label="Partum Design, ir al inicio"><img src="/uploads/logotipo%20de%20partum%20design/partum-logo-dark.png" alt="Partum Design" width="891" height="299"></a>
+      <div class="nav__panel" id="nav-panel">
+        <nav aria-label="Principal">
+          <ul class="nav__menu">
+            <li class="nav__item"><a class="nav__link" href="/">Inicio</a></li>
+            <li class="nav__item"><a class="nav__link" href="/nosotros">Nosotros</a></li>
+            <li class="nav__item nav__item--drop">
+              <button class="nav__link" type="button" aria-expanded="false" aria-controls="drop-servicios">Servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              <div class="nav__drop" id="drop-servicios">
+                <a class="drop-card" href="/identidad-visual-y-corporativa" style="--h1:#7c5cff;--h2:#d64dff"><i></i><strong>Identidad Visual</strong><span>Logotipos, branding y estrategia de marca.</span></a>
+                <a class="drop-card" href="/desarrollo-web"><i></i><strong>Desarrollo Web</strong><span>Interfaces premium y alto rendimiento.</span></a>
+                <a class="drop-card" href="/marketing-digital" style="--h1:#ff7a59;--h2:#ffc15e"><i></i><strong>Marketing Digital</strong><span>Posicionamiento y visibilidad de marca.</span></a>
+                <a class="drop-card" href="/produccion-audiovisual" style="--h1:#ff4d8d;--h2:#7c5cff"><i></i><strong>Producción Audiovisual</strong><span>Contenido multimedia de alto impacto.</span></a>
+              </div>
+            </li>
+            <li class="nav__item"><a class="nav__link" href="/contacto">Contacto</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--glow" href="/contacto">Cotizar ahora <span class="btn__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      </div>
+      <div class="nav__cta">
+        <a class="btn btn--sm btn--glow" href="/contacto">Cotizar ahora <span class="btn__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <button class="nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-panel"><span></span><span></span></button>
+      </div>
+    </header>
