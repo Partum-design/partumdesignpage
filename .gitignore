@@ -14,3 +14,7 @@ seo-toolkit/credentials/*
 uploads/wpo/
 uploads/ast-block-templates-json/
 uploads/.htaccess
+.vercel
+.env*.local
+.env*
+node_modules/

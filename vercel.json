@@ -43,6 +43,18 @@
       "destination": "/produccion-audiovisual.html"
     },
     {
+      "source": "/aviso-de-privacidad",
+      "destination": "/aviso-de-privacidad.html"
+    },
+    {
+      "source": "/terminos-y-condiciones",
+      "destination": "/terminos-y-condiciones.html"
+    },
+    {
+      "source": "/bolsa-de-trabajo",
+      "destination": "/bolsa-de-trabajo.html"
+    },
+    {
       "source": "/servicios",
       "destination": "/index.html"
     },
@@ -53,6 +65,11 @@
   ],
   "redirects": [
     {
+      "source": "/agenda",
+      "destination": "https://wa.me/525616044547?text=Hola%20Partum%2C%20quiero%20agendar%20mi%20auditor%C3%ADa%20digital.%20%C2%BFQu%C3%A9%20fechas%20y%20horarios%20tienen%20disponibles%3F",
+      "permanent": false
+    },
+    {
       "source": "/portafolio",
       "destination": "https://www.behance.net/partumdesign2",
       "permanent": false
@@ -61,6 +78,21 @@
       "source": "/portafolio-audiovisual",
       "destination": "https://www.behance.net/partumdesign2",
       "permanent": false
+    },
+    {
+      "source": "/politica-de-privacidad",
+      "destination": "/aviso-de-privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/privacidad",
+      "destination": "/aviso-de-privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/bolsa",
+      "destination": "/bolsa-de-trabajo",
+      "permanent": true
     }
   ]
 }

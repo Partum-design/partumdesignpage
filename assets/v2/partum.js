@@ -174,6 +174,42 @@
     })(t0);
   }
 
+  /* ---------- Bolsa de trabajo → /api/bolsa (CV al storage privado) ---------- */
+  var bolsa = $('#bolsa-form');
+  if (bolsa) {
+    var bst = $('.form__status', bolsa), bbtn = $('button[type=submit]', bolsa);
+    var say = function (t, err) { bst.textContent = t; bst.classList.toggle('is-error', !!err); };
+    bolsa.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!bolsa.reportValidity()) return;
+      var cv = $('#b-cv', bolsa).files[0];
+      if (cv && cv.size > 4 * 1024 * 1024) { say('Tu CV pesa más de 4 MB. Comprímelo e intenta de nuevo.', true); return; }
+      bbtn.disabled = true;
+      say('Enviando tu postulación…');
+      fetch('/api/bolsa', { method: 'POST', body: new FormData(bolsa) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (x) {
+          bbtn.disabled = false;
+          if (!x.ok || !x.j.ok) { say(x.j.error || 'No pudimos enviar tu postulación. Intenta de nuevo.', true); return; }
+          bolsa.classList.add('form--sent');
+          var ok = $('.form__ok', bolsa); ok && ok.focus();
+          if (window.gtag) window.gtag('event', 'bolsa_postulacion');
+        })
+        .catch(function () { bbtn.disabled = false; say('Sin conexión. Revisa tu internet e intenta de nuevo.', true); });
+    });
+  }
+
+  /* ---------- Equipo: franja activa (hover, foco o toque) ---------- */
+  $$('.crew').forEach(function (crew) {
+    var ms = $$('.crew__m', crew);
+    var set = function (m) { ms.forEach(function (x) { x.classList.toggle('is-active', x === m); }); };
+    ms.forEach(function (m) {
+      m.addEventListener('mouseenter', function () { set(m); });
+      m.addEventListener('focus', function () { set(m); });
+      m.addEventListener('click', function () { set(m); });
+    });
+  });
+
   /* ---------- Sin GSAP / movimiento reducido: estados finales ---------- */
   if (!hasGsap || reduce) {
     counters.forEach(runCount);
