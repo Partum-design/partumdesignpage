@@ -1,3 +1,6 @@
+/* Montserrat estatica (sin contornos superpuestos) para texto en outline.
+   La version variable de Google Fonts dibuja trazos internos con -webkit-text-stroke. */
+@font-face { font-family: "Montserrat Outline"; src: url("/assets/v2/fonts/montserrat-800-static.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
 /* ==========================================================================
    Partum Design — sistema visual v2
    Colores base: el degradado marino → turquesa del isotipo Partum.
@@ -36,6 +39,7 @@
   --a2: var(--cian);
 
   --f-display: "Unbounded", "Manrope", system-ui, sans-serif;
+  --f-outline: "Montserrat Outline", "Montserrat", "Manrope", system-ui, sans-serif;
   --f-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -120,7 +124,7 @@ p { margin: 0; }
 .grad-marca { background: var(--grad-marca); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .grad-aurora { background: var(--grad-aurora); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradShift 10s ease-in-out infinite alternate; }
 @keyframes gradShift { to { background-position: 100% 0; } }
-.outline-text { color: transparent; -webkit-text-stroke: 1.2px rgba(234,246,255,.4); }
+.outline-text { font-family: var(--f-outline); font-weight: 800; letter-spacing: .01em; color: transparent; -webkit-text-stroke: 1.2px rgba(234,246,255,.45); }
 
 .eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
@@ -503,7 +507,7 @@ p { margin: 0; }
 .step:nth-child(4) { --h1: var(--menta); --h2: var(--cian); }
 .step::after { content: ""; position: absolute; right: -30%; bottom: -40%; width: 80%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(var(--h1), transparent 65%); opacity: .35; z-index: -1; }
 .step__head { display: flex; justify-content: space-between; align-items: start; }
-.step__num { font-family: var(--f-display); font-size: clamp(4rem, 8vw, 6.4rem); font-weight: 700; line-height: .8; letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--h2) 70%, transparent); }
+.step__num { font-family: var(--f-outline); font-size: clamp(4rem, 8vw, 6.4rem); font-weight: 800; line-height: .8; letter-spacing: .01em; color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--h2) 70%, transparent); }
 .step__ring { position: relative; width: 84px; height: 84px; }
 .step__ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .step__ring circle { fill: none; stroke-width: 6; }
@@ -620,7 +624,7 @@ p { margin: 0; }
 .footer address { font-style: normal; color: var(--niebla); display: grid; gap: 12px; font-size: .95rem; }
 .footer address a:hover { color: var(--tinta); }
 .footer__word {
-  font-family: var(--f-display); font-weight: 700; font-size: clamp(3rem, 15vw, 15rem); letter-spacing: -.06em; line-height: 1;
+  font-family: var(--f-outline); font-weight: 800; font-size: clamp(3rem, 15vw, 15rem); letter-spacing: .02em; line-height: 1;
   margin: clamp(32px, 5vw, 64px) 0 12px; text-align: center; white-space: nowrap;
   color: transparent; -webkit-text-stroke: 1.5px rgba(120, 210, 255, .28); user-select: none;
 }
@@ -1185,7 +1189,7 @@ body::after { opacity: .06; }
 .crew__links a { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(234,246,255,.12); backdrop-filter: blur(8px); transition: background .3s, color .3s; }
 .crew__links a:hover { background: var(--tinta); color: var(--abismo); }
 .crew__links svg { width: 16px; }
-.crew__word { position: relative; z-index: 4; margin: clamp(-64px, -6vw, -40px) 0 0; text-align: center; pointer-events: none; font-family: var(--f-display); font-weight: 700; font-size: clamp(3.6rem, 13vw, 11rem); line-height: .9; letter-spacing: -.05em; color: rgba(234,246,255,.14); -webkit-text-stroke: 1.5px rgba(234,246,255,.55); }
+.crew__word { position: relative; z-index: 4; margin: clamp(-64px, -6vw, -40px) 0 0; text-align: center; pointer-events: none; font-family: var(--f-outline); font-weight: 800; font-size: clamp(3.6rem, 13vw, 11rem); line-height: .9; letter-spacing: .02em; color: rgba(234,246,255,.14); -webkit-text-stroke: 1.5px rgba(234,246,255,.55); }
 .crew-foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 28px; padding: 22px 24px; border-radius: var(--r-lg); border: 1px solid var(--linea); background: rgba(234,246,255,.03); }
 .crew-foot__copy { color: var(--niebla); max-width: 52ch; }
 .crew-foot__copy strong { color: var(--tinta); }
@@ -1243,3 +1247,16 @@ body::after { opacity: .06; }
 }
 .timeline--3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 860px) { .timeline--3 { grid-template-columns: 1fr; } }
+
+/* ---------- Mapa de paises (Nosotros) ---------- */
+.world-map { position: relative; margin: clamp(32px, 5vw, 56px) 0 0; }
+.world-map svg { display: block; width: 100%; height: auto; overflow: visible; }
+.world-map__lbl text { font-family: var(--f-mono); font-size: 15px; letter-spacing: .06em; text-transform: uppercase; fill: var(--tinta); paint-order: stroke; stroke: var(--noche); stroke-width: 4px; stroke-linejoin: round; }
+.world-map__lbl text.is-hub { font-weight: 600; fill: #fff; }
+.world-map__list { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.world-map__list li { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--linea-2); border-radius: 999px; background: rgba(10, 34, 56, .45); font-size: .88rem; color: var(--tinta); }
+.world-map__list li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--cian)); box-shadow: 0 0 10px var(--c, var(--cian)); }
+.world-map__list li small { color: var(--bruma); font-size: .76rem; }
+.world-map__list li.is-more { color: var(--niebla); border-style: dashed; }
+.world-map__list li.is-more::before { display: none; }
+@media (max-width: 640px) { .world-map__lbl { display: none; } }
