@@ -1248,15 +1248,39 @@ body::after { opacity: .06; }
 .timeline--3 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 860px) { .timeline--3 { grid-template-columns: 1fr; } }
 
-/* ---------- Mapa de paises (Nosotros) ---------- */
-.world-map { position: relative; margin: clamp(32px, 5vw, 56px) 0 0; }
-.world-map svg { display: block; width: 100%; height: auto; overflow: visible; }
-.world-map__lbl text { font-family: var(--f-mono); font-size: 15px; letter-spacing: .06em; text-transform: uppercase; fill: var(--tinta); paint-order: stroke; stroke: var(--noche); stroke-width: 4px; stroke-linejoin: round; }
-.world-map__lbl text.is-hub { font-weight: 600; fill: #fff; }
-.world-map__list { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.world-map__list li { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--linea-2); border-radius: 999px; background: rgba(10, 34, 56, .45); font-size: .88rem; color: var(--tinta); }
-.world-map__list li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--cian)); box-shadow: 0 0 10px var(--c, var(--cian)); }
-.world-map__list li small { color: var(--bruma); font-size: .76rem; }
-.world-map__list li.is-more { color: var(--niebla); border-style: dashed; }
-.world-map__list li.is-more::before { display: none; }
-@media (max-width: 640px) { .world-map__lbl { display: none; } }
+/* ---------- Diseño sin fronteras: globo 3D (Nosotros) ---------- */
+.fronteras { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; isolation: isolate; padding-block: clamp(72px, 8vh, 120px);
+  background: radial-gradient(60% 70% at 72% 50%, rgba(0, 147, 184, .16), transparent 70%), radial-gradient(40% 50% at 15% 80%, rgba(124, 92, 255, .12), transparent 70%); }
+.fronteras__grid { position: relative; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+.fronteras__copy { display: grid; gap: 24px; justify-items: start; position: relative; z-index: 2; }
+.fronteras__list { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.fronteras__list button, .fronteras__list .is-more { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border: 1px solid var(--linea-2); border-radius: 999px; background: rgba(10, 34, 56, .5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font: inherit; font-size: .88rem; color: var(--tinta); cursor: pointer; transition: border-color .3s, background .3s, transform .3s var(--ease); }
+.fronteras__list button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.fronteras__list button:hover, .fronteras__list button.is-active { border-color: var(--c); background: color-mix(in srgb, var(--c) 14%, rgba(10, 34, 56, .6)); transform: translateY(-2px); }
+.fronteras__list small { color: var(--bruma); font-size: .76rem; }
+.fronteras__list .is-more { color: var(--niebla); border-style: dashed; cursor: default; }
+.fronteras__stats { display: flex; gap: clamp(28px, 4vw, 56px); padding-top: 8px; border-top: 1px solid var(--linea); width: 100%; }
+.fronteras__stats div { display: grid; gap: 4px; padding-top: 18px; }
+.fronteras__stats strong { font-family: var(--f-display); font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 600; letter-spacing: -.04em; line-height: 1; }
+.fronteras__stats span { color: var(--niebla); font-size: .9rem; }
+
+.globe3d { position: relative; width: 100%; max-width: min(820px, 86vh); aspect-ratio: 1; margin-inline: auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.globe3d__stage { position: absolute; inset: 0; cursor: grab; }
+.globe3d.is-grabbing .globe3d__stage { cursor: grabbing; }
+.globe3d__stage canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transform: scale(.92); transition: opacity 1.2s var(--ease), transform 1.6s var(--ease); }
+.globe3d.is-ready canvas { opacity: 1; transform: none; }
+.globe3d__halo { position: absolute; inset: 14%; border-radius: 50%; background: radial-gradient(circle, rgba(63, 224, 255, .22), rgba(124, 92, 255, .1) 45%, transparent 70%); filter: blur(40px); pointer-events: none; }
+.globe3d__labels { position: absolute; inset: 0; pointer-events: none; }
+.globe3d__lbl { position: absolute; left: 0; top: 0; margin: -34px 0 0 12px; padding: 5px 10px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); background: rgba(3, 18, 31, .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-family: var(--f-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta); white-space: nowrap; opacity: 0; will-change: transform, opacity; }
+.globe3d__lbl.is-hub { font-weight: 600; background: rgba(234, 246, 255, .12); }
+.globe3d__fallback { display: none; position: absolute; inset: 25% 0 auto; width: 100%; opacity: .45; }
+.globe3d.is-fallback .globe3d__fallback { display: block; }
+.globe3d.is-fallback .globe3d__hint { display: none; }
+.globe3d__hint { position: absolute; bottom: 4%; left: 50%; transform: translateX(-50%); margin: 0; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--bruma); opacity: 0; transition: opacity 1s .8s; pointer-events: none; }
+.globe3d.is-ready .globe3d__hint { opacity: .8; }
+@media (max-width: 900px) {
+  .fronteras__grid { grid-template-columns: 1fr; }
+  .fronteras { padding-top: 96px; }
+  .globe3d { max-width: min(520px, 100%); order: -1; }
+  .globe3d__lbl { font-size: .62rem; padding: 4px 8px; margin-top: -28px; }
+}
