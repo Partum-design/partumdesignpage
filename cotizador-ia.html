@@ -277,6 +277,42 @@ footer a:hover{color:var(--tinta)}
   .rv{opacity:1;transform:none}
   tbody tr{opacity:1;transform:none}
 }
+
+/* checkout */
+#checkout{scroll-margin-top:88px}
+.testbar{border:1px dashed rgba(255,193,94,.55);background:rgba(255,193,94,.08);color:#ffd99a;border-radius:16px;padding:14px 16px;font-size:.84rem;margin-bottom:18px}
+.testbar b{color:#ffc15e;letter-spacing:.08em}
+.tcard{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 10px;color:var(--tinta);font-size:.8rem}
+.copy{border:1px solid rgba(255,193,94,.5);background:transparent;border-radius:999px;padding:6px 12px;font-size:.76rem;font-weight:700;color:#ffc15e;cursor:pointer}
+.steps-bar{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.steps-bar li{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--bruma);padding-top:10px;border-top:2px solid var(--linea-2);transition:.4s var(--ease)}
+.steps-bar li i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;background:rgba(255,255,255,.06);border:1px solid var(--linea-2)}
+.steps-bar li.on{color:var(--tinta);border-top-color:var(--cian)}
+.steps-bar li.on i{background:var(--grad);color:#021220;border:0}
+.pane{display:grid;gap:12px;animation:paneIn .5s var(--ease)}
+.pane[hidden]{display:none}
+@keyframes paneIn{from{opacity:0;transform:translateY(10px)}}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;background:rgba(1,10,19,.55);border:1px solid var(--linea-2)}
+.summary small{display:block;color:var(--bruma);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em}
+.summary b{display:block;font-size:.98rem}
+.summary span{display:block;color:var(--niebla);font-size:.8rem;word-break:break-all}
+.sum-amt{text-align:right;flex:none}
+.sum-amt b{font-family:var(--f-d);font-size:1.5rem}
+#brick{min-height:120px}
+.brick-load{display:flex;align-items:center;justify-content:center;gap:10px;min-height:120px;color:var(--niebla);font-size:.9rem}
+.spin.dark{display:inline-block;border-color:rgba(63,224,255,.25);border-top-color:var(--cian)}
+.link{background:none;border:0;color:var(--niebla);font-weight:700;font-size:.86rem;cursor:pointer;justify-self:start;padding:4px 0}
+.link:hover{color:var(--tinta)}
+.done{text-align:center;justify-items:center;padding:8px 0}
+.done-ic{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#021220;box-shadow:0 0 0 10px rgba(63,224,255,.12);animation:pop .7s var(--ease)}
+.done-ic svg{width:34px;height:34px}
+.done-ic.wait{background:linear-gradient(100deg,#ffc15e,#ff7a59)}
+@keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.08)}}
+.done h4{font-family:var(--f-d);font-size:1.4rem;margin-top:6px}
+.done p{color:var(--niebla);max-width:380px}
+.receipt{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;text-align:left;font-size:.8rem;padding:14px 16px;border-radius:14px;background:rgba(1,10,19,.55);border:1px solid var(--linea);width:100%}
+.receipt span{color:var(--bruma)}
+.receipt b{font-weight:600;word-break:break-all}
 </style>
 </head>
 <body>
@@ -438,9 +474,9 @@ footer a:hover{color:var(--tinta)}
     <div>
       <p class="eyebrow">// Suscripción</p>
       <h2 class="rv">Un solo plan. <span class="grad">Todo incluido.</span></h2>
-      <p class="sub rv">Te suscribes con Mercado Pago, configuramos tu cotizador con tu marca y empiezas a cotizar. Pago mensual automático, sin plazos forzosos.</p>
+      <p class="sub rv">Pagas aquí mismo con Mercado Pago, sin salir de la página. Configuramos tu cotizador con tu marca y empiezas a cotizar. Pago mensual automático, sin plazos forzosos.</p>
       <div class="trust rv" style="margin-top:28px">
-        <span class="mp">mercado pago</span><span>Tarjeta de crédito, débito o saldo Mercado Pago</span>
+        <span class="mp">mercado pago</span><span>Paga aquí mismo con tarjeta de crédito o débito</span>
       </div>
     </div>
 
@@ -457,16 +493,50 @@ footer a:hover{color:var(--tinta)}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Función de dictado por voz</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Catálogo de hasta 100 productos</li>
       </ul>
-      <form id="subForm" novalidate>
-        <div class="row2">
-          <div class="field"><input name="name" autocomplete="name" placeholder="Tu nombre" aria-label="Tu nombre" required maxlength="80"></div>
-          <div class="field"><input name="company" autocomplete="organization" placeholder="Empresa (opcional)" aria-label="Empresa" maxlength="80"></div>
+      <div id="checkout">
+        <div class="testbar" id="testBar" hidden>
+          <b>MODO PRUEBA</b> · no se hacen cobros reales. Usa esta tarjeta:
+          <div class="tcard mono"><span>5474 9254 3267 0366</span><span>CVV 123</span><span>11/30</span><span>Titular: APRO</span></div>
+          <button type="button" class="copy" id="copyCard">Copiar número</button>
         </div>
-        <div class="field"><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Correo de tu cuenta Mercado Pago" aria-label="Correo electrónico" required maxlength="254"></div>
-        <button class="btn btn-p" type="submit" id="subBtn"><span class="spin"></span><span class="lbl">Suscribirme con Mercado Pago</span></button>
-        <p class="msg" id="subMsg" role="status" aria-live="polite"></p>
-        <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pago seguro procesado por Mercado Pago. Partum Design no ve ni guarda los datos de tu tarjeta.</p>
-      </form>
+
+        <ol class="steps-bar" aria-label="Pasos del pago">
+          <li class="on" data-s="1"><i>1</i>Tus datos</li>
+          <li data-s="2"><i>2</i>Pago</li>
+          <li data-s="3"><i>3</i>¡Listo!</li>
+        </ol>
+
+        <form id="subForm" class="pane" data-pane="1" novalidate>
+          <div class="row2">
+            <div class="field"><input name="name" autocomplete="name" placeholder="Tu nombre" aria-label="Tu nombre" required maxlength="80"></div>
+            <div class="field"><input name="company" autocomplete="organization" placeholder="Empresa (opcional)" aria-label="Empresa" maxlength="80"></div>
+          </div>
+          <div class="field"><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Tu correo (ahí llega tu acceso)" aria-label="Correo electrónico" required maxlength="254"></div>
+          <button class="btn btn-p" type="submit" id="subBtn"><span class="spin"></span><span class="lbl">Continuar al pago</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="msg" id="subMsg" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="pane" data-pane="2" hidden>
+          <div class="summary">
+            <div><small>Suscripción</small><b>Cotizador IA · mensual</b><span id="sumWho"></span></div>
+            <div class="sum-amt"><b>$499</b><small>MXN / mes</small></div>
+          </div>
+          <div id="brick"><div class="brick-load"><span class="spin dark"></span>Cargando pago seguro…</div></div>
+          <p class="msg" id="payMsg" role="status" aria-live="polite"></p>
+          <button type="button" class="link" id="backBtn">← Cambiar mis datos</button>
+        </div>
+
+        <div class="pane done" data-pane="3" hidden>
+          <div class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+          <h4 id="doneTitle">¡Pago aprobado!</h4>
+          <p id="doneText">Tu suscripción al Cotizador IA quedó activa. Te escribimos para configurarlo con tu marca.</p>
+          <div class="receipt mono" id="receipt"></div>
+          <a class="btn btn-g" id="doneWa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        </div>
+
+        <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pago cifrado por <span class="mp">mercado pago</span> Partum Design no ve ni guarda tu tarjeta.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -555,37 +625,152 @@ footer a:hover{color:var(--tinta)}
 
   /* CTA fijo en movil: se oculta al llegar al formulario */
   const mCta = $('#mCta'), plan = $('#suscribirme');
-  new IntersectionObserver(([e]) => mCta.classList.toggle('hide', e.isIntersecting), { threshold: .15 }).observe(plan);
+  new IntersectionObserver(([e]) => mCta.classList.toggle('hide', e.isIntersecting), { threshold: 0 }).observe(plan);
 
-  /* regreso desde Mercado Pago */
+  /* regreso desde Mercado Pago (flujo anterior por redireccion) */
   const qs = new URLSearchParams(location.search);
   if (qs.get('suscripcion') === 'ok' || qs.get('preapproval_id')) {
     const t = $('#toast'); setTimeout(() => t.classList.add('show'), 400); setTimeout(() => t.classList.remove('show'), 9000);
-    if (window.gtag) gtag('event', 'purchase', { currency: 'MXN', value: 499, items: [{ item_name: 'Cotizador IA' }] });
   }
 
-  /* suscripcion */
+  /* ===== checkout en 3 pasos con Card Payment Brick ===== */
+  const API = '/api/suscripcion-cotizador';
+  const WA_NUM = 'https://wa.me/525616044547?text=';
+  const WA = WA_NUM + encodeURIComponent('Hola Partum, quiero suscribirme al Cotizador IA ($499 MXN/mes).');
   const form = $('#subForm'), btn = $('#subBtn'), msg = $('#subMsg'), lbl = btn.querySelector('.lbl');
-  const WA = 'https://wa.me/525616044547?text=' + encodeURIComponent('Hola Partum, quiero suscribirme al Cotizador IA ($499 MXN/mes).');
+  const payMsg = $('#payMsg');
+  let cfg = null, brick = null, buyer = null, sdk = null;
+  const unmount = async () => { const b = brick; brick = null; if (b) { try { await b.unmount(); } catch {} } };
+
+  const go = (n) => {
+    document.querySelectorAll('#checkout .pane').forEach((p) => { p.hidden = p.dataset.pane !== String(n); });
+    document.querySelectorAll('.steps-bar li').forEach((li) => {
+      li.classList.toggle('on', +li.dataset.s <= n);
+      li.classList.toggle('cur', +li.dataset.s === n);
+    });
+    $('#checkout').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  };
+
+  const cfgReady = fetch(API).then((r) => r.ok ? r.json() : null).catch(() => null).then((c) => {
+    cfg = c;
+    if (c && c.test) $('#testBar').hidden = false;
+    return c;
+  });
+
+  const loadSdk = () => sdk || (sdk = new Promise((res, rej) => {
+    if (window.MercadoPago) return res();
+    const s = document.createElement('script');
+    s.src = 'https://sdk.mercadopago.com/js/v2';
+    s.onload = res; s.onerror = () => { sdk = null; rej(new Error('sdk')); };
+    document.head.appendChild(s);
+  }));
+  // precarga el SDK cuando el usuario se acerca al formulario
+  new IntersectionObserver(([e], o) => { if (e.isIntersecting) { loadSdk().catch(() => {}); o.disconnect(); } }, { rootMargin: '400px' }).observe(plan);
+
+  const failHtml = (t) => t + ' <a href="' + WA + '" target="_blank" rel="noopener" style="text-decoration:underline">Suscríbete por WhatsApp</a>.';
+
+  const REJECT = {
+    cc_rejected_insufficient_amount: 'Tu tarjeta no tiene fondos suficientes. Prueba con otra.',
+    cc_rejected_bad_filled_security_code: 'El código de seguridad (CVV) no es correcto.',
+    cc_rejected_bad_filled_date: 'La fecha de vencimiento no es correcta.',
+    cc_rejected_bad_filled_card_number: 'Revisa el número de tu tarjeta.',
+    cc_rejected_bad_filled_other: 'Revisa los datos de tu tarjeta.',
+    cc_rejected_call_for_authorize: 'Tu banco pide que autorices el pago. Llama a tu banco o usa otra tarjeta.',
+    cc_rejected_card_disabled: 'Tu tarjeta está desactivada. Actívala con tu banco o usa otra.',
+    cc_rejected_duplicated_payment: 'Ya hiciste un pago por este monto hace un momento.',
+    cc_rejected_high_risk: 'Mercado Pago rechazó el pago por seguridad. Usa otra tarjeta.',
+    cc_rejected_max_attempts: 'Llegaste al límite de intentos. Usa otra tarjeta.'
+  };
+
+  async function mountBrick() {
+    const c = cfg || await cfgReady;
+    if (!c) { payMsg.innerHTML = failHtml('El pago en línea no está disponible ahora.'); $('#brick').innerHTML = ''; return; }
+    try { await loadSdk(); } catch { payMsg.innerHTML = failHtml('No pudimos cargar Mercado Pago. Revisa tu conexión o'); return; }
+    await unmount();
+    $('#brick').innerHTML = '';
+    const mp = new window.MercadoPago(c.publicKey, { locale: 'es-MX' });
+    brick = await mp.bricks().create('cardPayment', 'brick', {
+      initialization: { amount: c.amount, payer: { email: buyer.email } },
+      customization: {
+        paymentMethods: { maxInstallments: 1, minInstallments: 1 },
+        visual: {
+          hideFormTitle: true,
+          texts: { formSubmit: 'Pagar $499 y suscribirme' },
+          style: {
+            theme: 'dark',
+            customVariables: {
+              baseColor: '#3fe0ff', baseColorFirstVariant: '#1f6bff', baseColorSecondVariant: '#7c5cff',
+              formBackgroundColor: '#06192b', inputBackgroundColor: '#010a13', outlinePrimaryColor: '#3fe0ff',
+              buttonTextColor: '#021220', borderRadiusLarge: '16px', borderRadiusMedium: '14px', borderRadiusSmall: '10px',
+              fontSizeMedium: '15px', formPadding: '18px'
+            }
+          }
+        }
+      },
+      callbacks: {
+        onReady: () => {},
+        onError: (err) => { console.warn('brick', err); },
+        onSubmit: (card) => pay(card)
+      }
+    });
+  }
+
+  async function pay(card) {
+    payMsg.className = 'msg'; payMsg.textContent = '';
+    if (window.gtag) gtag('event', 'add_payment_info', { currency: 'MXN', value: 499 });
+    let out = {};
+    try {
+      const r = await fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...buyer, card }) });
+      out = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        payMsg.innerHTML = out.error === 'rate_limited' ? 'Demasiados intentos. Espera un minuto.' : failHtml('No pudimos procesar el pago' + (out.detail ? ' (' + out.detail + ')' : '') + '. Intenta de nuevo o');
+        await mountBrick();
+        return;
+      }
+    } catch {
+      payMsg.innerHTML = failHtml('Sin conexión. Intenta de nuevo o');
+      return;
+    }
+    if (out.status === 'approved') return done(out, 'ok');
+    if (out.status === 'in_process' || out.status === 'pending') return done(out, 'pending');
+    payMsg.textContent = REJECT[out.detail] || 'Tu banco rechazó el pago. Revisa los datos o usa otra tarjeta.';
+    await mountBrick();
+  }
+
+  function done(out, kind) {
+    const pending = kind === 'pending';
+    $('#doneTitle').textContent = pending ? 'Pago en revisión' : '¡Pago aprobado!';
+    $('#doneText').textContent = pending
+      ? 'Mercado Pago está revisando tu pago (suele tardar minutos). Te avisamos por correo en cuanto se apruebe.'
+      : 'Tu suscripción al Cotizador IA quedó activa. Te escribimos a ' + buyer.email + ' para configurarlo con tu marca.';
+    $('.done-ic').classList.toggle('wait', pending);
+    $('#receipt').innerHTML = '<span>Folio</span><b>' + String(out.id || out.ref) + '</b><span>Monto</span><b>$499.00 MXN / mes</b>' + (out.mode === 'test' ? '<span>Modo</span><b>Prueba · sin cobro real</b>' : '');
+    $('#doneWa').href = WA_NUM + encodeURIComponent('Hola Partum, ya pagué mi suscripción al Cotizador IA. Folio: ' + (out.id || out.ref) + '. Correo: ' + buyer.email);
+    if (!pending && window.gtag) gtag('event', 'purchase', { transaction_id: String(out.id || out.ref), currency: 'MXN', value: 499, items: [{ item_name: 'Cotizador IA' }] });
+    go(3);
+    unmount();
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     msg.className = 'msg'; msg.textContent = '';
     const data = Object.fromEntries(new FormData(form));
-    if (!data.name.trim()) { msg.textContent = 'Escribe tu nombre.'; form.elements.name.focus(); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email.trim())) { msg.textContent = 'Escribe un correo válido.'; form.elements.email.focus(); return; }
-    btn.disabled = true; btn.classList.add('loading'); lbl.textContent = 'Conectando con Mercado Pago…';
+    data.name = data.name.trim(); data.email = data.email.trim().toLowerCase(); data.company = (data.company || '').trim();
+    if (!data.name) { msg.textContent = 'Escribe tu nombre.'; form.elements.name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email)) { msg.textContent = 'Escribe un correo válido.'; form.elements.email.focus(); return; }
+    buyer = data;
+    $('#sumWho').textContent = data.name + ' · ' + data.email;
+    btn.disabled = true; btn.classList.add('loading'); lbl.textContent = 'Preparando pago seguro…';
     if (window.gtag) gtag('event', 'begin_checkout', { currency: 'MXN', value: 499 });
-    try {
-      const r = await fetch('/api/suscripcion-cotizador', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
-      const out = await r.json().catch(() => ({}));
-      if (r.ok && out.url) { msg.className = 'msg ok'; msg.textContent = 'Te estamos llevando a Mercado Pago…'; location.href = out.url; return; }
-      if (out.error === 'email') msg.textContent = 'Revisa tu correo, parece que no es válido.';
-      else if (out.error === 'rate_limited') msg.textContent = 'Demasiados intentos. Espera un minuto e inténtalo de nuevo.';
-      else msg.innerHTML = 'No pudimos abrir el pago en este momento. <a href="' + WA + '" target="_blank" rel="noopener" style="text-decoration:underline">Suscríbete por WhatsApp</a> y te mandamos el link.';
-    } catch {
-      msg.innerHTML = 'Sin conexión. <a href="' + WA + '" target="_blank" rel="noopener" style="text-decoration:underline">Escríbenos por WhatsApp</a>.';
-    }
-    btn.disabled = false; btn.classList.remove('loading'); lbl.textContent = 'Suscribirme con Mercado Pago';
+    go(2);
+    payMsg.className = 'msg'; payMsg.textContent = '';
+    $('#brick').innerHTML = '<div class="brick-load"><span class="spin dark"></span>Cargando pago seguro…</div>';
+    try { await mountBrick(); } finally { btn.disabled = false; btn.classList.remove('loading'); lbl.textContent = 'Continuar al pago'; }
+  });
+
+  $('#backBtn').addEventListener('click', () => { unmount(); go(1); });
+  $('#copyCard').addEventListener('click', (e) => {
+    navigator.clipboard && navigator.clipboard.writeText('5474925432670366').then(() => { e.target.textContent = '¡Copiado!'; setTimeout(() => { e.target.textContent = 'Copiar número'; }, 1800); });
   });
 })();
 </script>
