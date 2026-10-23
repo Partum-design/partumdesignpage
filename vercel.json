@@ -94,5 +94,16 @@
       "destination": "/bolsa-de-trabajo",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/cotizador-ia",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }

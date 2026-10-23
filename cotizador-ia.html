@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FRWWGSMVD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5FRWWGSMVD');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Landing oculta: no se indexa, no esta en el sitemap ni enlazada en el menu -->
+<meta name="robots" content="noindex, nofollow">
+<title>Cotizador IA — Partum Design</title>
+<meta name="description" content="Cotiza a tus clientes en 2 minutos con inteligencia artificial. Cotizaciones formales en PDF, dictado por voz y configuración 100% personalizada.">
+<meta name="theme-color" content="#010a13">
+<link rel="icon" type="image/png" href="/uploads/logotipo%20de%20partum%20design/favicon-cropped.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800;900&display=swap">
+<style>
+:root{
+  --abismo:#010a13; --noche:#03121f; --noche-2:#06192b; --marino:#02365e;
+  --turquesa:#0093b8; --cian:#3fe0ff; --azul:#1f6bff; --violeta:#7c5cff; --magenta:#d64dff; --rosa:#ff4d8d; --menta:#3ff0b4;
+  --tinta:#eaf6ff; --niebla:rgba(234,246,255,.7); --bruma:rgba(234,246,255,.45);
+  --linea:rgba(160,220,255,.12); --linea-2:rgba(160,220,255,.24);
+  --vidrio:rgba(10,34,56,.46);
+  --grad:linear-gradient(100deg,#1f6bff 0%,#3fe0ff 100%);
+  --grad-2:linear-gradient(100deg,#7c5cff 0%,#d64dff 55%,#ff4d8d 100%);
+  --f-d:"Unbounded",system-ui,sans-serif; --f-b:"Manrope",system-ui,sans-serif; --f-m:"JetBrains Mono",ui-monospace,monospace;
+  --g:clamp(16px,4vw,56px); --max:1240px; --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f-b);background:var(--abismo);color:var(--tinta);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+::selection{background:rgba(63,224,255,.25)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+.mono{font-family:var(--f-m)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-2{background:var(--grad-2);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* fondo: grid + auroras */
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bg::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--linea) 1px,transparent 1px),linear-gradient(90deg,var(--linea) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000 30%,transparent 80%);opacity:.55}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:float 18s var(--ease) infinite alternate}
+.orb.a{width:560px;height:560px;background:#1f6bff;top:-180px;left:-160px}
+.orb.b{width:520px;height:520px;background:#7c5cff;top:20%;right:-200px;animation-delay:-6s;opacity:.38}
+.orb.c{width:420px;height:420px;background:#d64dff;bottom:-160px;left:30%;animation-delay:-12s;opacity:.22}
+@keyframes float{to{transform:translate(60px,40px) scale(1.12)}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(1,10,19,.62);border-bottom:1px solid var(--linea)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.nav img{height:34px;width:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;border-radius:999px;font-weight:800;letter-spacing:.01em;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s}
+.btn-p{background:var(--grad);color:#021220;padding:15px 26px;box-shadow:0 10px 40px -10px rgba(63,224,255,.65)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 18px 50px -12px rgba(63,224,255,.85)}
+.btn-g{background:rgba(255,255,255,.06);border:1px solid var(--linea-2);padding:14px 24px}
+.btn-g:hover{background:rgba(255,255,255,.11)}
+.btn-sm{padding:11px 20px;font-size:.88rem}
+.btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{padding:clamp(48px,8vw,96px) 0 clamp(60px,8vw,110px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;border:1px solid var(--linea-2);background:var(--vidrio);font-size:.8rem;font-weight:700;color:var(--niebla)}
+.chip .dot{width:8px;height:8px;border-radius:50%;background:var(--menta);box-shadow:0 0 0 0 rgba(63,240,180,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(63,240,180,0)}100%{box-shadow:0 0 0 0 rgba(63,240,180,0)}}
+h1{font-family:var(--f-d);font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.02em;font-size:clamp(2.2rem,4.3vw,3.9rem);margin:22px 0 22px}
+h1 .ln{display:block;white-space:nowrap}
+h1 .big{display:block;font-size:1.3em;line-height:1;white-space:nowrap}
+.lead{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--niebla);max-width:540px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0 28px}
+.trust{display:flex;align-items:center;gap:14px;flex-wrap:wrap;color:var(--bruma);font-size:.84rem;font-weight:600}
+.ai-badge{display:inline-flex;align-items:center;gap:12px;padding:9px 16px;border-radius:12px;background:#fff;color:#0b0f19;font-weight:800;font-size:.92rem}
+.ai-badge span{display:inline-flex;align-items:center;gap:7px}
+.ai-badge i{width:1px;height:18px;background:#c9ced6}
+.ai-badge svg{width:18px;height:18px}
+
+/* phone */
+.stage{position:relative;display:flex;justify-content:center;perspective:1400px}
+.stage::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(63,224,255,.35),transparent 65%);top:12%;filter:blur(20px)}
+.phone{position:relative;width:min(340px,82vw);aspect-ratio:9/18.6;border-radius:48px;padding:12px;
+  background:linear-gradient(145deg,#4b3a5c,#1c1424 40%,#3a2b47);box-shadow:0 40px 90px -20px rgba(0,0,0,.8),inset 0 0 0 2px rgba(255,255,255,.09),0 0 0 1px rgba(255,255,255,.05);
+  transform:rotateY(-14deg) rotateX(6deg) rotateZ(2deg);transition:transform 1s var(--ease);animation:bob 7s ease-in-out infinite}
+.stage:hover .phone{transform:rotateY(-4deg) rotateX(2deg)}
+@keyframes bob{50%{translate:0 -12px}}
+.screen{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:#f3f6fb;color:#0d1b2e;font-size:9.6px;line-height:1.35}
+.notch{position:absolute;top:9px;left:50%;translate:-50% 0;width:92px;height:24px;border-radius:20px;background:#0a0a0f;z-index:3}
+.q-head{background:#0f2d57;color:#fff;text-align:center;padding:44px 12px 12px}
+.q-head b{display:block;font-family:var(--f-d);font-size:13px;letter-spacing:.03em}
+.q-head small{display:block;opacity:.8;font-size:8.6px;margin-top:3px}
+.q-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px;border-bottom:1px solid #dde4ee}
+.q-meta h5{font-size:8.6px;color:#0f2d57;margin-bottom:3px;text-transform:uppercase}
+.q-meta p{color:#46566c;font-size:8.3px}
+.typed::after{content:"▍";color:#1f6bff;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.q-bar{margin:10px 12px 0;background:#2a5ea8;color:#fff;text-align:center;font-weight:700;font-size:8.6px;padding:5px;border-radius:3px 3px 0 0}
+table{width:calc(100% - 24px);margin:0 12px;border-collapse:collapse;font-size:8.3px}
+th{background:#0f2d57;color:#fff;font-weight:700;padding:5px 4px;text-align:left}
+td{padding:6px 4px;border-bottom:1px solid #dde4ee;background:#fff}
+td:nth-child(n+3),th:nth-child(n+3){text-align:right}
+tbody tr{opacity:0;transform:translateX(-8px);transition:.5s var(--ease)}
+tbody tr.on{opacity:1;transform:none}
+tbody tr:nth-child(even) td{background:#eef3fa}
+.q-tot{margin:8px 12px 0;display:grid;justify-content:end;gap:3px;text-align:right;font-size:8.6px;color:#46566c}
+.q-tot .t{background:#0f2d57;color:#fff;padding:5px 10px;font-weight:800;border-radius:3px}
+.q-terms{margin:10px 12px;background:#dfe8f5;border-radius:4px;padding:8px;font-size:7.8px;color:#3b4b61}
+.q-terms b{display:block;color:#0f2d57;margin-bottom:2px}
+.q-foot{position:absolute;bottom:0;left:0;right:0;background:#0f2d57;color:#fff;text-align:center;padding:10px 0 16px;font-style:italic;font-weight:600;font-size:8.6px}
+.float-tag{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:16px;background:rgba(6,25,43,.82);border:1px solid var(--linea-2);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 40px -16px rgba(0,0,0,.7);font-size:.8rem;font-weight:700;white-space:nowrap}
+.float-tag .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--grad);color:#021220}
+.float-tag .ic svg{width:17px;height:17px}
+.float-tag small{display:block;color:var(--bruma);font-weight:600;font-size:.7rem}
+.ft-1{top:14%;left:-4%;animation:bob 6s ease-in-out infinite -2s}
+.ft-2{bottom:16%;right:-6%;animation:bob 6.5s ease-in-out infinite -4s}
+.ft-2 .ic{background:var(--grad-2);color:#fff}
+.wave{display:flex;gap:2px;align-items:center;height:16px}
+.wave i{width:3px;border-radius:2px;background:#fff;animation:wv 1s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:-.2s}.wave i:nth-child(3){animation-delay:-.4s}.wave i:nth-child(4){animation-delay:-.6s}
+@keyframes wv{0%,100%{height:4px}50%{height:15px}}
+
+/* marquee */
+.ticker{border-block:1px solid var(--linea);background:rgba(3,18,31,.6);overflow:hidden;padding:18px 0}
+.ticker-in{display:flex;gap:48px;width:max-content;animation:tk 32s linear infinite;font-family:var(--f-d);font-weight:700;text-transform:uppercase;font-size:clamp(.9rem,1.6vw,1.15rem);color:var(--bruma)}
+.ticker-in span{display:inline-flex;align-items:center;gap:48px}
+.ticker-in span::after{content:"✦";color:var(--cian)}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* secciones */
+section{padding:clamp(72px,10vw,130px) 0}
+.eyebrow{font-family:var(--f-m);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cian);margin-bottom:16px}
+h2{font-family:var(--f-d);font-weight:800;text-transform:uppercase;letter-spacing:-.015em;line-height:1.04;font-size:clamp(1.9rem,4.4vw,3.4rem);max-width:860px}
+.sub{color:var(--niebla);max-width:620px;margin-top:18px;font-size:1.05rem}
+.head{margin-bottom:clamp(36px,5vw,60px)}
+.head.c{text-align:center}.head.c h2,.head.c .sub{margin-inline:auto}
+
+/* incluye */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{position:relative;padding:28px;border-radius:24px;background:linear-gradient(180deg,rgba(14,44,72,.55),rgba(6,25,43,.35));border:1px solid var(--linea);overflow:hidden;transition:transform .5s var(--ease),border-color .4s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(63,224,255,.14),transparent 45%);opacity:0;transition:opacity .4s}
+.card:hover{transform:translateY(-4px);border-color:var(--linea-2)}
+.card:hover::before{opacity:1}
+.card .ic{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:rgba(63,224,255,.1);border:1px solid rgba(63,224,255,.25);color:var(--cian);margin-bottom:22px}
+.card .ic svg{width:24px;height:24px}
+.card h3{font-family:var(--f-d);font-size:1.04rem;font-weight:700;margin-bottom:8px;line-height:1.25}
+.card p{color:var(--niebla);font-size:.95rem}
+.card .pill{position:absolute;top:24px;right:24px;font-family:var(--f-m);font-size:.7rem;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(63,224,255,.12);color:var(--cian)}
+.card.hl{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(120deg,rgba(31,107,255,.28),rgba(124,92,255,.22) 60%,rgba(214,77,255,.18));border-color:rgba(124,92,255,.35)}
+.card.hl h3{font-size:clamp(1.2rem,2.2vw,1.6rem)}
+.card.hl .ic{background:var(--grad);color:#021220;border:0}
+.tokens{font-family:var(--f-d);font-weight:900;font-size:clamp(2.6rem,6vw,4.4rem);line-height:1;margin:6px 0 10px}
+
+/* pasos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.step{padding:30px 28px;border-radius:24px;border:1px solid var(--linea);background:rgba(3,18,31,.55);position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--f-d);font-weight:900;font-size:3.6rem;line-height:1;display:block;margin-bottom:20px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.step h3{font-family:var(--f-d);font-size:1.05rem;margin-bottom:8px}
+.step p{color:var(--niebla);font-size:.95rem}
+.step .time{position:absolute;top:30px;right:28px;font-family:var(--f-m);font-size:.75rem;color:var(--bruma)}
+
+/* comparativa */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vs-col{padding:32px;border-radius:24px;border:1px solid var(--linea)}
+.vs-col.old{background:rgba(255,77,141,.04)}
+.vs-col.new{background:linear-gradient(160deg,rgba(31,107,255,.18),rgba(63,224,255,.06));border-color:rgba(63,224,255,.3)}
+.vs-col h3{font-family:var(--f-d);font-size:1.1rem;margin-bottom:6px}
+.vs-col .t{font-family:var(--f-d);font-weight:900;font-size:clamp(2.2rem,4vw,3rem);margin-bottom:20px}
+.vs-col.old .t{color:#ff7aa8}
+.vs-col ul{list-style:none;display:grid;gap:12px}
+.vs-col li{display:flex;gap:12px;color:var(--niebla)}
+.vs-col li::before{flex:none;content:"";width:20px;height:20px;border-radius:50%;margin-top:2px;background:rgba(255,77,141,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff7aa8' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/11px no-repeat}
+.vs-col.new li::before{background:rgba(63,240,180,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233ff0b4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+
+/* precio */
+.price-wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,5vw,64px);align-items:center}
+.price{position:relative;padding:clamp(28px,4vw,44px);border-radius:32px;background:linear-gradient(180deg,rgba(14,44,72,.85),rgba(3,18,31,.92));isolation:isolate}
+.price::before{content:"";position:absolute;inset:-1px;border-radius:33px;padding:1.5px;background:conic-gradient(from var(--ang,0deg),#3fe0ff,#1f6bff,#7c5cff,#d64dff,#3fe0ff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1;animation:spin 6s linear infinite}
+@property --ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes spin{to{--ang:360deg}}
+.price .tag{display:inline-block;font-family:var(--f-m);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--grad-2);color:#fff;margin-bottom:18px}
+.price h3{font-family:var(--f-d);font-size:1.3rem}
+.amount{display:flex;align-items:flex-end;gap:10px;margin:14px 0 4px}
+.amount b{font-family:var(--f-d);font-weight:900;font-size:clamp(3.4rem,8vw,5rem);line-height:.9;letter-spacing:-.03em}
+.amount span{color:var(--niebla);font-weight:700;padding-bottom:8px}
+.price .note{color:var(--bruma);font-size:.86rem;margin-bottom:24px}
+.checks{list-style:none;display:grid;gap:11px;margin-bottom:28px}
+.checks li{display:flex;gap:11px;font-weight:600;font-size:.96rem}
+.checks svg{flex:none;width:20px;height:20px;color:var(--menta);margin-top:1px}
+form{display:grid;gap:12px}
+.field{position:relative}
+.field input{width:100%;padding:16px 18px;border-radius:14px;background:rgba(1,10,19,.6);border:1px solid var(--linea-2);outline:none;transition:border-color .25s,box-shadow .25s;font-size:1rem}
+.field input::placeholder{color:var(--bruma)}
+.field input:focus{border-color:var(--cian);box-shadow:0 0 0 4px rgba(63,224,255,.14)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form .btn-p{width:100%;padding:18px;font-size:1.02rem}
+.btn[disabled]{opacity:.7;cursor:progress}
+.spin{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(2,18,32,.3);border-top-color:#021220;animation:rot .7s linear infinite;display:none}
+.loading .spin{display:inline-block}
+@keyframes rot{to{transform:rotate(360deg)}}
+.msg{font-size:.88rem;min-height:1.2em;color:#ff9ec0}
+.msg.ok{color:var(--menta)}
+.secure{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--bruma);font-size:.8rem;font-weight:600;margin-top:4px;flex-wrap:wrap;text-align:center}
+.secure svg{width:15px;height:15px}
+.mp{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:#ffe600;color:#2d3277;font-weight:800;font-size:.76rem}
+
+/* faq */
+.faq{max-width:860px;margin:0 auto;display:grid;gap:12px}
+details{border:1px solid var(--linea);border-radius:20px;background:rgba(3,18,31,.55);transition:border-color .3s}
+details[open]{border-color:var(--linea-2);background:rgba(10,34,56,.5)}
+summary{list-style:none;cursor:pointer;padding:22px 24px;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:1.02rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-d);font-size:1.4rem;line-height:1;color:var(--cian);transition:transform .35s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 24px 22px;color:var(--niebla)}
+
+/* cta final */
+.final{text-align:center;position:relative;overflow:hidden;border-radius:40px;padding:clamp(48px,7vw,90px) var(--g);background:linear-gradient(120deg,#0a3a7a,#1f6bff 35%,#7c5cff 70%,#d64dff);}
+.final::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at center,#000,transparent 75%);pointer-events:none}
+.final h2{margin:0 auto 18px;position:relative;z-index:1}
+.final p{position:relative;z-index:1;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 30px}
+.final .btn{position:relative;z-index:1;background:#fff;color:#0b1f44;padding:18px 32px;box-shadow:0 18px 50px -14px rgba(0,0,0,.5)}
+footer{padding:48px 0 40px;color:var(--bruma);font-size:.86rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer img{height:28px;width:auto;opacity:.85}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+footer a:hover{color:var(--tinta)}
+
+/* banner exito */
+.toast{position:fixed;left:50%;bottom:24px;translate:-50% 140%;z-index:80;max-width:calc(100% - 32px);padding:16px 20px;border-radius:18px;background:rgba(6,25,43,.95);border:1px solid rgba(63,240,180,.4);box-shadow:0 20px 60px -10px rgba(0,0,0,.7);display:flex;gap:12px;align-items:center;font-weight:700;transition:translate .6s var(--ease)}
+.toast.show{translate:-50% 0}
+.toast svg{flex:none;width:26px;height:26px;color:var(--menta)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.grid .rv:nth-child(2),.steps .rv:nth-child(2){transition-delay:.08s}
+.grid .rv:nth-child(3),.steps .rv:nth-child(3){transition-delay:.16s}
+.grid .rv:nth-child(4){transition-delay:.06s}.grid .rv:nth-child(5){transition-delay:.12s}.grid .rv:nth-child(6){transition-delay:.18s}
+
+/* sticky movil */
+.m-cta{display:none}
+
+@media (max-width:980px){
+  .hero .wrap,.price-wrap{grid-template-columns:1fr}
+  .hero{text-align:center}
+  .lead{margin-inline:auto}
+  .cta-row,.trust{justify-content:center}
+  .stage{margin-top:12px}
+  .grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .card.hl{grid-row:auto}
+  .grid .card:last-child{grid-column:span 2}
+}
+@media (max-width:640px){
+  .nav .btn{display:none}
+  .grid,.vs,.row2{grid-template-columns:1fr}
+  .card.hl,.grid .card:last-child{grid-column:auto}
+  h1 .ln,h1 .big{white-space:normal}
+  .ft-1{left:-2%;top:8%}.ft-2{right:-2%;bottom:10%}
+  .float-tag{font-size:.72rem;padding:9px 11px}
+  .phone{transform:none;animation:none}
+  .m-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;transition:translate .5s var(--ease)}
+  .m-cta.hide{translate:0 140%}
+  .m-cta .btn{width:100%;padding:16px}
+  footer{padding-bottom:100px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  tbody tr{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="/" aria-label="Partum Design"><img src="/uploads/logotipo%20de%20partum%20design/LOGOTIPO%20BLANCO.png" alt="Partum Design" width="150" height="34"></a>
+    <a href="#suscribirme" class="btn btn-p btn-sm">Suscribirme — $499/mes</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" style="padding-top:clamp(40px,7vw,90px)">
+  <div class="wrap">
+    <div>
+      <span class="chip rv"><span class="dot"></span>Nuevo · Cotizador con Inteligencia Artificial</span>
+      <h1 class="rv">
+        <span class="ln"><span class="grad">Cotiza</span> a tus</span>
+        <span class="ln">clientes en</span>
+        <span class="big grad-2">2 minutos</span>
+      </h1>
+      <p class="lead rv">Dicta lo que necesita tu cliente y la IA arma una <strong>cotización formal</strong>, con tus precios, tu logo y tus términos, lista para mandar en PDF desde el celular o la computadora.</p>
+      <div class="cta-row rv">
+        <a href="#suscribirme" class="btn btn-p">Quiero mi cotizador
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#incluye" class="btn btn-g">Ver qué incluye</a>
+      </div>
+      <div class="trust rv">
+        <span class="ai-badge" aria-label="Funciona con OpenAI y Gemini">
+          <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.07 6.07 0 0 0 4.98 4.18a5.98 5.98 0 0 0-4 2.9 6.05 6.05 0 0 0 .75 7.1 5.98 5.98 0 0 0 .51 4.91 6.05 6.05 0 0 0 6.51 2.9A5.98 5.98 0 0 0 13.26 24a6.06 6.06 0 0 0 5.77-4.21 5.99 5.99 0 0 0 4-2.9 6.06 6.06 0 0 0-.75-7.07zM13.26 22.43a4.48 4.48 0 0 1-2.88-1.04l.14-.08 4.78-2.76a.8.8 0 0 0 .39-.68v-6.74l2.02 1.17a.07.07 0 0 1 .04.05v5.58a4.5 4.5 0 0 1-4.49 4.5zM3.6 18.3a4.47 4.47 0 0 1-.53-3.01l.14.09 4.78 2.76a.77.77 0 0 0 .78 0l5.84-3.37v2.33a.08.08 0 0 1-.03.06L9.74 19.95a4.5 4.5 0 0 1-6.14-1.65zM2.34 7.9a4.49 4.49 0 0 1 2.37-1.97v5.68a.77.77 0 0 0 .39.68l5.81 3.35-2.02 1.17a.08.08 0 0 1-.07 0L3.99 14.03A4.5 4.5 0 0 1 2.34 7.87zm16.6 3.86-5.83-3.39 2.02-1.16a.08.08 0 0 1 .07 0l4.83 2.79a4.49 4.49 0 0 1-.68 8.1v-5.68a.79.79 0 0 0-.41-.67zm2.01-3.02-.14-.09-4.77-2.78a.78.78 0 0 0-.79 0L9.41 9.23V6.9a.07.07 0 0 1 .03-.06l4.83-2.79a4.5 4.5 0 0 1 6.68 4.66zM8.31 12.86 6.29 11.7a.08.08 0 0 1-.04-.06V6.07a4.5 4.5 0 0 1 7.38-3.45l-.14.08L8.71 5.46a.8.8 0 0 0-.39.68zm1.1-2.37 2.6-1.5 2.6 1.5v3l-2.6 1.5-2.6-1.5z"/></svg>OpenAI</span>
+          <i></i>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285f4"/><stop offset=".5" stop-color="#9b72cb"/><stop offset="1" stop-color="#d96570"/></linearGradient></defs><path fill="url(#gm)" d="M12 0c.4 6.4 5.6 11.6 12 12-6.4.4-11.6 5.6-12 12-.4-6.4-5.6-11.6-12-12C6.4 11.6 11.6 6.4 12 0z"/></svg>Gemini</span>
+        </span>
+        <span>Sin instalar nada · Cancela cuando quieras</span>
+      </div>
+    </div>
+
+    <div class="stage rv" aria-hidden="true">
+      <div class="float-tag ft-1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.6L20 10l-5.6 2.4L12 18l-2.4-5.6L4 10l5.6-2.4z"/></svg></span><div>Generada con IA<small>en 1 min 48 s</small></div></div>
+      <div class="float-tag ft-2"><span class="ic"><span class="wave"><i></i><i></i><i></i><i></i></span></span><div>Dictado activo<small>“agrega soporte técnico…”</small></div></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="q-head"><b>COTIZACIÓN FORMAL</b><small>No. COT-2026-0012</small><small>Fecha: hoy · Validez: 30 días</small></div>
+          <div class="q-meta">
+            <div><h5>Datos del cliente</h5><p>Nombre: <span class="typed" id="tName"></span><br>Empresa: Grupo Norte<br>Tel: (55) 1234-5678<br>contacto@gruponorte.mx</p></div>
+            <div><h5>Datos del emisor</h5><p>Tu Empresa S.A. de C.V.<br>RFC: TEM000000XX0<br>Tel: (55) 0000-0000<br>Validez: 30 días</p></div>
+          </div>
+          <div class="q-bar">DETALLE DE SERVICIOS / PRODUCTOS</div>
+          <table>
+            <thead><tr><th>#</th><th>Descripción</th><th>Cant.</th><th>P. Unit.</th><th>Total</th></tr></thead>
+            <tbody id="qRows">
+              <tr><td>1</td><td>Consultoría profesional</td><td>1</td><td>$2,500</td><td>$2,500</td></tr>
+              <tr><td>2</td><td>Desarrollo de software</td><td>1</td><td>$8,000</td><td>$8,000</td></tr>
+              <tr><td>3</td><td>Soporte técnico</td><td>1</td><td>$1,500</td><td>$1,500</td></tr>
+            </tbody>
+          </table>
+          <div class="q-tot"><span>Subtotal <b id="qSub">$0.00</b></span><span>IVA (16%) <b id="qIva">$0.00</b></span><span class="t">TOTAL <span id="qTot">$0.00</span></span></div>
+          <div class="q-terms"><b>Términos y condiciones</b>50% de anticipo para iniciar y 50% contra entrega. Precios en MXN. Vigencia de 30 días.</div>
+          <div class="q-foot">Agradecemos su preferencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-in">
+    <span>Cotizaciones en PDF</span><span>Dictado por voz</span><span>Inteligencia Artificial</span><span>Celular y PC</span><span>Hasta 100 productos</span><span>Tu marca, tus precios</span>
+    <span>Cotizaciones en PDF</span><span>Dictado por voz</span><span>Inteligencia Artificial</span><span>Celular y PC</span><span>Hasta 100 productos</span><span>Tu marca, tus precios</span>
+  </div>
+</div>
+
+<!-- INCLUYE -->
+<section id="incluye">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">// Incluye</p>
+      <h2 class="rv">Todo lo que necesitas para <span class="grad">cerrar más ventas</span></h2>
+      <p class="sub rv">Deja de pelearte con Word y Excel. Tu cotizador queda configurado con tu información y listo para usarse desde el primer día.</p>
+    </div>
+    <div class="grid">
+      <article class="card hl rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.6L20 10l-5.6 2.4L12 18l-2.4-5.6L4 10l5.6-2.4z"/><path d="M19 17l.9 2.1L22 20l-2.1.9L19 23l-.9-2.1L16 20l2.1-.9z"/></svg></div>
+        <div class="tokens grad">$5 USD</div>
+        <h3>Inteligencia Artificial con tokens incluidos</h3>
+        <p>Arrancas con $5 USD en tokens de IA (OpenAI y Gemini) para redactar descripciones, sugerir conceptos y armar cotizaciones completas a partir de una idea.</p>
+      </article>
+      <article class="card rv">
+        <span class="pill">Tu marca</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div>
+        <h3>Configuración 100% personalizada</h3>
+        <p>Tu logo, colores, datos fiscales, catálogo de precios y términos. Nosotros lo dejamos listo.</p>
+      </article>
+      <article class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg></div>
+        <h3>Exportación en PDF</h3>
+        <p>Cotizaciones formales con folio, IVA y totales calculados. Descarga y envía por WhatsApp o correo.</p>
+      </article>
+      <article class="card rv">
+        <span class="pill">Celular y PC</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="11" rx="2"/><rect x="16" y="8" width="6" height="12" rx="1.5"/><path d="M6 19h6"/></svg></div>
+        <h3>Diseño responsivo</h3>
+        <p>Cotiza desde la obra, la junta o la oficina. Funciona igual de bien en el celular que en la computadora.</p>
+      </article>
+      <article class="card rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg></div>
+        <h3>Función de dictado</h3>
+        <p>Habla y el cotizador escribe. Ideal para cotizar mientras atiendes al cliente.</p>
+      </article>
+      <article class="card rv">
+        <span class="pill">100</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></div>
+        <h3>Hasta 100 productos</h3>
+        <p>Carga tu catálogo de productos y servicios con precios para agregarlos en un toque.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">// Cómo funciona</p>
+      <h2 class="rv">De la plática a la cotización <span class="grad-2">en 3 pasos</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="time mono">~30 s</span><h3>Dicta o escribe</h3><p>Cuéntale qué necesita tu cliente: “3 cámaras, instalación y 6 meses de soporte”.</p></div>
+      <div class="step rv"><span class="time mono">~60 s</span><h3>La IA la arma</h3><p>Toma tu catálogo, acomoda conceptos, cantidades, precios, IVA y términos.</p></div>
+      <div class="step rv"><span class="time mono">~30 s</span><h3>Envía el PDF</h3><p>Revisa, ajusta lo que quieras y manda la cotización formal con tu marca.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANTES / DESPUES -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="vs">
+      <div class="vs-col old rv">
+        <h3>Cotizar como siempre</h3>
+        <div class="t">30–60 min</div>
+        <ul><li>Copiar y pegar una plantilla vieja de Word</li><li>Errores en sumas e IVA</li><li>Formato distinto en cada cotización</li><li>El cliente se enfría mientras esperas llegar a la compu</li></ul>
+      </div>
+      <div class="vs-col new rv">
+        <h3>Con el Cotizador IA</h3>
+        <div class="t grad">2 min</div>
+        <ul><li>Dictas desde el celular y listo</li><li>Totales e IVA calculados automáticamente</li><li>Imagen profesional y consistente con tu marca</li><li>Respondes mientras el cliente sigue interesado</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO -->
+<section id="suscribirme" style="padding-top:0">
+  <div class="wrap price-wrap">
+    <div>
+      <p class="eyebrow">// Suscripción</p>
+      <h2 class="rv">Un solo plan. <span class="grad">Todo incluido.</span></h2>
+      <p class="sub rv">Te suscribes con Mercado Pago, configuramos tu cotizador con tu marca y empiezas a cotizar. Pago mensual automático, sin plazos forzosos.</p>
+      <div class="trust rv" style="margin-top:28px">
+        <span class="mp">mercado pago</span><span>Tarjeta de crédito, débito o saldo Mercado Pago</span>
+      </div>
+    </div>
+
+    <div class="price rv">
+      <span class="tag">Plan Pro</span>
+      <h3>Cotizador IA</h3>
+      <div class="amount"><b>$499</b><span>MXN / mes</span></div>
+      <p class="note">Cobro mensual automático · Cancela cuando quieras</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>$5 USD en tokens de IA (OpenAI + Gemini)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Configuración 100% personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Exportación en PDF</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Diseño responsivo (celular y PC)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Función de dictado por voz</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Catálogo de hasta 100 productos</li>
+      </ul>
+      <form id="subForm" novalidate>
+        <div class="row2">
+          <div class="field"><input name="name" autocomplete="name" placeholder="Tu nombre" aria-label="Tu nombre" required maxlength="80"></div>
+          <div class="field"><input name="company" autocomplete="organization" placeholder="Empresa (opcional)" aria-label="Empresa" maxlength="80"></div>
+        </div>
+        <div class="field"><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Correo de tu cuenta Mercado Pago" aria-label="Correo electrónico" required maxlength="254"></div>
+        <button class="btn btn-p" type="submit" id="subBtn"><span class="spin"></span><span class="lbl">Suscribirme con Mercado Pago</span></button>
+        <p class="msg" id="subMsg" role="status" aria-live="polite"></p>
+        <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Pago seguro procesado por Mercado Pago. Partum Design no ve ni guarda los datos de tu tarjeta.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head c">
+      <p class="eyebrow">// Preguntas frecuentes</p>
+      <h2 class="rv">Lo que nos preguntan</h2>
+    </div>
+    <div class="faq">
+      <details class="rv"><summary>¿Cómo funciona el cobro?</summary><p>Es una suscripción mensual de $499 MXN que se cobra automáticamente a través de Mercado Pago con la tarjeta o saldo que elijas. Recibes tu comprobante de Mercado Pago cada mes.</p></details>
+      <details class="rv"><summary>¿Puedo cancelar cuando quiera?</summary><p>Sí. No hay plazos forzosos: puedes cancelar la suscripción desde tu cuenta de Mercado Pago o escribiéndonos, y ya no se hacen más cobros.</p></details>
+      <details class="rv"><summary>¿Qué pasa después de suscribirme?</summary><p>Te contactamos por WhatsApp o correo para pedirte tu logo, datos y catálogo de productos. Configuramos tu cotizador y te entregamos el acceso.</p></details>
+      <details class="rv"><summary>¿Qué son los $5 USD en tokens de IA?</summary><p>Es el saldo incluido para usar los modelos de OpenAI y Gemini dentro del cotizador (redacción, sugerencias y armado de cotizaciones).</p></details>
+      <details class="rv"><summary>¿Necesito instalar algo?</summary><p>No. El cotizador funciona en el navegador de tu celular o computadora.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="final rv">
+      <h2>Tu próxima cotización puede salir <br>en 2 minutos</h2>
+      <p>Responde antes que tu competencia y con una imagen mucho más profesional.</p>
+      <a href="#suscribirme" class="btn">Empezar por $499/mes
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="/uploads/logotipo%20de%20partum%20design/LOGOTIPO%20BLANCO.png" alt="Partum Design" width="124" height="28" loading="lazy">
+    <nav><a href="/">partumdesign.com.mx</a><a href="/aviso-de-privacidad">Aviso de privacidad</a><a href="/terminos-y-condiciones">Términos</a><a href="https://wa.me/525616044547?text=Hola%20Partum%2C%20tengo%20dudas%20sobre%20el%20Cotizador%20IA" target="_blank" rel="noopener">WhatsApp</a></nav>
+    <span>© <span id="yr"></span> Partum Design</span>
+  </div>
+</footer>
+
+<div class="m-cta" id="mCta"><a href="#suscribirme" class="btn btn-p">Suscribirme — $499 MXN/mes</a></div>
+<div class="toast" id="toast" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><span>¡Listo! Tu suscripción quedó registrada. Te contactamos en breve para configurar tu cotizador.</span></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  $('#yr').textContent = new Date().getFullYear();
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal */
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+
+  /* brillo que sigue al cursor en las tarjetas */
+  document.querySelectorAll('.card').forEach((c) => c.addEventListener('pointermove', (e) => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+
+  /* demo del telefono: escribe el nombre, agrega filas y cuenta el total */
+  const rows = [...document.querySelectorAll('#qRows tr')];
+  const sums = [2500, 8000, 1500];
+  const fmt = (n) => '$' + n.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const sub = $('#qSub'), iva = $('#qIva'), tot = $('#qTot'), name = $('#tName');
+  const setTotals = (s) => { sub.textContent = fmt(s); iva.textContent = fmt(s * .16); tot.textContent = fmt(s * 1.16); };
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const count = (from, to) => new Promise((res) => {
+    const t0 = performance.now(), d = 700;
+    const step = (t) => { const k = Math.min(1, (t - t0) / d); setTotals(from + (to - from) * (1 - Math.pow(1 - k, 3))); k < 1 ? requestAnimationFrame(step) : res(); };
+    requestAnimationFrame(step);
+  });
+  async function loop() {
+    if (reduce) { name.textContent = 'Laura Méndez'; rows.forEach((r) => r.classList.add('on')); setTotals(12000); return; }
+    for (;;) {
+      rows.forEach((r) => r.classList.remove('on')); name.textContent = ''; setTotals(0);
+      await wait(600);
+      for (const ch of 'Laura Méndez') { name.textContent += ch; await wait(70); }
+      let acc = 0;
+      for (let i = 0; i < rows.length; i++) { await wait(500); rows[i].classList.add('on'); await count(acc, acc + sums[i]); acc += sums[i]; }
+      await wait(4200);
+    }
+  }
+  loop();
+
+  /* CTA fijo en movil: se oculta al llegar al formulario */
+  const mCta = $('#mCta'), plan = $('#suscribirme');
+  new IntersectionObserver(([e]) => mCta.classList.toggle('hide', e.isIntersecting), { threshold: .15 }).observe(plan);
+
+  /* regreso desde Mercado Pago */
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('suscripcion') === 'ok' || qs.get('preapproval_id')) {
+    const t = $('#toast'); setTimeout(() => t.classList.add('show'), 400); setTimeout(() => t.classList.remove('show'), 9000);
+    if (window.gtag) gtag('event', 'purchase', { currency: 'MXN', value: 499, items: [{ item_name: 'Cotizador IA' }] });
+  }
+
+  /* suscripcion */
+  const form = $('#subForm'), btn = $('#subBtn'), msg = $('#subMsg'), lbl = btn.querySelector('.lbl');
+  const WA = 'https://wa.me/525616044547?text=' + encodeURIComponent('Hola Partum, quiero suscribirme al Cotizador IA ($499 MXN/mes).');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.className = 'msg'; msg.textContent = '';
+    const data = Object.fromEntries(new FormData(form));
+    if (!data.name.trim()) { msg.textContent = 'Escribe tu nombre.'; form.elements.name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email.trim())) { msg.textContent = 'Escribe un correo válido.'; form.elements.email.focus(); return; }
+    btn.disabled = true; btn.classList.add('loading'); lbl.textContent = 'Conectando con Mercado Pago…';
+    if (window.gtag) gtag('event', 'begin_checkout', { currency: 'MXN', value: 499 });
+    try {
+      const r = await fetch('/api/suscripcion-cotizador', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+      const out = await r.json().catch(() => ({}));
+      if (r.ok && out.url) { msg.className = 'msg ok'; msg.textContent = 'Te estamos llevando a Mercado Pago…'; location.href = out.url; return; }
+      if (out.error === 'email') msg.textContent = 'Revisa tu correo, parece que no es válido.';
+      else if (out.error === 'rate_limited') msg.textContent = 'Demasiados intentos. Espera un minuto e inténtalo de nuevo.';
+      else msg.innerHTML = 'No pudimos abrir el pago en este momento. <a href="' + WA + '" target="_blank" rel="noopener" style="text-decoration:underline">Suscríbete por WhatsApp</a> y te mandamos el link.';
+    } catch {
+      msg.innerHTML = 'Sin conexión. <a href="' + WA + '" target="_blank" rel="noopener" style="text-decoration:underline">Escríbenos por WhatsApp</a>.';
+    }
+    btn.disabled = false; btn.classList.remove('loading'); lbl.textContent = 'Suscribirme con Mercado Pago';
+  });
+})();
+</script>
+</body>
+</html>
