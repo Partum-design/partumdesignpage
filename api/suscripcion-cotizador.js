@@ -3,9 +3,10 @@
    el init_point al que se redirige al cliente para que autorice el cobro.
 
    Variables de entorno en Vercel:
-   - MP_ACCESS_TOKEN          Access token de produccion de Mercado Pago (APP_USR-...)
-   - MP_COTIZADOR_PLAN_URL    (opcional) link de un plan creado en el panel de MP.
-                              Se usa si no hay MP_ACCESS_TOKEN.
+   - MP_COTIZADOR_PLAN_URL    link (init_point) de un plan de suscripcion de MP.
+                              Si existe, se usa siempre.
+   - MP_ACCESS_TOKEN          respaldo: crea una suscripcion por cliente (POST /preapproval).
+   Hoy Preview (redesign/v2) usa credenciales y plan de PRUEBA.
    El token nunca llega al navegador. */
 
 const PLAN = {
@@ -57,10 +58,10 @@ export async function POST(request) {
   const token = (process.env.MP_ACCESS_TOKEN || '').trim();
   const planUrl = (process.env.MP_COTIZADOR_PLAN_URL || '').trim();
 
-  if (!token) {
-    if (/^https:\/\/www\.mercadopago\.com\.mx\//.test(planUrl)) return json({ url: planUrl }, 200, origin);
-    return json({ error: 'not_configured' }, 503, origin);
-  }
+  // Plan de suscripcion (preapproval_plan): el checkout de MP pide correo y tarjeta.
+  // Es la via preferida; en modo prueba es la unica que acepta MP.
+  if (/^https:\/\/www\.mercadopago\.com\.mx\//.test(planUrl)) return json({ url: planUrl }, 200, origin);
+  if (!token) return json({ error: 'not_configured' }, 503, origin);
 
   const payload = {
     reason: PLAN.reason,
