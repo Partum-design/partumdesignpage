@@ -279,6 +279,13 @@ footer a:hover{color:var(--tinta)}
 }
 
 /* checkout */
+.btn-mp{width:100%;padding:18px;font-size:1.02rem;background:#009ee3;color:#fff;box-shadow:0 12px 40px -12px rgba(0,158,227,.8)}
+.btn-mp:hover{transform:translateY(-2px);background:#00a9f2;box-shadow:0 18px 50px -12px rgba(0,158,227,.95)}
+.btn-mp .spin{border-color:rgba(255,255,255,.35);border-top-color:#fff}
+#cardBtn{width:100%}
+.mp-note{color:var(--bruma);font-size:.8rem;text-align:center;margin-top:-4px}
+.or{display:flex;align-items:center;gap:12px;color:var(--bruma);font-size:.78rem;text-transform:uppercase;letter-spacing:.14em}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--linea-2)}
 #checkout{scroll-margin-top:88px}
 .testbar{border:1px dashed rgba(255,193,94,.55);background:rgba(255,193,94,.08);color:#ffd99a;border-radius:16px;padding:14px 16px;font-size:.84rem;margin-bottom:18px}
 .testbar b{color:#ffc15e;letter-spacing:.08em}
@@ -495,7 +502,7 @@ footer a:hover{color:var(--tinta)}
       </ul>
       <div id="checkout">
         <div class="testbar" id="testBar" hidden>
-          <b>MODO PRUEBA</b> · no se hacen cobros reales. Usa esta tarjeta:
+          <b>MODO PRUEBA</b> · no se hacen cobros reales. En Mercado Pago tu cuenta real no funciona en pruebas: elige <b>pagar con tarjeta</b> (sin iniciar sesión) y usa:
           <div class="tcard mono"><span>5474 9254 3267 0366</span><span>CVV 123</span><span>11/30</span><span>Titular: APRO</span></div>
           <button type="button" class="copy" id="copyCard">Copiar número</button>
         </div>
@@ -512,8 +519,11 @@ footer a:hover{color:var(--tinta)}
             <div class="field"><input name="company" autocomplete="organization" placeholder="Empresa (opcional)" aria-label="Empresa" maxlength="80"></div>
           </div>
           <div class="field"><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="Tu correo (ahí llega tu acceso)" aria-label="Correo electrónico" required maxlength="254"></div>
-          <button class="btn btn-p" type="submit" id="subBtn"><span class="spin"></span><span class="lbl">Continuar al pago</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <button class="btn btn-mp" type="submit" id="subBtn" value="mp"><span class="spin"></span><span class="lbl">Pagar con Mercado Pago</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></button>
+          <p class="mp-note">Entra con tu cuenta de Mercado Pago: saldo, tarjetas guardadas o tarjeta nueva.</p>
+          <div class="or"><span>o</span></div>
+          <button class="btn btn-g" type="submit" id="cardBtn" value="card">Pagar con tarjeta aquí mismo</button>
           <p class="msg" id="subMsg" role="status" aria-live="polite"></p>
         </form>
 
@@ -627,11 +637,6 @@ footer a:hover{color:var(--tinta)}
   const mCta = $('#mCta'), plan = $('#suscribirme');
   new IntersectionObserver(([e]) => mCta.classList.toggle('hide', e.isIntersecting), { threshold: 0 }).observe(plan);
 
-  /* regreso desde Mercado Pago (flujo anterior por redireccion) */
-  const qs = new URLSearchParams(location.search);
-  if (qs.get('suscripcion') === 'ok' || qs.get('preapproval_id')) {
-    const t = $('#toast'); setTimeout(() => t.classList.add('show'), 400); setTimeout(() => t.classList.remove('show'), 9000);
-  }
 
   /* ===== checkout en 3 pasos con Card Payment Brick ===== */
   const API = '/api/suscripcion-cotizador';
@@ -759,14 +764,51 @@ footer a:hover{color:var(--tinta)}
     if (!data.name) { msg.textContent = 'Escribe tu nombre.'; form.elements.name.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(data.email)) { msg.textContent = 'Escribe un correo válido.'; form.elements.email.focus(); return; }
     buyer = data;
-    $('#sumWho').textContent = data.name + ' · ' + data.email;
-    btn.disabled = true; btn.classList.add('loading'); lbl.textContent = 'Preparando pago seguro…';
+    try { sessionStorage.setItem('cotizadorBuyer', JSON.stringify(data)); } catch {}
     if (window.gtag) gtag('event', 'begin_checkout', { currency: 'MXN', value: 499 });
+
+    if (!e.submitter || e.submitter.value !== 'card') {
+      // Plataforma de Mercado Pago (redireccion)
+      btn.disabled = true; btn.classList.add('loading'); lbl.textContent = 'Abriendo Mercado Pago…';
+      try {
+        const r = await fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ action: 'checkout', ...data }) });
+        const out = await r.json().catch(() => ({}));
+        if (r.ok && out.url) { location.href = out.url; return; }
+        msg.innerHTML = out.error === 'rate_limited' ? 'Demasiados intentos. Espera un minuto.' : failHtml('No pudimos abrir Mercado Pago. Intenta de nuevo, paga con tarjeta aquí o');
+      } catch { msg.innerHTML = failHtml('Sin conexión. Intenta de nuevo o'); }
+      btn.disabled = false; btn.classList.remove('loading'); lbl.textContent = 'Pagar con Mercado Pago';
+      return;
+    }
+
+    $('#sumWho').textContent = data.name + ' · ' + data.email;
+    btn.disabled = true;
     go(2);
     payMsg.className = 'msg'; payMsg.textContent = '';
     $('#brick').innerHTML = '<div class="brick-load"><span class="spin dark"></span>Cargando pago seguro…</div>';
-    try { await mountBrick(); } finally { btn.disabled = false; btn.classList.remove('loading'); lbl.textContent = 'Continuar al pago'; }
+    try { await mountBrick(); } finally { btn.disabled = false; }
   });
+
+  /* regreso desde la plataforma de Mercado Pago: se confirma el estado con la API */
+  (async () => {
+    const qs = new URLSearchParams(location.search);
+    const pid = qs.get('payment_id') || qs.get('collection_id');
+    const sid = qs.get('preapproval_id');
+    if (!qs.get('pago') && !pid && !sid) return;
+    try { buyer = JSON.parse(sessionStorage.getItem('cotizadorBuyer') || 'null'); } catch {}
+    buyer = buyer || { email: qs.get('payer_email') || 'tu correo', name: '' };
+    history.replaceState(null, '', location.pathname);
+    if (pid && pid !== 'null' || sid) {
+      $('#checkout').scrollIntoView({ block: 'start' });
+      const r = await fetch(API + '?' + (pid && pid !== 'null' ? 'payment_id=' + encodeURIComponent(pid) : 'preapproval_id=' + encodeURIComponent(sid))).catch(() => null);
+      const out = r && r.ok ? await r.json().catch(() => ({})) : null;
+      if (out && out.status === 'approved') return done({ id: out.id, mode: out.test ? 'test' : 'live' }, 'ok');
+      if (out && (out.status === 'in_process' || out.status === 'pending')) return done({ id: out.id, mode: out.test ? 'test' : 'live' }, 'pending');
+    }
+    go(1);
+    msg.innerHTML = qs.get('pago') === 'pendiente'
+      ? 'Tu pago quedó pendiente en Mercado Pago. Te avisamos por correo cuando se acredite.'
+      : failHtml('El pago no se completó. Puedes intentarlo de nuevo o');
+  })();
 
   $('#backBtn').addEventListener('click', () => { unmount(); go(1); });
   $('#copyCard').addEventListener('click', (e) => {

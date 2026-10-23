@@ -1,10 +1,14 @@
 /* Suscripcion al Cotizador IA (Vercel Function).
 
-   El cliente paga dentro de la landing con el Card Payment Brick de Mercado Pago.
-   El navegador solo manda el token de la tarjeta; el cobro se hace aqui.
+   Dos formas de pago:
+   1) action "checkout": redirige a la plataforma de Mercado Pago (cuenta MP,
+      saldo, tarjetas guardadas). Es la opcion principal.
+   2) card: el Card Payment Brick tokeniza la tarjeta en la landing y aqui se cobra.
 
-   GET  -> { publicKey, amount, currency, test }  (configura el Brick)
-   POST -> { status, detail, id, mode }           (procesa el pago)
+   GET                       -> { publicKey, amount, currency, test }
+   GET ?payment_id= | ?preapproval_id=  -> estado real del pago al regresar de MP
+   POST { action:'checkout' } -> { url }
+   POST { card }              -> { status, detail, id, mode }
 
    Modo segun MP_ACCESS_TOKEN:
    - TEST-...    Credenciales de prueba. MP no acepta suscripciones con ellas,
@@ -72,9 +76,25 @@ async function mp(path, token, body) {
   }
 }
 
-export function GET() {
+export async function GET(request) {
   const { token, publicKey } = creds();
   if (!token || !publicKey) return json({ error: 'not_configured' }, 503);
+  const q = new URL(request.url).searchParams;
+
+  // Al regresar de Mercado Pago: confirmar el estado real con la API (no confiar en la URL).
+  const paymentId = clean(q.get('payment_id'), 24);
+  const preapprovalId = clean(q.get('preapproval_id'), 64);
+  if (/^\d+$/.test(paymentId) || /^[a-z0-9]+$/i.test(preapprovalId)) {
+    const path = paymentId ? `/v1/payments/${paymentId}` : `/preapproval/${preapprovalId}`;
+    const r = await fetch(MP + path, { headers: { authorization: `Bearer ${token}` } }).catch(() => null);
+    const d = r && r.ok ? await r.json().catch(() => ({})) : null;
+    if (!d) return json({ error: 'not_found' }, 404);
+    const ours = paymentId ? Number(d.transaction_amount) === PLAN.amount : String(d.reason || '').startsWith('Cotizador IA');
+    if (!ours) return json({ error: 'not_found' }, 404);
+    const status = paymentId ? d.status : (d.status === 'authorized' ? 'approved' : d.status);
+    return json({ id: d.id, status, detail: d.status_detail || d.status, test: token.startsWith('TEST-') });
+  }
+
   return json({ publicKey, amount: PLAN.amount, currency: PLAN.currency, test: token.startsWith('TEST-') });
 }
 
@@ -91,6 +111,63 @@ export async function POST(request) {
   let body;
   try { body = await request.json(); } catch { return json({ error: 'bad_json' }, 400, origin); }
 
+  const ref = `cotizador-${Date.now().toString(36)}`;
+  const test = token.startsWith('TEST-');
+  const back = /^https:\/\//.test(origin) ? origin : SITE;
+
+  if (body.action === 'checkout') {
+    const email = clean(body.email, 254).toLowerCase();
+    const name = clean(body.name, 80);
+    const company = clean(body.company, 80);
+    if (!EMAIL.test(email)) return json({ error: 'email' }, 400, origin);
+    try {
+      if (test) {
+        // Modo prueba: Checkout Pro (pago unico del primer mes) en el sandbox de MP.
+        const r = await mp('/checkout/preferences', token, {
+          items: [{ id: 'cotizador-ia', title: `${PLAN.reason} (mensual)`, quantity: 1, unit_price: PLAN.amount, currency_id: PLAN.currency }],
+          payer: { email, name: name || undefined },
+          back_urls: {
+            success: `${back}/cotizador-ia?pago=ok`,
+            failure: `${back}/cotizador-ia?pago=error`,
+            pending: `${back}/cotizador-ia?pago=pendiente`
+          },
+          auto_return: 'approved',
+          payment_methods: { installments: 1, default_installments: 1 },
+          external_reference: ref,
+          statement_descriptor: 'PARTUMDESIGN',
+          metadata: { plan: 'cotizador-ia', name, company }
+        });
+        if (!r.ok || !(r.data.sandbox_init_point || r.data.init_point)) {
+          console.error('mp_pref_error', r.status, r.data && r.data.message);
+          return json({ error: 'upstream' }, 502, origin);
+        }
+        return json({ url: r.data.sandbox_init_point || r.data.init_point, mode: 'test' }, 200, origin);
+      }
+      // Produccion: suscripcion mensual; el cliente entra con su cuenta de Mercado Pago.
+      const r = await mp('/preapproval', token, {
+        reason: PLAN.reason,
+        external_reference: ref,
+        payer_email: email,
+        back_url: `${back}/cotizador-ia?pago=ok`,
+        status: 'pending',
+        auto_recurring: {
+          frequency: PLAN.frequency,
+          frequency_type: PLAN.frequencyType,
+          transaction_amount: PLAN.amount,
+          currency_id: PLAN.currency
+        }
+      });
+      if (!r.ok || !r.data.init_point) {
+        console.error('mp_preapproval_error', r.status, r.data && r.data.message);
+        return json({ error: 'upstream' }, 502, origin);
+      }
+      return json({ url: r.data.init_point, mode: 'live' }, 200, origin);
+    } catch (e) {
+      console.error('mp_fail', e && e.message);
+      return json({ error: 'upstream' }, 502, origin);
+    }
+  }
+
   const card = body.card || {};
   const email = clean(body.email, 254).toLowerCase() || clean(card.payer && card.payer.email, 254).toLowerCase();
   const name = clean(body.name, 80);
@@ -100,10 +177,6 @@ export async function POST(request) {
   const issuerId = clean(card.issuer_id, 20);
   if (!EMAIL.test(email)) return json({ error: 'email' }, 400, origin);
   if (!cardToken || !methodId) return json({ error: 'card' }, 400, origin);
-
-  const ref = `cotizador-${Date.now().toString(36)}`;
-  const test = token.startsWith('TEST-');
-  const back = /^https:\/\//.test(origin) ? origin : SITE;
 
   try {
     if (test) {
