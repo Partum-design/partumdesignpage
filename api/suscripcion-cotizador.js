@@ -66,7 +66,7 @@ export async function POST(request) {
     reason: PLAN.reason,
     external_reference: `cotizador|${email}|${company || name}`.slice(0, 250),
     payer_email: email,
-    back_url: `${SITE}/cotizador-ia?suscripcion=ok`,
+    back_url: `${/^https:\/\//.test(origin) ? origin : SITE}/cotizador-ia?suscripcion=ok`,
     status: 'pending',
     auto_recurring: {
       frequency: PLAN.frequency,
